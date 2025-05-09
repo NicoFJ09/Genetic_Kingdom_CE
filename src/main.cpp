@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "entities/enemies/ogre/Ogre.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -11,6 +12,8 @@ int main(void)
     const int screenHeight = 450;
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+
+    Ogre ogre(false, {25, 25}, 8);
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
@@ -25,12 +28,13 @@ int main(void)
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
-
+        ogre.Update();
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
+            ogre.Draw();
 
             // Calculate text width and position it in the center
             int textWidth = MeasureText(text, fontSize);

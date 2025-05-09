@@ -20,8 +20,30 @@ void TextElement::SetText(const std::string &newText) {
     text = newText;
 }
 
+std::string TextElement::GetText() const {
+    return text;
+}
+
 void TextElement::SetPosition(float x, float y) {
     position = {x, y};
+}
+
+Vector2 TextElement::GetPosition() const {
+    return position;
+}
+
+float TextElement::GetWidth() const {
+    Vector2 textSize = MeasureTextEx(font, text.c_str(), fontSize, spacing);
+    return textSize.x;
+}
+
+float TextElement::GetHeight() const {
+    Vector2 textSize = MeasureTextEx(font, text.c_str(), fontSize, spacing);
+    return textSize.y;
+}
+
+int TextElement::GetFontSize() const {
+    return fontSize;
 }
 
 void TextElement::Center(int screenWidth, int screenHeight) {

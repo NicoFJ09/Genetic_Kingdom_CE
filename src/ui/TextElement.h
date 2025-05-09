@@ -18,7 +18,12 @@ public:
 
     void Draw();            // Dibuja el texto en pantalla
     void SetText(const std::string &newText); // Cambia el texto
+    std::string GetText() const;             // Obtiene el texto actual
     void SetPosition(float x, float y);       // Cambia la posición
+    Vector2 GetPosition() const;             // Obtiene la posición actual
+    float GetWidth() const;                  // Obtiene el ancho del texto
+    float GetHeight() const;                 // Obtiene el alto del texto
+    int GetFontSize() const;                 // Obtiene el tamaño de la fuente
     void Center(int screenWidth, int screenHeight); // Centra el texto en la pantalla
     Font GetFont() const;   // Devuelve la fuente utilizada
     ~TextElement();

@@ -2,7 +2,7 @@
 #define BUTTON_H
 
 #include "raylib.h"
-#include "TextElement.h" // Incluir la clase TextElement
+#include "TextElement.h"
 #include <string>
 
 class Button {
@@ -19,6 +19,10 @@ public:
 
     void Draw();            // Dibuja el botón
     bool IsClicked();       // Verifica si el botón fue clickeado
+    void SetPosition(float x, float y);       // Cambia la posición del botón
+    Vector2 GetPosition() const;             // Obtiene la posición del botón
+    float GetWidth() const;                  // Obtiene el ancho del botón
+    float GetHeight() const;                 // Obtiene el alto del botón
 };
 
 #endif // BUTTON_H

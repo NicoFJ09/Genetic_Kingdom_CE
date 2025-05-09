@@ -1,28 +1,26 @@
 #include "raylib.h"
-#include "ui/Button.h"
+#include "screens/StartScreen.h" // Incluir la pantalla de inicio
 
 int main(void) {
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenWidth = 1280; // Nueva resolución
+    const int screenHeight = 720;
 
-    InitWindow(screenWidth, screenHeight, "Genetic Kingdom - Button Example");
+    InitWindow(screenWidth, screenHeight, "Genetic Kingdom");
 
-    // Crear un botón con texto
-    Button myButton(300, 200, 200, 50, "Click Me", 20, BLACK, "../assets/fonts/romulus.png");
+    // Crear la pantalla de inicio
+    StartScreen startScreen(screenWidth, screenHeight);
 
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) {
+        // Actualizar la lógica de la pantalla
+        startScreen.Update();
+
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        // Dibujar el botón
-        myButton.Draw();
-
-        // Verificar si el botón fue clickeado
-        if (myButton.IsClicked()) {
-            DrawText("Button Clicked!", 10, 10, 20, RED);
-        }
+        // Dibujar la pantalla
+        startScreen.Draw();
 
         EndDrawing();
     }

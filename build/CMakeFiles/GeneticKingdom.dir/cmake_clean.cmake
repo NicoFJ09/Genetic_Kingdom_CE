@@ -1,0 +1,17 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o.d"
+  "GeneticKingdom"
+  "GeneticKingdom.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/GeneticKingdom.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

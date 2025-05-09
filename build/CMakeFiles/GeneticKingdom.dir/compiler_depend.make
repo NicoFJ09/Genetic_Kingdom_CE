@@ -812,6 +812,7 @@ CMakeFiles/GeneticKingdom.dir/src/main.cpp.o: /Users/nicolasflorez/Documents/Git
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/Button.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TextElement.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/Screen.h \
@@ -2450,6 +2451,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o: /Users/nicolasflore
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/Button.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TextElement.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.h \
@@ -5637,6 +5639,8 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o: /Users/nicolasflorez/Doc
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/generate_n.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/equal_range.h:
+
+/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/partition.h:
 

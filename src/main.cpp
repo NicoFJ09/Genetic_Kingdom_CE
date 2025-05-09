@@ -1,18 +1,16 @@
 #include "raylib.h"
 #include "screens/ScreenManager.h"
 #include "screens/StartScreen.h"
+#include "config/Constants.h"
 
 int main(void) {
-    const int screenWidth = 1280;
-    const int screenHeight = 720;
-
-    InitWindow(screenWidth, screenHeight, "Genetic Kingdom");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Genetic Kingdom");
 
     // Crear el ScreenManager
     ScreenManager screenManager;
 
     // Establecer la pantalla inicial
-    screenManager.SwitchToScreen(new StartScreen(screenWidth, screenHeight, &screenManager));
+    screenManager.SwitchToScreen(new StartScreen(SCREEN_WIDTH, SCREEN_HEIGHT, &screenManager));
 
     SetTargetFPS(60);
 

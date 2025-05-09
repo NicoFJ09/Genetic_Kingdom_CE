@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o.d"
   "GeneticKingdom"
   "GeneticKingdom.pdb"
 )

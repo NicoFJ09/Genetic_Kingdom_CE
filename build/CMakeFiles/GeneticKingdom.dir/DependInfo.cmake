@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/StartScreen.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/Button.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TextElement.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

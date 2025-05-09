@@ -1,52 +1,32 @@
 #include "raylib.h"
+#include "ui/Button.h"
 
-//------------------------------------------------------------------------------------
-// Program main entry point
-//------------------------------------------------------------------------------------
-int main(void)
-{
-    // Initialization
-    //--------------------------------------------------------------------------------------
+int main(void) {
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(screenWidth, screenHeight, "Genetic Kingdom - Button Example");
 
-    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
+    // Crear un botón con texto
+    Button myButton(300, 200, 200, 50, "Click Me", 20, BLACK, "../assets/fonts/romulus.png");
 
-    const char *text = "Genetic Kingdom";
-    const int fontSize = 20;
+    SetTargetFPS(60);
 
-    // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
-    {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
-
-        // Draw
-        //----------------------------------------------------------------------------------
+    while (!WindowShouldClose()) {
         BeginDrawing();
+        ClearBackground(RAYWHITE);
 
-            ClearBackground(RAYWHITE);
+        // Dibujar el botón
+        myButton.Draw();
 
-            // Calculate text width and position it in the center
-            int textWidth = MeasureText(text, fontSize);
-            int textX = (screenWidth - textWidth) / 2;
-            int textY = (screenHeight - fontSize) / 2;
-
-            DrawText(text, textX, textY, fontSize, LIGHTGRAY);
+        // Verificar si el botón fue clickeado
+        if (myButton.IsClicked()) {
+            DrawText("Button Clicked!", 10, 10, 20, RED);
+        }
 
         EndDrawing();
-        //----------------------------------------------------------------------------------
     }
 
-    // De-Initialization
-    //--------------------------------------------------------------------------------------
-    CloseWindow();        // Close window and OpenGL context
-    //--------------------------------------------------------------------------------------
-
+    CloseWindow();
     return 0;
 }

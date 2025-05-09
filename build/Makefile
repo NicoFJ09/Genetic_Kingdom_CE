@@ -225,6 +225,30 @@ src/ui/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.s
 .PHONY : src/ui/Button.cpp.s
 
+src/ui/TextElement.o: src/ui/TextElement.cpp.o
+.PHONY : src/ui/TextElement.o
+
+# target to build an object file
+src/ui/TextElement.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o
+.PHONY : src/ui/TextElement.cpp.o
+
+src/ui/TextElement.i: src/ui/TextElement.cpp.i
+.PHONY : src/ui/TextElement.i
+
+# target to preprocess a source file
+src/ui/TextElement.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.i
+.PHONY : src/ui/TextElement.cpp.i
+
+src/ui/TextElement.s: src/ui/TextElement.cpp.s
+.PHONY : src/ui/TextElement.s
+
+# target to generate assembly for a file
+src/ui/TextElement.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.s
+.PHONY : src/ui/TextElement.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,6 +270,9 @@ help:
 	@echo "... src/ui/Button.o"
 	@echo "... src/ui/Button.i"
 	@echo "... src/ui/Button.s"
+	@echo "... src/ui/TextElement.o"
+	@echo "... src/ui/TextElement.i"
+	@echo "... src/ui/TextElement.s"
 .PHONY : help
 
 

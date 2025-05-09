@@ -8,7 +8,9 @@
           "${workspaceFolder}/src/entities",
           "${workspaceFolder}/src/entities/enemies",
           "${workspaceFolder}/src/entities/enemies/ogre",
-          "${workspaceFolder}/src/entities/enemies/ogre/Ogre.h"
+          "${workspaceFolder}/src/entities/enemies/ogre/Ogre.h",
+          "${workspaceFolder}/src/entities/enemies/harpy",
+          "${workspaceFolder}/src/entities/enemies/harpy/Harpy.h"
         ],
         "defines": [],
         "compilerPath": "/usr/bin/gcc",

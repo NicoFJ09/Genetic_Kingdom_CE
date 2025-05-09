@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "entities/enemies/ogre/Ogre.h"
+#include "entities/enemies/harpy/Harpy.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -14,6 +15,7 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
     Ogre ogre(false, {25, 25}, 8);
+    Harpy harpy(false, {100, 25}, 15);
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
@@ -29,13 +31,14 @@ int main(void)
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
         ogre.Update();
+        harpy.Update();
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
             ogre.Draw();
-
+            harpy.Draw();
             // Calculate text width and position it in the center
             int textWidth = MeasureText(text, fontSize);
             int textX = (screenWidth - textWidth) / 2;

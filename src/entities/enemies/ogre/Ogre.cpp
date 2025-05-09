@@ -1,8 +1,8 @@
 #include "raylib.h"
 #include "entities/enemies/ogre/Ogre.h"
 
-Ogre::Ogre(bool alive, Vector2 pos, int speed)
-    : position(pos), frameSpeed(speed), currentFrame(0), frameCounter(0), texturePath(""), frameCount(8)
+Ogre::Ogre(bool alive, Vector2 position, int speed)
+    : isAlive(alive), position(position), frameSpeed(speed), currentFrame(0), frameCounter(0), texturePath(""), frameCount(8)
 {
     if (alive){
         texturePath = "assets/textures/enemies/ogre/OgreMoveSpriteSheet.png";
@@ -29,7 +29,7 @@ void Ogre::Update()
         {
             frameCounter = 0;
     
-            if (alive)
+            if (isAlive)
             {
                 currentFrame = (currentFrame + 1) % frameCount;
             }
@@ -38,9 +38,6 @@ void Ogre::Update()
                 if (currentFrame < frameCount - 1)
                 {
                     currentFrame++;
-                }
-                else{
-                    currentFrame = frameCount+3;
                 }
             }
     

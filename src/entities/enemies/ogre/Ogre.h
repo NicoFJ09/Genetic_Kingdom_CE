@@ -19,7 +19,7 @@ private:
     Texture2D texture;
     Vector2 position;
     Rectangle frameRec;
-    char alive;
+    bool isAlive;
     const char *texturePath;
     int currentFrame;
     int frameCount;

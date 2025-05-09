@@ -177,6 +177,30 @@ src/screens/GameplayScreen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.s
 .PHONY : src/screens/GameplayScreen.cpp.s
 
+src/screens/ScreenManager.o: src/screens/ScreenManager.cpp.o
+.PHONY : src/screens/ScreenManager.o
+
+# target to build an object file
+src/screens/ScreenManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o
+.PHONY : src/screens/ScreenManager.cpp.o
+
+src/screens/ScreenManager.i: src/screens/ScreenManager.cpp.i
+.PHONY : src/screens/ScreenManager.i
+
+# target to preprocess a source file
+src/screens/ScreenManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.i
+.PHONY : src/screens/ScreenManager.cpp.i
+
+src/screens/ScreenManager.s: src/screens/ScreenManager.cpp.s
+.PHONY : src/screens/ScreenManager.s
+
+# target to generate assembly for a file
+src/screens/ScreenManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.s
+.PHONY : src/screens/ScreenManager.cpp.s
+
 src/screens/StartScreen.o: src/screens/StartScreen.cpp.o
 .PHONY : src/screens/StartScreen.o
 
@@ -264,6 +288,9 @@ help:
 	@echo "... src/screens/GameplayScreen.o"
 	@echo "... src/screens/GameplayScreen.i"
 	@echo "... src/screens/GameplayScreen.s"
+	@echo "... src/screens/ScreenManager.o"
+	@echo "... src/screens/ScreenManager.i"
+	@echo "... src/screens/ScreenManager.s"
 	@echo "... src/screens/StartScreen.o"
 	@echo "... src/screens/StartScreen.i"
 	@echo "... src/screens/StartScreen.s"

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o"

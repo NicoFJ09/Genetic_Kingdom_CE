@@ -1,26 +1,30 @@
 #include "raylib.h"
-#include "screens/StartScreen.h" // Incluir la pantalla de inicio
+#include "screens/ScreenManager.h"
+#include "screens/StartScreen.h"
 
 int main(void) {
-    const int screenWidth = 1280; // Nueva resolución
+    const int screenWidth = 1280;
     const int screenHeight = 720;
 
     InitWindow(screenWidth, screenHeight, "Genetic Kingdom");
 
-    // Crear la pantalla de inicio
-    StartScreen startScreen(screenWidth, screenHeight);
+    // Crear el ScreenManager
+    ScreenManager screenManager;
+
+    // Establecer la pantalla inicial
+    screenManager.SwitchToScreen(new StartScreen(screenWidth, screenHeight, &screenManager));
 
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) {
-        // Actualizar la lógica de la pantalla
-        startScreen.Update();
+        // Actualizar la lógica de la pantalla actual
+        screenManager.Update();
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        // Dibujar la pantalla
-        startScreen.Draw();
+        // Dibujar la pantalla actual
+        screenManager.Draw();
 
         EndDrawing();
     }

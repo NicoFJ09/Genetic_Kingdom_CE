@@ -20,6 +20,7 @@ set(SOURCES
     src/main.cpp
     src/screens/StartScreen.cpp
     src/screens/GameplayScreen.cpp
+    src/screens/ScreenManager.cpp
     src/ui/Button.cpp
     src/ui/TextElement.cpp
     # Add more .cpp files here as needed

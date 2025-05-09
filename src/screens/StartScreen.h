@@ -4,6 +4,7 @@
 #include "Screen.h"
 #include "../ui/TextElement.h"
 #include "../ui/Button.h"
+#include "ScreenManager.h"
 
 class StartScreen : public Screen {
 private:
@@ -11,9 +12,10 @@ private:
     Button startButton; // Botón de inicio
     int screenWidth;
     int screenHeight;
+    ScreenManager* screenManager; // Puntero al ScreenManager
 
 public:
-    StartScreen(int screenWidth, int screenHeight);
+    StartScreen(int screenWidth, int screenHeight, ScreenManager* screenManager);
     void Update() override; // Actualiza la lógica de la pantalla
     void Draw() override;   // Dibuja la pantalla
 };

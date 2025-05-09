@@ -23,7 +23,9 @@ set(SOURCES
     src/screens/ScreenManager.cpp
     src/ui/Button.cpp
     src/ui/TextElement.cpp
-    # Add more .cpp files here as needed
+    src/ui/GamePanel.cpp
+    src/ui/BottomPanel.cpp
+    src/ui/SidePanel.cpp
 )
 
 # Add the executable

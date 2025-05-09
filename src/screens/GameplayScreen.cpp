@@ -1,15 +1,23 @@
 #include "GameplayScreen.h"
-
-// Definir colores al inicio del archivo
-static const Color OLIVE_GREEN = (Color){180, 184, 84, 255}; // #B4B854
+#include "../config/Constants.h" // Incluir las constantes de colores y dimensiones
 
 GameplayScreen::GameplayScreen(int screenWidth, int screenHeight)
-    : screenWidth(screenWidth), screenHeight(screenHeight) {}
+    : screenWidth(screenWidth), screenHeight(screenHeight),
+      gamePanel(0, 0, 992, 608), // Panel principal
+      sidePanel(992, 0, screenWidth - 992, screenHeight), // Panel lateral
+      bottomPanel(0, 608, 992, screenHeight - 608) { // Panel inferior
+}
 
 void GameplayScreen::Update() {
-    // Por ahora, no hay lógica en la pantalla de juego
+    // Actualizar lógica de los paneles
+    gamePanel.Update();
+    bottomPanel.Update();
+    sidePanel.Update();
 }
 
 void GameplayScreen::Draw() {
-    ClearBackground(OLIVE_GREEN); // Fondo color OLIVE_GREEN
+    // Dibujar los paneles
+    gamePanel.Draw();
+    bottomPanel.Draw();
+    sidePanel.Draw();
 }

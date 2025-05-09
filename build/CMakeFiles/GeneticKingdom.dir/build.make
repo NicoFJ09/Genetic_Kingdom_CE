@@ -156,6 +156,48 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TextElement.cpp -o CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.s
 
+CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
+CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.cpp
+CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.cpp
+
+CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.cpp > CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.i
+
+CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.cpp -o CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.s
+
+CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
+CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.cpp
+CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.cpp
+
+CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.cpp > CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.i
+
+CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.cpp -o CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.s
+
+CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
+CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/SidePanel.cpp
+CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/SidePanel.cpp
+
+CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/SidePanel.cpp > CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.i
+
+CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/SidePanel.cpp -o CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.s
+
 # Object files for target GeneticKingdom
 GeneticKingdom_OBJECTS = \
 "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o" \
@@ -163,7 +205,10 @@ GeneticKingdom_OBJECTS = \
 "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o" \
-"CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o"
+"CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o" \
+"CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o" \
+"CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o" \
+"CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o"
 
 # External object files for target GeneticKingdom
 GeneticKingdom_EXTERNAL_OBJECTS =
@@ -174,9 +219,12 @@ GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o
+GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o
+GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o
+GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/build.make
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable GeneticKingdom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable GeneticKingdom"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GeneticKingdom.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

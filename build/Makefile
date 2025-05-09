@@ -225,6 +225,30 @@ src/screens/StartScreen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.s
 .PHONY : src/screens/StartScreen.cpp.s
 
+src/ui/BottomPanel.o: src/ui/BottomPanel.cpp.o
+.PHONY : src/ui/BottomPanel.o
+
+# target to build an object file
+src/ui/BottomPanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o
+.PHONY : src/ui/BottomPanel.cpp.o
+
+src/ui/BottomPanel.i: src/ui/BottomPanel.cpp.i
+.PHONY : src/ui/BottomPanel.i
+
+# target to preprocess a source file
+src/ui/BottomPanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.i
+.PHONY : src/ui/BottomPanel.cpp.i
+
+src/ui/BottomPanel.s: src/ui/BottomPanel.cpp.s
+.PHONY : src/ui/BottomPanel.s
+
+# target to generate assembly for a file
+src/ui/BottomPanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.s
+.PHONY : src/ui/BottomPanel.cpp.s
+
 src/ui/Button.o: src/ui/Button.cpp.o
 .PHONY : src/ui/Button.o
 
@@ -248,6 +272,54 @@ src/ui/Button.s: src/ui/Button.cpp.s
 src/ui/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.s
 .PHONY : src/ui/Button.cpp.s
+
+src/ui/GamePanel.o: src/ui/GamePanel.cpp.o
+.PHONY : src/ui/GamePanel.o
+
+# target to build an object file
+src/ui/GamePanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o
+.PHONY : src/ui/GamePanel.cpp.o
+
+src/ui/GamePanel.i: src/ui/GamePanel.cpp.i
+.PHONY : src/ui/GamePanel.i
+
+# target to preprocess a source file
+src/ui/GamePanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.i
+.PHONY : src/ui/GamePanel.cpp.i
+
+src/ui/GamePanel.s: src/ui/GamePanel.cpp.s
+.PHONY : src/ui/GamePanel.s
+
+# target to generate assembly for a file
+src/ui/GamePanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.s
+.PHONY : src/ui/GamePanel.cpp.s
+
+src/ui/SidePanel.o: src/ui/SidePanel.cpp.o
+.PHONY : src/ui/SidePanel.o
+
+# target to build an object file
+src/ui/SidePanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o
+.PHONY : src/ui/SidePanel.cpp.o
+
+src/ui/SidePanel.i: src/ui/SidePanel.cpp.i
+.PHONY : src/ui/SidePanel.i
+
+# target to preprocess a source file
+src/ui/SidePanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.i
+.PHONY : src/ui/SidePanel.cpp.i
+
+src/ui/SidePanel.s: src/ui/SidePanel.cpp.s
+.PHONY : src/ui/SidePanel.s
+
+# target to generate assembly for a file
+src/ui/SidePanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.s
+.PHONY : src/ui/SidePanel.cpp.s
 
 src/ui/TextElement.o: src/ui/TextElement.cpp.o
 .PHONY : src/ui/TextElement.o
@@ -294,9 +366,18 @@ help:
 	@echo "... src/screens/StartScreen.o"
 	@echo "... src/screens/StartScreen.i"
 	@echo "... src/screens/StartScreen.s"
+	@echo "... src/ui/BottomPanel.o"
+	@echo "... src/ui/BottomPanel.i"
+	@echo "... src/ui/BottomPanel.s"
 	@echo "... src/ui/Button.o"
 	@echo "... src/ui/Button.i"
 	@echo "... src/ui/Button.s"
+	@echo "... src/ui/GamePanel.o"
+	@echo "... src/ui/GamePanel.i"
+	@echo "... src/ui/GamePanel.s"
+	@echo "... src/ui/SidePanel.o"
+	@echo "... src/ui/SidePanel.i"
+	@echo "... src/ui/SidePanel.s"
 	@echo "... src/ui/TextElement.o"
 	@echo "... src/ui/TextElement.i"
 	@echo "... src/ui/TextElement.s"

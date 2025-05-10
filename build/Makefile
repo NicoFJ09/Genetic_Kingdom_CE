@@ -273,6 +273,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/map/Map.o: src/map/Map.cpp.o
+.PHONY : src/map/Map.o
+
+# target to build an object file
+src/map/Map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o
+.PHONY : src/map/Map.cpp.o
+
+src/map/Map.i: src/map/Map.cpp.i
+.PHONY : src/map/Map.i
+
+# target to preprocess a source file
+src/map/Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.i
+.PHONY : src/map/Map.cpp.i
+
+src/map/Map.s: src/map/Map.cpp.s
+.PHONY : src/map/Map.s
+
+# target to generate assembly for a file
+src/map/Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.s
+.PHONY : src/map/Map.cpp.s
+
+src/map/Tile.o: src/map/Tile.cpp.o
+.PHONY : src/map/Tile.o
+
+# target to build an object file
+src/map/Tile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o
+.PHONY : src/map/Tile.cpp.o
+
+src/map/Tile.i: src/map/Tile.cpp.i
+.PHONY : src/map/Tile.i
+
+# target to preprocess a source file
+src/map/Tile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.i
+.PHONY : src/map/Tile.cpp.i
+
+src/map/Tile.s: src/map/Tile.cpp.s
+.PHONY : src/map/Tile.s
+
+# target to generate assembly for a file
+src/map/Tile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.s
+.PHONY : src/map/Tile.cpp.s
+
 src/screens/GameplayScreen.o: src/screens/GameplayScreen.cpp.o
 .PHONY : src/screens/GameplayScreen.o
 
@@ -492,6 +540,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/map/Map.o"
+	@echo "... src/map/Map.i"
+	@echo "... src/map/Map.s"
+	@echo "... src/map/Tile.o"
+	@echo "... src/map/Tile.i"
+	@echo "... src/map/Tile.s"
 	@echo "... src/screens/GameplayScreen.o"
 	@echo "... src/screens/GameplayScreen.i"
 	@echo "... src/screens/GameplayScreen.s"

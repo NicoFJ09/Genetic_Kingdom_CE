@@ -31,6 +31,8 @@ set(SOURCES
     src/entities/enemies/mercenary/Mercenary.cpp
     src/entities/enemies/darkElf/DarkElf.cpp
     src/entities/enemies/Enemy.cpp
+    src/map/Map.cpp
+    src/map/Tile.cpp
 )
 
 # Add the executable

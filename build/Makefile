@@ -129,6 +129,102 @@ GeneticKingdom/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/build
 .PHONY : GeneticKingdom/fast
 
+src/entities/enemies/darkElf/DarkElf.o: src/entities/enemies/darkElf/DarkElf.cpp.o
+.PHONY : src/entities/enemies/darkElf/DarkElf.o
+
+# target to build an object file
+src/entities/enemies/darkElf/DarkElf.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o
+.PHONY : src/entities/enemies/darkElf/DarkElf.cpp.o
+
+src/entities/enemies/darkElf/DarkElf.i: src/entities/enemies/darkElf/DarkElf.cpp.i
+.PHONY : src/entities/enemies/darkElf/DarkElf.i
+
+# target to preprocess a source file
+src/entities/enemies/darkElf/DarkElf.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.i
+.PHONY : src/entities/enemies/darkElf/DarkElf.cpp.i
+
+src/entities/enemies/darkElf/DarkElf.s: src/entities/enemies/darkElf/DarkElf.cpp.s
+.PHONY : src/entities/enemies/darkElf/DarkElf.s
+
+# target to generate assembly for a file
+src/entities/enemies/darkElf/DarkElf.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.s
+.PHONY : src/entities/enemies/darkElf/DarkElf.cpp.s
+
+src/entities/enemies/harpy/Harpy.o: src/entities/enemies/harpy/Harpy.cpp.o
+.PHONY : src/entities/enemies/harpy/Harpy.o
+
+# target to build an object file
+src/entities/enemies/harpy/Harpy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o
+.PHONY : src/entities/enemies/harpy/Harpy.cpp.o
+
+src/entities/enemies/harpy/Harpy.i: src/entities/enemies/harpy/Harpy.cpp.i
+.PHONY : src/entities/enemies/harpy/Harpy.i
+
+# target to preprocess a source file
+src/entities/enemies/harpy/Harpy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.i
+.PHONY : src/entities/enemies/harpy/Harpy.cpp.i
+
+src/entities/enemies/harpy/Harpy.s: src/entities/enemies/harpy/Harpy.cpp.s
+.PHONY : src/entities/enemies/harpy/Harpy.s
+
+# target to generate assembly for a file
+src/entities/enemies/harpy/Harpy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.s
+.PHONY : src/entities/enemies/harpy/Harpy.cpp.s
+
+src/entities/enemies/mercenary/Mercenary.o: src/entities/enemies/mercenary/Mercenary.cpp.o
+.PHONY : src/entities/enemies/mercenary/Mercenary.o
+
+# target to build an object file
+src/entities/enemies/mercenary/Mercenary.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o
+.PHONY : src/entities/enemies/mercenary/Mercenary.cpp.o
+
+src/entities/enemies/mercenary/Mercenary.i: src/entities/enemies/mercenary/Mercenary.cpp.i
+.PHONY : src/entities/enemies/mercenary/Mercenary.i
+
+# target to preprocess a source file
+src/entities/enemies/mercenary/Mercenary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.i
+.PHONY : src/entities/enemies/mercenary/Mercenary.cpp.i
+
+src/entities/enemies/mercenary/Mercenary.s: src/entities/enemies/mercenary/Mercenary.cpp.s
+.PHONY : src/entities/enemies/mercenary/Mercenary.s
+
+# target to generate assembly for a file
+src/entities/enemies/mercenary/Mercenary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.s
+.PHONY : src/entities/enemies/mercenary/Mercenary.cpp.s
+
+src/entities/enemies/ogre/Ogre.o: src/entities/enemies/ogre/Ogre.cpp.o
+.PHONY : src/entities/enemies/ogre/Ogre.o
+
+# target to build an object file
+src/entities/enemies/ogre/Ogre.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o
+.PHONY : src/entities/enemies/ogre/Ogre.cpp.o
+
+src/entities/enemies/ogre/Ogre.i: src/entities/enemies/ogre/Ogre.cpp.i
+.PHONY : src/entities/enemies/ogre/Ogre.i
+
+# target to preprocess a source file
+src/entities/enemies/ogre/Ogre.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.i
+.PHONY : src/entities/enemies/ogre/Ogre.cpp.i
+
+src/entities/enemies/ogre/Ogre.s: src/entities/enemies/ogre/Ogre.cpp.s
+.PHONY : src/entities/enemies/ogre/Ogre.s
+
+# target to generate assembly for a file
+src/entities/enemies/ogre/Ogre.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.s
+.PHONY : src/entities/enemies/ogre/Ogre.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -354,6 +450,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GeneticKingdom"
+	@echo "... src/entities/enemies/darkElf/DarkElf.o"
+	@echo "... src/entities/enemies/darkElf/DarkElf.i"
+	@echo "... src/entities/enemies/darkElf/DarkElf.s"
+	@echo "... src/entities/enemies/harpy/Harpy.o"
+	@echo "... src/entities/enemies/harpy/Harpy.i"
+	@echo "... src/entities/enemies/harpy/Harpy.s"
+	@echo "... src/entities/enemies/mercenary/Mercenary.o"
+	@echo "... src/entities/enemies/mercenary/Mercenary.i"
+	@echo "... src/entities/enemies/mercenary/Mercenary.s"
+	@echo "... src/entities/enemies/ogre/Ogre.o"
+	@echo "... src/entities/enemies/ogre/Ogre.i"
+	@echo "... src/entities/enemies/ogre/Ogre.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -1,15 +1,15 @@
 #include "raylib.h"
-#include "entities/enemies/ogre/Ogre.h"
+#include "Ogre.h"
 
 Ogre::Ogre(bool alive, Vector2 position, int speed)
     : isAlive(alive), position(position), frameSpeed(speed), currentFrame(0), frameCounter(0), texturePath(""), frameCount(8)
 {
     if (alive){
-        texturePath = "assets/textures/enemies/ogre/OgreMoveSpriteSheet.png";
+        texturePath = "../assets/textures/enemies/ogre/OgreMoveSpriteSheet.png";
         frameCount = 8;
     }
     else{
-        texturePath = "assets/textures/enemies/ogre/OgreDeathSpriteSheet.png";
+        texturePath = "../assets/textures/enemies/ogre/OgreDeathSpriteSheet.png";
         frameCount = 4;
     }
     texture = LoadTexture(texturePath);

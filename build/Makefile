@@ -177,6 +177,30 @@ src/entities/enemies/harpy/Harpy.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.s
 .PHONY : src/entities/enemies/harpy/Harpy.cpp.s
 
+src/entities/enemies/mercenary/Mercenary.o: src/entities/enemies/mercenary/Mercenary.cpp.o
+.PHONY : src/entities/enemies/mercenary/Mercenary.o
+
+# target to build an object file
+src/entities/enemies/mercenary/Mercenary.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o
+.PHONY : src/entities/enemies/mercenary/Mercenary.cpp.o
+
+src/entities/enemies/mercenary/Mercenary.i: src/entities/enemies/mercenary/Mercenary.cpp.i
+.PHONY : src/entities/enemies/mercenary/Mercenary.i
+
+# target to preprocess a source file
+src/entities/enemies/mercenary/Mercenary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.i
+.PHONY : src/entities/enemies/mercenary/Mercenary.cpp.i
+
+src/entities/enemies/mercenary/Mercenary.s: src/entities/enemies/mercenary/Mercenary.cpp.s
+.PHONY : src/entities/enemies/mercenary/Mercenary.s
+
+# target to generate assembly for a file
+src/entities/enemies/mercenary/Mercenary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.s
+.PHONY : src/entities/enemies/mercenary/Mercenary.cpp.s
+
 src/entities/enemies/ogre/Ogre.o: src/entities/enemies/ogre/Ogre.cpp.o
 .PHONY : src/entities/enemies/ogre/Ogre.o
 
@@ -432,6 +456,9 @@ help:
 	@echo "... src/entities/enemies/harpy/Harpy.o"
 	@echo "... src/entities/enemies/harpy/Harpy.i"
 	@echo "... src/entities/enemies/harpy/Harpy.s"
+	@echo "... src/entities/enemies/mercenary/Mercenary.o"
+	@echo "... src/entities/enemies/mercenary/Mercenary.i"
+	@echo "... src/entities/enemies/mercenary/Mercenary.s"
 	@echo "... src/entities/enemies/ogre/Ogre.o"
 	@echo "... src/entities/enemies/ogre/Ogre.i"
 	@echo "... src/entities/enemies/ogre/Ogre.s"

@@ -1,6 +1,10 @@
 #include "Enemy.h"
 #include "raylib.h"
 #include <iostream>
+#include <algorithm>
+
+// Inicialización del contenedor estático
+std::vector<Enemy*> Enemy::allInstances;
 
 Enemy::Enemy(bool alive, Vector2 pos, int speed, const std::string& path, int frames)
     : isAlive(alive), position(pos), frameSpeed(speed > 0 ? speed : 1), currentFrame(0), frameCounter(0), frameCount(frames), texturePath(path) {
@@ -11,11 +15,20 @@ Enemy::Enemy(bool alive, Vector2 pos, int speed, const std::string& path, int fr
     } else {
         frameRec = {0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height};
     }
+
+    // Agregar la instancia al contenedor estático
+    allInstances.push_back(this);
 }
 
 Enemy::~Enemy() {
     if (texture.id != 0) {
         UnloadTexture(texture);
+    }
+
+    // Eliminar la instancia del contenedor estático
+    auto it = std::find(allInstances.begin(), allInstances.end(), this);
+    if (it != allInstances.end()) {
+        allInstances.erase(it);
     }
 }
 
@@ -60,4 +73,21 @@ void Enemy::DecreaseSpeed() {
     if (frameSpeed > minFrameSpeed) {
         frameSpeed--;
     }
+}
+
+void Enemy::ClearAllInstances() {
+    TraceLog(LOG_INFO, "Starting to clear all enemy instances. Total instances: %zu", allInstances.size());
+
+    for (size_t i = 0; i < allInstances.size(); ++i) {
+        Enemy* enemy = allInstances[i];
+        if (enemy != nullptr) {
+            TraceLog(LOG_INFO, "Deleting enemy instance at index %zu", i);
+            delete enemy; // Liberar memoria de cada instancia
+        } else {
+            TraceLog(LOG_ERROR, "Encountered a nullptr at index %zu in allInstances", i);
+        }
+    }
+
+    allInstances.clear(); // Vaciar el contenedor
+    TraceLog(LOG_INFO, "All enemy instances cleared successfully.");
 }

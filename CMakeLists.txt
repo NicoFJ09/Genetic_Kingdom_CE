@@ -28,6 +28,7 @@ set(SOURCES
     src/ui/SidePanel.cpp
     src/entities/enemies/ogre/Ogre.cpp
     src/entities/enemies/harpy/Harpy.cpp
+    src/entities/enemies/mercenary/Mercenary.cpp
     src/entities/enemies/Enemy.cpp
 )
 

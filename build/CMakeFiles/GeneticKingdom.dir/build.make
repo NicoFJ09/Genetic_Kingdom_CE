@@ -226,10 +226,24 @@ CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/harpy/Harpy.cpp -o CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.s
 
+CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
+CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/mercenary/Mercenary.cpp
+CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/mercenary/Mercenary.cpp
+
+CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/mercenary/Mercenary.cpp > CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.i
+
+CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/mercenary/Mercenary.cpp -o CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.s
+
 CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.cpp
 CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.i: cmake_force
@@ -253,6 +267,7 @@ GeneticKingdom_OBJECTS = \
 "CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o" \
+"CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o"
 
 # External object files for target GeneticKingdom
@@ -269,10 +284,11 @@ GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/ui/SidePanel.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o
+GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/build.make
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable GeneticKingdom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable GeneticKingdom"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GeneticKingdom.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

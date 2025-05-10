@@ -3,6 +3,7 @@
 
 #include "raylib.h"
 #include <string>
+#include <vector>
 
 class Enemy {
 protected:
@@ -18,8 +19,9 @@ protected:
 
     const int maxFrameSpeed = 15; // Velocidad máxima de animación
     const int minFrameSpeed = 1;  // Velocidad mínima de animación
-
+    static std::vector<Enemy*> allInstances; // Contenedor estático para todas las instancias
 public:
+
     Enemy(bool alive, Vector2 position, int frameSpeed, const std::string& texturePath, int frameCount);
     virtual ~Enemy();
 
@@ -28,6 +30,8 @@ public:
 
     void IncreaseSpeed();
     void DecreaseSpeed();
+
+    static void ClearAllInstances(); // Limpia todas las instancias de enemigos
 };
 
 #endif // ENEMY_H

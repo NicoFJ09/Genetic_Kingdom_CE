@@ -1,15 +1,15 @@
 #include "raylib.h"
-#include "Harpy.h"
+#include "entities/enemies/harpy/Harpy.h"
 
 Harpy::Harpy(bool alive, Vector2 pos, int speed)
     : isAlive(alive), position(pos), frameSpeed(speed), currentFrame(0), frameCounter(0), texturePath(""), frameCount(8)
 {
     if (alive){
-        texturePath = "../assets/textures/enemies/harpy/HarpyMoveSpriteSheet.png";
+        texturePath = "assets/textures/enemies/harpy/HarpyMoveSpriteSheet.png";
         frameCount = 24;
     }
     else{
-        texturePath = "../assets/textures/enemies/harpy/HarpyDeathSpriteSheet.png";
+        texturePath = "assets/textures/enemies/harpy/HarpyDeathSpriteSheet.png";
         frameCount = 7;
     }
     texture = LoadTexture(texturePath);

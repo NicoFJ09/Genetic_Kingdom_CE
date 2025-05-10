@@ -1,0 +1,26 @@
+{
+    "version": 4,
+    "configurations": [
+      {
+        "name": "Linux Configuration",
+        "includePath": [
+          "${workspaceFolder}/src",
+          "${workspaceFolder}/src/entities",
+          "${workspaceFolder}/src/entities/enemies",
+          "${workspaceFolder}/src/entities/enemies/ogre",
+          "${workspaceFolder}/src/entities/enemies/ogre/Ogre.h",
+          "${workspaceFolder}/src/entities/enemies/harpy",
+          "${workspaceFolder}/src/entities/enemies/harpy/Harpy.h",
+          "${workspaceFolder}/src/entities/enemies/mercenary",
+          "${workspaceFolder}/src/entities/enemies/mercenary/Mercenary.cpp",
+          "${workspaceFolder}/src/entities/enemies/darkElf/DarkElf.cpp",
+          "${workspaceFolder}/src/entities/enemies/darkElf/DarkElf.cpp"
+        ],
+        "defines": [],
+        "compilerPath": "/usr/bin/gcc",
+        "cStandard": "c17",
+        "cppStandard": "c++17",
+        "intelliSenseMode": "linux-gcc-x64"
+      }
+    ]
+  }

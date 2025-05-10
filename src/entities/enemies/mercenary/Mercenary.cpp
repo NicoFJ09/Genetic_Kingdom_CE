@@ -1,11 +1,11 @@
 #include "raylib.h"
-#include "Mercenary.h"
+#include "entities/enemies/mercenary/Mercenary.h"
 
 Mercenary::Mercenary(bool alive, Vector2 pos, int speed)
     : isAlive(alive), position(pos), frameSpeed(speed), currentFrame(0), frameCounter(0), texturePath(""), frameCount(8)
 {
     if (alive){
-        texturePath = "../assets/textures/enemies/mercenary/MercenaryMoveSpriteSheet.png";
+        texturePath = "assets/textures/enemies/mercenary/MercenaryMoveSpriteSheet.png";
         frameCount = 9;
     }
     else{

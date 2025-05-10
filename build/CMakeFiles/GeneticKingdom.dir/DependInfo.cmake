@@ -8,6 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/harpy/Harpy.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/mercenary/Mercenary.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/ogre/Ogre.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/main.cpp" "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/ScreenManager.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o.d"

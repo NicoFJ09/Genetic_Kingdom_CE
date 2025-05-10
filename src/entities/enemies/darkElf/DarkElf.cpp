@@ -1,15 +1,15 @@
 #include "raylib.h"
-#include "entities/enemies/darkElf/DarkElf.h"
+#include "DarkElf.h"
 
 DarkElf::DarkElf(bool alive, Vector2 pos, int speed)
     : isAlive(alive), position(pos), frameSpeed(speed), currentFrame(0), frameCounter(0), texturePath(""), frameCount(8)
 {
     if (alive){
-        texturePath = "assets/textures/enemies/darkelf/DarkElfMoveSpriteSheet.png";
+        texturePath = "../assets/textures/enemies/darkelf/DarkElfMoveSpriteSheet.png";
         frameCount = 8;
     }
     else{
-        texturePath = "assets/textures/enemies/darkelf/DarkElfDeathSpriteSheet.png";
+        texturePath = "../assets/textures/enemies/darkelf/DarkElfDeathSpriteSheet.png";
         frameCount = 7;
     }
     texture = LoadTexture(texturePath);

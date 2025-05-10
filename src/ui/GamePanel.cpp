@@ -2,93 +2,89 @@
 #include "../config/Constants.h"
 #include <vector>
 
-// Ruta base para los archivos de tiles
-
+// Constructor
 GamePanel::GamePanel(float x, float y, float width, float height)
     : bounds({x, y, width, height}) {
-    // Cargar y redimensionar texturas horizontales
-    Image img = LoadImage((MAP_PATH + "Horizontal/H_1.png").c_str());
-    ImageResize(&img, 32, 32);
-    horizontalTextures[1] = LoadTextureFromImage(img);
-    UnloadImage(img);
+    // Copiar el mapa global GAME_MAP al miembro map
+    for (const auto& row : GAME_MAP) {
+        map.emplace_back(row.begin(), row.end());
+    }
 
-    img = LoadImage((MAP_PATH + "Horizontal/H_2.png").c_str());
-    ImageResize(&img, 32, 32);
-    horizontalTextures[2] = LoadTextureFromImage(img);
-    UnloadImage(img);
+    // Cargar texturas horizontales
+    horizontalTextures[0] = LoadAndResizeTexture(MAP_PATH + "Middle.png", 32, 32);
+    horizontalTextures[1] = LoadAndResizeTexture(MAP_PATH + "Horizontal/H_1.png", 32, 32);
+    horizontalTextures[2] = LoadAndResizeTexture(MAP_PATH + "Horizontal/H_2.png", 32, 32);
+    horizontalTextures[3] = horizontalTextures[0]; // Reutilizar "Middle"
+    horizontalTextures[4] = LoadAndResizeTexture(MAP_PATH + "Horizontal/H_3.png", 32, 32);
+    horizontalTextures[5] = LoadAndResizeTexture(MAP_PATH + "Horizontal/H_4.png", 32, 32);
 
-    img = LoadImage((MAP_PATH + "Horizontal/H_3.png").c_str());
-    ImageResize(&img, 32, 32);
-    horizontalTextures[4] = LoadTextureFromImage(img);
-    UnloadImage(img);
+    // Cargar texturas verticales
+    verticalTextures[0] = LoadAndResizeTexture(MAP_PATH + "Middle.png", 32, 32);
+    verticalTextures[1] = LoadAndResizeTexture(MAP_PATH + "Vertical/V_1.png", 32, 32);
+    verticalTextures[2] = LoadAndResizeTexture(MAP_PATH + "Vertical/V_2.png", 32, 32);
+    verticalTextures[3] = verticalTextures[0]; // Reutilizar "Middle"
+    verticalTextures[4] = LoadAndResizeTexture(MAP_PATH + "Vertical/V_3.png", 32, 32);
+    verticalTextures[5] = LoadAndResizeTexture(MAP_PATH + "Vertical/V_4.png", 32, 32);
 
-    img = LoadImage((MAP_PATH + "Horizontal/H_4.png").c_str());
-    ImageResize(&img, 32, 32);
-    horizontalTextures[5] = LoadTextureFromImage(img);
-    UnloadImage(img);
-
-    img = LoadImage((MAP_PATH + "Middle.png").c_str());
-    ImageResize(&img, 32, 32);
-    horizontalTextures[0] = LoadTextureFromImage(img);
-    horizontalTextures[3] = horizontalTextures[0]; // Reutilizar la textura "Middle"
-    UnloadImage(img);
-
-    // Cargar y redimensionar texturas verticales
-    img = LoadImage((MAP_PATH + "Vertical/V_1.png").c_str());
-    ImageResize(&img, 32, 32);
-    verticalTextures[1] = LoadTextureFromImage(img);
-    UnloadImage(img);
-
-    img = LoadImage((MAP_PATH + "Vertical/V_2.png").c_str());
-    ImageResize(&img, 32, 32);
-    verticalTextures[2] = LoadTextureFromImage(img);
-    UnloadImage(img);
-
-    img = LoadImage((MAP_PATH + "Vertical/V_3.png").c_str());
-    ImageResize(&img, 32, 32);
-    verticalTextures[4] = LoadTextureFromImage(img);
-    UnloadImage(img);
-
-    img = LoadImage((MAP_PATH + "Vertical/V_4.png").c_str());
-    ImageResize(&img, 32, 32);
-    verticalTextures[5] = LoadTextureFromImage(img);
-    UnloadImage(img);
-
-    img = LoadImage((MAP_PATH + "Middle.png").c_str());
-    ImageResize(&img, 32, 32);
-    verticalTextures[0] = LoadTextureFromImage(img);
-    verticalTextures[3] = verticalTextures[0]; // Reutilizar la textura "Middle"
-    UnloadImage(img);
-
-    // Cargar y redimensionar textura para "Middle"
-    img = LoadImage((MAP_PATH + "Middle.png").c_str());
-    ImageResize(&img, 32, 32);
-    middleTexture = LoadTextureFromImage(img);
-    UnloadImage(img);
+    // Cargar textura "Middle"
+    middleTexture = LoadAndResizeTexture(MAP_PATH + "Middle.png", 32, 32);
 }
 
+// Destructor
 GamePanel::~GamePanel() {
     // Liberar texturas horizontales
     for (auto& texture : horizontalTextures) {
-        UnloadTexture(texture);
+        if (texture.id != 0) {
+            UnloadTexture(texture);
+        }
     }
 
     // Liberar texturas verticales
     for (auto& texture : verticalTextures) {
-        UnloadTexture(texture);
+        if (texture.id != 0) {
+            UnloadTexture(texture);
+        }
     }
 
     // Liberar textura "Middle"
-    UnloadTexture(middleTexture);
+    if (middleTexture.id != 0) {
+        UnloadTexture(middleTexture);
+    }
 }
 
+// Función auxiliar para cargar y redimensionar texturas
+Texture2D GamePanel::LoadAndResizeTexture(const std::string& path, int width, int height) {
+    Image img = LoadImage(path.c_str());
+    if (img.data == nullptr) {
+        TraceLog(LOG_ERROR, "Failed to load image: %s", path.c_str());
+        return {0}; // Retorna una textura inválida
+    }
+    ImageResize(&img, width, height);
+    Texture2D texture = LoadTextureFromImage(img);
+    UnloadImage(img);
+    return texture;
+}
+
+// Actualizar lógica del panel
 void GamePanel::Update() {
     // Lógica del panel (por ahora vacío)
 }
 
+// Dibujar el panel
 void GamePanel::Draw() {
     // Dibujar el fondo del panel con OLIVE_GREEN
     DrawRectangleRec(bounds, OLIVE_GREEN);
+
+    // Dibujar el mapa
+    DrawMap();
+}
+
+// Dibujar el mapa
+void GamePanel::DrawMap() {
+    if (map.empty() || map[0].empty()) {
+        TraceLog(LOG_ERROR, "Map is empty or improperly initialized.");
+        return;
+    }
 
     // Inicializar vectores para seguimiento de caminos verticales
     std::vector<bool> isVerticalPath(map[0].size(), false); // Para identificar caminos verticales

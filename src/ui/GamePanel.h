@@ -3,6 +3,8 @@
 
 #include "raylib.h"
 #include <array>
+#include <vector>
+#include <string>
 
 class GamePanel {
 private:
@@ -10,6 +12,11 @@ private:
     std::array<Texture2D, 6> horizontalTextures; // Texturas horizontales
     std::array<Texture2D, 6> verticalTextures;   // Texturas verticales
     Texture2D middleTexture; // Textura para "Middle"
+    std::vector<std::vector<int>> map; // Representación del mapa
+
+    // Funciones auxiliares
+    Texture2D LoadAndResizeTexture(const std::string& path, int width, int height);
+    void DrawMap(); // Lógica para dibujar el mapa
 
 public:
     GamePanel(float x, float y, float width, float height);

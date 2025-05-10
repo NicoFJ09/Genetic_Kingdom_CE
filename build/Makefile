@@ -129,6 +129,30 @@ GeneticKingdom/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/build
 .PHONY : GeneticKingdom/fast
 
+src/entities/enemies/Enemy.o: src/entities/enemies/Enemy.cpp.o
+.PHONY : src/entities/enemies/Enemy.o
+
+# target to build an object file
+src/entities/enemies/Enemy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o
+.PHONY : src/entities/enemies/Enemy.cpp.o
+
+src/entities/enemies/Enemy.i: src/entities/enemies/Enemy.cpp.i
+.PHONY : src/entities/enemies/Enemy.i
+
+# target to preprocess a source file
+src/entities/enemies/Enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.i
+.PHONY : src/entities/enemies/Enemy.cpp.i
+
+src/entities/enemies/Enemy.s: src/entities/enemies/Enemy.cpp.s
+.PHONY : src/entities/enemies/Enemy.s
+
+# target to generate assembly for a file
+src/entities/enemies/Enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.s
+.PHONY : src/entities/enemies/Enemy.cpp.s
+
 src/entities/enemies/darkElf/DarkElf.o: src/entities/enemies/darkElf/DarkElf.cpp.o
 .PHONY : src/entities/enemies/darkElf/DarkElf.o
 
@@ -450,6 +474,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GeneticKingdom"
+	@echo "... src/entities/enemies/Enemy.o"
+	@echo "... src/entities/enemies/Enemy.i"
+	@echo "... src/entities/enemies/Enemy.s"
 	@echo "... src/entities/enemies/darkElf/DarkElf.o"
 	@echo "... src/entities/enemies/darkElf/DarkElf.i"
 	@echo "... src/entities/enemies/darkElf/DarkElf.s"

@@ -1,33 +1,12 @@
-#ifndef DarkElf_H
-#define DarkElf_H
+#ifndef DARKELF_H
+#define DARKELF_H
 
-#include "raylib.h"
+#include "../Enemy.h"
 
-class DarkElf {
+class DarkElf : public Enemy {
 public:
     DarkElf(bool alive, Vector2 position, int frameSpeed);
-    ~DarkElf();
-
-    void Update();
-    void Draw();
-
-    //Increase or decrease speed depending on speed property from DarkElf instance
-    void IncreaseSpeed();
-    void DecreaseSpeed();
-
-private:
-    Texture2D texture;
-    Vector2 position;
-    Rectangle frameRec;
-    bool isAlive;
-    const char *texturePath;
-    int currentFrame;
-    int frameCount;
-    int frameSpeed;
-    int frameCounter;
-
-    const int maxFrameSpeed = 15;
-    const int minFrameSpeed = 1;
+    ~DarkElf() = default; // Destructor predeterminado
 };
 
-#endif
+#endif // DARKELF_H

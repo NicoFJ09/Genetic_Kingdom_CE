@@ -10,7 +10,11 @@
           "${workspaceFolder}/src/entities/enemies/ogre",
           "${workspaceFolder}/src/entities/enemies/ogre/Ogre.h",
           "${workspaceFolder}/src/entities/enemies/harpy",
-          "${workspaceFolder}/src/entities/enemies/harpy/Harpy.h"
+          "${workspaceFolder}/src/entities/enemies/harpy/Harpy.h",
+          "${workspaceFolder}/src/entities/enemies/mercenary",
+          "${workspaceFolder}/src/entities/enemies/mercenary/Mercenary.cpp",
+          "${workspaceFolder}/src/entities/enemies/darkElf/DarkElf.cpp",
+          "${workspaceFolder}/src/entities/enemies/darkElf/DarkElf.cpp"
         ],
         "defines": [],
         "compilerPath": "/usr/bin/gcc",

@@ -1,17 +1,17 @@
-#ifndef HARPY_H
-#define HARPY_H
+#ifndef DarkElf_H
+#define DarkElf_H
 
 #include "raylib.h"
 
-class Harpy {
+class DarkElf {
 public:
-    Harpy(bool alive, Vector2 position, int frameSpeed);
-    ~Harpy();
+    DarkElf(bool alive, Vector2 position, int frameSpeed);
+    ~DarkElf();
 
     void Update();
     void Draw();
 
-    //Increase or decrease speed depending on speed property from Harpy instance
+    //Increase or decrease speed depending on speed property from DarkElf instance
     void IncreaseSpeed();
     void DecreaseSpeed();
 

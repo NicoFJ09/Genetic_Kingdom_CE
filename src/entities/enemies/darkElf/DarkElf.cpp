@@ -1,27 +1,27 @@
 #include "raylib.h"
-#include "entities/enemies/mercenary/Mercenary.h"
+#include "entities/enemies/darkElf/DarkElf.h"
 
-Mercenary::Mercenary(bool alive, Vector2 pos, int speed)
+DarkElf::DarkElf(bool alive, Vector2 pos, int speed)
     : isAlive(alive), position(pos), frameSpeed(speed), currentFrame(0), frameCounter(0), texturePath(""), frameCount(8)
 {
     if (alive){
-        texturePath = "assets/textures/enemies/mercenary/MercenaryMoveSpriteSheet.png";
-        frameCount = 9;
+        texturePath = "assets/textures/enemies/darkelf/DarkElfMoveSpriteSheet.png";
+        frameCount = 8;
     }
     else{
-        texturePath = "assets/textures/enemies/mercenary/MercenaryDeathSpriteSheet.png";
-        frameCount = 4;
+        texturePath = "assets/textures/enemies/darkelf/DarkElfDeathSpriteSheet.png";
+        frameCount = 7;
     }
     texture = LoadTexture(texturePath);
     frameRec = { 0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height };
 }
 
-Mercenary::~Mercenary()
+DarkElf::~DarkElf()
 {
     UnloadTexture(texture);
 }
 
-void Mercenary::Update()
+void DarkElf::Update()
 {
     frameCounter++;
 
@@ -46,19 +46,20 @@ void Mercenary::Update()
 }
 
 
-void Mercenary::Draw()
+void DarkElf::Draw()
 {
     DrawTextureRec(texture, frameRec, position, WHITE);
 }
 
-void Mercenary::IncreaseSpeed()
+void DarkElf::IncreaseSpeed()
 {
     if (frameSpeed < maxFrameSpeed)
         frameSpeed++;
 }
 
-void Mercenary::DecreaseSpeed()
+void DarkElf::DecreaseSpeed()
 {
     if (frameSpeed > minFrameSpeed)
         frameSpeed--;
 }
+

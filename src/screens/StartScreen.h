@@ -8,6 +8,7 @@
 #include "../entities/enemies/ogre/Ogre.h"
 #include "../entities/enemies/harpy/Harpy.h"
 #include "../entities/enemies/mercenary/Mercenary.h"
+#include "../entities/enemies/darkElf/DarkElf.h"
 #include "ScreenManager.h"
 #include <vector> // Para manejar enemigos localmente
 

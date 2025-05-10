@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o"

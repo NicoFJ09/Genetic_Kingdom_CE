@@ -153,6 +153,30 @@ src/entities/enemies/Enemy.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.s
 .PHONY : src/entities/enemies/Enemy.cpp.s
 
+src/entities/enemies/darkElf/DarkElf.o: src/entities/enemies/darkElf/DarkElf.cpp.o
+.PHONY : src/entities/enemies/darkElf/DarkElf.o
+
+# target to build an object file
+src/entities/enemies/darkElf/DarkElf.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o
+.PHONY : src/entities/enemies/darkElf/DarkElf.cpp.o
+
+src/entities/enemies/darkElf/DarkElf.i: src/entities/enemies/darkElf/DarkElf.cpp.i
+.PHONY : src/entities/enemies/darkElf/DarkElf.i
+
+# target to preprocess a source file
+src/entities/enemies/darkElf/DarkElf.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.i
+.PHONY : src/entities/enemies/darkElf/DarkElf.cpp.i
+
+src/entities/enemies/darkElf/DarkElf.s: src/entities/enemies/darkElf/DarkElf.cpp.s
+.PHONY : src/entities/enemies/darkElf/DarkElf.s
+
+# target to generate assembly for a file
+src/entities/enemies/darkElf/DarkElf.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.s
+.PHONY : src/entities/enemies/darkElf/DarkElf.cpp.s
+
 src/entities/enemies/harpy/Harpy.o: src/entities/enemies/harpy/Harpy.cpp.o
 .PHONY : src/entities/enemies/harpy/Harpy.o
 
@@ -453,6 +477,9 @@ help:
 	@echo "... src/entities/enemies/Enemy.o"
 	@echo "... src/entities/enemies/Enemy.i"
 	@echo "... src/entities/enemies/Enemy.s"
+	@echo "... src/entities/enemies/darkElf/DarkElf.o"
+	@echo "... src/entities/enemies/darkElf/DarkElf.i"
+	@echo "... src/entities/enemies/darkElf/DarkElf.s"
 	@echo "... src/entities/enemies/harpy/Harpy.o"
 	@echo "... src/entities/enemies/harpy/Harpy.i"
 	@echo "... src/entities/enemies/harpy/Harpy.s"

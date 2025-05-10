@@ -961,6 +961,17 @@ CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o: /Users/nicolasfl
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
   /usr/local/Cellar/raylib/5.5/include/raylib.h
 
+CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.cpp \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg___gnuc_va_list.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg___va_copy.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_header_macro.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_arg.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_copy.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_list.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.h \
+  /usr/local/Cellar/raylib/5.5/include/raylib.h
+
 CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/harpy/Harpy.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
@@ -4588,6 +4599,8 @@ CMakeFiles/GeneticKingdom.dir/src/main.cpp.o: /Users/nicolasflorez/Documents/Git
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/harpy/Harpy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/mercenary/Mercenary.h \
@@ -6329,6 +6342,8 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o: /Users/nicolasflore
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/harpy/Harpy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h \
@@ -10538,6 +10553,10 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o: /Users/nicolasflorez/Doc
 /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/mercenary/Mercenary.h:
 
 /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/harpy/Harpy.cpp:
+
+/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.h:
+
+/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.cpp:
 
 /usr/local/Cellar/raylib/5.5/include/raylib.h:
 

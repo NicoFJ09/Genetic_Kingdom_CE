@@ -26,6 +26,9 @@ set(SOURCES
     src/ui/GamePanel.cpp
     src/ui/BottomPanel.cpp
     src/ui/SidePanel.cpp
+    src/entities/enemies/ogre/Ogre.cpp
+    src/entities/enemies/harpy/Harpy.cpp
+    src/entities/enemies/Enemy.cpp
 )
 
 # Add the executable

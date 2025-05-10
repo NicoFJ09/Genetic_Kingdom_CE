@@ -129,6 +129,78 @@ GeneticKingdom/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/build
 .PHONY : GeneticKingdom/fast
 
+src/entities/enemies/Enemy.o: src/entities/enemies/Enemy.cpp.o
+.PHONY : src/entities/enemies/Enemy.o
+
+# target to build an object file
+src/entities/enemies/Enemy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o
+.PHONY : src/entities/enemies/Enemy.cpp.o
+
+src/entities/enemies/Enemy.i: src/entities/enemies/Enemy.cpp.i
+.PHONY : src/entities/enemies/Enemy.i
+
+# target to preprocess a source file
+src/entities/enemies/Enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.i
+.PHONY : src/entities/enemies/Enemy.cpp.i
+
+src/entities/enemies/Enemy.s: src/entities/enemies/Enemy.cpp.s
+.PHONY : src/entities/enemies/Enemy.s
+
+# target to generate assembly for a file
+src/entities/enemies/Enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.s
+.PHONY : src/entities/enemies/Enemy.cpp.s
+
+src/entities/enemies/harpy/Harpy.o: src/entities/enemies/harpy/Harpy.cpp.o
+.PHONY : src/entities/enemies/harpy/Harpy.o
+
+# target to build an object file
+src/entities/enemies/harpy/Harpy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o
+.PHONY : src/entities/enemies/harpy/Harpy.cpp.o
+
+src/entities/enemies/harpy/Harpy.i: src/entities/enemies/harpy/Harpy.cpp.i
+.PHONY : src/entities/enemies/harpy/Harpy.i
+
+# target to preprocess a source file
+src/entities/enemies/harpy/Harpy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.i
+.PHONY : src/entities/enemies/harpy/Harpy.cpp.i
+
+src/entities/enemies/harpy/Harpy.s: src/entities/enemies/harpy/Harpy.cpp.s
+.PHONY : src/entities/enemies/harpy/Harpy.s
+
+# target to generate assembly for a file
+src/entities/enemies/harpy/Harpy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.s
+.PHONY : src/entities/enemies/harpy/Harpy.cpp.s
+
+src/entities/enemies/ogre/Ogre.o: src/entities/enemies/ogre/Ogre.cpp.o
+.PHONY : src/entities/enemies/ogre/Ogre.o
+
+# target to build an object file
+src/entities/enemies/ogre/Ogre.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o
+.PHONY : src/entities/enemies/ogre/Ogre.cpp.o
+
+src/entities/enemies/ogre/Ogre.i: src/entities/enemies/ogre/Ogre.cpp.i
+.PHONY : src/entities/enemies/ogre/Ogre.i
+
+# target to preprocess a source file
+src/entities/enemies/ogre/Ogre.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.i
+.PHONY : src/entities/enemies/ogre/Ogre.cpp.i
+
+src/entities/enemies/ogre/Ogre.s: src/entities/enemies/ogre/Ogre.cpp.s
+.PHONY : src/entities/enemies/ogre/Ogre.s
+
+# target to generate assembly for a file
+src/entities/enemies/ogre/Ogre.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.s
+.PHONY : src/entities/enemies/ogre/Ogre.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -354,6 +426,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GeneticKingdom"
+	@echo "... src/entities/enemies/Enemy.o"
+	@echo "... src/entities/enemies/Enemy.i"
+	@echo "... src/entities/enemies/Enemy.s"
+	@echo "... src/entities/enemies/harpy/Harpy.o"
+	@echo "... src/entities/enemies/harpy/Harpy.i"
+	@echo "... src/entities/enemies/harpy/Harpy.s"
+	@echo "... src/entities/enemies/ogre/Ogre.o"
+	@echo "... src/entities/enemies/ogre/Ogre.i"
+	@echo "... src/entities/enemies/ogre/Ogre.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

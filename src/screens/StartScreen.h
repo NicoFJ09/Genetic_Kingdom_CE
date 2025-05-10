@@ -4,6 +4,8 @@
 #include "Screen.h"
 #include "../ui/TextElement.h"
 #include "../ui/Button.h"
+#include "../entities/enemies/ogre/Ogre.h"
+#include "../entities/enemies/harpy/Harpy.h"
 #include "ScreenManager.h"
 
 class StartScreen : public Screen {
@@ -13,6 +15,10 @@ private:
     int screenWidth;
     int screenHeight;
     ScreenManager* screenManager; // Puntero al ScreenManager
+
+    // Entidades
+    Ogre ogre;
+    Harpy harpy;
 
 public:
     StartScreen(int screenWidth, int screenHeight, ScreenManager* screenManager);

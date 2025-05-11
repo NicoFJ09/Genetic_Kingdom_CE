@@ -2,25 +2,28 @@
 #define MAP_H
 
 #include "Tile.h"
+#include "GrassTile.h" // Agrega esta línea
 #include <vector>
 #include <array>
-#include <memory> // Necesario para std::unique_ptr
+#include <memory>
 
 class Map {
 private:
-    std::vector<std::vector<std::unique_ptr<Tile>>> tiles; // Cambiado a std::unique_ptr<Tile>
-    std::array<Texture2D, 6> horizontalTextures; // Horizontal textures
-    std::array<Texture2D, 6> verticalTextures;   // Vertical textures
-    Texture2D middleTexture; // Texture for "Middle"
-    Texture2D grassTexture;  // Texture for grass
+    std::vector<std::vector<std::unique_ptr<Tile>>> tiles;
+    std::array<Texture2D, 6> horizontalTextures;
+    std::array<Texture2D, 6> verticalTextures;
+    Texture2D middleTexture;
+    GrassTile* selectedTile;
 
 public:
     Map();
     ~Map();
-    Texture2D LoadAndResizeTexture(const std::string& path, int width, int height); // Load and resize texture
-    void LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData); // Load map data
-    void Draw() const; // Draw the map
-    void CheckHover() const; // Check hover for all tiles
+    Texture2D LoadAndResizeTexture(const std::string& path, int width, int height);
+    void LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData);
+    void Draw() const;
+    void CheckHover() const;
+    void HandleClick();
+    GrassTile* GetSelectedTile() const; 
 };
 
 #endif // MAP_H

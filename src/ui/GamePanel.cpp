@@ -10,6 +10,7 @@ GamePanel::GamePanel(float x, float y, float width, float height)
 void GamePanel::Update() {
     // Delegate hover detection to the map
     map.CheckHover();
+    map.HandleClick(); 
 }
 
 void GamePanel::Draw() {

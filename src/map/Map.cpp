@@ -4,7 +4,7 @@
 #include "PathTile.h"
 #include "GrassTile.h"
 
-Map::Map() {
+Map::Map() : selectedTile(nullptr) {
     // Load and resize textures
     horizontalTextures[0] = LoadAndResizeTexture("../assets/map/tiles/Middle.png", 32, 32);
     horizontalTextures[1] = LoadAndResizeTexture("../assets/map/tiles/Horizontal/H_1.png", 32, 32);
@@ -56,7 +56,7 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
         bool inVerticalSequence = false;
 
         for (size_t row = 0; row < mapData.size(); ++row) {
-            if (mapData[row][col] == 0) { // Camino
+            if (mapData[row][col] == 0 || mapData[row][col] == 2) { // Camino
                 bool isVertical = false;
 
                 // Verifica continuidad vertical
@@ -97,7 +97,7 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
             Vector2 position = { static_cast<float>(col * 32), static_cast<float>(row * 32) };
             int tileType = mapData[row][col];
 
-            if (tileType == 0) { // Camino
+            if (tileType == 0 || tileType == 2)  { // Camino
                 bool isHorizontal = true;
 
                 // Verifica si es parte de un camino vertical
@@ -148,10 +148,52 @@ void Map::CheckHover() const {
     }
 }
 
-void Map::Draw() const {
+void Map::HandleClick() {
     for (const auto& row : tiles) {
         for (const auto& tile : row) {
-            tile->Draw(); // Usa -> para acceder al método del objeto apuntado
+            auto grassTile = dynamic_cast<GrassTile*>(tile.get());
+            if (grassTile) {
+                Rectangle tileRect = { grassTile->GetPosition().x, grassTile->GetPosition().y, 32, 32 };
+                if (CheckCollisionPointRec(GetMousePosition(), tileRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+                    // Deselecciona el tile previamente seleccionado
+                    if (selectedTile) {
+                        selectedTile->SetSelected(false);
+                    }
+
+                    // Selecciona el nuevo tile
+                    grassTile->SetSelected(true);
+                    selectedTile = grassTile;
+                    return; // Termina la búsqueda después de seleccionar
+                }
+            }
         }
+    }
+}
+
+GrassTile* Map::GetSelectedTile() const {
+    return selectedTile;
+}
+
+void Map::Draw() const {
+    // Dibuja los tiles
+    for (const auto& row : tiles) {
+        for (const auto& tile : row) {
+            tile->Draw(); // Dibuja cada tile
+        }
+    }
+
+    // Dibuja la cuadrícula
+    const int tileSize = 32; // Tamaño de cada tile
+    const int rows = tiles.size();
+    const int cols = tiles.empty() ? 0 : tiles[0].size();
+
+    // Dibuja las líneas horizontales
+    for (int row = 0; row <= rows; ++row) {
+        DrawLine(0, row * tileSize, cols * tileSize, row * tileSize, WHITE);
+    }
+
+    // Dibuja las líneas verticales
+    for (int col = 0; col <= cols; ++col) {
+        DrawLine(col * tileSize, 0, col * tileSize, rows * tileSize, WHITE);
     }
 }

@@ -1,33 +1,62 @@
 #include "TowerBuy.h"
 #include "../config/Constants.h"
 
-TowerBuy::TowerBuy(Map& map, EconomySystem& economySystem, float panelX, float panelY, float panelWidth)
-    : map(map), economySystem(economySystem), selectedTowerIndex(-1), buyButtonEnabled(false) {
-    // Inicializar los cuadrados de torres
-    float squareSize = 50;
-    float spacing = 20;
-    for (size_t i = 0; i < towerSquares.size(); ++i) {
-        towerSquares[i] = {panelX + 10 + i * (squareSize + spacing), panelY + 50, squareSize, squareSize};
+TowerBuy::TowerBuy(Map& map, EconomySystem& economySystem, float panelX, float panelY, float panelWidth, float panelHeight)
+    : map(map), economySystem(economySystem), selectedTowerIndex(-1), buyButtonEnabled(false), isVisible(false) {
+    // Ajustar las dimensiones de los cuadrados de torres
+    float squareWidth = 100;
+    float squareHeight = 116;
+    float labelHeight = 20; // Altura del texto de las etiquetas
+
+    // Limitar el ancho total a dos tercios del ancho del panel
+    float usableWidth = panelWidth * (2.0f / 3.0f);
+
+    // Calcular el espaciado para que los cuadrados estén equidistantes dentro del área usable
+    size_t numSquares = towerSquares.size();
+    float totalSquaresWidth = numSquares * squareWidth;
+    float totalSpacingWidth = usableWidth - totalSquaresWidth;
+    float spacing = totalSpacingWidth / (numSquares + 1); // Espaciado entre cuadrados
+
+    // Posición inicial en Y para los cuadrados (centrados verticalmente en el panel)
+    float totalHeight = squareHeight + labelHeight + 10; // Altura de los cuadrados + etiquetas + padding
+    float initialY = panelY + (panelHeight - totalHeight) / 2;
+
+    // Inicializar los cuadrados de torres dentro del área usable
+    for (size_t i = 0; i < numSquares; ++i) {
+        float squareX = panelX + spacing + i * (squareWidth + spacing);
+        towerSquares[i] = {squareX, initialY, squareWidth, squareHeight};
     }
 
-    // Inicializar el botón de compra
+    // Mantener el botón de compra en su posición actual
     buyButton = {panelX + panelWidth - 120, panelY + 80, 100, 40};
 }
 
 void TowerBuy::Update(GrassTile*& selectedTile) {
-    if (selectedTile) {
+    // Mostrar u ocultar la UI según si hay un tile seleccionado
+    isVisible = (selectedTile != nullptr);
+
+    if (isVisible) {
         HandleSelectTower();
         HandleBuy(selectedTile);
     }
 }
 
 void TowerBuy::Draw() {
+    if (!isVisible) return; // No dibujar si la UI no está visible
 
-    // Dibujar los bordes de los cuadrados de torres
+    // Dibujar los bordes de los cuadrados de torres y sus etiquetas
     for (size_t i = 0; i < towerSquares.size(); ++i) {
-        // Contorno blanco si está seleccionado, negro si no
+        // Dibujar el contorno del cuadrado
         Color outlineColor = (selectedTowerIndex == (int)i) ? WHITE : BLACK;
         DrawRectangleLinesEx(towerSquares[i], 2, outlineColor);
+
+        // Dibujar la etiqueta debajo del cuadrado
+        const char* labelText = Towers[i].name.c_str();
+        int fontSize = 12;
+        int textWidth = MeasureText(labelText, fontSize);
+        float textX = towerSquares[i].x + (towerSquares[i].width - textWidth) / 2;
+        float textY = towerSquares[i].y + towerSquares[i].height + 5; // Debajo del cuadrado
+        DrawText(labelText, textX, textY, fontSize, WHITE);
     }
 
     // Dibujar el botón de compra

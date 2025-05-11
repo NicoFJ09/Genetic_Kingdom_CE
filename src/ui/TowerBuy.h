@@ -16,12 +16,12 @@ private:
     int selectedTowerIndex; // Índice de la torre seleccionada (-1 si ninguna está seleccionada)
     Rectangle buyButton; // Botón de compra
     bool buyButtonEnabled; // Estado del botón de compra
-
+    bool isVisible;
     void HandleSelectTower(); // Manejo de los cuadrados de torres
     void HandleBuy(GrassTile*& selectedTile); // Manejo del botón de compra
 
 public:
-    TowerBuy(Map& map, EconomySystem& economySystem, float panelX, float panelY, float panelWidth);
+    TowerBuy(Map& map, EconomySystem& economySystem, float panelX, float panelY, float panelWidth, float panelHeight);
     void Update(GrassTile*& selectedTile); // Actualizar lógica de compra
     void Draw(); // Dibujar la UI de compra
 };

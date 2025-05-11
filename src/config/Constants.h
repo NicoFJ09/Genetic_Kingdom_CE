@@ -21,7 +21,7 @@ static const int SCREEN_HEIGHT = 768;
 static const std::string Romulus = "../assets/fonts/romulus.png";
 
 // Mapa del juego
-static const std::array<std::array<int, 31>, 19> map = {{
+static const std::array<std::array<int, 31>, 19> GAME_MAP = {{
     {{2,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}},
     {{1,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}},
     {{1,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}},

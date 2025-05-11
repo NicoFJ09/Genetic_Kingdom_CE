@@ -20,3 +20,7 @@ void GamePanel::Draw() {
     // Draw the map
     map.Draw();
 }
+
+Map& GamePanel::GetMap() {
+    return map;
+}

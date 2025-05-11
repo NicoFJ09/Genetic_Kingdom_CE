@@ -21,6 +21,7 @@ set(SOURCES
     src/screens/StartScreen.cpp
     src/screens/GameplayScreen.cpp
     src/screens/ScreenManager.cpp
+    src/core/EconomySystem.cpp
     src/ui/Button.cpp
     src/ui/TextElement.cpp
     src/ui/GamePanel.cpp
@@ -36,7 +37,9 @@ set(SOURCES
     src/map/Map.cpp
     src/map/Tile.cpp
     src/map/PathTile.cpp
-    src/map/GrassTile.cpp
+    src/map/GrassTile.cpp  
+    src/map/TowerTile.cpp
+
 )
 
 # Add the executable

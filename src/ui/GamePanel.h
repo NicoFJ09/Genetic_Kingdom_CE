@@ -6,13 +6,14 @@
 
 class GamePanel {
 private:
-    Rectangle bounds; // Panel bounds
-    Map map; // Game map
+    Rectangle bounds; // Área del panel
+    Map map;          // Mapa del juego
 
 public:
     GamePanel(float x, float y, float width, float height);
-    void Update(); // Update logic, including hover detection
-    void Draw(); // Draw the game panel
+    void Update(); // Actualizar lógica del panel
+    void Draw();   // Dibujar el panel
+    Map& GetMap(); // Obtener el mapa
 };
 
 #endif // GAME_PANEL_H

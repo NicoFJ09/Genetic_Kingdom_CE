@@ -12,7 +12,10 @@ void GameplayScreen::Update() {
     // Actualizar lógica de los paneles
     gamePanel.Update();
     bottomPanel.Update();
-    sidePanel.Update();
+    
+    // Pasar el tile seleccionado al BottomPanel
+    GrassTile* selectedTile = gamePanel.GetMap().GetSelectedTile();
+    bottomPanel.SetSelectedTile(selectedTile);
 }
 
 void GameplayScreen::Draw() {

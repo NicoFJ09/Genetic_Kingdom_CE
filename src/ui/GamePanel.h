@@ -2,20 +2,17 @@
 #define GAME_PANEL_H
 
 #include "raylib.h"
-#include <array>
+#include "../map/Map.h"
 
 class GamePanel {
 private:
-    Rectangle bounds; // Área del panel
-    std::array<Texture2D, 6> horizontalTextures; // Texturas horizontales
-    std::array<Texture2D, 6> verticalTextures;   // Texturas verticales
-    Texture2D middleTexture; // Textura para "Middle"
+    Rectangle bounds; // Panel bounds
+    Map map; // Game map
 
 public:
     GamePanel(float x, float y, float width, float height);
-    ~GamePanel(); // Liberar las texturas
-    void Update(); // Actualizar lógica del panel
-    void Draw();   // Dibujar el panel
+    void Update(); // Update logic, including hover detection
+    void Draw(); // Draw the game panel
 };
 
 #endif // GAME_PANEL_H

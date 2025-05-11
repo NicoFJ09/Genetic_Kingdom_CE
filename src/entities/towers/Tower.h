@@ -16,7 +16,7 @@ protected:
     int range;                    // Rango de ataque de la torre
     int attackRegenerationTime;   // Tiempo de regeneración de ataque
     int spAttackRegenerationTime; // Tiempo de regeneración de ataque especial
-
+    std::string towerType;        // Tipo de torre (Archer, Artillery, Mage)
     static std::vector<Tower*> allInstances; // Contenedor estático para todas las instancias
 
 public:

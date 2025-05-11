@@ -27,13 +27,17 @@ set(SOURCES
     src/ui/GamePanel.cpp
     src/ui/BottomPanel.cpp
     src/ui/SidePanel.cpp
+    src/ui/TowerBuy.cpp
+    src/ui/TowerUpgrade.cpp
     src/entities/enemies/ogre/Ogre.cpp
     src/entities/enemies/harpy/Harpy.cpp
     src/entities/enemies/mercenary/Mercenary.cpp
     src/entities/enemies/darkElf/DarkElf.cpp
     src/entities/enemies/Enemy.cpp
-    src/entities/towers/archerTower/ArcherTower.cpp
     src/entities/towers/Tower.cpp
+    src/entities/towers/archerTower/ArcherTower.cpp
+    src/entities/towers/mageTower/MageTower.cpp
+    src/entities/towers/artilleryTower/ArtilleryTower.cpp
     src/map/Map.cpp
     src/map/Tile.cpp
     src/map/PathTile.cpp

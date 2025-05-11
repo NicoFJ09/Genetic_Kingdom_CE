@@ -33,6 +33,8 @@ set(SOURCES
     src/entities/enemies/Enemy.cpp
     src/map/Map.cpp
     src/map/Tile.cpp
+    src/map/PathTile.cpp
+    src/map/GrassTile.cpp
 )
 
 # Add the executable

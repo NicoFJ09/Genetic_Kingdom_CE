@@ -1,5 +1,8 @@
 #include "Map.h"
 #include "../config/Constants.h"
+#include "Tile.h"
+#include "PathTile.h"
+#include "GrassTile.h"
 
 Map::Map() {
     // Load and resize textures
@@ -18,7 +21,6 @@ Map::Map() {
     verticalTextures[5] = LoadAndResizeTexture("../assets/map/tiles/Vertical/V_4.png", 32, 32);
 
     middleTexture = LoadAndResizeTexture("../assets/map/tiles/Middle.png", 32, 32);
-    grassTexture = LoadAndResizeTexture("../assets/map/tiles/Grass.png", 32, 32);
 }
 
 Map::~Map() {
@@ -45,19 +47,19 @@ Texture2D Map::LoadAndResizeTexture(const std::string& path, int width, int heig
 }
 
 void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
-    tiles.clear();
-    std::vector<bool> isVerticalPath(mapData[0].size(), false); // Track vertical paths
-    std::vector<size_t> verticalIndices(mapData[0].size(), 0);  // Vertical sprite indices
+    tiles.clear(); // Limpia los tiles existentes
+    std::vector<bool> isVerticalPath(mapData[0].size(), false); // Rastrea caminos verticales
+    std::vector<size_t> verticalIndices(mapData[0].size(), 0);  // Índices de sprites verticales
 
-    // Step 1: Identify vertical paths
+    // Paso 1: Identificar caminos verticales
     for (size_t col = 0; col < mapData[0].size(); ++col) {
         bool inVerticalSequence = false;
 
         for (size_t row = 0; row < mapData.size(); ++row) {
-            if (mapData[row][col] == 0) { // Path
+            if (mapData[row][col] == 0) { // Camino
                 bool isVertical = false;
 
-                // Check for vertical continuity
+                // Verifica continuidad vertical
                 if (row > 0 && row < mapData.size() - 1) {
                     if (mapData[row - 1][col] == 0 || mapData[row + 1][col] == 0) {
                         isVertical = true;
@@ -75,30 +77,30 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
                 if (isVertical) {
                     if (!inVerticalSequence) {
                         inVerticalSequence = true;
-                        verticalIndices[col] = 0; // Reset index
+                        verticalIndices[col] = 0; // Reinicia el índice
                     }
                     isVerticalPath[col] = true;
                 }
             } else {
-                inVerticalSequence = false; // Break vertical sequence
+                inVerticalSequence = false; // Rompe la secuencia vertical
             }
         }
     }
 
-    // Step 2: Place tiles
+    // Paso 2: Colocar tiles
     for (size_t row = 0; row < mapData.size(); ++row) {
-        std::vector<Tile> tileRow;
-        size_t horizontalIndex = 0; // Horizontal sprite index
+        std::vector<std::unique_ptr<Tile>> tileRow;
+        size_t horizontalIndex = 0; // Índice de sprites horizontales
         bool inHorizontalSequence = false;
 
         for (size_t col = 0; col < mapData[row].size(); ++col) {
             Vector2 position = { static_cast<float>(col * 32), static_cast<float>(row * 32) };
             int tileType = mapData[row][col];
 
-            if (tileType == 0) { // Path
+            if (tileType == 0) { // Camino
                 bool isHorizontal = true;
 
-                // Check if part of a vertical path
+                // Verifica si es parte de un camino vertical
                 if (isVerticalPath[col]) {
                     if ((row > 0 && mapData[row - 1][col] == 0) ||
                         (row < mapData.size() - 1 && mapData[row + 1][col] == 0)) {
@@ -108,35 +110,40 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
 
                 if (isHorizontal) {
                     if (col == 0 || mapData[row][col - 1] != 0) {
-                        horizontalIndex = 0; // Reset horizontal index
+                        horizontalIndex = 0; // Reinicia el índice horizontal
                         inHorizontalSequence = true;
                     }
 
-                    // Add horizontal path tile
-                    tileRow.emplace_back(true, position, horizontalTextures[horizontalIndex % 6]);
+                    // Agrega un tile de camino horizontal
+                    tileRow.emplace_back(std::make_unique<PathTile>(position, horizontalTextures[horizontalIndex % 6]));
                     horizontalIndex++;
                 } else {
                     if (row == 0 || mapData[row - 1][col] != 0) {
-                        verticalIndices[col] = 0; // Reset vertical index
+                        verticalIndices[col] = 0; // Reinicia el índice vertical
                     }
 
-                    // Add vertical path tile
-                    tileRow.emplace_back(true, position, verticalTextures[verticalIndices[col] % 6]);
+                    // Agrega un tile de camino vertical
+                    tileRow.emplace_back(std::make_unique<PathTile>(position, verticalTextures[verticalIndices[col] % 6]));
                     verticalIndices[col]++;
                 }
-            } else { // Grass
-                tileRow.emplace_back(false, position, grassTexture);
+            } else { // Césped
+                // Agrega un tile de césped con color OLIVE_GREEN
+                tileRow.emplace_back(std::make_unique<GrassTile>(position, OLIVE_GREEN));
                 inHorizontalSequence = false;
             }
         }
-        tiles.emplace_back(tileRow);
+        tiles.emplace_back(std::move(tileRow)); // Mueve la fila al vector principal
     }
 }
 
 void Map::CheckHover() const {
     for (const auto& row : tiles) {
         for (const auto& tile : row) {
-            tile.CheckHover();
+            // Verifica si el tile es un GrassTile
+            auto grassTile = dynamic_cast<GrassTile*>(tile.get());
+            if (grassTile) {
+                grassTile->CheckHover(); // Llama a CheckHover solo para GrassTile
+            }
         }
     }
 }
@@ -144,7 +151,7 @@ void Map::CheckHover() const {
 void Map::Draw() const {
     for (const auto& row : tiles) {
         for (const auto& tile : row) {
-            tile.Draw();
+            tile->Draw(); // Usa -> para acceder al método del objeto apuntado
         }
     }
 }

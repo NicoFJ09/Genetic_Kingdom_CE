@@ -4,10 +4,11 @@
 #include "Tile.h"
 #include <vector>
 #include <array>
+#include <memory> // Necesario para std::unique_ptr
 
 class Map {
 private:
-    std::vector<std::vector<Tile>> tiles; // Matrix of tiles
+    std::vector<std::vector<std::unique_ptr<Tile>>> tiles; // Cambiado a std::unique_ptr<Tile>
     std::array<Texture2D, 6> horizontalTextures; // Horizontal textures
     std::array<Texture2D, 6> verticalTextures;   // Vertical textures
     Texture2D middleTexture; // Texture for "Middle"

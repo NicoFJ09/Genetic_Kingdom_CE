@@ -273,6 +273,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/map/GrassTile.o: src/map/GrassTile.cpp.o
+.PHONY : src/map/GrassTile.o
+
+# target to build an object file
+src/map/GrassTile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o
+.PHONY : src/map/GrassTile.cpp.o
+
+src/map/GrassTile.i: src/map/GrassTile.cpp.i
+.PHONY : src/map/GrassTile.i
+
+# target to preprocess a source file
+src/map/GrassTile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.i
+.PHONY : src/map/GrassTile.cpp.i
+
+src/map/GrassTile.s: src/map/GrassTile.cpp.s
+.PHONY : src/map/GrassTile.s
+
+# target to generate assembly for a file
+src/map/GrassTile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.s
+.PHONY : src/map/GrassTile.cpp.s
+
 src/map/Map.o: src/map/Map.cpp.o
 .PHONY : src/map/Map.o
 
@@ -296,6 +320,30 @@ src/map/Map.s: src/map/Map.cpp.s
 src/map/Map.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.s
 .PHONY : src/map/Map.cpp.s
+
+src/map/PathTile.o: src/map/PathTile.cpp.o
+.PHONY : src/map/PathTile.o
+
+# target to build an object file
+src/map/PathTile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o
+.PHONY : src/map/PathTile.cpp.o
+
+src/map/PathTile.i: src/map/PathTile.cpp.i
+.PHONY : src/map/PathTile.i
+
+# target to preprocess a source file
+src/map/PathTile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.i
+.PHONY : src/map/PathTile.cpp.i
+
+src/map/PathTile.s: src/map/PathTile.cpp.s
+.PHONY : src/map/PathTile.s
+
+# target to generate assembly for a file
+src/map/PathTile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.s
+.PHONY : src/map/PathTile.cpp.s
 
 src/map/Tile.o: src/map/Tile.cpp.o
 .PHONY : src/map/Tile.o
@@ -540,9 +588,15 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/map/GrassTile.o"
+	@echo "... src/map/GrassTile.i"
+	@echo "... src/map/GrassTile.s"
 	@echo "... src/map/Map.o"
 	@echo "... src/map/Map.i"
 	@echo "... src/map/Map.s"
+	@echo "... src/map/PathTile.o"
+	@echo "... src/map/PathTile.i"
+	@echo "... src/map/PathTile.s"
 	@echo "... src/map/Tile.o"
 	@echo "... src/map/Tile.i"
 	@echo "... src/map/Tile.s"

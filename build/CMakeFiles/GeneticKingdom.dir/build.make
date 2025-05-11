@@ -296,6 +296,34 @@ CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.cpp -o CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.s
 
+CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
+CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp
+CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp
+
+CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp > CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.i
+
+CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp -o CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.s
+
+CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
+CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp
+CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp
+
+CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp > CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.i
+
+CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp -o CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.s
+
 # Object files for target GeneticKingdom
 GeneticKingdom_OBJECTS = \
 "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o" \
@@ -313,7 +341,9 @@ GeneticKingdom_OBJECTS = \
 "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o" \
-"CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o"
+"CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o" \
+"CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o" \
+"CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o"
 
 # External object files for target GeneticKingdom
 GeneticKingdom_EXTERNAL_OBJECTS =
@@ -334,9 +364,11 @@ GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkE
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o
+GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o
+GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/build.make
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable GeneticKingdom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable GeneticKingdom"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GeneticKingdom.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

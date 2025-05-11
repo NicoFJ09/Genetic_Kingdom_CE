@@ -35,7 +35,8 @@ set(SOURCES
     src/map/Map.cpp
     src/map/Tile.cpp
     src/map/PathTile.cpp
-    src/map/GrassTile.cpp
+    src/map/GrassTile.cpp  
+    src/map/TowerTile.cpp
 
 )
 

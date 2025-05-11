@@ -3,6 +3,7 @@
 #include "Tile.h"
 #include "PathTile.h"
 #include "GrassTile.h"
+#include "TowerTile.h"
 
 Map::Map() : selectedTile(nullptr) {
     // Load and resize textures
@@ -178,6 +179,25 @@ void Map::UnselectTile() {
     if (selectedTile) {
         selectedTile->SetSelected(false); // Cambiar el estado del tile a no seleccionado
         selectedTile = nullptr;          // Establecer el puntero a nullptr
+    }
+}
+
+void Map::ReplaceTileWithTower(GrassTile* oldTile, Color towerColor) {
+    for (auto& row : tiles) {
+        for (auto& tile : row) {
+            if (tile.get() == oldTile) {
+                // Crear un nuevo TowerTile con el color especificado
+                Vector2 position = oldTile->GetPosition();
+                auto newTile = std::make_unique<TowerTile>(position, towerColor);
+
+                // Reemplazar el tile
+                tile = std::move(newTile);
+
+                // Deseleccionar el tile
+                selectedTile = nullptr;
+                return;
+            }
+        }
     }
 }
 

@@ -9120,6 +9120,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: /Users/nicolasfl
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/SidePanel.h \
@@ -10049,6 +10050,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o: /Users/nicolasflore
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/Button.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.h \
@@ -16138,6 +16140,8 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o: /Users/nicolasflorez/Doc
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare_three_way.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/common_reference_with.h:
+
+/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_arg.h:
 

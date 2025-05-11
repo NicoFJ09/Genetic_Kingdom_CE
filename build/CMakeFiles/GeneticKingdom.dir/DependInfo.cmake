@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/ScreenManager.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/StartScreen.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o.d"

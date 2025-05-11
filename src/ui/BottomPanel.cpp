@@ -129,12 +129,17 @@ void BottomPanel::HandleBuy() {
             economySystem.DecreaseFromBalance(cost); // Reducir el balance
             TraceLog(LOG_INFO, "Bought: %s", tower.name.c_str()); // Imprimir mensaje
 
+            // Obtener el color del botón seleccionado
+            const std::array<Color, 3> towerColors = {RED, GREEN, BLUE};
+            Color towerColor = towerColors[selectedTowerIndex];
+
+            // Reemplazar el tile seleccionado con un TowerTile
+            map.ReplaceTileWithTower(selectedTile, towerColor);
+
             // Reiniciar la selección y deshabilitar los botones
+            selectedTile = nullptr;
             selectedTowerIndex = -1;
             buyButtonEnabled = false;
-
-            // Deseleccionar el tile seleccionado
-            map.UnselectTile(); // Llama a UnselectTile() desde el mapa
         }
     } else {
         buyButtonEnabled = false; // Deshabilitar el botón si no hay torre seleccionada

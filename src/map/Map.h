@@ -3,6 +3,7 @@
 
 #include "Tile.h"
 #include "GrassTile.h"
+#include "TowerTile.h"
 #include <vector>
 #include <array>
 #include <memory>
@@ -25,6 +26,7 @@ public:
     void HandleClick();
     GrassTile* GetSelectedTile() const;
     void UnselectTile(); // Nuevo método para deseleccionar el tile
+    void ReplaceTileWithTower(GrassTile* oldTile, Color towerColor); // Reemplazar con TowerTile
 };
 
 #endif // MAP_H

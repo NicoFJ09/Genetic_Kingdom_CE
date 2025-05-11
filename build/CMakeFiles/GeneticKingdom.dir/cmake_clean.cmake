@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o"

@@ -9132,6 +9132,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/SidePanel.h
@@ -10063,6 +10064,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/Button.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.h

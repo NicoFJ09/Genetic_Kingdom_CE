@@ -174,6 +174,13 @@ GrassTile* Map::GetSelectedTile() const {
     return selectedTile;
 }
 
+void Map::UnselectTile() {
+    if (selectedTile) {
+        selectedTile->SetSelected(false); // Cambiar el estado del tile a no seleccionado
+        selectedTile = nullptr;          // Establecer el puntero a nullptr
+    }
+}
+
 void Map::Draw() const {
     // Dibuja los tiles
     for (const auto& row : tiles) {

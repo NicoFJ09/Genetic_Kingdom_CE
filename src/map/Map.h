@@ -2,7 +2,7 @@
 #define MAP_H
 
 #include "Tile.h"
-#include "GrassTile.h" // Agrega esta línea
+#include "GrassTile.h"
 #include <vector>
 #include <array>
 #include <memory>
@@ -23,7 +23,8 @@ public:
     void Draw() const;
     void CheckHover() const;
     void HandleClick();
-    GrassTile* GetSelectedTile() const; 
+    GrassTile* GetSelectedTile() const;
+    void UnselectTile(); // Nuevo método para deseleccionar el tile
 };
 
 #endif // MAP_H

@@ -129,6 +129,30 @@ GeneticKingdom/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/build
 .PHONY : GeneticKingdom/fast
 
+src/core/EconomySystem.o: src/core/EconomySystem.cpp.o
+.PHONY : src/core/EconomySystem.o
+
+# target to build an object file
+src/core/EconomySystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.o
+.PHONY : src/core/EconomySystem.cpp.o
+
+src/core/EconomySystem.i: src/core/EconomySystem.cpp.i
+.PHONY : src/core/EconomySystem.i
+
+# target to preprocess a source file
+src/core/EconomySystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.i
+.PHONY : src/core/EconomySystem.cpp.i
+
+src/core/EconomySystem.s: src/core/EconomySystem.cpp.s
+.PHONY : src/core/EconomySystem.s
+
+# target to generate assembly for a file
+src/core/EconomySystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.s
+.PHONY : src/core/EconomySystem.cpp.s
+
 src/entities/enemies/Enemy.o: src/entities/enemies/Enemy.cpp.o
 .PHONY : src/entities/enemies/Enemy.o
 
@@ -570,6 +594,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GeneticKingdom"
+	@echo "... src/core/EconomySystem.o"
+	@echo "... src/core/EconomySystem.i"
+	@echo "... src/core/EconomySystem.s"
 	@echo "... src/entities/enemies/Enemy.o"
 	@echo "... src/entities/enemies/Enemy.i"
 	@echo "... src/entities/enemies/Enemy.s"

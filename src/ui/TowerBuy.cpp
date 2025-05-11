@@ -22,14 +22,9 @@ void TowerBuy::Update(GrassTile*& selectedTile) {
 }
 
 void TowerBuy::Draw() {
-    // Colores únicos para cada cuadrado de torre
-    const std::array<Color, 3> towerColors = {RED, GREEN, BLUE};
 
-    // Dibujar los cuadrados de torres
+    // Dibujar los bordes de los cuadrados de torres
     for (size_t i = 0; i < towerSquares.size(); ++i) {
-        Color fillColor = towerColors[i];
-        DrawRectangleRec(towerSquares[i], fillColor);
-
         // Contorno blanco si está seleccionado, negro si no
         Color outlineColor = (selectedTowerIndex == (int)i) ? WHITE : BLACK;
         DrawRectangleLinesEx(towerSquares[i], 2, outlineColor);
@@ -71,12 +66,24 @@ void TowerBuy::HandleBuy(GrassTile*& selectedTile) {
             economySystem.DecreaseFromBalance(cost); // Reducir el balance
             TraceLog(LOG_INFO, "Bought: %s", tower.name.c_str()); // Imprimir mensaje
 
-            // Obtener el color del botón seleccionado
-            const std::array<Color, 3> towerColors = {RED, GREEN, BLUE};
-            Color towerColor = towerColors[selectedTowerIndex];
+            // Reemplazar el tile seleccionado con un TowerTile que tenga la torre específica
+            TowerTile* newTile = map.ReplaceTileWithTower(selectedTile, tower.name, 1); // Nivel inicial 1
 
-            // Reemplazar el tile seleccionado con un TowerTile
-            map.ReplaceTileWithTower(selectedTile, towerColor);
+            // Imprimir las características de la torre desde el TowerTile
+            if (newTile) {
+                Tower* placedTower = newTile->GetTower();
+                if (placedTower) {
+                    TraceLog(LOG_INFO, "Tower Type: %s", placedTower->GetTowerType().c_str());
+                    TraceLog(LOG_INFO, "Position: (%.2f, %.2f)", placedTower->GetPosition().x, placedTower->GetPosition().y);
+                    TraceLog(LOG_INFO, "Level: %d", placedTower->GetLevel());
+                    TraceLog(LOG_INFO, "Damage: %d", placedTower->GetDamage());
+                    TraceLog(LOG_INFO, "Speed: %d", placedTower->GetSpeed());
+                    TraceLog(LOG_INFO, "Range: %d", placedTower->GetRange());
+                    TraceLog(LOG_INFO, "Attack Regeneration Time: %d", placedTower->GetAttackRegenerationTime());
+                    TraceLog(LOG_INFO, "Special Attack Regeneration Time: %d", placedTower->GetSpecialAttackRegenerationTime());
+                } else {
+                    TraceLog(LOG_ERROR, "No tower instance available.");
+                }
 
             // Reiniciar la selección y deshabilitar los botones
             selectedTile = nullptr;
@@ -86,4 +93,5 @@ void TowerBuy::HandleBuy(GrassTile*& selectedTile) {
     } else {
         buyButtonEnabled = false; // Deshabilitar el botón si no hay torre seleccionada
     }
+}
 }

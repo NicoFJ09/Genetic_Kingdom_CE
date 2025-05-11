@@ -26,7 +26,7 @@ public:
     void HandleClick();
     GrassTile* GetSelectedTile() const;
     void UnselectTile(); // Nuevo método para deseleccionar el tile
-    void ReplaceTileWithTower(GrassTile* oldTile, Color towerColor); // Reemplazar con TowerTile
+    TowerTile* ReplaceTileWithTower(GrassTile* oldTile, const std::string& towerType, int level);
 };
 
 #endif // MAP_H

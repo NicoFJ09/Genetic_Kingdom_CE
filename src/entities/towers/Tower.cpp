@@ -5,13 +5,26 @@
 
 std::vector<Tower*> Tower::allInstances;
 
+
 Tower::Tower(Vector2 position, int level, const std::string& path, int damage, int speed, int range,
              int attackRegenerationTime, int spAttackRegenerationTime)
     : position(position), level(1), texturePath(path), damage(10), speed(1), range(100),
       attackRegenerationTime(60), spAttackRegenerationTime(180)
 {
-    texture = LoadTexture(texturePath.c_str());
+    texture = LoadAndResizeTexture(texturePath.c_str(), 32, 32); // Example width and height
     allInstances.push_back(this);
+}
+
+Texture2D Tower::LoadAndResizeTexture(const std::string& path, int width, int height) {
+    Image img = LoadImage(path.c_str());
+    if (img.data == nullptr) {
+        TraceLog(LOG_ERROR, "Failed to load image: %s", path.c_str());
+        return {0}; // Retornar una textura inválida
+    }
+    ImageResize(&img, width, height);
+    Texture2D texture = LoadTextureFromImage(img);
+    UnloadImage(img);
+    return texture;
 }
 
 Tower::~Tower()

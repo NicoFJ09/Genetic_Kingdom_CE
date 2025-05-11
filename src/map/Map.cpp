@@ -4,6 +4,9 @@
 #include "PathTile.h"
 #include "GrassTile.h"
 #include "TowerTile.h"
+#include "../entities/towers/archerTower/ArcherTower.h"
+#include "../entities/towers/mageTower/MageTower.h"
+#include "../entities/towers/artilleryTower/ArtilleryTower.h"
 
 Map::Map() : selectedTile(nullptr) {
     // Load and resize textures
@@ -182,23 +185,41 @@ void Map::UnselectTile() {
     }
 }
 
-void Map::ReplaceTileWithTower(GrassTile* oldTile, Color towerColor) {
+TowerTile* Map::ReplaceTileWithTower(GrassTile* oldTile, const std::string& towerType, int level) {
     for (auto& row : tiles) {
         for (auto& tile : row) {
             if (tile.get() == oldTile) {
-                // Crear un nuevo TowerTile con el color especificado
+                // Obtener la posición del tile antiguo
                 Vector2 position = oldTile->GetPosition();
-                auto newTile = std::make_unique<TowerTile>(position, towerColor);
 
-                // Reemplazar el tile
+                // Crear la torre específica según el tipo
+                Tower* newTower = nullptr;
+                if (towerType == "Archer Tower") {
+                    newTower = new ArcherTower(position, level);
+                } else if (towerType == "Mage Tower") {
+                    newTower = new MageTower(position, level);
+                } else if (towerType == "Artillery Tower") {
+                    newTower = new ArtilleryTower(position, level);
+                }
+
+                // Crear un nuevo TowerTile con la torre
+                auto newTile = std::make_unique<TowerTile>(position, newTower);
+
+                // Guardar un puntero al TowerTile antes de moverlo
+                TowerTile* newTilePtr = newTile.get();
+
+                // Reemplazar el GrassTile con el nuevo TowerTile
                 tile = std::move(newTile);
 
                 // Deseleccionar el tile
                 selectedTile = nullptr;
-                return;
+
+                // Retornar el puntero al nuevo TowerTile
+                return newTilePtr;
             }
         }
     }
+    return nullptr; // Si no se encuentra el tile, retornar nullptr
 }
 
 void Map::Draw() const {

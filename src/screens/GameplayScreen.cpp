@@ -13,7 +13,9 @@ void GameplayScreen::Update() {
 
     // Pasar el tile seleccionado al BottomPanel
     GrassTile* selectedTile = gamePanel.GetMap().GetSelectedTile();
+    TowerTile* selectedTower = gamePanel.GetMap().GetSelectedTower();
     bottomPanel.SetSelectedTile(selectedTile);
+    bottomPanel.SetSelectedTower(selectedTower);
     EconomySystem& economySystem = bottomPanel.GetEconomySystem();
 }
 

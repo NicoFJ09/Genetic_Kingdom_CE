@@ -56,6 +56,21 @@ void BottomPanel::SetSelectedTile(GrassTile* tile) {
     towerBuy.Update(selectedTile);
 }
 
+void BottomPanel::SetSelectedTower(TowerTile* towertile) {
+    // Actualizar la lógica para manejar TowerTile seleccionado
+    if (towertile) {
+        Tower* Tower = towertile->GetTower();
+        TraceLog(LOG_INFO, "Tower Type: %s", Tower->GetTowerType().c_str());
+        TraceLog(LOG_INFO, "Position: (%.2f, %.2f)", Tower->GetPosition().x, Tower->GetPosition().y);
+        TraceLog(LOG_INFO, "Level: %d", Tower->GetLevel());
+        TraceLog(LOG_INFO, "Damage: %d", Tower->GetDamage());
+        TraceLog(LOG_INFO, "Speed: %d", Tower->GetSpeed());
+        TraceLog(LOG_INFO, "Range: %d", Tower->GetRange());
+        TraceLog(LOG_INFO, "Attack Regeneration Time: %d", Tower->GetAttackRegenerationTime());
+        TraceLog(LOG_INFO, "Special Attack Regeneration Time: %d", Tower->GetSpecialAttackRegenerationTime());
+    }
+}
+
 EconomySystem& BottomPanel::GetEconomySystem() {
     return economySystem;
 }

@@ -21,6 +21,7 @@ public:
     ~BottomPanel();
     void Update(); // Actualizar lógica del panel
     void Draw();   // Dibujar el panel
+    void SetSelectedTower(TowerTile* tower); 
     void SetSelectedTile(GrassTile* tile); // Establecer el tile seleccionado
     EconomySystem& GetEconomySystem(); // Obtener el sistema de economía
 };

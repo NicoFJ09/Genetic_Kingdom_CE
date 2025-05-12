@@ -15,6 +15,7 @@ private:
     std::array<Texture2D, 6> verticalTextures;
     Texture2D middleTexture;
     GrassTile* selectedTile;
+    TowerTile* selectedTower;
 
 public:
     Map();
@@ -26,6 +27,8 @@ public:
     void HandleClick();
     GrassTile* GetSelectedTile() const;
     void UnselectTile(); // Nuevo método para deseleccionar el tile
+    TowerTile* GetSelectedTower() const; // Obtener el TowerTile seleccionado
+    void UnselectTower();                // Deseleccionar el TowerTile actual
     TowerTile* ReplaceTileWithTower(GrassTile* oldTile, const std::string& towerType, int level);
 };
 

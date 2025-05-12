@@ -155,19 +155,45 @@ void Map::CheckHover() const {
 void Map::HandleClick() {
     for (const auto& row : tiles) {
         for (const auto& tile : row) {
-            auto grassTile = dynamic_cast<GrassTile*>(tile.get());
-            if (grassTile) {
-                Rectangle tileRect = { grassTile->GetPosition().x, grassTile->GetPosition().y, 32, 32 };
-                if (CheckCollisionPointRec(GetMousePosition(), tileRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-                    // Deselecciona el tile previamente seleccionado
+            Rectangle tileRect = { tile->GetPosition().x, tile->GetPosition().y, 32, 32 };
+            if (CheckCollisionPointRec(GetMousePosition(), tileRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+                // Verificar si es un GrassTile
+                auto grassTile = dynamic_cast<GrassTile*>(tile.get());
+                if (grassTile) {
+                    // Deseleccionar el TowerTile actual si hay uno seleccionado
+                    if (selectedTower) {
+                        UnselectTower();
+                    }
+
+                    // Deseleccionar el GrassTile actual
                     if (selectedTile) {
                         selectedTile->SetSelected(false);
                     }
 
-                    // Selecciona el nuevo tile
+                    // Seleccionar el nuevo GrassTile
                     grassTile->SetSelected(true);
                     selectedTile = grassTile;
-                    return; // Termina la búsqueda después de seleccionar
+                    return;
+                }
+
+                // Verificar si es un TowerTile
+                auto towerTile = dynamic_cast<TowerTile*>(tile.get());
+                if (towerTile) {
+                    // Deseleccionar el GrassTile actual si hay uno seleccionado
+                    if (selectedTile) {
+                        selectedTile->SetSelected(false);
+                        selectedTile = nullptr;
+                    }
+
+                    // Deseleccionar el TowerTile actual
+                    if (selectedTower) {
+                        UnselectTower();
+                    }
+
+                    // Seleccionar el nuevo TowerTile
+                    selectedTower = towerTile;
+                    TraceLog(LOG_INFO, "TowerTile selected at position: (%.2f, %.2f)", towerTile->GetPosition().x, towerTile->GetPosition().y);
+                    return;
                 }
             }
         }
@@ -182,6 +208,17 @@ void Map::UnselectTile() {
     if (selectedTile) {
         selectedTile->SetSelected(false); // Cambiar el estado del tile a no seleccionado
         selectedTile = nullptr;          // Establecer el puntero a nullptr
+    }
+}
+
+TowerTile* Map::GetSelectedTower() const {
+    return selectedTower;
+}
+
+void Map::UnselectTower() {
+    if (selectedTower) {
+        TraceLog(LOG_INFO, "TowerTile unselected at position: (%.2f, %.2f)", selectedTower->GetPosition().x, selectedTower->GetPosition().y);
+        selectedTower = nullptr;
     }
 }
 

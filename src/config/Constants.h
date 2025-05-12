@@ -57,6 +57,18 @@ static const std::array<TowerInfo, 3> Towers = {{
     {"Mage Tower", 100, 250, 500}
 }};
 
+// Sprites de las torres por nivel
+static const std::string ARCHER_TOWER_LVL1 = "../assets/textures/towers/towersInLayout/ArcherLOLvl1.png";
+static const std::string ARCHER_TOWER_LVL2 = "../assets/textures/towers/towersInLayout/ArcherLOLvl2.png";
+static const std::string ARCHER_TOWER_LVL3 = "../assets/textures/towers/towersInLayout/ArcherLOLvl3.png";
+
+static const std::string ARTILLERY_TOWER_LVL1 = "../assets/textures/towers/towersInLayout/ArtilleryLOLvl1.png";
+static const std::string ARTILLERY_TOWER_LVL2 = "../assets/textures/towers/towersInLayout/ArtilleryLOLvl2.png";
+static const std::string ARTILLERY_TOWER_LVL3 = "../assets/textures/towers/towersInLayout/ArtilleryLOLvl3.png";
+
+static const std::string MAGE_TOWER_LVL1 = "../assets/textures/towers/towersInLayout/MageLOLvl1.png";
+static const std::string MAGE_TOWER_LVL2 = "../assets/textures/towers/towersInLayout/MageLOLvl2.png";
+static const std::string MAGE_TOWER_LVL3 = "../assets/textures/towers/towersInLayout/MageLOLvl3.png";
 
 // Asset paths:
 static const std::string MAP_PATH = "../assets/map/tiles/";

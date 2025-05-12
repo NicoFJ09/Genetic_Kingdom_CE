@@ -2,7 +2,33 @@
 #include "../config/Constants.h"
 
 TowerUpgrade::TowerUpgrade(float panelX, float panelY, float panelWidth, float panelHeight, EconomySystem& economySystem)
-    : isVisible(false), economySystem(economySystem), bounds({panelX, panelY, panelWidth, panelHeight}) {}
+    : isVisible(false), economySystem(economySystem), bounds({panelX, panelY, panelWidth, panelHeight}) {
+    LoadTowerTextures();
+}
+
+TowerUpgrade::~TowerUpgrade() {
+    // Liberar todas las texturas cargadas
+    for (auto& type : towerTextures) {
+        for (auto& level : type.second) {
+            UnloadTexture(level.second);
+        }
+    }
+}
+
+void TowerUpgrade::LoadTowerTextures() {
+    // Cargar texturas para cada tipo de torre y nivel
+    towerTextures["Mage Tower"][1] = LoadTexture("../assets/textures/towers/towersInLayout/MageLOLvl1.png");
+    towerTextures["Mage Tower"][2] = LoadTexture("../assets/textures/towers/towersInLayout/MageLOLvl2.png");
+    towerTextures["Mage Tower"][3] = LoadTexture("../assets/textures/towers/towersInLayout/MageLOLvl3.png");
+
+    towerTextures["Archer Tower"][1] = LoadTexture("../assets/textures/towers/towersInLayout/ArcherLOLvl1.png");
+    towerTextures["Archer Tower"][2] = LoadTexture("../assets/textures/towers/towersInLayout/ArcherLOLvl2.png");
+    towerTextures["Archer Tower"][3] = LoadTexture("../assets/textures/towers/towersInLayout/ArcherLOLvl3.png");
+
+    towerTextures["Artillery Tower"][1] = LoadTexture("../assets/textures/towers/towersInLayout/ArtilleryLOLvl1.png");
+    towerTextures["Artillery Tower"][2] = LoadTexture("../assets/textures/towers/towersInLayout/ArtilleryLOLvl2.png");
+    towerTextures["Artillery Tower"][3] = LoadTexture("../assets/textures/towers/towersInLayout/ArtilleryLOLvl3.png");
+}
 
 void TowerUpgrade::Update(TowerTile*& selectedTower) {
     // Mostrar u ocultar la UI según si hay una torre seleccionada
@@ -39,6 +65,14 @@ void TowerUpgrade::Draw(TowerTile* selectedTower) {
     textY += lineSpacing;
     DrawText(TextFormat("Range: %d", tower->GetRange()), textX, textY, fontSize, WHITE);
     textY += lineSpacing;
+
+    // Dibujar la vista previa de la torre centrada en el panel
+    Texture2D previewTexture = towerTextures[tower->GetTowerType()][tower->GetLevel()];
+    float previewWidth = previewTexture.width / 2.0f; // Reducir a la mitad
+    float previewHeight = previewTexture.height / 2.0f; // Reducir a la mitad
+    float previewX = bounds.x + (bounds.width / 2) - (previewWidth / 2); // Centrar horizontalmente
+    float previewY = bounds.y + (bounds.height / 2) - (previewHeight / 2); // Centrar verticalmente
+    DrawTextureEx(previewTexture, {previewX, previewY}, 0.0f, 0.5f, WHITE); // Dibujar con escala 0.5
 
     // Dibujar el botón de mejora
     Rectangle upgradeButton = {bounds.x + bounds.width - 120, bounds.y + 80, 100, 40};

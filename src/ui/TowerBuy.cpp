@@ -27,8 +27,32 @@ TowerBuy::TowerBuy(Map& map, EconomySystem& economySystem, float panelX, float p
         towerSquares[i] = {squareX, initialY, squareWidth, squareHeight};
     }
 
+    // Cargar texturas redimensionadas para las torres de nivel 1
+    towerTextures[0] = LoadAndResizeTexture(ARCHER_TOWER_LVL1, squareWidth-10, squareHeight-10);
+    towerTextures[1] = LoadAndResizeTexture(ARTILLERY_TOWER_LVL1, squareWidth-10, squareHeight-10);
+    towerTextures[2] = LoadAndResizeTexture(MAGE_TOWER_LVL1, squareWidth-10, squareHeight-10);
+
     // Mantener el botón de compra en su posición actual
     buyButton = {panelX + panelWidth - 120, panelY + 80, 100, 40};
+}
+
+TowerBuy::~TowerBuy() {
+    // Liberar las texturas cargadas
+    for (auto& texture : towerTextures) {
+        UnloadTexture(texture);
+    }
+}
+
+Texture2D TowerBuy::LoadAndResizeTexture(const std::string& path, int width, int height) {
+    Image img = LoadImage(path.c_str());
+    if (img.data == nullptr) {
+        TraceLog(LOG_ERROR, "Failed to load image: %s", path.c_str());
+        return {0}; // Retornar una textura inválida
+    }
+    ImageResize(&img, width, height);
+    Texture2D texture = LoadTextureFromImage(img);
+    UnloadImage(img);
+    return texture;
 }
 
 void TowerBuy::Update(GrassTile*& selectedTile) {
@@ -50,6 +74,15 @@ void TowerBuy::Draw() {
         // Dibujar el contorno del cuadrado
         Color outlineColor = (selectedTowerIndex == (int)i) ? WHITE : BLACK;
         DrawRectangleLinesEx(towerSquares[i], 2, outlineColor);
+
+        // Calcular las coordenadas para centrar la textura dentro del cuadrado
+        float textureWidth = towerSquares[i].width;  // La textura tiene el mismo ancho que el cuadrado
+        float textureHeight = towerSquares[i].height; // La textura tiene la misma altura que el cuadrado
+        float textureX = towerSquares[i].x + (towerSquares[i].width - textureWidth) / 2 + 7.5;
+        float textureY = towerSquares[i].y + (towerSquares[i].height - textureHeight) / 2 + 10;
+
+        // Dibujar la textura de la torre centrada dentro del cuadrado
+        DrawTexture(towerTextures[i], textureX, textureY, WHITE);
 
         // Dibujar la etiqueta debajo del cuadrado
         const char* labelText = Towers[i].name.c_str();

@@ -7,7 +7,7 @@ BottomPanel::BottomPanel(float x, float y, float width, float height, Map& map)
       selectedTower(nullptr),
       economySystem(),
       towerBuy(map, economySystem, x, y, width, height),
-      towerUpgrade(x, y, width, height) { // Inicializar TowerUpgrade
+      towerUpgrade(x, y, width, height, economySystem) { // Inicializar TowerUpgrade
     // Cargar la textura de la moneda
     coinTexture = LoadTexture("../assets/ui/coin/figueres_coin.png");
 }

@@ -1,4 +1,3 @@
-
 #include "ArcherTower.h"
 
 ArcherTower::ArcherTower(Vector2 position, int level)
@@ -15,3 +14,32 @@ ArcherTower::ArcherTower(Vector2 position, int level)
     towerType = "Archer Tower";
 }
 
+void ArcherTower::UpdateStats() {
+    // Actualizar estadísticas según el nivel
+    if (level == 1) {
+        damage = 10;
+        speed = 2;
+        range = 64;
+        attackRegenerationTime = 10;
+        spAttackRegenerationTime = 50;
+        texturePath = "../assets/textures/towers/towersInMap/ArcherLvl1.png";
+    } else if (level == 2) {
+        damage = 15;
+        speed = 3;
+        range = 128;
+        attackRegenerationTime = 5;
+        spAttackRegenerationTime = 40;
+        texturePath = "../assets/textures/towers/towersInMap/ArcherLvl2.png";
+    } else if (level == 3) {
+        damage = 20;
+        speed = 4;
+        range = 192;
+        attackRegenerationTime = 3;
+        spAttackRegenerationTime = 25;
+        texturePath = "../assets/textures/towers/towersInMap/ArcherLvl3.png";
+    }
+
+    // Actualizar la textura usando LoadAndResizeTexture
+    UnloadTexture(texture); // Liberar la textura anterior
+    texture = LoadAndResizeTexture(texturePath, 32, 32);
+}

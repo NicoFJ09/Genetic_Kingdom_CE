@@ -18,6 +18,7 @@ protected:
     int spAttackRegenerationTime; // Tiempo de regeneración de ataque especial
     std::string towerType;        // Tipo de torre (Archer, Artillery, Mage)
     static std::vector<Tower*> allInstances; // Contenedor estático para todas las instancias
+    virtual void UpdateStats(); // Actualizar estadísticas y sprite según el nivel
 
 public:
     Tower(Vector2 position, int level, const std::string& texturePath, int damage, int speed, int range, 
@@ -41,6 +42,9 @@ public:
     Texture2D GetTexture() const { return texture; }
     void SetTexture(const std::string& path);
     Texture2D LoadAndResizeTexture(const std::string& path, int width, int height);
+
+    // Método para subir de nivel
+    void LevelUp();
 };
 
 #endif

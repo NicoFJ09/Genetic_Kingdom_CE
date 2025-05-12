@@ -5,11 +5,10 @@
 
 std::vector<Tower*> Tower::allInstances;
 
-
 Tower::Tower(Vector2 position, int level, const std::string& path, int damage, int speed, int range,
              int attackRegenerationTime, int spAttackRegenerationTime)
-    : position(position), level(1), texturePath(path), damage(10), speed(1), range(100),
-      attackRegenerationTime(60), spAttackRegenerationTime(180)
+    : position(position), level(level), texturePath(path), damage(damage), speed(speed), range(range),
+      attackRegenerationTime(attackRegenerationTime), spAttackRegenerationTime(spAttackRegenerationTime)
 {
     texture = LoadAndResizeTexture(texturePath.c_str(), 32, 32); // Example width and height
     allInstances.push_back(this);
@@ -40,7 +39,7 @@ Tower::~Tower()
 
 void Tower::Update()
 {
-    // Insertar logica de targetear enemigos, cooldown de ataque,
+    // Insertar lógica de targetear enemigos, cooldown de ataque,
     // y actualizar atributos de instancia en caso de subir de nivel
 }
 
@@ -54,4 +53,18 @@ void Tower::SetTexture(const std::string& path)
     UnloadTexture(texture);
     texture = LoadTexture(path.c_str());
     texturePath = path;
+}
+
+void Tower::LevelUp() {
+    const int maxLevel = 3; // Nivel máximo permitido
+    if (level < maxLevel) {
+        level++; // Incrementar el nivel
+        UpdateStats(); // Actualizar estadísticas y sprite
+        TraceLog(LOG_INFO, "Tower leveled up to level %d", level);
+    }
+}
+
+void Tower::UpdateStats() {
+    // Este método será sobrescrito por las clases derivadas
+    TraceLog(LOG_WARNING, "UpdateStats() should be implemented in derived classes.");
 }

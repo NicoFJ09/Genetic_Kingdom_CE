@@ -1,26 +1,15 @@
 #include "TowerUpgrade.h"
 #include "../config/Constants.h"
 
-TowerUpgrade::TowerUpgrade(float panelX, float panelY, float panelWidth, float panelHeight)
-    : isVisible(false), bounds({panelX, panelY, panelWidth, panelHeight}) {}
+TowerUpgrade::TowerUpgrade(float panelX, float panelY, float panelWidth, float panelHeight, EconomySystem& economySystem)
+    : isVisible(false), economySystem(economySystem), bounds({panelX, panelY, panelWidth, panelHeight}) {}
 
 void TowerUpgrade::Update(TowerTile*& selectedTower) {
     // Mostrar u ocultar la UI según si hay una torre seleccionada
     isVisible = (selectedTower != nullptr);
 
     if (isVisible) {
-        // Aquí puedes manejar la lógica de interacción, como botones de mejora
-        Rectangle upgradeButton = {bounds.x + bounds.width - 120, bounds.y + 80, 100, 40};
-
-        if (CheckCollisionPointRec(GetMousePosition(), upgradeButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-            if (selectedTower) {
-                Tower* tower = selectedTower->GetTower();
-                if (tower) {
-                    // Lógica para mejorar la torre
-                    TraceLog(LOG_INFO, "Upgrade button clicked for tower at level %d", tower->GetLevel());
-                }
-            }
-        }
+        HandleUpgrade(selectedTower); // Manejar la lógica de mejora
     }
 }
 
@@ -65,4 +54,52 @@ void TowerUpgrade::Draw(TowerTile* selectedTower) {
     float buttonTextY = upgradeButton.y + (upgradeButton.height - textHeight) / 2;
 
     DrawText(buttonText, buttonTextX, buttonTextY, fontSize, WHITE);
+}
+
+void TowerUpgrade::HandleUpgrade(TowerTile*& selectedTower) {
+    if (!selectedTower) return;
+
+    Tower* tower = selectedTower->GetTower();
+    if (!tower) return;
+
+    // Buscar el costo de mejora basado en el tipo de torre
+    int upgradeCost = 0;
+    for (const auto& towerInfo : Towers) {
+        if (towerInfo.name == tower->GetTowerType()) {
+            // Seleccionar el costo según el nivel actual de la torre
+            if (tower->GetLevel() == 1) {
+                upgradeCost = towerInfo.costLevel2;
+            } else if (tower->GetLevel() == 2) {
+                upgradeCost = towerInfo.costLevel3;
+            } else {
+                return; // No se puede mejorar más
+            }
+            break;
+        }
+    }
+
+    // Si no se encontró el tipo de torre, salir
+    if (upgradeCost == 0) {
+        TraceLog(LOG_WARNING, "Tower type not found in Towers array.");
+        return;
+    }
+
+    // Dibujar el botón de mejora
+    Rectangle upgradeButton = {bounds.x + bounds.width - 120, bounds.y + 80, 100, 40};
+
+    // Verificar si el jugador tiene suficiente balance y manejar la interacción
+    if (CheckCollisionPointRec(GetMousePosition(), upgradeButton)) {
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && !isButtonPressed) {
+            isButtonPressed = true; // Marcar el botón como presionado
+            if (economySystem.GetBalance() >= upgradeCost) {
+                economySystem.DecreaseFromBalance(upgradeCost); // Reducir el balance
+                tower->LevelUp(); // Subir de nivel la torre
+                TraceLog(LOG_INFO, "Tower upgraded successfully!");
+            } else {
+                TraceLog(LOG_WARNING, "Not enough balance to upgrade tower.");
+            }
+        } else if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+            isButtonPressed = false; // Liberar el estado del botón
+        }
+    }
 }

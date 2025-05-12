@@ -160,39 +160,14 @@ void Map::HandleClick() {
                 // Verificar si es un GrassTile
                 auto grassTile = dynamic_cast<GrassTile*>(tile.get());
                 if (grassTile) {
-                    // Deseleccionar el TowerTile actual si hay uno seleccionado
-                    if (selectedTower) {
-                        UnselectTower();
-                    }
-
-                    // Deseleccionar el GrassTile actual
-                    if (selectedTile) {
-                        selectedTile->SetSelected(false);
-                    }
-
-                    // Seleccionar el nuevo GrassTile
-                    grassTile->SetSelected(true);
-                    selectedTile = grassTile;
+                    SetSelectedTile(grassTile); // Delegar a SetSelectedTile
                     return;
                 }
 
                 // Verificar si es un TowerTile
                 auto towerTile = dynamic_cast<TowerTile*>(tile.get());
                 if (towerTile) {
-                    // Deseleccionar el GrassTile actual si hay uno seleccionado
-                    if (selectedTile) {
-                        selectedTile->SetSelected(false);
-                        selectedTile = nullptr;
-                    }
-
-                    // Deseleccionar el TowerTile actual
-                    if (selectedTower) {
-                        UnselectTower();
-                    }
-
-                    // Seleccionar el nuevo TowerTile
-                    selectedTower = towerTile;
-                    TraceLog(LOG_INFO, "TowerTile selected at position: (%.2f, %.2f)", towerTile->GetPosition().x, towerTile->GetPosition().y);
+                    SetSelectedTower(towerTile); // Delegar a SetSelectedTower
                     return;
                 }
             }
@@ -219,6 +194,42 @@ void Map::UnselectTower() {
     if (selectedTower) {
         TraceLog(LOG_INFO, "TowerTile unselected at position: (%.2f, %.2f)", selectedTower->GetPosition().x, selectedTower->GetPosition().y);
         selectedTower = nullptr;
+    }
+}
+
+void Map::SetSelectedTile(GrassTile* tile) {
+    // Deseleccionar el TowerTile actual si hay uno seleccionado
+    if (selectedTower) {
+        UnselectTower();
+    }
+
+    // Deseleccionar el GrassTile actual
+    if (selectedTile) {
+        selectedTile->SetSelected(false);
+    }
+
+    // Seleccionar el nuevo GrassTile
+    selectedTile = tile;
+    if (selectedTile) {
+        selectedTile->SetSelected(true);
+    }
+}
+
+void Map::SetSelectedTower(TowerTile* tower) {
+    // Deseleccionar el GrassTile actual si hay uno seleccionado
+    if (selectedTile) {
+        UnselectTile();
+    }
+
+    // Deseleccionar el TowerTile actual
+    if (selectedTower) {
+        UnselectTower();
+    }
+
+    // Seleccionar el nuevo TowerTile
+    selectedTower = tower;
+    if (selectedTower) {
+        TraceLog(LOG_INFO, "TowerTile selected at position: (%.2f, %.2f)", selectedTower->GetPosition().x, selectedTower->GetPosition().y);
     }
 }
 

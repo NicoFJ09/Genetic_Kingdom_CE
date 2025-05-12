@@ -29,6 +29,8 @@ public:
     void UnselectTile(); // Nuevo método para deseleccionar el tile
     TowerTile* GetSelectedTower() const; // Obtener el TowerTile seleccionado
     void UnselectTower();                // Deseleccionar el TowerTile actual
+    void SetSelectedTile(GrassTile* tile); // Manejar la selección de GrassTile
+    void SetSelectedTower(TowerTile* tower); // Manejar la selección de TowerTile
     TowerTile* ReplaceTileWithTower(GrassTile* oldTile, const std::string& towerType, int level);
 };
 

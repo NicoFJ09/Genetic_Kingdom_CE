@@ -11,11 +11,18 @@ void GameplayScreen::Update() {
     gamePanel.Update();
     bottomPanel.Update();
 
-    // Pasar el tile seleccionado al BottomPanel
+    // Obtener el tile seleccionado del mapa
     GrassTile* selectedTile = gamePanel.GetMap().GetSelectedTile();
     TowerTile* selectedTower = gamePanel.GetMap().GetSelectedTower();
-    bottomPanel.SetSelectedTile(selectedTile);
-    bottomPanel.SetSelectedTower(selectedTower);
+
+    // Actualizar el BottomPanel según el tipo de selección
+    if (selectedTile) {
+        bottomPanel.SetSelectedTile(selectedTile); // Si hay un GrassTile seleccionado
+    } else if (selectedTower) {
+        bottomPanel.SetSelectedTower(selectedTower); // Si hay un TowerTile seleccionado
+    }
+
+    // Obtener el sistema de economía (si es necesario)
     EconomySystem& economySystem = bottomPanel.GetEconomySystem();
 }
 

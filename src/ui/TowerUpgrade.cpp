@@ -51,9 +51,9 @@ void TowerUpgrade::Draw(TowerTile* selectedTower) {
     DrawText(TextFormat("Range: %d", tower->GetRange()), textX, textY, fontSize, WHITE);
     textY += lineSpacing;
 
-    // Dibujar un botón de mejora
+    // Dibujar el botón de mejora
     Rectangle upgradeButton = {bounds.x + bounds.width - 120, bounds.y + 80, 100, 40};
-    Color buttonColor = RUST_ORANGE;
+    Color buttonColor = RUST_ORANGE; // Color del botón
     DrawRectangleRec(upgradeButton, buttonColor);
     DrawRectangleLinesEx(upgradeButton, 2, BLACK);
 

@@ -36,11 +36,12 @@ void TowerBuy::Update(GrassTile*& selectedTile) {
     isVisible = (selectedTile != nullptr);
 
     if (isVisible) {
-        HandleSelectTower();
-        HandleBuy(selectedTile);
+        HandleSelectTower(); // Manejar la selección de la torre
+        HandleBuy(selectedTile); // Manejar la lógica de compra
+    } else {
+        buyButtonEnabled = false; // Deshabilitar el botón si la UI no está visible
     }
 }
-
 void TowerBuy::Draw() {
     if (!isVisible) return; // No dibujar si la UI no está visible
 
@@ -60,7 +61,7 @@ void TowerBuy::Draw() {
     }
 
     // Dibujar el botón de compra
-    Color buyColor = buyButtonEnabled ? RUST_ORANGE : GRAY;
+    Color buyColor = buyButtonEnabled ? RUST_ORANGE : GRAY; // Usar RUST_ORANGE para el botón habilitado
     DrawRectangleRec(buyButton, buyColor);
     DrawRectangleLinesEx(buyButton, 2, BLACK);
 
@@ -79,6 +80,7 @@ void TowerBuy::HandleSelectTower() {
     for (size_t i = 0; i < towerSquares.size(); ++i) {
         if (CheckCollisionPointRec(GetMousePosition(), towerSquares[i]) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             selectedTowerIndex = i; // Seleccionar la torre
+            TraceLog(LOG_INFO, "Tower selected: %s", Towers[i].name.c_str());
         }
     }
 }
@@ -88,7 +90,7 @@ void TowerBuy::HandleBuy(GrassTile*& selectedTile) {
         const TowerInfo& tower = Towers[selectedTowerIndex];
         int cost = tower.costLevel1; // Usar el costo del nivel 1 como ejemplo
 
-        // Habilitar o deshabilitar el botón de compra según el balance
+        // Habilitar o deshabilitar el botón de compra según el balance y la selección de torre
         buyButtonEnabled = (economySystem.GetBalance() >= cost);
 
         if (buyButtonEnabled && CheckCollisionPointRec(GetMousePosition(), buyButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -98,22 +100,6 @@ void TowerBuy::HandleBuy(GrassTile*& selectedTile) {
             // Reemplazar el tile seleccionado con un TowerTile que tenga la torre específica
             TowerTile* newTile = map.ReplaceTileWithTower(selectedTile, tower.name, 1); // Nivel inicial 1
 
-            // Imprimir las características de la torre desde el TowerTile
-            if (newTile) {
-                Tower* placedTower = newTile->GetTower();
-                if (placedTower) {
-                    TraceLog(LOG_INFO, "Tower Type: %s", placedTower->GetTowerType().c_str());
-                    TraceLog(LOG_INFO, "Position: (%.2f, %.2f)", placedTower->GetPosition().x, placedTower->GetPosition().y);
-                    TraceLog(LOG_INFO, "Level: %d", placedTower->GetLevel());
-                    TraceLog(LOG_INFO, "Damage: %d", placedTower->GetDamage());
-                    TraceLog(LOG_INFO, "Speed: %d", placedTower->GetSpeed());
-                    TraceLog(LOG_INFO, "Range: %d", placedTower->GetRange());
-                    TraceLog(LOG_INFO, "Attack Regeneration Time: %d", placedTower->GetAttackRegenerationTime());
-                    TraceLog(LOG_INFO, "Special Attack Regeneration Time: %d", placedTower->GetSpecialAttackRegenerationTime());
-                } else {
-                    TraceLog(LOG_ERROR, "No tower instance available.");
-                }
-
             // Reiniciar la selección y deshabilitar los botones
             selectedTile = nullptr;
             selectedTowerIndex = -1;
@@ -122,5 +108,4 @@ void TowerBuy::HandleBuy(GrassTile*& selectedTile) {
     } else {
         buyButtonEnabled = false; // Deshabilitar el botón si no hay torre seleccionada
     }
-}
 }

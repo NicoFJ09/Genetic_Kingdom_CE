@@ -110,23 +110,26 @@ void SidePanel::Draw() {
         TraceLog(LOG_WARNING, "Texture not found for enemy type: %s", currentType.c_str());
     }
 
-    // Dibujar los atributos del enemigo
+    // Dibujar encabezados de la tabla
+    float colX[] = {textX, textX + 50, textX + 100, textX + 150, textX + 200, textX + 250}; // Posiciones de las columnas
+    DrawText("V", colX[0], textY, fontSize, BLACK);
+    DrawText("S", colX[1], textY, fontSize, BLACK);
+    DrawText("FR", colX[2], textY, fontSize, BLACK);
+    DrawText("MR", colX[3], textY, fontSize, BLACK);
+    DrawText("AR", colX[4], textY, fontSize, BLACK);
+    DrawText("M", colX[5], textY, fontSize, BLACK);
+    textY += 20;
+
+    // Dibujar las filas de la tabla para cada enemigo del tipo actual
     for (Enemy* enemy : activeEnemies) {
         if (enemy->GetEnemyType() == currentType) {
-            DrawText(TextFormat("Health: %d", enemy->GetHealth()), textX, textY, fontSize, BLACK);
-            textY += 20;
-            DrawText(TextFormat("Speed: %d", enemy->GetSpeed()), textX, textY, fontSize, BLACK);
-            textY += 20;
-            DrawText(TextFormat("Arrow Resistance: %d", enemy->GetArrowResistance()), textX, textY, fontSize, BLACK);
-            textY += 20;
-            DrawText(TextFormat("Magic Resistance: %d", enemy->GetMagicResistance()), textX, textY, fontSize, BLACK);
-            textY += 20;
-            DrawText(TextFormat("Artillery Resistance: %d", enemy->GetArtilleryResistance()), textX, textY, fontSize, BLACK);
-            textY += 20;
-            DrawText(TextFormat("Mutated: %s", enemy->IsMutated() ? "Yes" : "No"), textX, textY, fontSize, BLACK);
-            textY += 20;
-            DrawText(TextFormat("Mutation Chance: %d", enemy->GetMutationChance()), textX, textY, fontSize, BLACK);
-            textY += 40; // Espaciado entre enemigos
+            DrawText(TextFormat("%d", enemy->GetHealth()), colX[0], textY, fontSize, BLACK);
+            DrawText(TextFormat("%d", enemy->GetSpeed()), colX[1], textY, fontSize, BLACK);
+            DrawText(TextFormat("%d", enemy->GetArrowResistance()), colX[2], textY, fontSize, BLACK);
+            DrawText(TextFormat("%d", enemy->GetMagicResistance()), colX[3], textY, fontSize, BLACK);
+            DrawText(TextFormat("%d", enemy->GetArtilleryResistance()), colX[4], textY, fontSize, BLACK);
+            DrawText(enemy->IsMutated() ? "Y" : "N", colX[5], textY, fontSize, BLACK);
+            textY += 20; // Espaciado entre filas
         }
     }
 

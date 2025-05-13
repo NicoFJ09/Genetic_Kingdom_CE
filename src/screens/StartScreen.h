@@ -4,13 +4,7 @@
 #include "Screen.h"
 #include "../ui/TextElement.h"
 #include "../ui/Button.h"
-#include "../entities/enemies/Enemy.h"
-#include "../entities/enemies/ogre/Ogre.h"
-#include "../entities/enemies/harpy/Harpy.h"
-#include "../entities/enemies/mercenary/Mercenary.h"
-#include "../entities/enemies/darkElf/DarkElf.h"
 #include "ScreenManager.h"
-#include <vector> // Para manejar enemigos localmente
 
 class StartScreen : public Screen {
 private:
@@ -19,8 +13,6 @@ private:
     int screenWidth;
     int screenHeight;
     ScreenManager* screenManager; // Puntero al ScreenManager
-
-    std::vector<Enemy*> enemies; // Contenedor local para manejar enemigos
 
 public:
     StartScreen(int screenWidth, int screenHeight, ScreenManager* screenManager);

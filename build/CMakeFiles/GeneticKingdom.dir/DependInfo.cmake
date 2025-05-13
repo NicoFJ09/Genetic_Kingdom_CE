@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.cpp" "CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/Game.cpp" "CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/WaveManager.cpp" "CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/darkElf/DarkElf.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/harpy/Harpy.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/harpy/Harpy.cpp.o.d"
@@ -34,6 +36,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TextElement.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/TextElement.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerBuy.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/TowerBuy.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/TowerBuy.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerUpgrade.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.cpp" "CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

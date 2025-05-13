@@ -5,9 +5,15 @@
 
 // Inicialización del contenedor estático
 std::vector<Enemy*> Enemy::allInstances;
+int Enemy::currentGeneration = 1; // Generación inicial
 
-Enemy::Enemy(bool alive, Vector2 pos, int speed, const std::string& path, int frames)
-    : isAlive(alive), position(pos), frameSpeed(speed > 0 ? speed : 1), currentFrame(0), frameCounter(0), frameCount(frames), texturePath(path) {
+Enemy::Enemy(bool alive, Vector2 pos, int speed, const std::string& path, int frames,
+             const std::string& enemyType, int health, int speedValue, int arrowResistance,
+             int magicResistance, int artilleryResistance, bool mutated)
+    : isAlive(alive), position(pos), frameSpeed(speed > 0 ? speed : 1), currentFrame(0), frameCounter(0),
+      frameCount(frames), texturePath(path), enemyType(enemyType), health(health), speed(speedValue),
+      arrowResistance(arrowResistance), magicResistance(magicResistance), artilleryResistance(artilleryResistance),
+      mutated(mutated), generation(currentGeneration) {
     texture = LoadTexture(texturePath.c_str());
     if (texture.id == 0) {
         TraceLog(LOG_ERROR, "Failed to load texture: %s", texturePath.c_str());
@@ -32,6 +38,76 @@ Enemy::~Enemy() {
     }
 }
 
+// Métodos estáticos
+void Enemy::SetCurrentGeneration(int generation) {
+    currentGeneration = generation;
+}
+
+int Enemy::GetCurrentGeneration() {
+    return currentGeneration;
+}
+
+// Getters y setters
+std::string Enemy::GetEnemyType() const {
+    return enemyType;
+}
+void Enemy::SetEnemyType(const std::string& type) {
+    enemyType = type;
+}
+
+int Enemy::GetHealth() const {
+    return health;
+}
+
+void Enemy::SetHealth(int healthValue) {
+    health = healthValue;
+}
+
+int Enemy::GetSpeed() const {
+    return speed;
+}
+
+void Enemy::SetSpeed(int speedValue) {
+    speed = speedValue;
+}
+
+int Enemy::GetArrowResistance() const {
+    return arrowResistance;
+}
+
+void Enemy::SetArrowResistance(int resistance) {
+    arrowResistance = resistance;
+}
+
+int Enemy::GetMagicResistance() const {
+    return magicResistance;
+}
+
+void Enemy::SetMagicResistance(int resistance) {
+    magicResistance = resistance;
+}
+
+int Enemy::GetArtilleryResistance() const {
+    return artilleryResistance;
+}
+
+void Enemy::SetArtilleryResistance(int resistance) {
+    artilleryResistance = resistance;
+}
+
+bool Enemy::IsMutated() const {
+    return mutated;
+}
+
+void Enemy::SetMutated(bool mutatedValue) {
+    mutated = mutatedValue;
+}
+
+int Enemy::GetGeneration() const {
+    return generation;
+}
+
+// Métodos existentes
 void Enemy::Update() {
     if (frameSpeed <= 0) {
         TraceLog(LOG_ERROR, "Invalid frameSpeed: %d", frameSpeed);

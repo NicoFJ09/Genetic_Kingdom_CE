@@ -22,6 +22,8 @@ set(SOURCES
     src/screens/GameplayScreen.cpp
     src/screens/ScreenManager.cpp
     src/core/EconomySystem.cpp
+    src/core/Game.cpp
+    src/core/WaveManager.cpp
     src/ui/Button.cpp
     src/ui/TextElement.cpp
     src/ui/GamePanel.cpp
@@ -43,6 +45,7 @@ set(SOURCES
     src/map/PathTile.cpp
     src/map/GrassTile.cpp  
     src/map/TowerTile.cpp
+    src/utils/Timer.cpp
 
 )
 

@@ -153,6 +153,54 @@ src/core/EconomySystem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.s
 .PHONY : src/core/EconomySystem.cpp.s
 
+src/core/Game.o: src/core/Game.cpp.o
+.PHONY : src/core/Game.o
+
+# target to build an object file
+src/core/Game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.o
+.PHONY : src/core/Game.cpp.o
+
+src/core/Game.i: src/core/Game.cpp.i
+.PHONY : src/core/Game.i
+
+# target to preprocess a source file
+src/core/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.i
+.PHONY : src/core/Game.cpp.i
+
+src/core/Game.s: src/core/Game.cpp.s
+.PHONY : src/core/Game.s
+
+# target to generate assembly for a file
+src/core/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.s
+.PHONY : src/core/Game.cpp.s
+
+src/core/WaveManager.o: src/core/WaveManager.cpp.o
+.PHONY : src/core/WaveManager.o
+
+# target to build an object file
+src/core/WaveManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.o
+.PHONY : src/core/WaveManager.cpp.o
+
+src/core/WaveManager.i: src/core/WaveManager.cpp.i
+.PHONY : src/core/WaveManager.i
+
+# target to preprocess a source file
+src/core/WaveManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.i
+.PHONY : src/core/WaveManager.cpp.i
+
+src/core/WaveManager.s: src/core/WaveManager.cpp.s
+.PHONY : src/core/WaveManager.s
+
+# target to generate assembly for a file
+src/core/WaveManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.s
+.PHONY : src/core/WaveManager.cpp.s
+
 src/entities/enemies/Enemy.o: src/entities/enemies/Enemy.cpp.o
 .PHONY : src/entities/enemies/Enemy.o
 
@@ -753,6 +801,30 @@ src/ui/TowerUpgrade.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.s
 .PHONY : src/ui/TowerUpgrade.cpp.s
 
+src/utils/Timer.o: src/utils/Timer.cpp.o
+.PHONY : src/utils/Timer.o
+
+# target to build an object file
+src/utils/Timer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o
+.PHONY : src/utils/Timer.cpp.o
+
+src/utils/Timer.i: src/utils/Timer.cpp.i
+.PHONY : src/utils/Timer.i
+
+# target to preprocess a source file
+src/utils/Timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.i
+.PHONY : src/utils/Timer.cpp.i
+
+src/utils/Timer.s: src/utils/Timer.cpp.s
+.PHONY : src/utils/Timer.s
+
+# target to generate assembly for a file
+src/utils/Timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.s
+.PHONY : src/utils/Timer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -765,6 +837,12 @@ help:
 	@echo "... src/core/EconomySystem.o"
 	@echo "... src/core/EconomySystem.i"
 	@echo "... src/core/EconomySystem.s"
+	@echo "... src/core/Game.o"
+	@echo "... src/core/Game.i"
+	@echo "... src/core/Game.s"
+	@echo "... src/core/WaveManager.o"
+	@echo "... src/core/WaveManager.i"
+	@echo "... src/core/WaveManager.s"
 	@echo "... src/entities/enemies/Enemy.o"
 	@echo "... src/entities/enemies/Enemy.i"
 	@echo "... src/entities/enemies/Enemy.s"
@@ -840,6 +918,9 @@ help:
 	@echo "... src/ui/TowerUpgrade.o"
 	@echo "... src/ui/TowerUpgrade.i"
 	@echo "... src/ui/TowerUpgrade.s"
+	@echo "... src/utils/Timer.o"
+	@echo "... src/utils/Timer.i"
+	@echo "... src/utils/Timer.s"
 .PHONY : help
 
 

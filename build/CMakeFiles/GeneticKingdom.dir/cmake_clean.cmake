@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/core/EconomySystem.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/darkElf/DarkElf.cpp.o"
@@ -51,6 +55,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/ui/TowerBuy.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o.d"
   "GeneticKingdom"
   "GeneticKingdom.pdb"
 )

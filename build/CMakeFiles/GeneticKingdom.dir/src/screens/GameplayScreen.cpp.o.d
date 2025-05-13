@@ -922,4 +922,16 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ranges_iterator_traits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__node_handle \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/SidePanel.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../config/Constants.h
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../entities/enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/Game.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/WaveManager.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/ogre/Ogre.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/ogre/../Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/harpy/Harpy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/harpy/../Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/mercenary/Mercenary.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/mercenary/../Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/darkElf/DarkElf.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/darkElf/../Enemy.h

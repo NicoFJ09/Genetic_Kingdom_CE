@@ -5,6 +5,7 @@
 #include <string>
 #include <array>
 #include <utility>
+#include <unordered_map>
 // Colores globales
 static const Color OLIVE_DRAB = (Color){150, 154, 71, 255};         // #B4B854
 static const Color OLIVE_GREEN = (Color){180, 184, 84, 255};         // #B4B854
@@ -72,5 +73,13 @@ static const std::string MAGE_TOWER_LVL3 = "../assets/textures/towers/towersInLa
 
 // Asset paths:
 static const std::string MAP_PATH = "../assets/map/tiles/";
+
+static const std::unordered_map<std::string, std::string> ENEMY_SPRITE_PATHS = {
+    {"Harpy", "../assets/textures/enemies/harpy/Harpy.png"},
+    {"Ogre", "../assets/textures/enemies/ogre/Ogre.png"},
+    {"Mercenary", "../assets/textures/enemies/mercenary/Mercenary.png"},
+    {"Dark Elf", "../assets/textures/enemies/darkelf/DarkElf.png"}
+};
+
 
 #endif // CONSTANTS_H

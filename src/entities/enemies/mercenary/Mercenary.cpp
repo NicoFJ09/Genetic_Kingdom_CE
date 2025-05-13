@@ -11,5 +11,6 @@ Mercenary::Mercenary(bool alive, Vector2 position, int frameSpeed)
             8,           // Resistencia a flechas
             3,           // Resistencia a magia
             5,           // Resistencia a artillería
-            false        // No mutado
+            false,       // No mutado
+            70           // Probabilidad de mutación
     ) {}

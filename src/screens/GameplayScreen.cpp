@@ -34,14 +34,33 @@ void GameplayScreen::Update() {
     gamePanel.Update();
     bottomPanel.Update();
 
+    // Obtener el tile seleccionado del mapa
+    GrassTile* selectedTile = gamePanel.GetMap().GetSelectedTile();
+    TowerTile* selectedTower = gamePanel.GetMap().GetSelectedTower();
+
+    // Actualizar el BottomPanel según el tipo de selección
+    if (selectedTile) {
+        bottomPanel.SetSelectedTile(selectedTile); // Si hay un GrassTile seleccionado
+    } else if (selectedTower) {
+        bottomPanel.SetSelectedTower(selectedTower); // Si hay un TowerTile seleccionado
+    } else {
+        // Si no hay selección, deseleccionar ambos
+        bottomPanel.SetSelectedTile(nullptr);
+        bottomPanel.SetSelectedTower(nullptr);
+    }
+
     // Pasar la información de la ola al SidePanel
     WaveManager& waveManager = game.GetWaveManager();
     sidePanel.UpdateWaveInfo(waveManager.GetCurrentWave(), waveManager.GetRemainingTime());
+    sidePanel.Update();
 
     // Actualizar las entidades
     for (Enemy* enemy : enemies) {
         enemy->Update();
     }
+
+    // Obtener el sistema de economía (si es necesario)
+    EconomySystem& economySystem = bottomPanel.GetEconomySystem();
 }
 
 void GameplayScreen::Draw() {

@@ -75,10 +75,10 @@ static const std::string MAGE_TOWER_LVL3 = "../assets/textures/towers/towersInLa
 static const std::string MAP_PATH = "../assets/map/tiles/";
 
 static const std::unordered_map<std::string, std::string> ENEMY_SPRITE_PATHS = {
-    {"Harpy", "../assets/textures/enemies/harpy/Harpy.png"},
     {"Ogre", "../assets/textures/enemies/ogre/Ogre.png"},
-    {"Mercenary", "../assets/textures/enemies/mercenary/Mercenary.png"},
-    {"Dark Elf", "../assets/textures/enemies/darkelf/DarkElf.png"}
+    {"Dark Elf", "../assets/textures/enemies/darkelf/DarkElf.png"},
+    {"Harpy", "../assets/textures/enemies/harpy/Harpy.png"},
+    {"Mercenary", "../assets/textures/enemies/mercenary/Mercenary.png"}
 };
 
 

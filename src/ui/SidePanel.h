@@ -14,16 +14,13 @@ private:
     float remainingTime; // Tiempo restante de la ola
 
     std::vector<Enemy*> activeEnemies; // Lista de enemigos activos
-    int currentPage; // Página actual
-    int enemiesPerPage; // Número de enemigos por página
-
-    std::unordered_map<std::string, Texture2D> enemyTextures; // Mapa de texturas de enemigos
-
+    int currentPageIndex; // Índice de la página actual
+    std::vector<std::string> enemyTypes; // Tipos de enemigos (Ogre, Harpy, etc.)
+    std::unordered_map<std::string, Texture2D> enemyTextures; 
+    
     // Métodos auxiliares
     void DrawEnemyInfo(Enemy* enemy, float x, float y, float width, float height);
     void DrawPaginationButtons();
-    void LoadEnemyTextures(); // Cargar texturas de enemigos
-    void UnloadEnemyTextures(); // Descargar texturas de enemigos
 
 public:
     SidePanel(float x, float y, float width, float height);

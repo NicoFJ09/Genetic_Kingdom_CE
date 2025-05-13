@@ -11,5 +11,6 @@ DarkElf::DarkElf(bool alive, Vector2 position, int frameSpeed)
             5,          // Resistencia a flechas
             10,         // Resistencia a magia
             8,          // Resistencia a artillería
-            false       // No mutado
+            false,       // No mutado
+            70           // Probabilidad de mutación
     ) {}

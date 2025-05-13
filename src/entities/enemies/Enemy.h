@@ -31,6 +31,7 @@ protected:
     int artilleryResistance;     // Resistencia a artillería
     bool mutated;                // Si el enemigo está mutado
     int generation;              // Generación del enemigo
+    int mutationChance;         // Probabilidad de mutación
 
     // Atributos estáticos
     static int currentGeneration; // Generación actual para nuevas instancias
@@ -38,7 +39,7 @@ protected:
 public:
     Enemy(bool alive, Vector2 position, int frameSpeed, const std::string& texturePath, int frameCount,
           const std::string& enemyType, int health, int speed, int arrowResistance, int magicResistance,
-          int artilleryResistance, bool mutated);
+          int artilleryResistance, bool mutated, int mutationChance);
     virtual ~Enemy();
 
     // Métodos nuevos
@@ -68,6 +69,9 @@ public:
     void SetMutated(bool mutated);
 
     int GetGeneration() const;
+
+    int GetMutationChance() const;
+    void SetMutationChance(int chance);
 
     // Métodos existentes
     virtual void Update();

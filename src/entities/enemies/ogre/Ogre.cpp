@@ -11,5 +11,6 @@ Ogre::Ogre(bool alive, Vector2 position, int frameSpeed)
             15,          // Resistencia a flechas
             10,          // Resistencia a magia
             20,          // Resistencia a artillería
-            false        // No mutado
+            false,       // No mutado
+            70           // Probabilidad de mutación
     ) {}

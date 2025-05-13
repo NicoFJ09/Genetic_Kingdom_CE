@@ -7,13 +7,13 @@
 std::vector<Enemy*> Enemy::allInstances;
 int Enemy::currentGeneration = 1; // Generación inicial
 
-Enemy::Enemy(bool alive, Vector2 pos, int speed, const std::string& path, int frames,
-             const std::string& enemyType, int health, int speedValue, int arrowResistance,
-             int magicResistance, int artilleryResistance, bool mutated)
-    : isAlive(alive), position(pos), frameSpeed(speed > 0 ? speed : 1), currentFrame(0), frameCounter(0),
-      frameCount(frames), texturePath(path), enemyType(enemyType), health(health), speed(speedValue),
+Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texturePath, int frameCount,
+             const std::string& enemyType, int health, int speed, int arrowResistance,
+             int magicResistance, int artilleryResistance, bool mutated, int mutationChance)
+    : isAlive(alive), position(pos), frameSpeed(frameSpeed > 0 ? frameSpeed : 1), currentFrame(0), frameCounter(0),
+      frameCount(frameCount), texturePath(texturePath), enemyType(enemyType), health(health), speed(speed),
       arrowResistance(arrowResistance), magicResistance(magicResistance), artilleryResistance(artilleryResistance),
-      mutated(mutated), generation(currentGeneration) {
+      mutated(mutated), generation(currentGeneration), mutationChance(mutationChance) {
     texture = LoadTexture(texturePath.c_str());
     if (texture.id == 0) {
         TraceLog(LOG_ERROR, "Failed to load texture: %s", texturePath.c_str());
@@ -105,6 +105,14 @@ void Enemy::SetMutated(bool mutatedValue) {
 
 int Enemy::GetGeneration() const {
     return generation;
+}
+
+void Enemy::SetMutationChance(int chance) {
+    mutationChance = chance;
+}
+
+int Enemy::GetMutationChance() const {
+    return mutationChance;
 }
 
 // Métodos existentes

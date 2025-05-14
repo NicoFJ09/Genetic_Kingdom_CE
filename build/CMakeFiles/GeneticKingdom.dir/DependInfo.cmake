@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/ArtilleryTower.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/mageTower/MageTower.cpp" "CMakeFiles/GeneticKingdom.dir/src/entities/towers/mageTower/MageTower.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/entities/towers/mageTower/MageTower.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/main.cpp" "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp" "CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o.d"

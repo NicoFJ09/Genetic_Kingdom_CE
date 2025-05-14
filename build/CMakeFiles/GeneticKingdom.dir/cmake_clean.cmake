@@ -25,6 +25,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/entities/towers/mageTower/MageTower.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/main.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o"

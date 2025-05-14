@@ -46,6 +46,7 @@ set(SOURCES
     src/map/PathTile.cpp
     src/map/GrassTile.cpp  
     src/map/TowerTile.cpp
+    src/map/BridgeTile.cpp
     src/utils/Timer.cpp
     src/config/Constants.h
     src/systems/Pathfinding.cpp

@@ -10115,6 +10115,19 @@ CMakeFiles/GeneticKingdom.dir/src/main.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/StartScreen.h
  /usr/local/Cellar/raylib/5.5/include/raylib.h
 
+CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.cpp
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg___gnuc_va_list.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg___va_copy.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_header_macro.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_arg.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_copy.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_list.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.h
+ /usr/local/Cellar/raylib/5.5/include/raylib.h
+
 CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h
@@ -11946,6 +11959,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/ArtilleryTower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/mageTower/MageTower.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.h

@@ -441,6 +441,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/map/BridgeTile.o: src/map/BridgeTile.cpp.o
+.PHONY : src/map/BridgeTile.o
+
+# target to build an object file
+src/map/BridgeTile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o
+.PHONY : src/map/BridgeTile.cpp.o
+
+src/map/BridgeTile.i: src/map/BridgeTile.cpp.i
+.PHONY : src/map/BridgeTile.i
+
+# target to preprocess a source file
+src/map/BridgeTile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.i
+.PHONY : src/map/BridgeTile.cpp.i
+
+src/map/BridgeTile.s: src/map/BridgeTile.cpp.s
+.PHONY : src/map/BridgeTile.s
+
+# target to generate assembly for a file
+src/map/BridgeTile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.s
+.PHONY : src/map/BridgeTile.cpp.s
+
 src/map/GrassTile.o: src/map/GrassTile.cpp.o
 .PHONY : src/map/GrassTile.o
 
@@ -897,6 +921,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/map/BridgeTile.o"
+	@echo "... src/map/BridgeTile.i"
+	@echo "... src/map/BridgeTile.s"
 	@echo "... src/map/GrassTile.o"
 	@echo "... src/map/GrassTile.i"
 	@echo "... src/map/GrassTile.s"

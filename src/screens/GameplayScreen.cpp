@@ -4,6 +4,7 @@
 #include "../entities/enemies/mercenary/Mercenary.h"
 #include "../entities/enemies/darkElf/DarkElf.h"
 #include "../config/Constants.h"
+#include "../systems/Pathfinding.h"
 
 std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     std::vector<Enemy*> waveEnemies;
@@ -12,6 +13,7 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     waveEnemies.push_back(new Mercenary(true, {300, 25}, 12));
     waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
     waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
+    auto PATH_SEGMENT = AStarPath(0, 0, 18, 30, GAME_MAP);
     for (Enemy* enemy : waveEnemies) {
         enemy->SetPath(PATH_SEGMENT);
     }
@@ -30,6 +32,7 @@ GameplayScreen::GameplayScreen(int screenWidth, int screenHeight)
     game.SpawnEnemiesForWave(waveEnemies);
     // Mostrar los primeros enemigos en el panel
     sidePanel.SetActiveEnemies(game.GetActiveEnemies());
+    auto path = AStarPath(0, 0, 18, 30, GAME_MAP);
 }
 
 GameplayScreen::~GameplayScreen() {

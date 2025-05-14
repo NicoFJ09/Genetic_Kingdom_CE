@@ -116,7 +116,12 @@ int Enemy::GetMutationChance() const {
 
 // Métodos para path
 void Enemy::SetPath(const std::vector<std::pair<int, int>>& newPath) {
-    path = newPath;
+    path.clear();
+    path.reserve(newPath.size());
+    // Invertir el orden de cada par: (fila, columna) -> (columna, fila)
+    for (const auto& tile : newPath) {
+        path.emplace_back(tile.second, tile.first);
+    }
     currentPathIndex = 0;
     interpolationFactor = 0.0f;
     if (path.size() > 1) {

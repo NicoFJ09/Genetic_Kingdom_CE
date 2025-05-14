@@ -29,6 +29,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/ScreenManager.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/ScreenManager.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/StartScreen.cpp" "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o.d"
+  "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/systems/Pathfinding.cpp" "CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/BottomPanel.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/Button.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/Button.cpp.o.d"
   "/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/GamePanel.cpp" "CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o" "gcc" "CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o.d"

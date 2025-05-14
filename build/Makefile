@@ -633,6 +633,30 @@ src/screens/StartScreen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.s
 .PHONY : src/screens/StartScreen.cpp.s
 
+src/systems/Pathfinding.o: src/systems/Pathfinding.cpp.o
+.PHONY : src/systems/Pathfinding.o
+
+# target to build an object file
+src/systems/Pathfinding.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.o
+.PHONY : src/systems/Pathfinding.cpp.o
+
+src/systems/Pathfinding.i: src/systems/Pathfinding.cpp.i
+.PHONY : src/systems/Pathfinding.i
+
+# target to preprocess a source file
+src/systems/Pathfinding.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.i
+.PHONY : src/systems/Pathfinding.cpp.i
+
+src/systems/Pathfinding.s: src/systems/Pathfinding.cpp.s
+.PHONY : src/systems/Pathfinding.s
+
+# target to generate assembly for a file
+src/systems/Pathfinding.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.s
+.PHONY : src/systems/Pathfinding.cpp.s
+
 src/ui/BottomPanel.o: src/ui/BottomPanel.cpp.o
 .PHONY : src/ui/BottomPanel.o
 
@@ -897,6 +921,9 @@ help:
 	@echo "... src/screens/StartScreen.o"
 	@echo "... src/screens/StartScreen.i"
 	@echo "... src/screens/StartScreen.s"
+	@echo "... src/systems/Pathfinding.o"
+	@echo "... src/systems/Pathfinding.i"
+	@echo "... src/systems/Pathfinding.s"
 	@echo "... src/ui/BottomPanel.o"
 	@echo "... src/ui/BottomPanel.i"
 	@echo "... src/ui/BottomPanel.s"

@@ -1,44 +1,49 @@
 #include "Pathfinding.h"
-#include "Constants.h"
 #include <queue>
 #include <cmath>
 #include <algorithm>
+#include <vector>
+#include <array>
 
-constexpr int ROWS = 19;
-constexpr int COLUMNS = 31;
-
-//Nodes with (x,y) coordinates given by map. (Cells)
+// Nodo para el algoritmo A*
 struct Node {
     int x, y;
-    int gCost; //Moving cost from start to end
-    int hCost; //Estimated cost (heuristic)
+    int gCost;
+    int hCost;
     Node* parent;
 
     Node(int x, int y, int g = 0, int h = 0, Node* p = nullptr)
         : x(x), y(y), gCost(g), hCost(h), parent(p) {}
 
     int fCost() const { return gCost + hCost; }
-
-    //Compares nodes fcost
     bool operator>(const Node& other) const { return fCost() > other.fCost(); }
 };
-
-//======================= A* Algorithm ===========================
 
 int heuristic(int x1, int y1, int x2, int y2) {
     return std::abs(x1 - x2) + std::abs(y1 - y2);
 }
 
-bool isWalkable(int x, int y) {
-    if (x < 0 || x >= ROWS || y < 0 || y >= COLUMNS) return false;
-    return GAME_MAP[x][y] == 0 || GAME_MAP[x][y] == 2 || GAME_MAP[x][y] == 3;
+bool isWalkable(int x, int y, const std::vector<std::vector<int>>& map, int rows, int columns) {
+    if (x < 0 || x >= rows || y < 0 || y >= columns) return false;
+    return map[x][y] == 0 || map[x][y] == 2 || map[x][y] == 3;
 }
 
-std::vector<std::pair<int, int>> AStarPath(int startX, int startY, int endX, int endY) {
-    std::vector<std::vector<bool>> visited(ROWS, std::vector<bool>(COLUMNS, false));
-    std::vector<Node*> allNodes; // Store all nodes to free them later
+template <size_t ROWS, size_t COLUMNS>
+std::vector<std::pair<int, int>> AStarPath(
+    int startX, int startY, int endX, int endY,
+    const std::array<std::array<int, COLUMNS>, ROWS>& map
+) {
+    // Convertir el array fijo a vector de vectores
+    std::vector<std::vector<int>> mapVector;
+    mapVector.reserve(ROWS);
+    for (const auto& row : map) {
+        mapVector.emplace_back(row.begin(), row.end());
+    }
+    int rows = static_cast<int>(ROWS);
+    int columns = static_cast<int>(COLUMNS);
 
-    //Compare nodes by fCost and list them in priority queue from lowest(first in queue) to highest (last in queue)
+    std::vector<std::vector<bool>> visited(rows, std::vector<bool>(columns, false));
+    std::vector<Node*> allNodes;
 
     auto cmp = [](Node* a, Node* b) { return a->fCost() > b->fCost(); };
     std::priority_queue<Node*, std::vector<Node*>, decltype(cmp)> openList(cmp);
@@ -55,25 +60,25 @@ std::vector<std::pair<int, int>> AStarPath(int startX, int startY, int endX, int
         visited[current->x][current->y] = true;
 
         if (current->x == endX && current->y == endY) {
-            std::vector<std::pair<int, int>> path;        // Generate path once reached the castle
+            std::vector<std::pair<int, int>> path;
             Node* p = current;
-            while (p != nullptr) {                        // Backtrack to find the path
+            while (p != nullptr) {
                 path.emplace_back(p->x, p->y);
                 p = p->parent;
             }
             std::reverse(path.begin(), path.end());
-            for (Node* n : allNodes) delete n;            // Free memory once path is generated
-            return path;                                  // Path 
+            for (Node* n : allNodes) delete n;
+            return path;
         }
 
         const int dx[] = {0, 1, 0, -1};
         const int dy[] = {1, 0, -1, 0};
 
-        for (int i = 0; i < 4; ++i) {                              //Check all 4 directions of current node and add them to the openList queue
+        for (int i = 0; i < 4; ++i) {
             int nx = current->x + dx[i];
             int ny = current->y + dy[i];
 
-            if (!isWalkable(nx, ny) || visited[nx][ny]) continue;
+            if (!isWalkable(nx, ny, mapVector, rows, columns) || visited[nx][ny]) continue;
 
             int newG = current->gCost + 1;
             int h = heuristic(nx, ny, endX, endY);
@@ -82,7 +87,11 @@ std::vector<std::pair<int, int>> AStarPath(int startX, int startY, int endX, int
             allNodes.push_back(neighbor);
         }
     }
-        for (Node* n: allNodes) delete n; //Free all nodes from heap
-        return {};
-
+    for (Node* n: allNodes) delete n;
+    return {};
 }
+
+// Instanciación explícita para evitar linker errors si usas el cpp separado
+template std::vector<std::pair<int, int>> AStarPath<19, 31>(
+    int, int, int, int, const std::array<std::array<int, 31>, 19>&
+);

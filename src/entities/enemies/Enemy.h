@@ -22,6 +22,10 @@ protected:
     const int minFrameSpeed = 1;  // Velocidad mínima de animación
     static std::vector<Enemy*> allInstances; // Contenedor estático para todas las instancias
 
+    // Para pathfinding (para prueba en terminal)
+    std::vector<std::pair<int, int>> path;
+    size_t currentPathIndex = 0;
+
     // Nuevos atributos
     std::string enemyType;       // Tipo de enemigo (título)
     int health;                  // Salud del enemigo

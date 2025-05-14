@@ -46,11 +46,17 @@ set(SOURCES
     src/map/GrassTile.cpp  
     src/map/TowerTile.cpp
     src/utils/Timer.cpp
-
+    src/config/Constants.h
+    src/systems/Pathfinding.cpp
 )
 
 # Add the executable
 add_executable(${PROJECT_NAME} ${SOURCES})
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/systems
+    ${PROJECT_SOURCE_DIR}/src/config
+)
 
 # Link Raylib
 target_link_libraries(${PROJECT_NAME} ${RAYLIB_LIBRARIES})

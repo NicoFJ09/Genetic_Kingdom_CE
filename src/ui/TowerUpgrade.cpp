@@ -88,7 +88,42 @@ void TowerUpgrade::Draw(TowerTile* selectedTower) {
     float buttonTextY = upgradeButton.y + (upgradeButton.height - textHeight) / 2;
 
     DrawText(buttonText, buttonTextX, buttonTextY, fontSize, WHITE);
+    
+    // Calcular y mostrar el costo de mejora
+    int upgradeCost = 0;
+    for (const auto& towerInfo : Towers) {
+        if (towerInfo.name == tower->GetTowerType()) {
+            // Seleccionar el costo según el nivel actual de la torre
+            if (tower->GetLevel() == 1) {
+                upgradeCost = towerInfo.costLevel2;
+            } else if (tower->GetLevel() == 2) {
+                upgradeCost = towerInfo.costLevel3;
+            } else {
+                upgradeCost = 0; // Nivel máximo, no hay más mejoras
+            }
+            break;
+        }
+    }
+    
+    if (upgradeCost > 0) {
+        const char* costText = TextFormat("Cost: %d", upgradeCost);
+        int costTextWidth = MeasureText(costText, fontSize);
+        float costTextX = upgradeButton.x - costTextWidth - 10; // 10px a la izquierda del botón
+        float costTextY = upgradeButton.y + (upgradeButton.height - fontSize) / 2; // Centrado verticalmente con el botón
+        
+        // Color del texto según si el jugador tiene suficiente dinero
+        Color costColor = (economySystem.GetBalance() >= upgradeCost) ? GREEN : RED;
+        DrawText(costText, costTextX, costTextY, fontSize, costColor);
+    } else if (tower->GetLevel() >= 3) {
+        // Si la torre está al nivel máximo, mostrar un mensaje
+        const char* maxLevelText = "Max Level";
+        int maxLevelTextWidth = MeasureText(maxLevelText, fontSize);
+        float maxLevelTextX = upgradeButton.x - maxLevelTextWidth - 10;
+        float maxLevelTextY = upgradeButton.y + (upgradeButton.height - fontSize) / 2;
+        DrawText(maxLevelText, maxLevelTextX, maxLevelTextY, fontSize, GOLD);
+    }
 }
+
 
 void TowerUpgrade::HandleUpgrade(TowerTile*& selectedTower) {
     if (!selectedTower) return;

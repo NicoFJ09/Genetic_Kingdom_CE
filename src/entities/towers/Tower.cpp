@@ -5,10 +5,9 @@
 
 std::vector<Tower*> Tower::allInstances;
 
-Tower::Tower(Vector2 position, int level, const std::string& path, int damage, int speed, int range,
-             int attackRegenerationTime, int spAttackRegenerationTime)
+Tower::Tower(Vector2 position, int level, const std::string& path, int damage, int speed, int range, int spAttackRegenerationTime)
     : position(position), level(level), texturePath(path), damage(damage), speed(speed), range(range),
-      attackRegenerationTime(attackRegenerationTime), spAttackRegenerationTime(spAttackRegenerationTime)
+       spAttackRegenerationTime(spAttackRegenerationTime)
 {
     texture = LoadAndResizeTexture(texturePath.c_str(), 32, 32); // Example width and height
     allInstances.push_back(this);

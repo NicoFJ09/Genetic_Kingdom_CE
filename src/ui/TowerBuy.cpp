@@ -91,6 +91,16 @@ void TowerBuy::Draw() {
         float textX = towerSquares[i].x + (towerSquares[i].width - textWidth) / 2;
         float textY = towerSquares[i].y + towerSquares[i].height + 5; // Debajo del cuadrado
         DrawText(labelText, textX, textY, fontSize, WHITE);
+        
+        // Dibujar el costo de la torre debajo del nombre
+        const char* costText = TextFormat("Cost: %d", Towers[i].costLevel1);
+        int costTextWidth = MeasureText(costText, fontSize);
+        float costTextX = towerSquares[i].x + (towerSquares[i].width - costTextWidth) / 2;
+        float costTextY = textY + fontSize + 3; // 3 píxeles debajo del nombre
+        
+        // Determinar el color: verde si hay suficiente dinero, rojo si no
+        Color costColor = (economySystem.GetBalance() >= Towers[i].costLevel1) ? GREEN : RED;
+        DrawText(costText, costTextX, costTextY, fontSize, costColor);
     }
 
     // Dibujar el botón de compra

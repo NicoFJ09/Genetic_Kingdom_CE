@@ -8,7 +8,6 @@ MageTower::MageTower(Vector2 position, int level)
         level == 1 ? 12 : level == 2 ? 18 : 25,           // damage
         level == 1 ? 1  : level == 2 ? 2  : 3,            // speed
         level == 1 ? 70 : level == 2 ? 140 : 210,        // range in pixels
-        level == 1 ? 12 : level == 2 ? 8 : 5,           // attack regen
         level == 1 ? 60 : level == 2 ? 45 : 30          // special attack regen
     ){
     towerType = "Mage Tower";
@@ -20,21 +19,18 @@ void MageTower::UpdateStats() {
         damage = 12;
         speed = 1;
         range = 70;
-        attackRegenerationTime = 12;
         spAttackRegenerationTime = 60;
         texturePath = "../assets/textures/towers/towersInMap/MageLvl1.png";
     } else if (level == 2) {
         damage = 18;
         speed = 2;
         range = 140;
-        attackRegenerationTime = 8;
         spAttackRegenerationTime = 45;
         texturePath = "../assets/textures/towers/towersInMap/MageLvl2.png";
     } else if (level == 3) {
         damage = 25;
         speed = 3;
         range = 210;
-        attackRegenerationTime = 5;
         spAttackRegenerationTime = 30;
         texturePath = "../assets/textures/towers/towersInMap/MageLvl3.png";
     }

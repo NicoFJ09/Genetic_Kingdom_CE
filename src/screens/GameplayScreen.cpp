@@ -5,31 +5,35 @@
 #include "../entities/enemies/darkElf/DarkElf.h"
 #include "../config/Constants.h"
 
+std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
+    std::vector<Enemy*> waveEnemies;
+    waveEnemies.push_back(new Ogre(true, {25, 25}, 8));
+    waveEnemies.push_back(new Harpy(true, {150, 25}, 16));
+    waveEnemies.push_back(new Mercenary(true, {300, 25}, 12));
+    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
+    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
+    for (Enemy* enemy : waveEnemies) {
+        enemy->SetPath(PATH_SEGMENT);
+    }
+    return waveEnemies;
+}
+
 GameplayScreen::GameplayScreen(int screenWidth, int screenHeight)
     : screenWidth(screenWidth), screenHeight(screenHeight),
       game(30.0f),
       gamePanel(0, 0, 992, 608),
       sidePanel(992, 0, screenWidth - 992, screenHeight),
-      bottomPanel(0, 608, 992, screenHeight - 608, gamePanel.GetMap()) {
-    enemies.push_back(new Ogre(true, {25, 25}, 8));
-    enemies.push_back(new Harpy(true, {150, 25}, 16));
-    enemies.push_back(new Mercenary(true, {300, 25}, 12));
-    enemies.push_back(new DarkElf(true, {450, 25}, 10));
-
-    sidePanel.SetActiveEnemies(enemies);
-
-    // Asignar la ruta y activar todos los enemigos
-    for (Enemy* enemy : enemies) {
-        enemy->SetPath(PATH_SEGMENT);
-        enemy->Activate();
-    }
+      bottomPanel(0, 608, 992, screenHeight - 608, gamePanel.GetMap()) 
+{
+    // Crear y pasar la primera tanda de enemigos
+    std::vector<Enemy*> waveEnemies = CreateWaveEnemies();
+    game.SpawnEnemiesForWave(waveEnemies);
+    // Mostrar los primeros enemigos en el panel
+    sidePanel.SetActiveEnemies(game.GetActiveEnemies());
 }
 
 GameplayScreen::~GameplayScreen() {
-    for (Enemy* enemy : enemies) {
-        delete enemy;
-    }
-    enemies.clear();
+    // Game se encarga de limpiar enemigos
 }
 
 void GameplayScreen::Update() {
@@ -54,20 +58,26 @@ void GameplayScreen::Update() {
     sidePanel.UpdateWaveInfo(waveManager.GetCurrentWave(), waveManager.GetRemainingTime());
     sidePanel.Update();
 
-    for (Enemy* enemy : enemies) {
-        enemy->Update(deltaTime);
-    }
-
     EconomySystem& economySystem = bottomPanel.GetEconomySystem();
+
+    // --- NUEVO: Detectar el inicio de una nueva ola ---
+    int currentWave = waveManager.GetCurrentWave();
+    if (currentWave != lastWaveNumber) {
+        lastWaveNumber = currentWave;
+
+        std::vector<Enemy*> waveEnemies = CreateWaveEnemies();
+        game.SpawnEnemiesForWave(waveEnemies);
+        sidePanel.SetActiveEnemies(waveEnemies); // Muestra SOLO los nuevos
+    }
 }
 
 void GameplayScreen::Draw() {
     gamePanel.Draw();
     bottomPanel.Draw();
-    sidePanel.Draw(); // Dibujar el SidePanel
+    sidePanel.Draw();
 
-    // Dibujar las entidades
-    for (Enemy* enemy : enemies) {
+    // Dibujar los enemigos activos
+    for (Enemy* enemy : game.GetActiveEnemies()) {
         enemy->Draw();
     }
 }

@@ -6,8 +6,8 @@ DarkElf::DarkElf(bool alive, Vector2 position, int frameSpeed, int generation = 
                   : "../assets/textures/enemies/darkelf/DarkElfDeathSpriteSheet.png",
             alive ? 8 : 7,
             "Dark Elf", // Tipo de enemigo
-            80.0,         // Salud
-            6.0,          // Velocidad
+            80,         // Salud
+            6,          // Velocidad
             5,          // Resistencia a flechas
             10,         // Resistencia a magia
             8,          // Resistencia a artillería

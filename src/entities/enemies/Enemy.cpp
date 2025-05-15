@@ -44,7 +44,7 @@ void Enemy::SetEnemyType(const std::string& type) {
     enemyType = type;
 }
 
-double Enemy::GetHealth() const {
+int Enemy::GetHealth() const {
     return health;
 }
 
@@ -52,7 +52,7 @@ void Enemy::SetHealth(double healthValue) {
     health = healthValue;
 }
 
-double Enemy::GetSpeed() const {
+int Enemy::GetSpeed() const {
     return speed;
 }
 

@@ -7,7 +7,7 @@
 std::vector<Enemy*> Enemy::allInstances;
 
 Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texturePath, int frameCount,
-             const std::string& enemyType, int health, int speed, int arrowResistance,
+             const std::string& enemyType, double health, double speed, int arrowResistance,
              int magicResistance, int artilleryResistance, bool mutated, int generation, int mutationChance)
     : isAlive(alive), position(pos), frameSpeed(frameSpeed > 0 ? frameSpeed : 1), currentFrame(0), frameCounter(0),
       frameCount(frameCount), texturePath(texturePath), enemyType(enemyType), health(health), speed(speed),
@@ -48,7 +48,7 @@ int Enemy::GetHealth() const {
     return health;
 }
 
-void Enemy::SetHealth(int healthValue) {
+void Enemy::SetHealth(double healthValue) {
     health = healthValue;
 }
 
@@ -56,7 +56,7 @@ int Enemy::GetSpeed() const {
     return speed;
 }
 
-void Enemy::SetSpeed(int speedValue) {
+void Enemy::SetSpeed(double speedValue) {
     speed = speedValue;
 }
 

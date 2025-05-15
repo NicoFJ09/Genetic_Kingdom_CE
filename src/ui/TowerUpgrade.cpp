@@ -61,9 +61,9 @@ void TowerUpgrade::Draw(TowerTile* selectedTower) {
     textY += lineSpacing;
     DrawText(TextFormat("Damage: %d", tower->GetDamage()), textX, textY, fontSize, WHITE);
     textY += lineSpacing;
-    DrawText(TextFormat("Fire Rate: %.2f/sec", tower->GetSpeed()), textX, textY, fontSize, WHITE);
+    DrawText(TextFormat("Speed: %d", tower->GetSpeed()), textX, textY, fontSize, WHITE);
     textY += lineSpacing;
-    DrawText(TextFormat("Range: %d tiles", tower->GetRange()), textX, textY, fontSize, WHITE);
+    DrawText(TextFormat("Range: %d", tower->GetRange()), textX, textY, fontSize, WHITE);
     textY += lineSpacing;
 
     // Dibujar la vista previa de la torre centrada en el panel

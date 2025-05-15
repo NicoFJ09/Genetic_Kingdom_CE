@@ -34,8 +34,8 @@ protected:
    
     // Otros atributos
     std::string enemyType;
-    double health;
-    double speed;
+    int health;
+    int speed;
     int arrowResistance;
     int magicResistance;
     int artilleryResistance;
@@ -45,7 +45,7 @@ protected:
 
 public:
     Enemy(bool alive, Vector2 position, int frameSpeed, const std::string& texturePath, int frameCount,
-          const std::string& enemyType, double health, double speed, int arrowResistance, int magicResistance,
+          const std::string& enemyType, int health, int speed, int arrowResistance, int magicResistance,
           int artilleryResistance, bool mutated, int generation, int mutationChance);
     virtual ~Enemy();
 
@@ -54,10 +54,10 @@ public:
     void SetEnemyType(const std::string& type);
 
     int GetHealth() const;
-    void SetHealth(double health);
+    void SetHealth(int health);
 
     int GetSpeed() const;
-    void SetSpeed(double speed);
+    void SetSpeed(int speed);
 
     int GetArrowResistance() const;
     void SetArrowResistance(int resistance);

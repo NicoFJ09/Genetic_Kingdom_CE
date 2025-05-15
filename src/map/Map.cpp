@@ -27,7 +27,7 @@ Map::Map() : selectedTile(nullptr) {
 
     middleTexture = LoadAndResizeTexture("../assets/map/tiles/Middle.png", 32, 32);
 
-    bridgeTexture = LoadAndResizeTexture("../assets/map/tiles/Bridge.png", 32, 32);
+    bridgeTexture = LoadAndResizeTexture("../assets/map/tiles/bridge.png", 32, 32);
 }
 
 Map::~Map() {
@@ -52,11 +52,15 @@ Texture2D Map::LoadAndResizeTexture(const std::string& path, int width, int heig
     UnloadImage(img);
     return texture;
 }
-
 void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
     tiles.clear(); // Limpia los tiles existentes
     std::vector<bool> isVerticalPath(mapData[0].size(), false); // Rastrea caminos verticales
     std::vector<size_t> verticalIndices(mapData[0].size(), 0);  // Índices de sprites verticales
+
+    if (mapData.empty()) {
+        TraceLog(LOG_ERROR, "LoadFromArray: mapData is empty.");
+        return;
+    }
 
     // Paso 1: Identificar caminos verticales
     for (size_t col = 0; col < mapData[0].size(); ++col) {
@@ -106,35 +110,40 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
 
             if (tileType == 3) {
                 tileRow.emplace_back(std::make_unique<BridgeTile>(position, bridgeTexture));
-            }
-                else if (tileType == 0 || tileType == 2)  { // Camino
-                    bool isHorizontal = true;
+            } else if (tileType == 0 || tileType == 2) { // Camino
+                bool isHorizontal = true;
 
-                    // Verifica si es parte de un camino vertical
-                    if (isVerticalPath[col]) {
-                        if ((row > 0 && mapData[row - 1][col] == 0) ||
-                            (row < mapData.size() - 1 && mapData[row + 1][col] == 0)) {
-                            isHorizontal = false;
-                        }
+                // Verifica si es parte de un camino vertical
+                if (isVerticalPath[col]) {
+                    if ((row > 0 && mapData[row - 1][col] == 0) ||
+                        (row < mapData.size() - 1 && mapData[row + 1][col] == 0)) {
+                        isHorizontal = false;
+                    }
+                }
+
+                if (isHorizontal) {
+                    if (col == 0 || mapData[row][col - 1] != 0) {
+                        horizontalIndex = 0; // Reinicia el índice horizontal
+                        inHorizontalSequence = true;
                     }
 
-                    if (isHorizontal) {
-                        if (col == 0 || mapData[row][col - 1] != 0) {
-                            horizontalIndex = 0; // Reinicia el índice horizontal
-                            inHorizontalSequence = true;
-                        }
+                    // Agrega un tile de camino horizontal
+                    if (horizontalIndex >= horizontalTextures.size()) {
+                        TraceLog(LOG_ERROR, "LoadFromArray: horizontalIndex out of bounds (%zu).", horizontalIndex);
+                    }
+                    tileRow.emplace_back(std::make_unique<PathTile>(position, horizontalTextures[horizontalIndex % 6]));
+                    horizontalIndex++;
+                } else {
+                    if (row == 0 || mapData[row - 1][col] != 0) {
+                        verticalIndices[col] = 0; // Reinicia el índice vertical
+                    }
 
-                        // Agrega un tile de camino horizontal
-                        tileRow.emplace_back(std::make_unique<PathTile>(position, horizontalTextures[horizontalIndex % 6]));
-                        horizontalIndex++;
-                    } else {
-                        if (row == 0 || mapData[row - 1][col] != 0) {
-                            verticalIndices[col] = 0; // Reinicia el índice vertical
-                        }
-
-                        // Agrega un tile de camino vertical
-                        tileRow.emplace_back(std::make_unique<PathTile>(position, verticalTextures[verticalIndices[col] % 6]));
-                        verticalIndices[col]++;
+                    // Agrega un tile de camino vertical
+                    if (verticalIndices[col] >= verticalTextures.size()) {
+                        TraceLog(LOG_ERROR, "LoadFromArray: verticalIndex out of bounds (%zu) for column %zu.", verticalIndices[col], col);
+                    }
+                    tileRow.emplace_back(std::make_unique<PathTile>(position, verticalTextures[verticalIndices[col] % 6]));
+                    verticalIndices[col]++;
                 }
             } else { // Césped
                 // Agrega un tile de césped con color OLIVE_GREEN
@@ -144,7 +153,12 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
         }
         tiles.emplace_back(std::move(tileRow)); // Mueve la fila al vector principal
     }
+
+    if (tiles.empty()) {
+        TraceLog(LOG_ERROR, "LoadFromArray: No tiles were created.");
+    }
 }
+
 
 void Map::CheckHover() const {
     for (const auto& row : tiles) {
@@ -161,19 +175,22 @@ void Map::CheckHover() const {
 void Map::HandleClick() {
     for (const auto& row : tiles) {
         for (const auto& tile : row) {
+            if (!tile) {
+                TraceLog(LOG_ERROR, "HandleClick: Null tile detected.");
+                continue;
+            }
+
             Rectangle tileRect = { tile->GetPosition().x, tile->GetPosition().y, 32, 32 };
             if (CheckCollisionPointRec(GetMousePosition(), tileRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-                // Verificar si es un GrassTile
                 auto grassTile = dynamic_cast<GrassTile*>(tile.get());
                 if (grassTile) {
-                    SetSelectedTile(grassTile); // Delegar a SetSelectedTile
+                    SetSelectedTile(grassTile);
                     return;
                 }
 
-                // Verificar si es un TowerTile
                 auto towerTile = dynamic_cast<TowerTile*>(tile.get());
                 if (towerTile) {
-                    SetSelectedTower(towerTile); // Delegar a SetSelectedTower
+                    SetSelectedTower(towerTile);
                     return;
                 }
             }

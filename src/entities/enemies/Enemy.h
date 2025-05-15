@@ -22,29 +22,33 @@ protected:
     const int minFrameSpeed = 1;  // Velocidad mínima de animación
     static std::vector<Enemy*> allInstances; // Contenedor estático para todas las instancias
 
-    // Nuevos atributos
-    std::string enemyType;       // Tipo de enemigo (título)
-    int health;                  // Salud del enemigo
-    int speed;                   // Velocidad del enemigo
-    int arrowResistance;         // Resistencia a flechas
-    int magicResistance;         // Resistencia a magia
-    int artilleryResistance;     // Resistencia a artillería
-    bool mutated;                // Si el enemigo está mutado
-    int generation;              // Generación del enemigo
-    int mutationChance;         // Probabilidad de mutación
 
-    // Atributos estáticos
-    static int currentGeneration; // Generación actual para nuevas instancias
+    // Atributos para path
+    std::vector<std::pair<int, int>> path; // Ruta de tiles
+    int currentPathIndex = 0;              // Índice actual en la ruta
+    float interpolationFactor = 0.0f;      // Progreso entre dos tiles
+    Vector2 startPosition;                 // Posición de inicio del segmento
+    Vector2 targetPosition;                // Posición objetivo del segmento
+    bool isActive = false;                 // Si el enemigo está activo
+    const int tileSize = 32;               // Tamaño de tile en píxeles
+   
+    // Otros atributos
+    std::string enemyType;
+    int health;
+    int speed;
+    int arrowResistance;
+    int magicResistance;
+    int artilleryResistance;
+    bool mutated;
+    int generation;
+    int mutationChance;
+    static int currentGeneration;
 
 public:
     Enemy(bool alive, Vector2 position, int frameSpeed, const std::string& texturePath, int frameCount,
           const std::string& enemyType, int health, int speed, int arrowResistance, int magicResistance,
           int artilleryResistance, bool mutated, int mutationChance);
     virtual ~Enemy();
-
-    // Métodos nuevos
-    static void SetCurrentGeneration(int generation); // Cambiar la generación actual
-    static int GetCurrentGeneration();                // Obtener la generación actual
 
     // Métodos nuevos
     static void SetCurrentGeneration(int generation); // Cambiar la generación actual

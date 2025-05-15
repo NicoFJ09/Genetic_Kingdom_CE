@@ -2,10 +2,6 @@
 #include "raylib.h"
 #include <iostream>
 #include <algorithm>
-#include <vector>
-#include <string>
-#include "Pathfinding.h" 
-#include "Constants.h"
 
 // Inicialización del contenedor estático
 std::vector<Enemy*> Enemy::allInstances;
@@ -27,19 +23,7 @@ Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texture
         frameRec = {0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height};
     }
     allInstances.push_back(this);
-
-    // ============= Test to see path - Change later with enemy movement if necessary ==================
-    path = AStarPath(0, 0, 18, 30);
-    std::cout << "[Enemy] Path generated with " << path.size() << " steps:\n";
-    for (const auto& coord : path) {        //Show path in terminal
-        int x = coord.first;
-        int y = coord.second;
-        std::cout << "  -> (" << x << ", " << y << ")\n";
-    }
-    currentPathIndex = 0;
 }
-    
-    
 
 Enemy::~Enemy() {
     if (texture.id != 0) {

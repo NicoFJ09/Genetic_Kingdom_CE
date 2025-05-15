@@ -113,21 +113,24 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
             } else if (tileType == 0 || tileType == 2) { // Camino
                 bool isHorizontal = true;
 
-                    // Verifica si es parte de un camino vertical
-                    if (isVerticalPath[col]) {
-                        if ((row > 0 && mapData[row - 1][col] == 0) ||
-                            (row < mapData.size() - 1 && mapData[row + 1][col] == 0)) {
-                            isHorizontal = false;
-                        }
+                // Verifica si es parte de un camino vertical
+                if (isVerticalPath[col]) {
+                    if ((row > 0 && mapData[row - 1][col] == 0) ||
+                        (row < mapData.size() - 1 && mapData[row + 1][col] == 0)) {
+                        isHorizontal = false;
+                    }
+                }
+
+                if (isHorizontal) {
+                    if (col == 0 || mapData[row][col - 1] != 0) {
+                        horizontalIndex = 0; // Reinicia el índice horizontal
+                        inHorizontalSequence = true;
                     }
 
-                    if (isHorizontal) {
-                        if (col == 0 || mapData[row][col - 1] != 0) {
-                            horizontalIndex = 0; // Reinicia el índice horizontal
-                            inHorizontalSequence = true;
-                        }
-
                     // Agrega un tile de camino horizontal
+                    if (horizontalIndex >= horizontalTextures.size()) {
+                        TraceLog(LOG_ERROR, "LoadFromArray: horizontalIndex out of bounds (%zu).", horizontalIndex);
+                    }
                     tileRow.emplace_back(std::make_unique<PathTile>(position, horizontalTextures[horizontalIndex % 6]));
                     horizontalIndex++;
                 } else {

@@ -5,6 +5,7 @@
 
 // Inicialización del contenedor estático
 std::vector<Enemy*> Enemy::allInstances;
+int Enemy::currentGeneration = 1;
 
 Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texturePath, int frameCount,
              const std::string& enemyType, int health, int speed, int arrowResistance,
@@ -12,7 +13,7 @@ Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texture
     : isAlive(alive), position(pos), frameSpeed(frameSpeed > 0 ? frameSpeed : 1), currentFrame(0), frameCounter(0),
       frameCount(frameCount), texturePath(texturePath), enemyType(enemyType), health(health), speed(speed),
       arrowResistance(arrowResistance), magicResistance(magicResistance), artilleryResistance(artilleryResistance),
-      mutated(mutated), mutationChance(mutationChance),generation(generation),
+      mutated(mutated), generation(currentGeneration), mutationChance(mutationChance),
       currentPathIndex(0), interpolationFactor(0.0f), isActive(false) {
     texture = LoadTexture(texturePath.c_str());
     if (texture.id == 0) {
@@ -34,6 +35,15 @@ Enemy::~Enemy() {
     if (it != allInstances.end()) {
         allInstances.erase(it);
     }
+}
+
+// Métodos estáticos
+void Enemy::SetCurrentGeneration(int generation) {
+    currentGeneration = generation;
+}
+
+int Enemy::GetCurrentGeneration() {
+    return currentGeneration;
 }
 
 // Getters y setters
@@ -106,12 +116,7 @@ int Enemy::GetMutationChance() const {
 
 // Métodos para path
 void Enemy::SetPath(const std::vector<std::pair<int, int>>& newPath) {
-    path.clear();
-    path.reserve(newPath.size());
-    // Invertir el orden de cada par: (fila, columna) -> (columna, fila)
-    for (const auto& tile : newPath) {
-        path.emplace_back(tile.second, tile.first);
-    }
+    path = newPath;
     currentPathIndex = 0;
     interpolationFactor = 0.0f;
     if (path.size() > 1) {

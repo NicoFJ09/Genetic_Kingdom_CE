@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <algorithm>
 
 Game::Game() : waveManager(30.0f) {
     waveManager.StartWave();

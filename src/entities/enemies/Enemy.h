@@ -36,6 +36,8 @@ protected:
     std::string enemyType;
     double health;
     double speed;
+    double health;
+    double speed;
     int arrowResistance;
     int magicResistance;
     int artilleryResistance;

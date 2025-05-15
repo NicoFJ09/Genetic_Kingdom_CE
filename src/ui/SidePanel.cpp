@@ -134,8 +134,8 @@ void SidePanel::Draw() {
     // Dibujar las filas de la tabla para cada enemigo del tipo actual
     for (Enemy* enemy : activeEnemies) {
         if (enemy->GetEnemyType() == currentType) {
-            DrawText(TextFormat("%d", enemy->GetHealth()), colX[0], textY, fontSize, BLACK);
-            DrawText(TextFormat("%d", enemy->GetSpeed()), colX[1], textY, fontSize, BLACK);
+            DrawText(TextFormat("%.0f", enemy->GetHealth()), colX[0], textY, fontSize, BLACK);
+            DrawText(TextFormat("%.0f", enemy->GetSpeed()), colX[1], textY, fontSize, BLACK);
             DrawText(TextFormat("%d", enemy->GetArrowResistance()), colX[2], textY, fontSize, BLACK);
             DrawText(TextFormat("%d", enemy->GetMagicResistance()), colX[3], textY, fontSize, BLACK);
             DrawText(TextFormat("%d", enemy->GetArtilleryResistance()), colX[4], textY, fontSize, BLACK);

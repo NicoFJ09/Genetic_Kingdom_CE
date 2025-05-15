@@ -120,21 +120,9 @@ struct TowerInfo {
 };
 
 static const std::array<TowerInfo, 3> Towers = {{
-    {"Archer Tower", 100, 75, 125},
-    {"Artillery Tower", 250, 125, 175},
-    {"Mage Tower", 175, 100, 150}
-}};
-
-struct EnemyInfo {
-    std::string name;
-    int value;
-};
-
-static const std::array<EnemyInfo, 4> EnemiesValue = {{
-    {"Ogre", 40},
-    {"Dark Elf", 30},
-    {"Harpy", 35},
-    {"Mercenary", 45}
+    {"Archer Tower", 100, 250, 500},
+    {"Artillery Tower", 100, 250, 500},
+    {"Mage Tower", 100, 250, 500}
 }};
 
 // Sprites de las torres por nivel

@@ -2,36 +2,36 @@
 
 ArcherTower::ArcherTower(Vector2 position, int level)
     : Tower(position, level,
-        "../assets/textures/towers/towersInMap/ArcherLvl1.png", // texture
-        15,     // damage
-        1.5,    // speed
-        6,      // range in pixels
-        12      // special attack regeneration time
-    )
-{
+        level == 1 ? "../assets/textures/towers/towersInMap/ArcherLvl1.png" :
+        level == 2 ? "../assets/textures/towers/towersInMap/ArcherLvl2.png" :
+                     "../assets/textures/towers/towersInMap/ArcherLvl3.png",
+        level == 1 ? 10 : level == 2 ? 15 : 20,           // damage
+        level == 1 ? 2  : level == 2 ? 3  : 4,            // speed
+        level == 1 ? 64 : level == 2 ? 128 : 192,        // range in pixels
+        level == 1 ? 50 : level == 2 ? 40 : 25          // special attack regen
+    ){
     towerType = "Archer Tower";
 }
-
 
 void ArcherTower::UpdateStats() {
     // Actualizar estadísticas según el nivel
     if (level == 1) {
-        damage = 15;
-        speed = 1.5;
-        range = 6;
-        spAttackRegenerationTime = 12;
+        damage = 10;
+        speed = 2;
+        range = 64;
+        spAttackRegenerationTime = 50;
         texturePath = "../assets/textures/towers/towersInMap/ArcherLvl1.png";
     } else if (level == 2) {
-        damage = 20;
-        speed = 1.7;
-        range = 7;
-        spAttackRegenerationTime = 10;
+        damage = 15;
+        speed = 3;
+        range = 128;
+        spAttackRegenerationTime = 40;
         texturePath = "../assets/textures/towers/towersInMap/ArcherLvl2.png";
     } else if (level == 3) {
-        damage = 25;
-        speed = 1.9;
-        range = 8;
-        spAttackRegenerationTime = 8;
+        damage = 20;
+        speed = 4;
+        range = 192;
+        spAttackRegenerationTime = 25;
         texturePath = "../assets/textures/towers/towersInMap/ArcherLvl3.png";
     }
 

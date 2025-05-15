@@ -2,36 +2,36 @@
 
 ArtilleryTower::ArtilleryTower(Vector2 position, int level)
     : Tower(position, level,
-        "../assets/textures/towers/towersInMap/ArtilleryLvl1.png", // texture
-        60,   // damage
-        0.5,    // speed
-        3,   // range in pixels
-        15    // special attack regeneration time
-    )
-{
+        level == 1 ? "../assets/textures/towers/towersInMap/ArtilleryLvl1.png" :
+        level == 2 ? "../assets/textures/towers/towersInMap/ArtilleryLvl2.png" :
+                     "../assets/textures/towers/towersInMap/ArtilleryLvl3.png",
+        level == 1 ? 20 : level == 2 ? 30 : 40,           // damage
+        level == 1 ? 1  : level == 2 ? 2  : 3,            // speed
+        level == 1 ? 50 : level == 2 ? 100 : 150,        // range in pixels
+        level == 1 ? 70 : level == 2 ? 50 : 35          // special attack regen
+    ){
     towerType = "Artillery Tower";
 }
-
 
 void ArtilleryTower::UpdateStats() {
     // Actualizar estadísticas según el nivel
     if (level == 1) {
-        damage = 60;
-        speed = 0.5;
-        range = 3;
-        spAttackRegenerationTime = 15;
+        damage = 20;
+        speed = 1;
+        range = 50;
+        spAttackRegenerationTime = 70;
         texturePath = "../assets/textures/towers/towersInMap/ArtilleryLvl1.png";
     } else if (level == 2) {
-        damage = 80;
-        speed = 0.6;
-        range = 4;
-        spAttackRegenerationTime = 13;
+        damage = 30;
+        speed = 2;
+        range = 100;
+        spAttackRegenerationTime = 50;
         texturePath = "../assets/textures/towers/towersInMap/ArtilleryLvl2.png";
     } else if (level == 3) {
-        damage = 105;
-        speed = 0.7;
-        range = 5;
-        spAttackRegenerationTime = 10;
+        damage = 40;
+        speed = 3;
+        range = 150;
+        spAttackRegenerationTime = 35;
         texturePath = "../assets/textures/towers/towersInMap/ArtilleryLvl3.png";
     }
 

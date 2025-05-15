@@ -5,7 +5,7 @@
 
 std::vector<Tower*> Tower::allInstances;
 
-Tower::Tower(Vector2 position, int level, const std::string& path, int damage, double speed, int range, int spAttackRegenerationTime)
+Tower::Tower(Vector2 position, int level, const std::string& path, int damage, int speed, int range, int spAttackRegenerationTime)
     : position(position), level(level), texturePath(path), damage(damage), speed(speed), range(range),
        spAttackRegenerationTime(spAttackRegenerationTime)
 {

@@ -123,12 +123,12 @@ void SidePanel::Draw() {
 
     // Dibujar encabezados de la tabla
     float colX[] = {textX, textX + 50, textX + 100, textX + 150, textX + 200, textX + 250}; // Posiciones de las columnas
-    DrawText("L", colX[0], textY, fontSize, BLACK);
+    DrawText("V", colX[0], textY, fontSize, BLACK);
     DrawText("S", colX[1], textY, fontSize, BLACK);
     DrawText("FR", colX[2], textY, fontSize, BLACK);
     DrawText("MR", colX[3], textY, fontSize, BLACK);
     DrawText("AR", colX[4], textY, fontSize, BLACK);
-    DrawText("MT", colX[5], textY, fontSize, BLACK);
+    DrawText("M", colX[5], textY, fontSize, BLACK);
     textY += 20;
 
     // Dibujar las filas de la tabla para cada enemigo del tipo actual

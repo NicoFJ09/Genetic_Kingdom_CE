@@ -4,6 +4,7 @@
 #include <vector>
 #include <utility>
 #include <array>
+#include <cstddef>
 
 // Recibe el mapa como array fijo y lo convierte internamente
 template <size_t ROWS, size_t COLUMNS>

@@ -46,6 +46,10 @@ public:
     static void SetCurrentGeneration(int generation); // Cambiar la generación actual
     static int GetCurrentGeneration();                // Obtener la generación actual
 
+    // Métodos nuevos
+    static void SetCurrentGeneration(int generation); // Cambiar la generación actual
+    static int GetCurrentGeneration();                // Obtener la generación actual
+
     // Getters y setters
     std::string GetEnemyType() const;
     void SetEnemyType(const std::string& type);

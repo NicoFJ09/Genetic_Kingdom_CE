@@ -20,7 +20,7 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     return waveEnemies;
 }
 
-GameplayScreen::GameplayScreen(int screenWidth, int screenHeight)
+GameplayScreen::GameplayScreen(int screenWidth, int screenHeight, ScreenManager* screenManager)
     : screenWidth(screenWidth), screenHeight(screenHeight),
       game(30.0f),
       gamePanel(0, 0, 992, 608),

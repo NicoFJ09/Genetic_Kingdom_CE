@@ -20,6 +20,7 @@ set(SOURCES
     src/main.cpp
     src/screens/StartScreen.cpp
     src/screens/GameplayScreen.cpp
+    src/screens/DefeatScreen.cpp
     src/screens/ScreenManager.cpp
     src/core/EconomySystem.cpp
     src/core/Game.cpp

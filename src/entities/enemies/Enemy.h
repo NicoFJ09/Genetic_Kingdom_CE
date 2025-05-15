@@ -22,19 +22,27 @@ protected:
     const int minFrameSpeed = 1;  // Velocidad mínima de animación
     static std::vector<Enemy*> allInstances; // Contenedor estático para todas las instancias
 
-    // Nuevos atributos
-    std::string enemyType;       // Tipo de enemigo (título)
-    int health;                  // Salud del enemigo
-    int speed;                   // Velocidad del enemigo
-    int arrowResistance;         // Resistencia a flechas
-    int magicResistance;         // Resistencia a magia
-    int artilleryResistance;     // Resistencia a artillería
-    bool mutated;                // Si el enemigo está mutado
-    int generation;              // Generación del enemigo
-    int mutationChance;         // Probabilidad de mutación
 
-    // Atributos estáticos
-    static int currentGeneration; // Generación actual para nuevas instancias
+    // Atributos para path
+    std::vector<std::pair<int, int>> path; // Ruta de tiles
+    int currentPathIndex = 0;              // Índice actual en la ruta
+    float interpolationFactor = 0.0f;      // Progreso entre dos tiles
+    Vector2 startPosition;                 // Posición de inicio del segmento
+    Vector2 targetPosition;                // Posición objetivo del segmento
+    bool isActive = false;                 // Si el enemigo está activo
+    const int tileSize = 32;               // Tamaño de tile en píxeles
+   
+    // Otros atributos
+    std::string enemyType;
+    int health;
+    int speed;
+    int arrowResistance;
+    int magicResistance;
+    int artilleryResistance;
+    bool mutated;
+    int generation;
+    int mutationChance;
+    static int currentGeneration;
 
 public:
     Enemy(bool alive, Vector2 position, int frameSpeed, const std::string& texturePath, int frameCount,
@@ -73,14 +81,26 @@ public:
     int GetMutationChance() const;
     void SetMutationChance(int chance);
 
+    // Métodos para path
+    void SetPath(const std::vector<std::pair<int, int>>& newPath);
+    void Activate();
+    void Deactivate();
+    bool IsActive() const;
+
     // Métodos existentes
-    virtual void Update();
+    virtual void Update(float deltaTime);
     virtual void Draw();
 
     void IncreaseSpeed();
     void DecreaseSpeed();
 
     static void ClearAllInstances(); // Limpia todas las instancias de enemigos
+
+    // Movimiento por path
+    void PathMove(float deltaTime);
+
+    // Utilidad
+    Vector2 TileToWorldPosition(const std::pair<int, int>& tilePos) const;
 };
 
 #endif // ENEMY_H

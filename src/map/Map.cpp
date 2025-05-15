@@ -4,6 +4,7 @@
 #include "PathTile.h"
 #include "GrassTile.h"
 #include "TowerTile.h"
+#include "BridgeTile.h"
 #include "../entities/towers/archerTower/ArcherTower.h"
 #include "../entities/towers/mageTower/MageTower.h"
 #include "../entities/towers/artilleryTower/ArtilleryTower.h"
@@ -25,6 +26,8 @@ Map::Map() : selectedTile(nullptr) {
     verticalTextures[5] = LoadAndResizeTexture("../assets/map/tiles/Vertical/V_4.png", 32, 32);
 
     middleTexture = LoadAndResizeTexture("../assets/map/tiles/Middle.png", 32, 32);
+
+    bridgeTexture = LoadAndResizeTexture("../assets/map/tiles/Bridge.png", 32, 32);
 }
 
 Map::~Map() {
@@ -101,34 +104,37 @@ void Map::LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData) {
             Vector2 position = { static_cast<float>(col * 32), static_cast<float>(row * 32) };
             int tileType = mapData[row][col];
 
-            if (tileType == 0 || tileType == 2)  { // Camino
-                bool isHorizontal = true;
+            if (tileType == 3) {
+                tileRow.emplace_back(std::make_unique<BridgeTile>(position, bridgeTexture));
+            }
+                else if (tileType == 0 || tileType == 2)  { // Camino
+                    bool isHorizontal = true;
 
-                // Verifica si es parte de un camino vertical
-                if (isVerticalPath[col]) {
-                    if ((row > 0 && mapData[row - 1][col] == 0) ||
-                        (row < mapData.size() - 1 && mapData[row + 1][col] == 0)) {
-                        isHorizontal = false;
-                    }
-                }
-
-                if (isHorizontal) {
-                    if (col == 0 || mapData[row][col - 1] != 0) {
-                        horizontalIndex = 0; // Reinicia el índice horizontal
-                        inHorizontalSequence = true;
+                    // Verifica si es parte de un camino vertical
+                    if (isVerticalPath[col]) {
+                        if ((row > 0 && mapData[row - 1][col] == 0) ||
+                            (row < mapData.size() - 1 && mapData[row + 1][col] == 0)) {
+                            isHorizontal = false;
+                        }
                     }
 
-                    // Agrega un tile de camino horizontal
-                    tileRow.emplace_back(std::make_unique<PathTile>(position, horizontalTextures[horizontalIndex % 6]));
-                    horizontalIndex++;
-                } else {
-                    if (row == 0 || mapData[row - 1][col] != 0) {
-                        verticalIndices[col] = 0; // Reinicia el índice vertical
-                    }
+                    if (isHorizontal) {
+                        if (col == 0 || mapData[row][col - 1] != 0) {
+                            horizontalIndex = 0; // Reinicia el índice horizontal
+                            inHorizontalSequence = true;
+                        }
 
-                    // Agrega un tile de camino vertical
-                    tileRow.emplace_back(std::make_unique<PathTile>(position, verticalTextures[verticalIndices[col] % 6]));
-                    verticalIndices[col]++;
+                        // Agrega un tile de camino horizontal
+                        tileRow.emplace_back(std::make_unique<PathTile>(position, horizontalTextures[horizontalIndex % 6]));
+                        horizontalIndex++;
+                    } else {
+                        if (row == 0 || mapData[row - 1][col] != 0) {
+                            verticalIndices[col] = 0; // Reinicia el índice vertical
+                        }
+
+                        // Agrega un tile de camino vertical
+                        tileRow.emplace_back(std::make_unique<PathTile>(position, verticalTextures[verticalIndices[col] % 6]));
+                        verticalIndices[col]++;
                 }
             } else { // Césped
                 // Agrega un tile de césped con color OLIVE_GREEN

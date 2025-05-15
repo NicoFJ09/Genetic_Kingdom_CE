@@ -14,15 +14,13 @@ protected:
     int level;                    // Nivel de la torre
     int speed;                    // Velocidad de ataque de la torre
     int range;                    // Rango de ataque de la torre
-    int attackRegenerationTime;   // Tiempo de regeneración de ataque
     int spAttackRegenerationTime; // Tiempo de regeneración de ataque especial
     std::string towerType;        // Tipo de torre (Archer, Artillery, Mage)
     static std::vector<Tower*> allInstances; // Contenedor estático para todas las instancias
     virtual void UpdateStats(); // Actualizar estadísticas y sprite según el nivel
 
 public:
-    Tower(Vector2 position, int level, const std::string& texturePath, int damage, int speed, int range, 
-          int attackRegenerationTime, int spAttackRegenerationTime);
+    Tower(Vector2 position, int level, const std::string& texturePath, int damage, int speed, int range, int spAttackRegenerationTime);
     virtual ~Tower();
 
     virtual void Update();
@@ -34,7 +32,6 @@ public:
     int GetLevel() const { return level; }
     int GetSpeed() const { return speed; }
     int GetRange() const { return range; }
-    int GetAttackRegenerationTime() const { return attackRegenerationTime; }
     int GetSpecialAttackRegenerationTime() const { return spAttackRegenerationTime; }
     std::string GetTowerType() const { return towerType; }
 

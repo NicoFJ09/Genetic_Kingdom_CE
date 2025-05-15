@@ -123,6 +123,8 @@
     "utility": "cpp",
     "format": "cpp",
     "text_encoding": "cpp",
-    "thread": "cpp"
+    "thread": "cpp",
+    "__availability": "cpp",
+    "__config": "cpp"
   }
 }

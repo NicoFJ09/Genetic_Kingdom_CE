@@ -441,6 +441,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/map/BridgeTile.o: src/map/BridgeTile.cpp.o
+.PHONY : src/map/BridgeTile.o
+
+# target to build an object file
+src/map/BridgeTile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o
+.PHONY : src/map/BridgeTile.cpp.o
+
+src/map/BridgeTile.i: src/map/BridgeTile.cpp.i
+.PHONY : src/map/BridgeTile.i
+
+# target to preprocess a source file
+src/map/BridgeTile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.i
+.PHONY : src/map/BridgeTile.cpp.i
+
+src/map/BridgeTile.s: src/map/BridgeTile.cpp.s
+.PHONY : src/map/BridgeTile.s
+
+# target to generate assembly for a file
+src/map/BridgeTile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.s
+.PHONY : src/map/BridgeTile.cpp.s
+
 src/map/GrassTile.o: src/map/GrassTile.cpp.o
 .PHONY : src/map/GrassTile.o
 
@@ -561,6 +585,30 @@ src/map/TowerTile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.s
 .PHONY : src/map/TowerTile.cpp.s
 
+src/screens/DefeatScreen.o: src/screens/DefeatScreen.cpp.o
+.PHONY : src/screens/DefeatScreen.o
+
+# target to build an object file
+src/screens/DefeatScreen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/DefeatScreen.cpp.o
+.PHONY : src/screens/DefeatScreen.cpp.o
+
+src/screens/DefeatScreen.i: src/screens/DefeatScreen.cpp.i
+.PHONY : src/screens/DefeatScreen.i
+
+# target to preprocess a source file
+src/screens/DefeatScreen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/DefeatScreen.cpp.i
+.PHONY : src/screens/DefeatScreen.cpp.i
+
+src/screens/DefeatScreen.s: src/screens/DefeatScreen.cpp.s
+.PHONY : src/screens/DefeatScreen.s
+
+# target to generate assembly for a file
+src/screens/DefeatScreen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/DefeatScreen.cpp.s
+.PHONY : src/screens/DefeatScreen.cpp.s
+
 src/screens/GameplayScreen.o: src/screens/GameplayScreen.cpp.o
 .PHONY : src/screens/GameplayScreen.o
 
@@ -632,6 +680,30 @@ src/screens/StartScreen.s: src/screens/StartScreen.cpp.s
 src/screens/StartScreen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.s
 .PHONY : src/screens/StartScreen.cpp.s
+
+src/systems/Pathfinding.o: src/systems/Pathfinding.cpp.o
+.PHONY : src/systems/Pathfinding.o
+
+# target to build an object file
+src/systems/Pathfinding.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.o
+.PHONY : src/systems/Pathfinding.cpp.o
+
+src/systems/Pathfinding.i: src/systems/Pathfinding.cpp.i
+.PHONY : src/systems/Pathfinding.i
+
+# target to preprocess a source file
+src/systems/Pathfinding.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.i
+.PHONY : src/systems/Pathfinding.cpp.i
+
+src/systems/Pathfinding.s: src/systems/Pathfinding.cpp.s
+.PHONY : src/systems/Pathfinding.s
+
+# target to generate assembly for a file
+src/systems/Pathfinding.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/Pathfinding.cpp.s
+.PHONY : src/systems/Pathfinding.cpp.s
 
 src/ui/BottomPanel.o: src/ui/BottomPanel.cpp.o
 .PHONY : src/ui/BottomPanel.o
@@ -873,6 +945,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/map/BridgeTile.o"
+	@echo "... src/map/BridgeTile.i"
+	@echo "... src/map/BridgeTile.s"
 	@echo "... src/map/GrassTile.o"
 	@echo "... src/map/GrassTile.i"
 	@echo "... src/map/GrassTile.s"
@@ -888,6 +963,9 @@ help:
 	@echo "... src/map/TowerTile.o"
 	@echo "... src/map/TowerTile.i"
 	@echo "... src/map/TowerTile.s"
+	@echo "... src/screens/DefeatScreen.o"
+	@echo "... src/screens/DefeatScreen.i"
+	@echo "... src/screens/DefeatScreen.s"
 	@echo "... src/screens/GameplayScreen.o"
 	@echo "... src/screens/GameplayScreen.i"
 	@echo "... src/screens/GameplayScreen.s"
@@ -897,6 +975,9 @@ help:
 	@echo "... src/screens/StartScreen.o"
 	@echo "... src/screens/StartScreen.i"
 	@echo "... src/screens/StartScreen.s"
+	@echo "... src/systems/Pathfinding.o"
+	@echo "... src/systems/Pathfinding.i"
+	@echo "... src/systems/Pathfinding.s"
 	@echo "... src/ui/BottomPanel.o"
 	@echo "... src/ui/BottomPanel.i"
 	@echo "... src/ui/BottomPanel.s"

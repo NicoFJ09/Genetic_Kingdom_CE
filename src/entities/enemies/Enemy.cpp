@@ -5,7 +5,7 @@
 
 // Inicialización del contenedor estático
 std::vector<Enemy*> Enemy::allInstances;
-int Enemy::currentGeneration = 1; // Generación inicial
+int Enemy::currentGeneration = 1;
 
 Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texturePath, int frameCount,
              const std::string& enemyType, int health, int speed, int arrowResistance,
@@ -13,7 +13,8 @@ Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texture
     : isAlive(alive), position(pos), frameSpeed(frameSpeed > 0 ? frameSpeed : 1), currentFrame(0), frameCounter(0),
       frameCount(frameCount), texturePath(texturePath), enemyType(enemyType), health(health), speed(speed),
       arrowResistance(arrowResistance), magicResistance(magicResistance), artilleryResistance(artilleryResistance),
-      mutated(mutated), generation(currentGeneration), mutationChance(mutationChance) {
+      mutated(mutated), generation(currentGeneration), mutationChance(mutationChance),
+      currentPathIndex(0), interpolationFactor(0.0f), isActive(false) {
     texture = LoadTexture(texturePath.c_str());
     if (texture.id == 0) {
         TraceLog(LOG_ERROR, "Failed to load texture: %s", texturePath.c_str());
@@ -21,8 +22,6 @@ Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texture
     } else {
         frameRec = {0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height};
     }
-
-    // Agregar la instancia al contenedor estático
     allInstances.push_back(this);
 }
 
@@ -115,8 +114,93 @@ int Enemy::GetMutationChance() const {
     return mutationChance;
 }
 
+// Métodos para path
+void Enemy::SetPath(const std::vector<std::pair<int, int>>& newPath) {
+    path.clear();
+    path.reserve(newPath.size());
+    // Invertir el orden de cada par: (fila, columna) -> (columna, fila)
+    for (const auto& tile : newPath) {
+        path.emplace_back(tile.second, tile.first);
+    }
+    currentPathIndex = 0;
+    interpolationFactor = 0.0f;
+    if (path.size() > 1) {
+        startPosition = TileToWorldPosition(path[0]);
+        targetPosition = TileToWorldPosition(path[1]);
+        position = startPosition;
+    }
+}
+
+void Enemy::Activate() {
+    isActive = true;
+    isAlive = true;
+    if (!path.empty()) {
+        position = TileToWorldPosition(path[0]);
+        currentPathIndex = 0;
+        interpolationFactor = 0.0f;
+        if (path.size() > 1) {
+            startPosition = TileToWorldPosition(path[0]);
+            targetPosition = TileToWorldPosition(path[1]);
+        }
+    }
+}
+
+void Enemy::Deactivate() {
+    isActive = false;
+}
+
+bool Enemy::IsActive() const {
+    return isActive;
+}
+
+Vector2 Enemy::TileToWorldPosition(const std::pair<int, int>& tilePos) const {
+    return {
+        static_cast<float>(tilePos.first * tileSize),
+        static_cast<float>(tilePos.second * tileSize)
+    };
+}
+void Enemy::PathMove(float deltaTime) {
+    if (!isActive || path.size() < 2) return;
+    if (currentPathIndex >= (int)path.size() - 1) {
+        Deactivate();
+        return;
+    }
+
+    // Calcular dirección entre startPosition y targetPosition
+    Vector2 dir = {
+        targetPosition.x - startPosition.x,
+        targetPosition.y - startPosition.y
+    };
+    float distance = sqrtf(dir.x * dir.x + dir.y * dir.y);
+    if (distance == 0) return;
+    dir.x /= distance;
+    dir.y /= distance;
+
+    // Avanzar según la velocidad y el deltaTime (5 veces más rápido)
+    float moveAmount = speed * deltaTime * 5.0f;
+    interpolationFactor += moveAmount / distance;
+
+    if (interpolationFactor >= 1.0f) {
+        // Llegamos al siguiente punto
+        currentPathIndex++;
+        if (currentPathIndex >= (int)path.size() - 1) {
+            position = TileToWorldPosition(path.back());
+            Deactivate();
+            return;
+        }
+        startPosition = TileToWorldPosition(path[currentPathIndex]);
+        targetPosition = TileToWorldPosition(path[currentPathIndex + 1]);
+        interpolationFactor = 0.0f;
+    }
+
+    // Interpolación lineal entre startPosition y targetPosition
+    position.x = startPosition.x + (targetPosition.x - startPosition.x) * interpolationFactor;
+    position.y = startPosition.y + (targetPosition.y - startPosition.y) * interpolationFactor;
+}
+
 // Métodos existentes
-void Enemy::Update() {
+void Enemy::Update(float deltaTime) {
+    PathMove(deltaTime);
     if (frameSpeed <= 0) {
         TraceLog(LOG_ERROR, "Invalid frameSpeed: %d", frameSpeed);
         frameSpeed = 1; // Valor por defecto

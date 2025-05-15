@@ -14,6 +14,7 @@ private:
     std::array<Texture2D, 6> horizontalTextures;
     std::array<Texture2D, 6> verticalTextures;
     Texture2D middleTexture;
+    Texture2D bridgeTexture;
     GrassTile* selectedTile;
     TowerTile* selectedTower;
 

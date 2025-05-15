@@ -33,7 +33,6 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     waveManager.RegisterEnemyInWave(darkElfType);
     int darkElfGen = waveManager.GetEnemyGeneration(darkElfType);
     waveEnemies.push_back(new DarkElf(true, {450, 25}, 10, darkElfGen));
-    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10, darkElfGen));
     
     auto PATH_SEGMENT = AStarPath(0, 0, 18, 30, GAME_MAP);
     for (Enemy* enemy : waveEnemies) {

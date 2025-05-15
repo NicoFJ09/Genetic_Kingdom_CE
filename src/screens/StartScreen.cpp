@@ -20,7 +20,7 @@ StartScreen::~StartScreen() {}
 void StartScreen::Update() {
     if (startButton.IsClicked()) {
         // Cambiar a la pantalla de juego
-        screenManager->SwitchToScreen(new GameplayScreen(screenWidth, screenHeight));
+        screenManager->SwitchToScreen(new GameplayScreen(screenWidth, screenHeight, screenManager));
     }
 }
 

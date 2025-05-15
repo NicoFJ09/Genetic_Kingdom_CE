@@ -585,6 +585,30 @@ src/map/TowerTile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.s
 .PHONY : src/map/TowerTile.cpp.s
 
+src/screens/DefeatScreen.o: src/screens/DefeatScreen.cpp.o
+.PHONY : src/screens/DefeatScreen.o
+
+# target to build an object file
+src/screens/DefeatScreen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/DefeatScreen.cpp.o
+.PHONY : src/screens/DefeatScreen.cpp.o
+
+src/screens/DefeatScreen.i: src/screens/DefeatScreen.cpp.i
+.PHONY : src/screens/DefeatScreen.i
+
+# target to preprocess a source file
+src/screens/DefeatScreen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/DefeatScreen.cpp.i
+.PHONY : src/screens/DefeatScreen.cpp.i
+
+src/screens/DefeatScreen.s: src/screens/DefeatScreen.cpp.s
+.PHONY : src/screens/DefeatScreen.s
+
+# target to generate assembly for a file
+src/screens/DefeatScreen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/DefeatScreen.cpp.s
+.PHONY : src/screens/DefeatScreen.cpp.s
+
 src/screens/GameplayScreen.o: src/screens/GameplayScreen.cpp.o
 .PHONY : src/screens/GameplayScreen.o
 
@@ -939,6 +963,9 @@ help:
 	@echo "... src/map/TowerTile.o"
 	@echo "... src/map/TowerTile.i"
 	@echo "... src/map/TowerTile.s"
+	@echo "... src/screens/DefeatScreen.o"
+	@echo "... src/screens/DefeatScreen.i"
+	@echo "... src/screens/DefeatScreen.s"
 	@echo "... src/screens/GameplayScreen.o"
 	@echo "... src/screens/GameplayScreen.i"
 	@echo "... src/screens/GameplayScreen.s"

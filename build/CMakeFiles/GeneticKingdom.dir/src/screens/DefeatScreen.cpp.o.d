@@ -1,8 +1,8 @@
-CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.cpp \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.h \
+CMakeFiles/GeneticKingdom.dir/src/screens/DefeatScreen.cpp.o: \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/DefeatScreen.cpp \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/DefeatScreen.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/Screen.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/GamePanel.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/TextElement.h \
   /usr/local/Cellar/raylib/5.5/include/raylib.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_header_macro.h \
@@ -11,11 +11,6 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_arg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg___va_copy.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_copy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/Map.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/Tile.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/GrassTile.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/TowerTile.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/../entities/towers/Tower.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/comp.h \
@@ -819,6 +814,11 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/byteswap.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/endian.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/has_single_bit.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/Button.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/ScreenManager.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/StartScreen.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../config/Constants.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit_reference \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter.h \
@@ -845,7 +845,6 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/unicode.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/extended_grapheme_cluster_table.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/width_estimation_table.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/locale \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/once_flag.h \
@@ -911,30 +910,8 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/BottomPanel.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../core/EconomySystem.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/TowerBuy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../entities/towers/Tower.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/TowerUpgrade.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/is_transparent.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__hash_table \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ranges_iterator_traits.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__node_handle \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/SidePanel.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../entities/enemies/Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/Game.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/WaveManager.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/../utils/Timer.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/../entities/enemies/Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/ScreenManager.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/ogre/Ogre.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/ogre/../Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/harpy/Harpy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/harpy/../Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/mercenary/Mercenary.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/mercenary/../Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/darkElf/DarkElf.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/darkElf/../Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../config/Constants.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../systems/Pathfinding.h
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__node_handle

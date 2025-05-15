@@ -6,6 +6,7 @@
 #include "../ui/BottomPanel.h"
 #include "../ui/SidePanel.h"
 #include "../core/Game.h"
+#include "ScreenManager.h"
 
 class GameplayScreen : public Screen {
 private:
@@ -21,7 +22,7 @@ private:
     std::vector<Enemy*> CreateWaveEnemies();
 
 public:
-    GameplayScreen(int screenWidth, int screenHeight);
+    GameplayScreen(int screenWidth, int screenHeight, ScreenManager* screenManager);
     ~GameplayScreen();
     void Update() override;
     void Draw() override;

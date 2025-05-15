@@ -40,19 +40,14 @@ protected:
     int magicResistance;
     int artilleryResistance;
     bool mutated;
-    int generation;
     int mutationChance;
-    static int currentGeneration;
+    int generation;
 
 public:
     Enemy(bool alive, Vector2 position, int frameSpeed, const std::string& texturePath, int frameCount,
           const std::string& enemyType, int health, int speed, int arrowResistance, int magicResistance,
           int artilleryResistance, bool mutated, int generation, int mutationChance);
     virtual ~Enemy();
-
-    // Métodos nuevos
-    static void SetCurrentGeneration(int generation); // Cambiar la generación actual
-    static int GetCurrentGeneration();                // Obtener la generación actual
 
     // Getters y setters
     std::string GetEnemyType() const;

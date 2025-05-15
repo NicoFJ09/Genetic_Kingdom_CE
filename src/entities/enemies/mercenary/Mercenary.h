@@ -5,7 +5,7 @@
 
 class Mercenary : public Enemy {
 public:
-    Mercenary(bool alive, Vector2 position, int frameSpeed);
+    Mercenary(bool alive, Vector2 position, int frameSpeed, int generation);
     ~Mercenary() = default;
 };
 

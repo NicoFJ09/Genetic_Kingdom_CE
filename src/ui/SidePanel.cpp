@@ -75,9 +75,20 @@ void SidePanel::Draw() {
     DrawText(currentType.c_str(), typeTextX, textY, fontSize, BLACK);
     textY += 30;
 
-    // Dibujar la generación del enemigo (centrado en X)
-    int generation = Enemy::GetCurrentGeneration(); // Obtener la generación actual
-    std::string generationText = TextFormat("Generation: %d", generation);
+    // Buscar la generación de la primera instancia activa de este tipo
+    int generation = -1;
+    for (Enemy* enemy : activeEnemies) {
+        if (enemy->GetEnemyType() == currentType) {
+            generation = enemy->GetGeneration();
+            break;
+        }
+    }
+    std::string generationText;
+    if (generation != -1) {
+        generationText = TextFormat("Generation: %d", generation);
+    } else {
+        generationText = "Generation: N/A";
+    }
     int generationTextWidth = MeasureText(generationText.c_str(), fontSize);
     float generationTextX = bounds.x + (bounds.width - generationTextWidth) / 2;
     DrawText(generationText.c_str(), generationTextX, textY, fontSize, DARKGRAY);

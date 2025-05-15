@@ -2,7 +2,6 @@
 #include "raylib.h"
 #include <iostream>
 #include <algorithm>
-#include <cmath>
 
 // Inicialización del contenedor estático
 std::vector<Enemy*> Enemy::allInstances;

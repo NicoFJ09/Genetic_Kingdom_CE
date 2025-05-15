@@ -12,7 +12,7 @@ protected:
     std::string texturePath;      // Ruta de la textura
     int damage;                   // Daño de la torre
     int level;                    // Nivel de la torre
-    int speed;                    // Velocidad de ataque de la torre
+    double speed;                    // Velocidad de ataque de la torre
     int range;                    // Rango de ataque de la torre
     int spAttackRegenerationTime; // Tiempo de regeneración de ataque especial
     std::string towerType;        // Tipo de torre (Archer, Artillery, Mage)
@@ -20,7 +20,7 @@ protected:
     virtual void UpdateStats(); // Actualizar estadísticas y sprite según el nivel
 
 public:
-    Tower(Vector2 position, int level, const std::string& texturePath, int damage, int speed, int range, int spAttackRegenerationTime);
+    Tower(Vector2 position, int level, const std::string& texturePath, int damage, double speed, int range, int spAttackRegenerationTime);
     virtual ~Tower();
 
     virtual void Update();
@@ -30,7 +30,7 @@ public:
     Vector2 GetPosition() const { return position; }
     int GetDamage() const { return damage; }
     int GetLevel() const { return level; }
-    int GetSpeed() const { return speed; }
+    double GetSpeed() const { return speed; }
     int GetRange() const { return range; }
     int GetSpecialAttackRegenerationTime() const { return spAttackRegenerationTime; }
     std::string GetTowerType() const { return towerType; }

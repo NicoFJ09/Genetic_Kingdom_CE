@@ -1,6 +1,6 @@
 #include "Harpy.h"
 
-Harpy::Harpy(bool alive, Vector2 position, int frameSpeed)
+Harpy::Harpy(bool alive, Vector2 position, int frameSpeed, int generation = 1)
     : Enemy(alive, position, frameSpeed,
             alive ? "../assets/textures/enemies/harpy/HarpyMoveSpriteSheet.png"
                   : "../assets/textures/enemies/harpy/HarpyDeathSpriteSheet.png",
@@ -12,5 +12,6 @@ Harpy::Harpy(bool alive, Vector2 position, int frameSpeed)
             5,          // Resistencia a magia
             2,          // Resistencia a artillería
             false,       // No mutado
+            generation,  // Generación
             70           // Probabilidad de mutación
     ) {}

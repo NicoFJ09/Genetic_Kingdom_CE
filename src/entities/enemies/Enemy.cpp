@@ -5,15 +5,14 @@
 
 // Inicialización del contenedor estático
 std::vector<Enemy*> Enemy::allInstances;
-int Enemy::currentGeneration = 1;
 
 Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texturePath, int frameCount,
              const std::string& enemyType, int health, int speed, int arrowResistance,
-             int magicResistance, int artilleryResistance, bool mutated, int mutationChance)
+             int magicResistance, int artilleryResistance, bool mutated, int generation, int mutationChance)
     : isAlive(alive), position(pos), frameSpeed(frameSpeed > 0 ? frameSpeed : 1), currentFrame(0), frameCounter(0),
       frameCount(frameCount), texturePath(texturePath), enemyType(enemyType), health(health), speed(speed),
       arrowResistance(arrowResistance), magicResistance(magicResistance), artilleryResistance(artilleryResistance),
-      mutated(mutated), generation(currentGeneration), mutationChance(mutationChance),
+      mutated(mutated), mutationChance(mutationChance),generation(generation),
       currentPathIndex(0), interpolationFactor(0.0f), isActive(false) {
     texture = LoadTexture(texturePath.c_str());
     if (texture.id == 0) {
@@ -35,15 +34,6 @@ Enemy::~Enemy() {
     if (it != allInstances.end()) {
         allInstances.erase(it);
     }
-}
-
-// Métodos estáticos
-void Enemy::SetCurrentGeneration(int generation) {
-    currentGeneration = generation;
-}
-
-int Enemy::GetCurrentGeneration() {
-    return currentGeneration;
 }
 
 // Getters y setters

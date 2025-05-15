@@ -5,7 +5,7 @@
 
 class DarkElf : public Enemy {
 public:
-    DarkElf(bool alive, Vector2 position, int frameSpeed, int generation);
+    DarkElf(bool alive, Vector2 position, int frameSpeed);
     ~DarkElf() = default; // Destructor predeterminado
 };
 

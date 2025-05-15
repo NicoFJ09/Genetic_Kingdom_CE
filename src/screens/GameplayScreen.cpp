@@ -8,33 +8,11 @@
 
 std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     std::vector<Enemy*> waveEnemies;
-    WaveManager& waveManager = game.GetWaveManager();
-    
-    // Ogre
-    std::string ogreType = "Ogre";
-    waveManager.RegisterEnemyInWave(ogreType);
-    int ogreGen = waveManager.GetEnemyGeneration(ogreType);
-    waveEnemies.push_back(new Ogre(true, {25, 25}, 8, ogreGen));
-    
-    // Harpy
-    std::string harpyType = "Harpy";
-    waveManager.RegisterEnemyInWave(harpyType);
-    int harpyGen = waveManager.GetEnemyGeneration(harpyType);
-    waveEnemies.push_back(new Harpy(true, {150, 25}, 16, harpyGen));
-    
-    // Mercenary
-    std::string mercType = "Mercenary";
-    waveManager.RegisterEnemyInWave(mercType);
-    int mercGen = waveManager.GetEnemyGeneration(mercType);
-    waveEnemies.push_back(new Mercenary(true, {300, 25}, 12, mercGen));
-    
-    // DarkElf (dos instancias, misma generación)
-    std::string darkElfType = "DarkElf";
-    waveManager.RegisterEnemyInWave(darkElfType);
-    int darkElfGen = waveManager.GetEnemyGeneration(darkElfType);
-    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10, darkElfGen));
-    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10, darkElfGen));
-    
+    waveEnemies.push_back(new Ogre(true, {25, 25}, 8));
+    waveEnemies.push_back(new Harpy(true, {150, 25}, 16));
+    waveEnemies.push_back(new Mercenary(true, {300, 25}, 12));
+    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
+    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
     auto PATH_SEGMENT = AStarPath(0, 0, 18, 30, GAME_MAP);
     for (Enemy* enemy : waveEnemies) {
         enemy->SetPath(PATH_SEGMENT);
@@ -54,6 +32,7 @@ GameplayScreen::GameplayScreen(int screenWidth, int screenHeight, ScreenManager*
     game.SpawnEnemiesForWave(waveEnemies);
     // Mostrar los primeros enemigos en el panel
     sidePanel.SetActiveEnemies(game.GetActiveEnemies());
+    auto path = AStarPath(0, 0, 18, 30, GAME_MAP);
 }
 
 GameplayScreen::~GameplayScreen() {

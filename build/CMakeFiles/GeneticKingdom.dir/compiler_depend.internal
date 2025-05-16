@@ -7427,6 +7427,7 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/Tower.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /usr/local/Cellar/raylib/5.5/include/raylib.h
 
@@ -8334,6 +8335,7 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/archerTower/ArcherTower.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/archerTower/ArcherTower.h
  /usr/local/Cellar/raylib/5.5/include/raylib.h
@@ -9242,6 +9244,7 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/ArtilleryTower.h
  /usr/local/Cellar/raylib/5.5/include/raylib.h
@@ -10150,6 +10153,7 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/mageTower/MageTower.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/mageTower/MageTower.h
  /usr/local/Cellar/raylib/5.5/include/raylib.h
@@ -12908,6 +12912,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/archerTower/ArcherTower.h
@@ -14801,6 +14806,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.h
@@ -16672,6 +16678,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
@@ -17631,6 +17638,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
@@ -19494,6 +19502,7 @@ CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
@@ -21230,6 +21239,7 @@ CMakeFiles/GeneticKingdom.dir/src/ui/GamePanel.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
@@ -23879,6 +23889,7 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TowerBuy.cpp.o
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.h
@@ -24798,6 +24809,7 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Tower.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.h

@@ -909,6 +909,7 @@ CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/../enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../core/EconomySystem.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerBuy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../entities/towers/Tower.h \

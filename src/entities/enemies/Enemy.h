@@ -34,10 +34,8 @@ protected:
    
     // Otros atributos
     std::string enemyType;
-    double health;
     double speed;
     double health;
-    double speed;
     int arrowResistance;
     int magicResistance;
     int artilleryResistance;
@@ -55,10 +53,10 @@ public:
     std::string GetEnemyType() const;
     void SetEnemyType(const std::string& type);
 
-    int GetHealth() const;
+    double GetHealth() const;
     void SetHealth(double health);
 
-    int GetSpeed() const;
+    double GetSpeed() const;
     void SetSpeed(double speed);
 
     int GetArrowResistance() const;
@@ -78,6 +76,8 @@ public:
     int GetMutationChance() const;
     void SetMutationChance(int chance);
 
+    Vector2 GetPosition() const { return position; }
+
     // Métodos para path
     void SetPath(const std::vector<std::pair<int, int>>& newPath);
     void Activate();
@@ -91,6 +91,7 @@ public:
     void IncreaseSpeed();
     void DecreaseSpeed();
 
+    static const std::vector<Enemy*>& GetAllInstances();
     static void ClearAllInstances(); // Limpia todas las instancias de enemigos
 
     // Movimiento por path

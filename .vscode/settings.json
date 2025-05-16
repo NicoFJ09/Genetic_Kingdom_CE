@@ -125,6 +125,7 @@
     "text_encoding": "cpp",
     "thread": "cpp",
     "__availability": "cpp",
-    "__config": "cpp"
+    "__config": "cpp",
+    "__node_handle": "cpp"
   }
 }

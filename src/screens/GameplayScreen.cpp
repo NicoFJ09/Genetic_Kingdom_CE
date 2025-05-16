@@ -65,6 +65,31 @@ void GameplayScreen::Update() {
     gamePanel.Update();
     bottomPanel.Update();
 
+        // --- ACTUALIZAR TODAS LAS TORRES ---
+    auto& map = gamePanel.GetMap();
+    for (int y = 0; y < map.GetHeight(); ++y) {
+        for (int x = 0; x < map.GetWidth(); ++x) {
+            TowerTile* towerTile = dynamic_cast<TowerTile*>(map.GetTile(x, y));
+            if (towerTile && towerTile->GetTower()) {
+                Tower* tower = towerTile->GetTower();
+                tower->Update();
+
+                // Imprimir información relevante de la torre
+                Vector2 pos = tower->GetPosition();
+                std::string type = tower->GetTowerType();
+                Enemy* target = tower->GetTarget();
+                if (target) {
+                    Vector2 targetPos = target->GetPosition();
+                    printf("Torre [%s] en (%.0f, %.0f) tiene target en (%.0f, %.0f)\n",
+                        type.c_str(), pos.x, pos.y, targetPos.x, targetPos.y);
+                } else {
+                    printf("Torre [%s] en (%.0f, %.0f) no tiene target\n",
+                        type.c_str(), pos.x, pos.y);
+                }
+            }
+        }
+    }
+
     GrassTile* selectedTile = gamePanel.GetMap().GetSelectedTile();
     TowerTile* selectedTower = gamePanel.GetMap().GetSelectedTower();
 

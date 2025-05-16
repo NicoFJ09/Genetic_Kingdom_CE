@@ -26,6 +26,14 @@ public:
     void Draw() const;
     void CheckHover() const;
     void HandleClick();
+    int GetWidth() const { return tiles.empty() ? 0 : tiles[0].size(); }
+    int GetHeight() const { return tiles.size(); }
+    Tile* GetTile(int x, int y) const {
+        if (y >= 0 && y < GetHeight() && x >= 0 && x < GetWidth()) {
+            return tiles[y][x].get();
+        }
+        return nullptr;
+    }
     GrassTile* GetSelectedTile() const;
     void UnselectTile(); // Nuevo método para deseleccionar el tile
     TowerTile* GetSelectedTower() const; // Obtener el TowerTile seleccionado

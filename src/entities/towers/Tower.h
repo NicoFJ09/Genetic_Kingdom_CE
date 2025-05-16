@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include <string>
 #include <vector>
+#include "../enemies/Enemy.h" 
 
 class Tower {
 protected:
@@ -17,8 +18,12 @@ protected:
     int spAttackRegenerationTime; // Tiempo de regeneración de ataque especial
     std::string towerType;        // Tipo de torre (Archer, Artillery, Mage)
     static std::vector<Tower*> allInstances; // Contenedor estático para todas las instancias
+    Enemy* target = nullptr; // Nuevo atributo para el objetivo actual
     virtual void UpdateStats(); // Actualizar estadísticas y sprite según el nivel
 
+    Enemy* FindFirstEnemyInRange() const;
+    Enemy* FindClosestEnemyInRange() const;
+    bool IsEnemyInRange(const Enemy* enemy) const;
 public:
     Tower(Vector2 position, int level, const std::string& texturePath, int damage, double speed, int range, int spAttackRegenerationTime);
     virtual ~Tower();
@@ -34,6 +39,8 @@ public:
     int GetRange() const { return range; }
     int GetSpecialAttackRegenerationTime() const { return spAttackRegenerationTime; }
     std::string GetTowerType() const { return towerType; }
+    Enemy* GetTarget() const { return target; }
+    void SetTarget(Enemy* newTarget) { target = newTarget; }
 
     void SetPosition(Vector2 pos) { position = pos; }
     Texture2D GetTexture() const { return texture; }

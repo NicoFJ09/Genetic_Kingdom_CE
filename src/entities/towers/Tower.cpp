@@ -2,6 +2,8 @@
 #include "raylib.h"
 #include <iostream>
 #include <algorithm>
+#include "../enemies/Enemy.h"
+#include <cmath>
 
 std::vector<Tower*> Tower::allInstances;
 
@@ -36,10 +38,45 @@ Tower::~Tower()
     }
 }
 
+bool Tower::IsEnemyInRange(const Enemy* enemy) const {
+    if (!enemy || !enemy->IsActive()) return false;
+    float dx = enemy->GetPosition().x - position.x;
+    float dy = enemy->GetPosition().y - position.y;
+    float distance = sqrtf(dx * dx + dy * dy);
+    return distance <= (range * 32.0f);
+}
+
+Enemy* Tower::FindFirstEnemyInRange() const {
+    for (Enemy* enemy : Enemy::GetAllInstances()) {
+        if (IsEnemyInRange(enemy)) {
+            return enemy;
+        }
+    }
+    return nullptr;
+}
+
+Enemy* Tower::FindClosestEnemyInRange() const {
+    Enemy* closest = nullptr;
+    float minDist = 1e9f;
+    for (Enemy* enemy : Enemy::GetAllInstances()) {
+        if (IsEnemyInRange(enemy)) {
+            float dx = enemy->GetPosition().x - position.x;
+            float dy = enemy->GetPosition().y - position.y;
+            float dist = sqrtf(dx * dx + dy * dy);
+            if (dist < minDist) {
+                minDist = dist;
+                closest = enemy;
+            }
+        }
+    }
+    return closest;
+}
+
 void Tower::Update()
 {
-    // Insertar lógica de targetear enemigos, cooldown de ataque,
-    // y actualizar atributos de instancia en caso de subir de nivel
+    if (!target || !target->IsActive() || !IsEnemyInRange(target)) {
+        target = FindClosestEnemyInRange();
+    }
 }
 
 void Tower::Draw()

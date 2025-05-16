@@ -233,6 +233,10 @@ void Enemy::DecreaseSpeed() {
     }
 }
 
+const std::vector<Enemy*>& Enemy::GetAllInstances() {
+    return allInstances;
+}
+
 void Enemy::ClearAllInstances() {
     TraceLog(LOG_INFO, "Starting to clear all enemy instances. Total instances: %zu", allInstances.size());
 

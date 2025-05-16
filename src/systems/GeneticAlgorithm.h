@@ -6,7 +6,7 @@ class GeneticAlgorithm {
 public:
     GeneticAlgorithm(int populationSize, float mutationRate);
 
-    void setPopulation(const std::vector<Enemy>& enemies); // ✅ Nuevo
+    void setPopulation(const std::vector<Enemy>& enemies); 
     void evolveGeneration();
     void printGenerationSummary(int generation) const;
 

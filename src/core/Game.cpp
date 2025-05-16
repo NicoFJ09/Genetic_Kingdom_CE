@@ -4,11 +4,16 @@
 
 Game::Game() : waveManager() {
     waveManager.StartWave();
+    lastEnemyKilled = false;
+    waveEndDelay = 0.0f;
 }
 
 Game::Game(float) : waveManager() {
     waveManager.StartWave();
+    lastEnemyKilled = false;
+    waveEndDelay = 0.0f;
 }
+
 
 
 void Game::Update(float deltaTime) {
@@ -54,11 +59,14 @@ void Game::Update(float deltaTime) {
         }
         
         // Añadir la recompensa a la economía del jugador
-        if (reward > 0 && externalEconomySystem){
+        if (reward > 0 && externalEconomySystem) {
             externalEconomySystem->AddToBalance(reward);
             TraceLog(LOG_INFO, "Received %d coins for killing a %s! New balance: %d", 
                      reward, enemyType.c_str(), externalEconomySystem->GetBalance());
         }
+        
+        // Incrementar el contador de enemigos eliminados
+        waveManager.IncrementEnemiesKilled();
         
         // Eliminar del vector de activos
         activeEnemies.erase(
@@ -77,12 +85,28 @@ void Game::Update(float deltaTime) {
 
     // Verificar si la ola ha terminado (no hay enemigos activos ni pendientes)
     if (waveManager.IsWaveActive() && activeEnemies.empty() && pendingEnemies.empty()) {
-        waveManager.SetWaveCompleted();
+        if (!lastEnemyKilled) {
+            // Primera vez que detectamos que no hay enemigos
+            lastEnemyKilled = true;
+            waveEndDelay = 0.0f;
+            TraceLog(LOG_INFO, "Last enemy killed! Starting delay before next wave. Total killed: %d", 
+                     waveManager.GetEnemiesKilledInWave());
+        } else {
+            // Esperar un poco para que se pueda ver el contador final
+            waveEndDelay += deltaTime;
+            if (waveEndDelay >= 1.5f) {  // Esperar 1.5 segundos
+                TraceLog(LOG_INFO, "Wave delay finished. Moving to next wave. Final kill count: %d", 
+                         waveManager.GetEnemiesKilledInWave());
+                waveManager.SetWaveCompleted();
+                lastEnemyKilled = false;
+            }
+        }
     }
 
     // Actualizar el WaveManager
     waveManager.Update();
 }
+
 
 WaveManager& Game::GetWaveManager() {
     return waveManager;
@@ -99,6 +123,10 @@ void Game::SpawnEnemiesForWave(const std::vector<Enemy*>& waveEnemies) {
     // Copiar los punteros (en la práctica, deberías clonar o crear nuevos)
     pendingEnemies = waveEnemies;
     spawnTimer = 0.0f;
+    
+    // Reiniciar las variables de control para el final de la ola
+    lastEnemyKilled = false;
+    waveEndDelay = 0.0f;
 }
 
 const std::vector<Enemy*>& Game::GetActiveEnemies() const {

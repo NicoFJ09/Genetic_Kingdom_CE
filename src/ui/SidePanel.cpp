@@ -2,7 +2,10 @@
 #include "../config/Constants.h"
 
 SidePanel::SidePanel(float x, float y, float width, float height)
-    : bounds({x, y, width, height}), currentWave(0), currentPageIndex(0) {
+    : bounds({x, y, width, height}), 
+      currentWave(0), 
+      enemiesKilled(0), // Inicializar el contador
+      currentPageIndex(0) {
     // Inicializar los tipos de enemigos desde ENEMY_SPRITE_PATHS
     for (const auto& pair : ENEMY_SPRITE_PATHS) {
         enemyTypes.push_back(pair.first);
@@ -25,9 +28,11 @@ SidePanel::~SidePanel() {
     enemyTextures.clear();
 }
 
-void SidePanel::UpdateWaveInfo(int wave) {
+void SidePanel::UpdateWaveInfo(int wave, int killedEnemies) {
     currentWave = wave;
+    enemiesKilled = killedEnemies;
 }
+
 
 void SidePanel::SetActiveEnemies(const std::vector<Enemy*>& enemies) {
     activeEnemies = enemies;
@@ -61,6 +66,9 @@ void SidePanel::Draw() {
     float textY = bounds.y + 10;
 
     DrawText(TextFormat("Wave: %d", currentWave), textX, textY, fontSize, WHITE);
+    textY += 30;
+    
+    DrawText(TextFormat("Enemies killed: %d", enemiesKilled), textX, textY, fontSize, WHITE);
     textY += 30;
 
     // Obtener el tipo de enemigo actual

@@ -11,6 +11,9 @@ private:
     bool waveActive;       // Estado de la ola actual
     bool waveCompleted;    // Indica si la ola actual ha sido completada
     
+    // Contador de enemigos eliminados en la ola actual
+    int enemiesKilledInWave;
+    
     // Sistema de generaciones de enemigos
     std::unordered_map<std::string, int> enemyGenerations; // Mapa de tipo de enemigo -> generación
     std::set<std::string> enemiesInCurrentWave;            // Enemigos que aparecieron en esta ola
@@ -24,6 +27,10 @@ public:
     int GetCurrentWave() const;   // Obtener el número de la ola actual
     bool IsWaveCompleted() const; // Verificar si la ola actual se completó
     void SetWaveCompleted();      // Marcar la ola como completada
+    
+    // Nuevo: Métodos para el contador de enemigos eliminados
+    void IncrementEnemiesKilled(); // Incrementar el contador de enemigos eliminados
+    int GetEnemiesKilledInWave() const; // Obtener el conteo de enemigos eliminados
     
     // Métodos para el sistema de generaciones
     int GetEnemyGeneration(const std::string& enemyType); // Obtener generación actual de un tipo

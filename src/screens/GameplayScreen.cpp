@@ -92,7 +92,10 @@ void GameplayScreen::Update() {
     }
 
     WaveManager& waveManager = game.GetWaveManager();
-    sidePanel.UpdateWaveInfo(waveManager.GetCurrentWave());
+    sidePanel.UpdateWaveInfo(
+        waveManager.GetCurrentWave(),
+        waveManager.GetEnemiesKilledInWave() // Pasar el contador
+    );
     sidePanel.Update();
 
     EconomySystem& economySystem = bottomPanel.GetEconomySystem();

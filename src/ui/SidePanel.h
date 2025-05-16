@@ -11,6 +11,7 @@ class SidePanel {
 private:
     Rectangle bounds; // Área del panel
     int currentWave;  // Ola actual
+    int enemiesKilled; // Nuevo: Contador de enemigos eliminados
 
     std::vector<Enemy*> activeEnemies; // Lista de enemigos activos
     int currentPageIndex; // Índice de la página actual
@@ -24,10 +25,11 @@ private:
 public:
     SidePanel(float x, float y, float width, float height);
     ~SidePanel();
-    void UpdateWaveInfo(int wave); // Actualizar información de la ola
-    void SetActiveEnemies(const std::vector<Enemy*>& enemies); // Establecer enemigos activos
-    void Update();    // Actualizar lógica del panel
-    void Draw();      // Dibujar el panel
+    // Actualizar con ambos datos: ola y enemigos eliminados
+    void UpdateWaveInfo(int wave, int killedEnemies = 0);
+    void SetActiveEnemies(const std::vector<Enemy*>& enemies);
+    void Update();
+    void Draw();
 };
 
 #endif // SIDE_PANEL_H

@@ -15,16 +15,17 @@ private:
     std::vector<Enemy*> pendingEnemies;
     float spawnInterval = 1.0f;
     float spawnTimer = 0.0f;
+    
+    // Para el retardo al final de la ola
+    bool lastEnemyKilled = false;
+    float waveEndDelay = 0.0f;
 
 public:
     Game();
     Game(float);
     void Update(float deltaTime);
     WaveManager& GetWaveManager();
-    
-    // Establecer el sistema económico externo
     void SetEconomySystem(EconomySystem* system);
-    
     void SpawnEnemiesForWave(const std::vector<Enemy*>& waveEnemies);
     const std::vector<Enemy*>& GetActiveEnemies() const;
     void ClearEnemies();

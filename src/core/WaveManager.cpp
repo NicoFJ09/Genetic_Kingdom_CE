@@ -1,11 +1,16 @@
 #include "WaveManager.h"
 
-WaveManager::WaveManager() : currentWave(0), waveActive(false), waveCompleted(false) {}
+WaveManager::WaveManager() 
+    : currentWave(0), 
+      waveActive(false), 
+      waveCompleted(false),
+      enemiesKilledInWave(0) {}
 
 void WaveManager::StartWave() {
     currentWave++;
     waveActive = true;
     waveCompleted = false;
+    enemiesKilledInWave = 0; // Reiniciar el contador de muertes
     
     // Limpiar registro de enemigos para la nueva ola
     enemiesInCurrentWave.clear();
@@ -44,6 +49,14 @@ void WaveManager::SetWaveCompleted() {
     waveCompleted = true;
 }
 
+void WaveManager::IncrementEnemiesKilled() {
+    enemiesKilledInWave++;
+}
+
+int WaveManager::GetEnemiesKilledInWave() const {
+    return enemiesKilledInWave;
+}
+
 int WaveManager::GetEnemyGeneration(const std::string& enemyType) {
     // Si el enemigo no existe en el mapa, establecer generación inicial a 1
     if (enemyGenerations.find(enemyType) == enemyGenerations.end()) {
@@ -61,6 +74,7 @@ void WaveManager::Reset() {
     currentWave = 0;
     waveActive = false;
     waveCompleted = false;
+    enemiesKilledInWave = 0;
     
     // Reiniciar el sistema de generaciones
     enemyGenerations.clear();

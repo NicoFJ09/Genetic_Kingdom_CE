@@ -26,6 +26,7 @@ set(SOURCES
     src/core/Game.cpp
     src/core/WaveManager.cpp
     src/systems/Pathfinding.cpp
+    src/systems/GeneticAlgorithm.cpp
     src/ui/Button.cpp
     src/ui/TextElement.cpp
     src/ui/GamePanel.cpp
@@ -49,7 +50,6 @@ set(SOURCES
     src/map/TowerTile.cpp
     src/map/BridgeTile.cpp
     src/utils/Timer.cpp
-
 )
 
 # Add the executable

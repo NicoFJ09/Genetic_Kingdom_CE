@@ -2,134 +2,99 @@
 #include <iostream>
 #include <cstdlib>
 
-GeneticAlgorithm::GeneticAlgorithm(int populationSize, float mutationRate)
-    : populationSize(populationSize), mutationRate(mutationRate), nextId(0) {}
+GeneticAlgorithm::GeneticAlgorithm(int populationSize, float mutationRate) 
+    : populationSize(populationSize), 
+      mutationRate(mutationRate),
+      nextId(1) {
+    TraceLog(LOG_INFO, "GeneticAlgorithm initialized with population size %d and mutation rate %.2f", 
+             populationSize, mutationRate);
+}
 
-void GeneticAlgorithm::setPopulation(const std::vector<Enemy>& enemies) {
-    population = enemies;
-    for (auto& e : population) {
-        e.id = nextId++;
+// Destructor - Agregar esta implementación
+GeneticAlgorithm::~GeneticAlgorithm() {
+    // Limpiar recursos si es necesario
+    TraceLog(LOG_INFO, "GeneticAlgorithm destroyed");
+}
+
+
+// Agregar nuevo método para manejar los vectores por tipo
+void GeneticAlgorithm::setEnemyVectors(
+    const std::vector<Enemy*>& ogres,
+    const std::vector<Enemy*>& harpies,
+    const std::vector<Enemy*>& mercenaries, 
+    const std::vector<Enemy*>& darkElves) {
+    
+    // Guardar referencias a los vectores
+    this->ogres = ogres;
+    this->harpies = harpies;
+    this->mercenaries = mercenaries;
+    this->darkElves = darkElves;
+    
+    // Log para debugging
+    TraceLog(LOG_INFO, "GA received vectors: %zu Ogres, %zu Harpies, %zu Mercenaries, %zu DarkElves", 
+         ogres.size(), harpies.size(), mercenaries.size(), darkElves.size());
+}
+
+// Método auxiliar para calcular estadísticas promedio de una lista de enemigos
+void GeneticAlgorithm::calculateAverageStats(
+    const std::vector<Enemy*>& enemies, 
+    float& avgLife, float& avgSpeed, 
+    float& avgArrowRes, float& avgMagicRes, 
+    float& avgArtilleryRes) const {
+    
+    if (enemies.empty()) {
+        avgLife = avgSpeed = avgArrowRes = avgMagicRes = avgArtilleryRes = 0;
+        return;
     }
-}
-
-void GeneticAlgorithm::evolveGeneration() {
-    float avgLife = calculateAverageLife();
-    float avgSpeed = calculateAverageSpeed();
-    float avgArrowRes = calculateAverageArrowRes();
-    float avgMagicRes = calculateAverageMagicRes();
-    float avgArtilleryRes = calculateAverageArtilleryRes();
-
-    std::vector<Enemy> parents = selectParents(avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes);
-
-    std::vector<Enemy> nextGeneration;
-    while (nextGeneration.size() < populationSize) {
-        Enemy& parent1 = parents[randomIndex(parents.size())];
-        Enemy& parent2 = parents[randomIndex(parents.size())];
-
-        Enemy child = crossover(parent1, parent2);
-        mutate(child);
-        child.id = nextId++;
-        nextGeneration.push_back(child);
+    
+    float sumLife = 0, sumSpeed = 0, sumArrowRes = 0, sumMagicRes = 0, sumArtilleryRes = 0;
+    
+    for (const auto& enemy : enemies) {
+        sumLife += enemy->GetHealth();
+        sumSpeed += enemy->GetSpeed();
+        sumArrowRes += enemy->GetArrowResistance();
+        sumMagicRes += enemy->GetMagicResistance();
+        sumArtilleryRes += enemy->GetArtilleryResistance();
     }
-
-    population = nextGeneration;
+    
+    int count = enemies.size();
+    avgLife = sumLife / count;
+    avgSpeed = sumSpeed / count;
+    avgArrowRes = sumArrowRes / count;
+    avgMagicRes = sumMagicRes / count;
+    avgArtilleryRes = sumArtilleryRes / count;
 }
 
-const std::vector<Enemy>& GeneticAlgorithm::getPopulation() const {
-    return population;
-}
-
+// Actualizar el método para mostrar estadísticas para cada tipo de enemigo
 void GeneticAlgorithm::printGenerationSummary(int generation) const {
-    std::cout << "\nGeneración " << generation << ":\n";
-    for (const auto& e : population) {
-        std::cout << "ID: " << e.id << " Vida: " << e.life << " Vel: " << e.speed
-                  << " ResF: " << e.arrowResistance << " ResM: " << e.magicResistance
-                  << " ResA: " << e.artilleryResistance << "\n";
-    }
-}
-
-float GeneticAlgorithm::calculateAverageLife() const {
-    float sum = 0.0f;
-    for (const auto& e : population) sum += e.life;
-    return sum / population.size();
-}
-
-float GeneticAlgorithm::calculateAverageSpeed() const {
-    float sum = 0.0f;
-    for (const auto& e : population) sum += e.speed;
-    return sum / population.size();
-}
-
-float GeneticAlgorithm::calculateAverageArrowRes() const {
-    float sum = 0.0f;
-    for (const auto& e : population) sum += e.arrowResistance;
-    return sum / population.size();
-}
-
-float GeneticAlgorithm::calculateAverageMagicRes() const {
-    float sum = 0.0f;
-    for (const auto& e : population) sum += e.magicResistance;
-    return sum / population.size();
-}
-
-float GeneticAlgorithm::calculateAverageArtilleryRes() const {
-    float sum = 0.0f;
-    for (const auto& e : population) sum += e.artilleryResistance;
-    return sum / population.size();
-}
-
-int GeneticAlgorithm::countAttributesAbove(const Enemy& e, float avgLife, float avgSpeed, float avgArrowRes, float avgMagicRes, float avgArtilleryRes) const {
-    int count = 0;
-    if (e.life > avgLife) count++;
-    if (e.speed > avgSpeed) count++;
-    if (e.arrowResistance > avgArrowRes) count++;
-    if (e.magicResistance > avgMagicRes) count++;
-    if (e.artilleryResistance > avgArtilleryRes) count++;
-    return count;
-}
-
-std::vector<Enemy> GeneticAlgorithm::selectParents(float avgLife, float avgSpeed, float avgArrowRes, float avgMagicRes, float avgArtilleryRes) {
-    std::vector<Enemy> parents;
-    for (const auto& e : population) {
-        if (countAttributesAbove(e, avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes) >= 2) {
-            parents.push_back(e);
-        }
-    }
-    if (parents.empty()) parents = population;
-    return parents;
-}
-
-Enemy GeneticAlgorithm::crossover(const Enemy& p1, const Enemy& p2) {
-    return Enemy(
-        p1.type,
-        (p1.life + p2.life) / 2.0f,
-        (p1.speed + p2.speed) / 2.0f,
-        (p1.arrowResistance + p2.arrowResistance) / 2.0f,
-        (p1.magicResistance + p2.magicResistance) / 2.0f,
-        (p1.artilleryResistance + p2.artilleryResistance) / 2.0f
-    );
-}
-
-void GeneticAlgorithm::mutate(Enemy& e) {
-    if (randFloat(0.0f, 1.0f) < mutationRate) {
-        int numAttributes = (rand() % 2) + 1;
-        for (int i = 0; i < numAttributes; ++i) {
-            int attr = rand() % 5;
-            switch (attr) {
-                case 0: e.life *= 1.5f; break;
-                case 1: e.speed *= 1.5f; break;
-                case 2: e.arrowResistance *= 1.5f; break;
-                case 3: e.magicResistance *= 1.5f; break;
-                case 4: e.artilleryResistance *= 1.5f; break;
+    std::cout << "\n===== Generación " << generation << " =====\n";
+    
+    // Procesar cada tipo de enemigo por separado
+    auto processEnemyType = [this](const std::vector<Enemy*>& enemies, const char* typeName) {
+        if (!enemies.empty()) {
+            float avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes;
+            calculateAverageStats(enemies, avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes);
+            
+            std::cout << "\n== " << typeName << " (Gen " << enemies[0]->GetGeneration() << ") ==\n";
+            std::cout << "Cantidad: " << enemies.size() << "\n";
+            std::cout << "Promedios: Vida=" << avgLife << ", Vel=" << avgSpeed 
+                      << ", ResF=" << avgArrowRes << ", ResM=" << avgMagicRes 
+                      << ", ResA=" << avgArtilleryRes << "\n";
+                      
+            int mutatedCount = 0;
+            for (const auto& enemy : enemies) {
+                if (enemy->IsMutated()) mutatedCount++;
             }
+            std::cout << "Mutaciones: " << mutatedCount << " (" 
+                      << (enemies.empty() ? 0 : (mutatedCount * 100.0 / enemies.size())) 
+                      << "%)\n";
         }
-    }
-}
-
-float GeneticAlgorithm::randFloat(float min, float max) {
-    return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
-}
-
-int GeneticAlgorithm::randomIndex(int max) {
-    return rand() % max;
+    };
+    
+    processEnemyType(ogres, "Ogre");
+    processEnemyType(harpies, "Harpy");
+    processEnemyType(mercenaries, "Mercenary");
+    processEnemyType(darkElves, "Dark Elf");
+    
+    std::cout << "\n===========================\n";
 }

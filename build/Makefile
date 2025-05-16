@@ -681,6 +681,30 @@ src/screens/StartScreen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.s
 .PHONY : src/screens/StartScreen.cpp.s
 
+src/systems/GeneticAlgorithm.o: src/systems/GeneticAlgorithm.cpp.o
+.PHONY : src/systems/GeneticAlgorithm.o
+
+# target to build an object file
+src/systems/GeneticAlgorithm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/GeneticAlgorithm.cpp.o
+.PHONY : src/systems/GeneticAlgorithm.cpp.o
+
+src/systems/GeneticAlgorithm.i: src/systems/GeneticAlgorithm.cpp.i
+.PHONY : src/systems/GeneticAlgorithm.i
+
+# target to preprocess a source file
+src/systems/GeneticAlgorithm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/GeneticAlgorithm.cpp.i
+.PHONY : src/systems/GeneticAlgorithm.cpp.i
+
+src/systems/GeneticAlgorithm.s: src/systems/GeneticAlgorithm.cpp.s
+.PHONY : src/systems/GeneticAlgorithm.s
+
+# target to generate assembly for a file
+src/systems/GeneticAlgorithm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/systems/GeneticAlgorithm.cpp.s
+.PHONY : src/systems/GeneticAlgorithm.cpp.s
+
 src/systems/Pathfinding.o: src/systems/Pathfinding.cpp.o
 .PHONY : src/systems/Pathfinding.o
 
@@ -975,6 +999,9 @@ help:
 	@echo "... src/screens/StartScreen.o"
 	@echo "... src/screens/StartScreen.i"
 	@echo "... src/screens/StartScreen.s"
+	@echo "... src/systems/GeneticAlgorithm.o"
+	@echo "... src/systems/GeneticAlgorithm.i"
+	@echo "... src/systems/GeneticAlgorithm.s"
 	@echo "... src/systems/Pathfinding.o"
 	@echo "... src/systems/Pathfinding.i"
 	@echo "... src/systems/Pathfinding.s"

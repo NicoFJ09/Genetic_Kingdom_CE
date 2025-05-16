@@ -7,6 +7,7 @@
 #include "../ui/SidePanel.h"
 #include "../core/Game.h"
 #include "ScreenManager.h"
+#include "../systems/GeneticAlgorithm.h"
 #include "../map/BridgeTile.h"
 
 class GameplayScreen : public Screen {
@@ -14,6 +15,7 @@ private:
     int screenWidth;
     int screenHeight;
     ScreenManager* screenManager; // Agregar puntero al ScreenManager
+    GeneticAlgorithm* geneticAlgorithm;
 
     Game game;
     GamePanel gamePanel;

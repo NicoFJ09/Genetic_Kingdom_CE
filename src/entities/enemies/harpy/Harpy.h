@@ -7,6 +7,8 @@ class Harpy : public Enemy {
 public:
     Harpy(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation);
     ~Harpy() = default;
+    double getRandomHealth();
+    double getRandomSpeed();
 };
 
 #endif // HARPY_H

@@ -13,6 +13,7 @@ private:
     int screenWidth;
     int screenHeight;
     ScreenManager* screenManager; // Puntero al ScreenManager
+    Music music;
 
 public:
     StartScreen(int screenWidth, int screenHeight, ScreenManager* screenManager);

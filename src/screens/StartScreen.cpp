@@ -1,6 +1,7 @@
 #include "StartScreen.h"
 #include "GameplayScreen.h"
 #include "../config/Constants.h"
+#include "raylib.h"
 
 StartScreen::StartScreen(int screenWidth, int screenHeight, ScreenManager* screenManager)
     : screenWidth(screenWidth), screenHeight(screenHeight), screenManager(screenManager),
@@ -13,9 +14,22 @@ StartScreen::StartScreen(int screenWidth, int screenHeight, ScreenManager* scree
 
     // Centrar el botón debajo del título
     startButton.SetPosition((screenWidth - startButton.GetWidth()) / 2, screenHeight / 2);
+    InitAudioDevice();
+    music = LoadMusicStream("../assets/music/xDeviruchi - And The Journey Begins (Intro).mp3"); // <-- assign to member
+    PlayMusicStream(music);
+    float timePlayed = 0.0f;        // Time played normalized [0.0f..1.0f]
+    bool pause = false;             // Music playing paused
+    UpdateMusicStream(music);   // Update music buffer with new stream data
+    // Get normalized time played for current music stream
+    timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
+    if (timePlayed > 1.0f) timePlayed = 1.0f;   // Make sure time played is no longer than music
+
 }
 
-StartScreen::~StartScreen() {}
+StartScreen::~StartScreen() {
+    CloseAudioDevice(); 
+    UnloadMusicStream(music);   // Unload music stream buffers from RAM        
+}
 
 void StartScreen::Update() {
     if (startButton.IsClicked()) {

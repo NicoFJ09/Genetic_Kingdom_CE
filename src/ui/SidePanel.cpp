@@ -62,7 +62,7 @@ void SidePanel::Draw() {
 
     // Dibujar la información de la ola
     int fontSize = 20;
-    float textX = bounds.x + 10;
+    float textX = bounds.x + 5;
     float textY = bounds.y + 10;
 
     DrawText(TextFormat("Wave: %d", currentWave), textX, textY, fontSize, WHITE);

@@ -11,7 +11,7 @@ Harpy::Harpy(bool alive, bool mutated, Vector2 position, int frameSpeed, int gen
             0,          // Resistencia a flechas
             0,          // Resistencia a magia
             100,          // Resistencia a artillería
-            false,       // No mutado
+            mutated,       // Mutación
             generation,  // Generación
             70           // Probabilidad de mutación
     ) {}

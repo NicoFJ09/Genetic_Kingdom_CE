@@ -1,10 +1,10 @@
 #include "Harpy.h"
 
-Harpy::Harpy(bool alive, Vector2 position, int frameSpeed, int generation = 1)
+Harpy::Harpy(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation = 1)
     : Enemy(alive, position, frameSpeed,
-            alive ? "../assets/textures/enemies/harpy/HarpyMoveSpriteSheet.png"
-                  : "../assets/textures/enemies/harpy/HarpyDeathSpriteSheet.png",
-            alive ? 23 : 7,
+            mutated ? "../assets/textures/enemies/harpy/HarpyMoveSpriteSheet_mutated.png"
+                  : "../assets/textures/enemies/harpy/HarpyMoveSpriteSheet.png",
+            23,
             "Harpy",    // Tipo de enemigo
             60.0,         // Salud
             8.0,         // Velocidad

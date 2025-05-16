@@ -1,10 +1,10 @@
 #include "Ogre.h"
 
-Ogre::Ogre(bool alive, Vector2 position, int frameSpeed, int generation = 1)
+Ogre::Ogre(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation = 1)
     : Enemy(alive, position, frameSpeed,
-            alive ? "../assets/textures/enemies/ogre/OgreMoveSpriteSheet.png"
-                  : "../assets/textures/enemies/ogre/OgreDeathSpriteSheet.png",
-            alive ? 8 : 4,
+            mutated ? "../assets/textures/enemies/ogre/OgreMoveSpriteSheet_mutated.png"
+                  : "../assets/textures/enemies/ogre/OgreMoveSpriteSheet.png",
+            8,
             "Ogre",      // Tipo de enemigo
             150.0,         // Salud
             5.0,           // Velocidad

@@ -15,25 +15,25 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     std::string ogreType = "Ogre";
     waveManager.RegisterEnemyInWave(ogreType);
     int ogreGen = waveManager.GetEnemyGeneration(ogreType);
-    waveEnemies.push_back(new Ogre(true, {25, 25}, 8, ogreGen));
+    waveEnemies.push_back(new Ogre(true, true, {25, 25}, 8, ogreGen));
     
     // Harpy
     std::string harpyType = "Harpy";
     waveManager.RegisterEnemyInWave(harpyType);
     int harpyGen = waveManager.GetEnemyGeneration(harpyType);
-    waveEnemies.push_back(new Harpy(true, {150, 25}, 16, harpyGen));
+    waveEnemies.push_back(new Harpy(true, true,{150, 25}, 16, harpyGen));
     
     // Mercenary
     std::string mercType = "Mercenary";
     waveManager.RegisterEnemyInWave(mercType);
     int mercGen = waveManager.GetEnemyGeneration(mercType);
-    waveEnemies.push_back(new Mercenary(true, {300, 25}, 12, mercGen));
+    waveEnemies.push_back(new Mercenary(true, true,{300, 25}, 12, mercGen));
     
     // DarkElf (dos instancias, misma generación)
     std::string darkElfType = "DarkElf";
     waveManager.RegisterEnemyInWave(darkElfType);
     int darkElfGen = waveManager.GetEnemyGeneration(darkElfType);
-    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10, darkElfGen));
+    waveEnemies.push_back(new DarkElf(true, true,{450, 25}, 10, darkElfGen));
     
     auto PATH_SEGMENT = AStarPath(0, 0, 18, 30, GAME_MAP);
     for (Enemy* enemy : waveEnemies) {

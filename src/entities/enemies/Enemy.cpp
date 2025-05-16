@@ -263,9 +263,23 @@ void Enemy::Kill() {
     isActive = false;  // Ya no está activo para juego
     isDying = true;    // Pero está en animación de muerte
     
-    // Descargar la textura actual y cargar la de muerte
+    // Preparar la ruta de la textura de muerte
+    std::string deathTexPath = deathTexturePath;
+    
+    // Si el enemigo está mutado, modificar la ruta para usar la versión mutada
+    if (mutated) {
+        // Buscar la posición del último punto (antes de la extensión)
+        size_t lastDot = deathTexPath.find_last_of('.');
+        if (lastDot != std::string::npos) {
+            // Insertar "_mutated" antes de la extensión
+            deathTexPath.insert(lastDot, "_mutated");
+            TraceLog(LOG_INFO, "Using mutated death texture: %s", deathTexPath.c_str());
+        }
+    }
+    
+    // Descargar la textura actual y cargar la de muerte (mutada o normal)
     if (texture.id != 0) UnloadTexture(texture);
-    texture = LoadTexture(deathTexturePath.c_str());
+    texture = LoadTexture(deathTexPath.c_str());
     
     // Configurar los parámetros de la animación de muerte
     if (texture.id != 0) {
@@ -280,19 +294,20 @@ void Enemy::Kill() {
         
         frameRec = {0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height};
     } else {
-        TraceLog(LOG_ERROR, "Failed to load death texture: %s", deathTexturePath.c_str());
+        TraceLog(LOG_ERROR, "Failed to load death texture: %s", deathTexPath.c_str());
     }
     
     // Resetear la animación
     currentFrame = 0;
     frameCounter = 0;
     
-    // Configurar la duración exacta de la animación de muerte (2 segundos como solicitaste)
+    // Configurar la duración exacta de la animación de muerte
     float deathDuration = 2.0f;
     deathTimer = Timer(deathDuration);
     deathTimer.Start();
     
-    TraceLog(LOG_INFO, "Death animation started for %s with duration: %.1f seconds", enemyType.c_str(), deathDuration);
+    TraceLog(LOG_INFO, "Death animation started for %s (mutated: %s) with duration: %.1f seconds", 
+             enemyType.c_str(), mutated ? "yes" : "no", deathDuration);
 }
 
 

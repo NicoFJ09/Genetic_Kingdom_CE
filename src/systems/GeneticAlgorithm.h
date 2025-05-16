@@ -1,4 +1,3 @@
-
 #pragma once
 #include "entities/enemies/Enemy.h"
 #include <vector>
@@ -7,7 +6,7 @@ class GeneticAlgorithm {
 public:
     GeneticAlgorithm(int populationSize, float mutationRate);
 
-    void initializePopulation();
+    void setPopulation(const std::vector<Enemy>& enemies); 
     void evolveGeneration();
     void printGenerationSummary(int generation) const;
 
@@ -20,7 +19,6 @@ private:
 
     std::vector<Enemy> population;
 
-    Enemy generateRandomEnemy();
     float calculateAverageLife() const;
     float calculateAverageSpeed() const;
     float calculateAverageArrowRes() const;

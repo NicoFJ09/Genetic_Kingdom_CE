@@ -1,4 +1,3 @@
-
 #include "GeneticAlgorithm.h"
 #include <iostream>
 #include <cstdlib>
@@ -6,12 +5,10 @@
 GeneticAlgorithm::GeneticAlgorithm(int populationSize, float mutationRate)
     : populationSize(populationSize), mutationRate(mutationRate), nextId(0) {}
 
-void GeneticAlgorithm::initializePopulation() {
-    population.clear();
-    for (int i = 0; i < populationSize; ++i) {
-        Enemy e = generateRandomEnemy();
+void GeneticAlgorithm::setPopulation(const std::vector<Enemy>& enemies) {
+    population = enemies;
+    for (auto& e : population) {
         e.id = nextId++;
-        population.push_back(e);
     }
 }
 
@@ -49,17 +46,6 @@ void GeneticAlgorithm::printGenerationSummary(int generation) const {
                   << " ResF: " << e.arrowResistance << " ResM: " << e.magicResistance
                   << " ResA: " << e.artilleryResistance << "\n";
     }
-}
-
-Enemy GeneticAlgorithm::generateRandomEnemy() {
-    EnemyType type = static_cast<EnemyType>(rand() % 4);
-    float life = randFloat(50.0f, 200.0f);
-    float speed = randFloat(1.0f, 10.0f);
-    float arrowRes = randFloat(0.0f, 1.0f);
-    float magicRes = randFloat(0.0f, 1.0f);
-    float artilleryRes = randFloat(0.0f, 1.0f);
-
-    return Enemy(type, life, speed, arrowRes, magicRes, artilleryRes);
 }
 
 float GeneticAlgorithm::calculateAverageLife() const {

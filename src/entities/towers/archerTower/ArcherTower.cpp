@@ -29,7 +29,7 @@ void ArcherTower::UpdateStats() {
         texturePath = "../assets/textures/towers/towersInMap/ArcherLvl2.png";
     } else if (level == 3) {
         damage = 25;
-        speed = 1.9;
+        speed = 2.0;
         range = 8;
         spAttackRegenerationTime = 8;
         texturePath = "../assets/textures/towers/towersInMap/ArcherLvl3.png";

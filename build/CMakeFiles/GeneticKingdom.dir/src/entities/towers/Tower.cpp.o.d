@@ -905,6 +905,8 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/Tower.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/../enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/../enemies/../../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/../../utils/Timer.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/istream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream \

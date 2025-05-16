@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include <string>
 #include <vector>
+#include "../../utils/Timer.h"
 
 class Enemy {
 protected:
@@ -42,6 +43,14 @@ protected:
     bool mutated;
     int mutationChance;
     int generation;
+
+    bool isDying = false;
+    Timer deathTimer;
+    bool toDelete = false;
+
+    std::string moveTexturePath;
+    std::string deathTexturePath;
+
 
 public:
     Enemy(bool alive, Vector2 position, int frameSpeed, const std::string& texturePath, int frameCount,
@@ -83,6 +92,11 @@ public:
     void Activate();
     void Deactivate();
     bool IsActive() const;
+    bool IsDying() const { return isDying; }
+
+    void Kill(); // Cambia a animación de muerte y detiene movimiento
+    bool IsMarkedForDeletion() const { return toDelete; }
+    void MarkForDeletion() { toDelete = true; }
 
     // Métodos existentes
     virtual void Update(float deltaTime);

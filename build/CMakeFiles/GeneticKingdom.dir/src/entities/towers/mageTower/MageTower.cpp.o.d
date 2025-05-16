@@ -905,4 +905,6 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/mageTower/MageTower.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/mageTower/../../enemies/Enemy.h
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/mageTower/../../enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/mageTower/../../enemies/../../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/mageTower/../../../utils/Timer.h

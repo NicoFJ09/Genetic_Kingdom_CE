@@ -13,7 +13,31 @@ Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texture
       frameCount(frameCount), texturePath(texturePath), enemyType(enemyType), health(health), speed(speed),
       arrowResistance(arrowResistance), magicResistance(magicResistance), artilleryResistance(artilleryResistance),
       mutated(mutated), mutationChance(mutationChance),generation(generation),
-      currentPathIndex(0), interpolationFactor(0.0f), isActive(false) {
+      currentPathIndex(0), interpolationFactor(0.0f), isActive(false),
+      isDying(false), deathTimer(0.0f), toDelete(false) {
+
+    // Guardar rutas de texturas para movimiento y muerte
+    moveTexturePath = texturePath;
+    
+    // Detectar ruta de muerte automáticamente
+    size_t lastSlash = texturePath.find_last_of('/');
+    size_t lastDot = texturePath.find_last_of('.');
+    if (lastSlash != std::string::npos && lastDot != std::string::npos && lastDot > lastSlash) {
+        std::string base = texturePath.substr(0, lastSlash + 1);
+        std::string name = texturePath.substr(lastSlash + 1, lastDot - lastSlash - 1);
+        std::string ext = texturePath.substr(lastDot);
+        
+        // Reemplazar "Move" por "Death" en el nombre del archivo
+        size_t movePos = name.find("Move");
+        if (movePos != std::string::npos) {
+            name.replace(movePos, 4, "Death");
+        }
+        deathTexturePath = base + name + ext;
+    } else {
+        deathTexturePath = texturePath; // fallback
+    }
+
+    // Cargar la textura inicial
     texture = LoadTexture(texturePath.c_str());
     if (texture.id == 0) {
         TraceLog(LOG_ERROR, "Failed to load texture: %s", texturePath.c_str());
@@ -21,6 +45,8 @@ Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texture
     } else {
         frameRec = {0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height};
     }
+    
+    // Registrar esta instancia
     allInstances.push_back(this);
 }
 
@@ -28,7 +54,6 @@ Enemy::~Enemy() {
     if (texture.id != 0) {
         UnloadTexture(texture);
     }
-
     // Eliminar la instancia del contenedor estático
     auto it = std::find(allInstances.begin(), allInstances.end(), this);
     if (it != allInstances.end()) {
@@ -50,6 +75,9 @@ double Enemy::GetHealth() const {
 
 void Enemy::SetHealth(double healthValue) {
     health = healthValue;
+    if (health <= 0 && isAlive && !isDying) {
+        Kill();
+    }
 }
 
 double Enemy::GetSpeed() const {
@@ -190,32 +218,101 @@ void Enemy::PathMove(float deltaTime) {
 
 // Métodos existentes
 void Enemy::Update(float deltaTime) {
+    if (isDying) {
+        deathTimer.Update(deltaTime);
+        // Avanzar frames de muerte
+        frameCounter++;
+        if (frameCounter >= (60 / frameSpeed)) {
+            frameCounter = 0;
+            if (currentFrame < frameCount - 1) {
+                currentFrame++;
+                frameRec.x = (float)currentFrame * frameRec.width;
+            }
+        }
+        if (deathTimer.IsFinished()) {
+            toDelete = true;
+        }
+        return;
+    }
+
+    if (!isAlive) return;
+
     PathMove(deltaTime);
+
     if (frameSpeed <= 0) {
         TraceLog(LOG_ERROR, "Invalid frameSpeed: %d", frameSpeed);
         frameSpeed = 1; // Valor por defecto
     }
 
     frameCounter++;
-
     if (frameCounter >= (60 / frameSpeed)) {
         frameCounter = 0;
-
-        if (isAlive) {
-            currentFrame = (currentFrame + 1) % frameCount;
-        } else {
-            if (currentFrame < frameCount - 1) {
-                currentFrame++;
-            }
-        }
-
+        currentFrame = (currentFrame + 1) % frameCount;
         frameRec.x = (float)currentFrame * frameRec.width;
     }
 }
 
-void Enemy::Draw() {
+void Enemy::Kill() {
+    // Nada que hacer si ya está muriendo
+    if (isDying) return;
+    
+    TraceLog(LOG_INFO, "Killing %s at position (%.0f, %.0f)", enemyType.c_str(), position.x, position.y);
+    
+    // Cambiar estados
+    isAlive = false;
+    isActive = false;  // Ya no está activo para juego
+    isDying = true;    // Pero está en animación de muerte
+    
+    // Descargar la textura actual y cargar la de muerte
+    if (texture.id != 0) UnloadTexture(texture);
+    texture = LoadTexture(deathTexturePath.c_str());
+    
+    // Configurar los parámetros de la animación de muerte
     if (texture.id != 0) {
-        DrawTextureRec(texture, frameRec, position, WHITE);
+        // Configurar el número de frames para la animación de muerte según tipo
+        if (enemyType == "Harpy") {
+            frameCount = 7;
+        } else if (enemyType == "Dark Elf") {
+            frameCount = 7;
+        } else {
+            frameCount = 4; // Default para otros tipos
+        }
+        
+        frameRec = {0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height};
+    } else {
+        TraceLog(LOG_ERROR, "Failed to load death texture: %s", deathTexturePath.c_str());
+    }
+    
+    // Resetear la animación
+    currentFrame = 0;
+    frameCounter = 0;
+    
+    // Configurar la duración exacta de la animación de muerte (2 segundos como solicitaste)
+    float deathDuration = 2.0f;
+    deathTimer = Timer(deathDuration);
+    deathTimer.Start();
+    
+    TraceLog(LOG_INFO, "Death animation started for %s with duration: %.1f seconds", enemyType.c_str(), deathDuration);
+}
+
+
+void Enemy::Draw() {
+    // Dibujar el enemigo si tiene una textura válida
+    if (texture.id != 0) {
+        // Si está muriendo, añadir un poco de transparencia gradual
+        Color tint = WHITE;
+        if (isDying && deathTimer.GetRemainingTime() < 0.5f) {
+            // Hacer más transparente en el último medio segundo
+            float alpha = (deathTimer.GetRemainingTime() / 0.5f) * 255.0f;
+            tint = ColorAlpha(WHITE, alpha / 255.0f);
+        }
+        
+        DrawTextureRec(texture, frameRec, position, tint);
+        
+        // Debug: mostrar si está muriendo
+        if (isDying) {
+            DrawText("DYING", position.x, position.y - 20, 10, RED);
+        }
     } else {
         TraceLog(LOG_ERROR, "Attempted to draw an invalid texture.");
     }
@@ -240,16 +337,18 @@ const std::vector<Enemy*>& Enemy::GetAllInstances() {
 void Enemy::ClearAllInstances() {
     TraceLog(LOG_INFO, "Starting to clear all enemy instances. Total instances: %zu", allInstances.size());
 
-    for (size_t i = 0; i < allInstances.size(); ++i) {
-        Enemy* enemy = allInstances[i];
+    // Crea una copia del vector antes de empezar a borrar
+    std::vector<Enemy*> copyInstances = allInstances;
+    
+    // Primero limpia el vector estático (importante hacerlo antes de los delete)
+    allInstances.clear();
+    
+    // Ahora elimina cada instancia de la copia
+    for (Enemy* enemy : copyInstances) {
         if (enemy != nullptr) {
-            TraceLog(LOG_INFO, "Deleting enemy instance at index %zu", i);
-            delete enemy; // Liberar memoria de cada instancia
-        } else {
-            TraceLog(LOG_ERROR, "Encountered a nullptr at index %zu in allInstances", i);
+            delete enemy;
         }
     }
-
-    allInstances.clear(); // Vaciar el contenedor
+    
     TraceLog(LOG_INFO, "All enemy instances cleared successfully.");
 }

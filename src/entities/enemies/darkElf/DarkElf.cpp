@@ -7,10 +7,10 @@ DarkElf::DarkElf(bool alive, Vector2 position, int frameSpeed, int generation = 
             alive ? 8 : 7,
             "Dark Elf", // Tipo de enemigo
             80.0,         // Salud
-            6.0,          // Velocidad
-            5,          // Resistencia a flechas
-            10,         // Resistencia a magia
-            8,          // Resistencia a artillería
+            10.0,          // Velocidad
+            0,          // Resistencia a flechas
+            30,         // Resistencia a magia
+            0,          // Resistencia a artillería
             false,       // No mutado
             generation,  // Generación
             70           // Probabilidad de mutación

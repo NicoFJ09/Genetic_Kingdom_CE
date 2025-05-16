@@ -27,7 +27,7 @@ void MageTower::UpdateStats() {
         spAttackRegenerationTime = 7;
         texturePath = "../assets/textures/towers/towersInMap/MageLvl2.png";
     } else if (level == 3) {
-        damage = 52;
+        damage = 50;
         speed = 1.2;
         range = 6;
         spAttackRegenerationTime = 5;

@@ -7,10 +7,10 @@ Mercenary::Mercenary(bool alive, Vector2 position, int frameSpeed, int generatio
             alive ? 9 : 4,
             "Mercenary", // Tipo de enemigo
             100.0,         // Salud
-            5.0,           // Velocidad
-            8,           // Resistencia a flechas
-            3,           // Resistencia a magia
-            5,           // Resistencia a artillería
+            7.0,           // Velocidad
+            30,           // Resistencia a flechas
+            0,           // Resistencia a magia
+            30,           // Resistencia a artillería
             false,       // No mutado
             generation,  // Generación
             70           // Probabilidad de mutación

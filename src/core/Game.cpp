@@ -15,7 +15,6 @@ void Game::Update(float deltaTime) {
     if (waveManager.IsWaveActive() && !pendingEnemies.empty()) {
         spawnTimer += deltaTime;
         if (spawnTimer >= spawnInterval) {
-            // Spawnear el siguiente enemigo
             Enemy* next = pendingEnemies.front();
             pendingEnemies.erase(pendingEnemies.begin());
             next->Activate();
@@ -24,17 +23,38 @@ void Game::Update(float deltaTime) {
         }
     }
 
-    // Actualizar enemigos activos
+    // Actualizar todos los enemigos activos
     for (Enemy* enemy : activeEnemies) {
         enemy->Update(deltaTime);
     }
 
-    // Limpiar enemigos que ya no están activos
-    activeEnemies.erase(
-        std::remove_if(activeEnemies.begin(), activeEnemies.end(),
-            [](Enemy* e) { return !e->IsActive(); }),
-        activeEnemies.end()
-    );
+    // Crear una lista temporal de enemigos que deben eliminarse
+    // (es importante no modificar el vector mientras lo recorremos)
+    std::vector<Enemy*> enemiesForDeletion;
+
+    // Identificar enemigos que deben eliminarse (completaron su animación de muerte)
+    for (Enemy* enemy : activeEnemies) {
+        if (enemy->IsMarkedForDeletion()) {
+            enemiesForDeletion.push_back(enemy);
+        }
+    }
+
+    // Eliminar los enemigos marcados del vector de activos
+    for (Enemy* enemy : enemiesForDeletion) {
+        // Eliminar del vector
+        activeEnemies.erase(
+            std::remove(activeEnemies.begin(), activeEnemies.end(), enemy),
+            activeEnemies.end()
+        );
+        
+        // Log de depuración
+        TraceLog(LOG_INFO, "Removing enemy from activeEnemies after death animation");
+    }
+
+    // Eliminar las instancias al final para evitar acceso inválido
+    for (Enemy* enemy : enemiesForDeletion) {
+        delete enemy;
+    }
 
     // Si la ola terminó, limpiar enemigos y preparar para la siguiente
     if (!waveManager.IsWaveActive()) {
@@ -64,9 +84,17 @@ const std::vector<Enemy*>& Game::GetActiveEnemies() const {
 }
 
 void Game::ClearEnemies() {
-    for (Enemy* e : activeEnemies) delete e;
+    // Borrar enemigos activos
+    for (Enemy* e : activeEnemies) {
+        delete e;
+    }
     activeEnemies.clear();
-    for (Enemy* e : pendingEnemies) delete e;
+    
+    // Borrar enemigos pendientes
+    for (Enemy* e : pendingEnemies) {
+        delete e;
+    }
     pendingEnemies.clear();
+    
     spawnTimer = 0.0f;
 }

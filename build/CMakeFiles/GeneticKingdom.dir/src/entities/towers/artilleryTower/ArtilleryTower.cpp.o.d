@@ -905,4 +905,6 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/../../enemies/Enemy.h
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/../../enemies/Enemy.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/../../enemies/../../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/../../../utils/Timer.h

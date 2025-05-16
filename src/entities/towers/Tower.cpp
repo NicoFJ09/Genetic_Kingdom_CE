@@ -9,10 +9,11 @@ std::vector<Tower*> Tower::allInstances;
 
 Tower::Tower(Vector2 position, int level, const std::string& path, int damage, double speed, int range, int spAttackRegenerationTime)
     : position(position), level(level), texturePath(path), damage(damage), speed(speed), range(range),
-       spAttackRegenerationTime(spAttackRegenerationTime)
+       spAttackRegenerationTime(spAttackRegenerationTime), attackTimer(1.0f / speed)
 {
     texture = LoadAndResizeTexture(texturePath.c_str(), 32, 32); // Example width and height
     allInstances.push_back(this);
+    attackTimer.Start();
 }
 
 Texture2D Tower::LoadAndResizeTexture(const std::string& path, int width, int height) {
@@ -27,11 +28,12 @@ Texture2D Tower::LoadAndResizeTexture(const std::string& path, int width, int he
     return texture;
 }
 
-Tower::~Tower()
-{
-    UnloadTexture(texture);
-
-    // Remove this instance from the static list
+Tower::~Tower() {
+    if (texture.id != 0) {
+        UnloadTexture(texture);
+    }
+    
+    // Eliminar de la lista estática
     auto it = std::find(allInstances.begin(), allInstances.end(), this);
     if (it != allInstances.end()) {
         allInstances.erase(it);
@@ -39,16 +41,24 @@ Tower::~Tower()
 }
 
 bool Tower::IsEnemyInRange(const Enemy* enemy) const {
-    if (!enemy || !enemy->IsActive()) return false;
+    // Primero verificar que el puntero no sea nulo
+    if (!enemy) return false;
+    
+    // Verificar si el enemigo está activo para fines de juego
+    // Un enemigo en animación de muerte ya NO es un objetivo válido
+    if (!enemy->IsActive() || enemy->IsDying()) return false;
+    
+    // Finalmente calcular la distancia
     float dx = enemy->GetPosition().x - position.x;
     float dy = enemy->GetPosition().y - position.y;
     float distance = sqrtf(dx * dx + dy * dy);
-    return distance <= (range * 32.0f);
+    return distance <= (range * 32.0f); // range en tiles * tamaño del tile
 }
 
 Enemy* Tower::FindFirstEnemyInRange() const {
     for (Enemy* enemy : Enemy::GetAllInstances()) {
-        if (IsEnemyInRange(enemy)) {
+        // Asegúrate de que el enemigo no sea nulo y esté en rango
+        if (enemy && IsEnemyInRange(enemy)) {
             return enemy;
         }
     }
@@ -58,7 +68,14 @@ Enemy* Tower::FindFirstEnemyInRange() const {
 Enemy* Tower::FindClosestEnemyInRange() const {
     Enemy* closest = nullptr;
     float minDist = 1e9f;
-    for (Enemy* enemy : Enemy::GetAllInstances()) {
+    
+    // Crear una copia local del vector para evitar problemas
+    const auto& enemies = Enemy::GetAllInstances();
+    
+    for (Enemy* enemy : enemies) {
+        // Evitar acceso a puntero nulo
+        if (!enemy) continue;
+        
         if (IsEnemyInRange(enemy)) {
             float dx = enemy->GetPosition().x - position.x;
             float dy = enemy->GetPosition().y - position.y;
@@ -71,13 +88,65 @@ Enemy* Tower::FindClosestEnemyInRange() const {
     }
     return closest;
 }
-
-void Tower::Update()
+void Tower::Update(float deltaTime)
 {
-    if (!target || !target->IsActive() || !IsEnemyInRange(target)) {
+    // Verificar si el target sigue siendo válido
+    if (target) {
+        try {
+            // Intenta acceder al target para verificar si es válido
+            // Un enemigo que está muriendo ya no es un objetivo válido
+            bool isValid = target->IsActive() && !target->IsDying() && IsEnemyInRange(target);
+            if (!isValid) {
+                target = nullptr;
+            }
+        } catch (...) {
+            // Si ocurre cualquier excepción, el target podría haber sido liberado
+            target = nullptr;
+        }
+    }
+    
+    // Si no hay target válido, buscar uno nuevo
+    if (!target) {
         target = FindClosestEnemyInRange();
     }
+
+    // Actualizar temporizador de ataque
+    attackTimer.Update(deltaTime);
+
+    if (target && attackTimer.IsFinished()) {
+        try {
+            // Determinar resistencia según tipo de torre
+            int resistance = 0;
+            if (towerType == "Archer Tower") {
+                resistance = target->GetArrowResistance();
+            } else if (towerType == "Mage Tower") {
+                resistance = target->GetMagicResistance();
+            } else if (towerType == "Artillery Tower") {
+                resistance = target->GetArtilleryResistance();
+            }
+            
+            // Calcular daño real considerando resistencia
+            float damageMultiplier = 1.0f - (resistance / 100.0f);
+            float realDamage = damage * damageMultiplier;
+            if (realDamage < 0) realDamage = 0;
+
+            // Aplicar daño al enemigo
+            target->SetHealth(target->GetHealth() - realDamage);
+
+            // Reiniciar el timer para el próximo ataque
+            attackTimer = Timer(1.0f / speed);
+            attackTimer.Start();
+            
+            // Debug: mostrar info del ataque
+            TraceLog(LOG_INFO, "%s attacked target %s for %.1f damage (%.1f health remaining)", 
+                   towerType.c_str(), target->GetEnemyType().c_str(), realDamage, target->GetHealth());
+        } catch (...) {
+            // Si hay error al acceder al target, reiniciar
+            target = nullptr;
+        }
+    }
 }
+
 
 void Tower::Draw()
 {

@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "../enemies/Enemy.h" 
+#include "../../utils/Timer.h"
 
 class Tower {
 protected:
@@ -24,11 +25,12 @@ protected:
     Enemy* FindFirstEnemyInRange() const;
     Enemy* FindClosestEnemyInRange() const;
     bool IsEnemyInRange(const Enemy* enemy) const;
+    Timer attackTimer; 
 public:
     Tower(Vector2 position, int level, const std::string& texturePath, int damage, double speed, int range, int spAttackRegenerationTime);
     virtual ~Tower();
 
-    virtual void Update();
+    virtual void Update(float deltaTime);
     virtual void Draw();
 
     // Métodos Get para acceder a las características de la torre

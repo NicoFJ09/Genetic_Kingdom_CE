@@ -57,6 +57,7 @@ GameplayScreen::GameplayScreen(int screenWidth, int screenHeight, ScreenManager*
 
 GameplayScreen::~GameplayScreen() {
     // Game se encarga de limpiar enemigos
+    Enemy::ClearAllInstances();
 }
 
 void GameplayScreen::Update() {
@@ -65,27 +66,14 @@ void GameplayScreen::Update() {
     gamePanel.Update();
     bottomPanel.Update();
 
-        // --- ACTUALIZAR TODAS LAS TORRES ---
+    // --- ACTUALIZAR TODAS LAS TORRES ---
     auto& map = gamePanel.GetMap();
     for (int y = 0; y < map.GetHeight(); ++y) {
         for (int x = 0; x < map.GetWidth(); ++x) {
             TowerTile* towerTile = dynamic_cast<TowerTile*>(map.GetTile(x, y));
             if (towerTile && towerTile->GetTower()) {
                 Tower* tower = towerTile->GetTower();
-                tower->Update();
-
-                // Imprimir información relevante de la torre
-                Vector2 pos = tower->GetPosition();
-                std::string type = tower->GetTowerType();
-                Enemy* target = tower->GetTarget();
-                if (target) {
-                    Vector2 targetPos = target->GetPosition();
-                    printf("Torre [%s] en (%.0f, %.0f) tiene target en (%.0f, %.0f)\n",
-                        type.c_str(), pos.x, pos.y, targetPos.x, targetPos.y);
-                } else {
-                    printf("Torre [%s] en (%.0f, %.0f) no tiene target\n",
-                        type.c_str(), pos.x, pos.y);
-                }
+                tower->Update(deltaTime);
             }
         }
     }
@@ -115,8 +103,11 @@ void GameplayScreen::Update() {
 
         std::vector<Enemy*> waveEnemies = CreateWaveEnemies();
         game.SpawnEnemiesForWave(waveEnemies);
-        sidePanel.SetActiveEnemies(waveEnemies); // Muestra SOLO los nuevos
+        sidePanel.SetActiveEnemies(game.GetActiveEnemies());
     }
+    
+    // Actualizamos el panel lateral con los enemigos activos actuales
+    sidePanel.SetActiveEnemies(game.GetActiveEnemies());
 }
 
 void GameplayScreen::Draw() {

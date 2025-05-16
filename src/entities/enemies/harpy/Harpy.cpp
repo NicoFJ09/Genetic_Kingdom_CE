@@ -7,10 +7,10 @@ Harpy::Harpy(bool alive, Vector2 position, int frameSpeed, int generation = 1)
             alive ? 23 : 7,
             "Harpy",    // Tipo de enemigo
             60.0,         // Salud
-            10.0,         // Velocidad
-            3,          // Resistencia a flechas
-            5,          // Resistencia a magia
-            2,          // Resistencia a artillería
+            8.0,         // Velocidad
+            0,          // Resistencia a flechas
+            0,          // Resistencia a magia
+            100,          // Resistencia a artillería
             false,       // No mutado
             generation,  // Generación
             70           // Probabilidad de mutación

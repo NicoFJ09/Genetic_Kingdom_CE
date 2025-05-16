@@ -12,79 +12,158 @@
 std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     std::vector<Enemy*> waveEnemies;
     WaveManager& waveManager = game.GetWaveManager();
+    int currentWave = waveManager.GetCurrentWave();
+    
+    // Vectores separados por tipo de enemigo
     std::vector<Enemy*> ogres;
     std::vector<Enemy*> harpies;
     std::vector<Enemy*> mercenaries;
     std::vector<Enemy*> darkElves;
-    
 
-    int numOgres = GetRandomValue(5, 15);
-    int numHarpies = GetRandomValue(5, 15);
-    int numMercenaries = GetRandomValue(5, 15);
-    int numDarkElves = GetRandomValue(5, 15);
-
-    
-
-    // Ogre
-    std::string ogreType = "Ogre";
-    waveManager.RegisterEnemyInWave(ogreType);
-    int ogreGen = waveManager.GetEnemyGeneration(ogreType);
-    
-    std::string harpyType = "Harpy";
-    waveManager.RegisterEnemyInWave(harpyType);
-    int harpyGen = waveManager.GetEnemyGeneration(harpyType);
-    
-    std::string mercType = "Mercenary";
-    waveManager.RegisterEnemyInWave(mercType);
-    int mercGen = waveManager.GetEnemyGeneration(mercType);
-    
-    std::string darkElfType = "Dark Elf";
-    waveManager.RegisterEnemyInWave(darkElfType);
-    int darkElfGen = waveManager.GetEnemyGeneration(darkElfType);
-    
     auto PATH_SEGMENT = AStarPath(0, 0, 18, 30, GAME_MAP);
 
-    // Generar Ogres
-    for (int i = 0; i < numOgres; i++) {
-        Vector2 position = {25.0f + i * 10.0f, 25.0f};
-        Ogre* ogre = new Ogre(true, false, position, 8, ogreGen);
-        ogre->SetPath(PATH_SEGMENT);
-        ogres.push_back(ogre);
-        waveEnemies.push_back(ogre); // También añadir al vector general
+    // --- Ogres (aparecen desde la primera ola) ---
+    if (currentWave >= 1) {
+            std::string ogreType = "Ogre";
+            waveManager.RegisterEnemyInWave(ogreType);
+            int ogreGen = waveManager.GetEnemyGeneration(ogreType);
+
+        if (ogreGen == 1) {
+            // Primera generación: spawn aleatorio
+            int numOgres = GetRandomValue(5, 15);
+            TraceLog(LOG_INFO, "Spawning %d Ogres randomly (Generation 1)", numOgres);
+            
+            for (int i = 0; i < numOgres; i++) {
+                Vector2 position = {25.0f + i * 10.0f, 25.0f};
+                Ogre* ogre = new Ogre(true, false, position, 8, ogreGen);
+                ogre->SetPath(PATH_SEGMENT);
+                ogres.push_back(ogre);
+                waveEnemies.push_back(ogre);
+            }
+        } else {
+            // Segunda generación en adelante: usar GA
+            TraceLog(LOG_INFO, "GA PROCESSING for Ogres (Generation %d)", ogreGen);
+            
+            // Por ahora, generamos un número constante para probar
+            int numOgres = 10; // En el futuro, esto vendrá del GA
+            
+            for (int i = 0; i < numOgres; i++) {
+                Vector2 position = {25.0f + i * 10.0f, 25.0f};
+                Ogre* ogre = new Ogre(true, false, position, 8, ogreGen);
+                ogre->SetPath(PATH_SEGMENT);
+                ogres.push_back(ogre);
+                waveEnemies.push_back(ogre);
+            }
+        }
     }
-    
-    // Generar Harpies
-    for (int i = 0; i < numHarpies; i++) {
-        Vector2 position = {150.0f + i * 10.0f, 25.0f};
-        Harpy* harpy = new Harpy(true, false, position, 16, harpyGen);
-        harpy->SetPath(PATH_SEGMENT);
-        harpies.push_back(harpy);
-        waveEnemies.push_back(harpy);
+        // --- Dark Elves (aparecen desde la ola 2) ---
+    if (currentWave >= 2) {
+            std::string darkElfType = "Dark Elf";
+            waveManager.RegisterEnemyInWave(darkElfType);
+            int darkElfGen = waveManager.GetEnemyGeneration(darkElfType);
+
+        if (darkElfGen == 1) {
+            // Primera generación: spawn aleatorio
+            int numDarkElves = GetRandomValue(5, 15);
+            TraceLog(LOG_INFO, "Spawning %d Dark Elves randomly (Generation 1)", numDarkElves);
+            
+            for (int i = 0; i < numDarkElves; i++) {
+                Vector2 position = {450.0f + i * 10.0f, 25.0f};
+                DarkElf* darkElf = new DarkElf(true, false, position, 10, darkElfGen);
+                darkElf->SetPath(PATH_SEGMENT);
+                darkElves.push_back(darkElf);
+                waveEnemies.push_back(darkElf);
+            }
+        } else {
+            // Segunda generación en adelante: usar GA
+            TraceLog(LOG_INFO, "GA PROCESSING for Dark Elves (Generation %d)", darkElfGen);
+            
+            int numDarkElves = 10; // En el futuro, esto vendrá del GA
+            
+            for (int i = 0; i < numDarkElves; i++) {
+                Vector2 position = {450.0f + i * 10.0f, 25.0f};
+                DarkElf* darkElf = new DarkElf(true, false, position, 10, darkElfGen);
+                darkElf->SetPath(PATH_SEGMENT);
+                darkElves.push_back(darkElf);
+                waveEnemies.push_back(darkElf);
+            }
+        }
     }
-    
-    // Generar Mercenaries
-    for (int i = 0; i < numMercenaries; i++) {
-        Vector2 position = {300.0f + i * 10.0f, 25.0f};
-        Mercenary* mercenary = new Mercenary(true, false, position, 12, mercGen);
-        mercenary->SetPath(PATH_SEGMENT);
-        mercenaries.push_back(mercenary);
-        waveEnemies.push_back(mercenary);
+
+        // --- Mercenarios (aparecen desde la ola 3) ---
+    if (currentWave >= 3) {
+        std::string mercType = "Mercenary";
+        waveManager.RegisterEnemyInWave(mercType);
+        int mercGen = waveManager.GetEnemyGeneration(mercType);
+
+        if (mercGen == 1) {
+            // Primera generación: spawn aleatorio
+            int numMercenaries = GetRandomValue(5, 15);
+            TraceLog(LOG_INFO, "Spawning %d Mercenaries randomly (Generation 1)", numMercenaries);
+            
+            for (int i = 0; i < numMercenaries; i++) {
+                Vector2 position = {300.0f + i * 10.0f, 25.0f};
+                Mercenary* mercenary = new Mercenary(true, false, position, 12, mercGen);
+                mercenary->SetPath(PATH_SEGMENT);
+                mercenaries.push_back(mercenary);
+                waveEnemies.push_back(mercenary);
+            }
+        } else {
+            // Segunda generación en adelante: usar GA
+            TraceLog(LOG_INFO, "GA PROCESSING for Mercenaries (Generation %d)", mercGen);
+            
+            int numMercenaries = 10; // En el futuro, esto vendrá del GA
+            
+            for (int i = 0; i < numMercenaries; i++) {
+                Vector2 position = {300.0f + i * 10.0f, 25.0f};
+                Mercenary* mercenary = new Mercenary(true, false, position, 12, mercGen);
+                mercenary->SetPath(PATH_SEGMENT);
+                mercenaries.push_back(mercenary);
+                waveEnemies.push_back(mercenary);
+            }
+        }
     }
-    
-    // Generar DarkElves
-    for (int i = 0; i < numDarkElves; i++) {
-        Vector2 position = {450.0f + i * 10.0f, 25.0f};
-        DarkElf* darkElf = new DarkElf(true, false, position, 10, darkElfGen);
-        darkElf->SetPath(PATH_SEGMENT);
-        darkElves.push_back(darkElf);
-        waveEnemies.push_back(darkElf);
+
+    // --- Arpías (aparecen desde la ola 4) ---
+    if (currentWave >= 4) {
+
+        std::string harpyType = "Harpy";
+        waveManager.RegisterEnemyInWave(harpyType);
+        int harpyGen = waveManager.GetEnemyGeneration(harpyType);
+
+        if (harpyGen == 1) {
+            // Primera generación: spawn aleatorio
+            int numHarpies = GetRandomValue(5, 15);
+            TraceLog(LOG_INFO, "Spawning %d Harpies randomly (Generation 1)", numHarpies);
+            
+            for (int i = 0; i < numHarpies; i++) {
+                Vector2 position = {150.0f + i * 10.0f, 25.0f};
+                Harpy* harpy = new Harpy(true, false, position, 16, harpyGen);
+                harpy->SetPath(PATH_SEGMENT);
+                harpies.push_back(harpy);
+                waveEnemies.push_back(harpy);
+            }
+        } else {
+            // Segunda generación en adelante: usar GA
+            TraceLog(LOG_INFO, "GA PROCESSING for Harpies (Generation %d)", harpyGen);
+            
+            int numHarpies = 10; // En el futuro, esto vendrá del GA
+            
+            for (int i = 0; i < numHarpies; i++) {
+                Vector2 position = {150.0f + i * 10.0f, 25.0f};
+                Harpy* harpy = new Harpy(true, false, position, 16, harpyGen);
+                harpy->SetPath(PATH_SEGMENT);
+                harpies.push_back(harpy);
+                waveEnemies.push_back(harpy);
+            }
+        }
     }
-    
+
     // DEBUG: Mostrar información sobre los enemigos generados
-    TraceLog(LOG_INFO, "Wave %d created: %d Ogres, %d Harpies, %d Mercenaries, %d DarkElves", 
-             waveManager.GetCurrentWave(), numOgres, numHarpies, numMercenaries, numDarkElves);
+    TraceLog(LOG_INFO, "Wave %d created: %zu Ogres, %zu Harpies, %zu Mercenaries, %zu DarkElves", 
+             waveManager.GetCurrentWave(), ogres.size(), harpies.size(), mercenaries.size(), darkElves.size());
     
-    // Pasar los vectores específicos al algoritmo genético (solo para preparar estructura)
+    // Pasar los vectores específicos al algoritmo genético para procesar la siguiente generación
     if (geneticAlgorithm) {
         geneticAlgorithm->setEnemyVectors(ogres, harpies, mercenaries, darkElves);
         geneticAlgorithm->printGenerationSummary(waveManager.GetCurrentWave());

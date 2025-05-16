@@ -17594,6 +17594,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: /Users/nicolasfl
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TextElement.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerBuy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerUpgrade.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/DefeatScreen.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/Screen.h \
@@ -18563,6 +18564,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o: /Users/nicolasflore
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TextElement.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerBuy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerUpgrade.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/GameplayScreen.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/Screen.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/ScreenManager.h \

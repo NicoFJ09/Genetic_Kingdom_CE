@@ -9,6 +9,7 @@
 #include "ScreenManager.h"
 #include "../systems/GeneticAlgorithm.h"
 #include "../map/BridgeTile.h"
+#include "../utils/Timer.h"
 
 class GameplayScreen : public Screen {
 private:
@@ -23,6 +24,19 @@ private:
     SidePanel sidePanel;
     int lastWaveNumber = 0;
     BridgeTile* bridgeTile = nullptr; // Puntero al BridgeTile para detectar colisiones
+    
+    // Sistema de spawn por etapas
+    Timer spawnDelayTimer;
+    int spawnStage; // 0: ogres, 1: dark elves, 2: mercenaries, 3: harpies, 4: done
+    bool spawningWave;
+    std::vector<Enemy*> pendingOgres;
+    std::vector<Enemy*> pendingDarkElves;
+    std::vector<Enemy*> pendingMercenaries;
+    std::vector<Enemy*> pendingHarpies;
+
+    // Métodos para el sistema de spawning
+    void PrepareWaveSpawning();
+    void UpdateSpawning(float deltaTime);
     
     // Nuevo: método para crear la tanda de enemigos
     std::vector<Enemy*> CreateWaveEnemies();

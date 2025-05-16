@@ -954,6 +954,9 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/../entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/../config/Constants.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/ScreenManager.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../map/BridgeTile.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../map/Tile.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../map/../entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/ogre/Ogre.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/ogre/../Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/harpy/Harpy.h \
@@ -963,4 +966,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/darkElf/DarkElf.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../entities/enemies/darkElf/../Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../config/Constants.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../systems/Pathfinding.h
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../systems/Pathfinding.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/DefeatScreen.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/TextElement.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/Button.h

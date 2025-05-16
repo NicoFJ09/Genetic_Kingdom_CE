@@ -919,6 +919,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__node_handle \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/../entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/../entities/towers/archerTower/ArcherTower.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/../entities/towers/archerTower/../Tower.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/../entities/towers/mageTower/MageTower.h \

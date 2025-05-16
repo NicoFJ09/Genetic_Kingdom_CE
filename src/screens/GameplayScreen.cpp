@@ -5,6 +5,7 @@
 #include "../entities/enemies/darkElf/DarkElf.h"
 #include "../config/Constants.h"
 #include "../systems/Pathfinding.h"
+#include "DefeatScreen.h"
 
 std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     std::vector<Enemy*> waveEnemies;
@@ -43,12 +44,29 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
 
 GameplayScreen::GameplayScreen(int screenWidth, int screenHeight, ScreenManager* screenManager)
     : screenWidth(screenWidth), screenHeight(screenHeight),
+      screenManager(screenManager), // Guardar referencia al ScreenManager
       game(),
       gamePanel(0, 0, 992, 608),
       sidePanel(992, 0, screenWidth - 992, screenHeight),
       bottomPanel(0, 608, 992, screenHeight - 608, gamePanel.GetMap()) 
 {
     game.SetEconomySystem(&bottomPanel.GetEconomySystem());
+    
+    // Obtener referencia al BridgeTile
+    auto& map = gamePanel.GetMap();
+    for (int y = 0; y < map.GetHeight(); y++) {
+        for (int x = 0; x < map.GetWidth(); x++) {
+            Tile* tile = map.GetTile(x, y);
+            BridgeTile* bridge = dynamic_cast<BridgeTile*>(tile);
+            if (bridge) {
+                bridgeTile = bridge;
+                TraceLog(LOG_INFO, "Found bridge tile at position (%d, %d)", x, y);
+                break;
+            }
+        }
+        if (bridgeTile) break;
+    }
+    
     // Crear y pasar la primera tanda de enemigos
     std::vector<Enemy*> waveEnemies = CreateWaveEnemies();
     game.SpawnEnemiesForWave(waveEnemies);
@@ -61,8 +79,24 @@ GameplayScreen::~GameplayScreen() {
     Enemy::ClearAllInstances();
 }
 
+void GameplayScreen::CheckForDefeat() {
+    // Verifica si hay un puente y si algún enemigo ha llegado a él
+    if (bridgeTile && bridgeTile->IsUnderAttack(game.GetActiveEnemies())) {
+        TraceLog(LOG_WARNING, "DEFEAT! Enemy reached the bridge!");
+        
+        // Cambiar a la pantalla de derrota
+        if (screenManager) {
+            screenManager->SwitchToScreen(new DefeatScreen(screenWidth, screenHeight, screenManager));
+        }
+    }
+}
+
 void GameplayScreen::Update() {
     float deltaTime = GetFrameTime();
+    
+    // Verificar derrota antes de actualizar el juego
+    CheckForDefeat();
+    
     game.Update(deltaTime);
     gamePanel.Update();
     bottomPanel.Update();

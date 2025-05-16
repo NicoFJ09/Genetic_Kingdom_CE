@@ -5,7 +5,7 @@
 
 class Harpy : public Enemy {
 public:
-    Harpy(bool alive, Vector2 position, int frameSpeed);
+    Harpy(bool alive, Vector2 position, int frameSpeed,int generation);
     ~Harpy() = default;
 };
 

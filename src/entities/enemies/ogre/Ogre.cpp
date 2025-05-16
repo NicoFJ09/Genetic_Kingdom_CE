@@ -1,6 +1,6 @@
 #include "Ogre.h"
 
-Ogre::Ogre(bool alive, Vector2 position, int frameSpeed)
+Ogre::Ogre(bool alive, Vector2 position, int frameSpeed, int generation)
     : Enemy(alive, position, frameSpeed,
             alive ? "../assets/textures/enemies/ogre/OgreMoveSpriteSheet.png"
                   : "../assets/textures/enemies/ogre/OgreDeathSpriteSheet.png",
@@ -12,5 +12,6 @@ Ogre::Ogre(bool alive, Vector2 position, int frameSpeed)
             10,          // Resistencia a magia
             20,          // Resistencia a artillería
             false,       // No mutado
+            generation,          // Generación inicial
             70           // Probabilidad de mutación
     ) {}

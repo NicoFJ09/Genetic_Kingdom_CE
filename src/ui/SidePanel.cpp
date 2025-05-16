@@ -31,6 +31,11 @@ void SidePanel::UpdateWaveInfo(int wave, float time) {
 }
 
 void SidePanel::SetActiveEnemies(const std::vector<Enemy*>& enemies) {
+    for (Enemy* enemy : enemies) {
+        if (!enemy) {
+            TraceLog(LOG_ERROR, "SidePanel::SetActiveEnemies: Null enemy detected.");
+        }
+    }
     activeEnemies = enemies;
 }
 
@@ -76,7 +81,7 @@ void SidePanel::Draw() {
     textY += 30;
 
     // Dibujar la generación del enemigo (centrado en X)
-    int generation = Enemy::GetCurrentGeneration(); // Obtener la generación actual
+    int generation = activeEnemies.empty() ? 0 : activeEnemies[0]->GetGeneration(); // Obtener la generación actual
     std::string generationText = TextFormat("Generation: %d", generation);
     int generationTextWidth = MeasureText(generationText.c_str(), fontSize);
     float generationTextX = bounds.x + (bounds.width - generationTextWidth) / 2;

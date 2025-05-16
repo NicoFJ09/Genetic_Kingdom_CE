@@ -166,6 +166,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o: \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/erase_if.h \
  /home/tamara/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.h \
+ /home/tamara/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.h \
  /home/tamara/Documents/GitHub/Genetic_Kingdom_CE/src/map/../entities/towers/archerTower/ArcherTower.h \
  /home/tamara/Documents/GitHub/Genetic_Kingdom_CE/src/map/../entities/towers/archerTower/../Tower.h \
  /home/tamara/Documents/GitHub/Genetic_Kingdom_CE/src/map/../entities/towers/mageTower/MageTower.h \

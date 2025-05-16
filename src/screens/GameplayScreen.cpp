@@ -8,11 +8,11 @@
 
 std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     std::vector<Enemy*> waveEnemies;
-    waveEnemies.push_back(new Ogre(true, {25, 25}, 8));
-    waveEnemies.push_back(new Harpy(true, {150, 25}, 16));
-    waveEnemies.push_back(new Mercenary(true, {300, 25}, 12));
-    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
-    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10));
+    waveEnemies.push_back(new Ogre(true, {25, 25}, 8, 1));
+    waveEnemies.push_back(new Harpy(true, {150, 25}, 16,1));
+    waveEnemies.push_back(new Mercenary(true, {300, 25}, 12,1));
+    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10,1));
+    waveEnemies.push_back(new DarkElf(true, {450, 25}, 10,1));
     auto PATH_SEGMENT = AStarPath(0, 0, 18, 30, GAME_MAP);
     for (Enemy* enemy : waveEnemies) {
         enemy->SetPath(PATH_SEGMENT);

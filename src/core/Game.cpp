@@ -13,7 +13,9 @@ void Game::Update(float deltaTime) {
     waveManager.Update(deltaTime);
 
     // Spawnear enemigos si hay pendientes y la ola está activa
-    if (waveManager.IsWaveActive() && !pendingEnemies.empty()) {
+ 
+
+  if (waveManager.IsWaveActive() && !pendingEnemies.empty()) {
         spawnTimer += deltaTime;
         if (spawnTimer >= spawnInterval) {
             // Spawnear el siguiente enemigo

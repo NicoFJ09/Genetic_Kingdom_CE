@@ -43,7 +43,7 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
 
 GameplayScreen::GameplayScreen(int screenWidth, int screenHeight, ScreenManager* screenManager)
     : screenWidth(screenWidth), screenHeight(screenHeight),
-      game(30.0f),
+      game(),
       gamePanel(0, 0, 992, 608),
       sidePanel(992, 0, screenWidth - 992, screenHeight),
       bottomPanel(0, 608, 992, screenHeight - 608, gamePanel.GetMap()) 
@@ -91,7 +91,7 @@ void GameplayScreen::Update() {
     }
 
     WaveManager& waveManager = game.GetWaveManager();
-    sidePanel.UpdateWaveInfo(waveManager.GetCurrentWave(), waveManager.GetRemainingTime());
+    sidePanel.UpdateWaveInfo(waveManager.GetCurrentWave());
     sidePanel.Update();
 
     EconomySystem& economySystem = bottomPanel.GetEconomySystem();

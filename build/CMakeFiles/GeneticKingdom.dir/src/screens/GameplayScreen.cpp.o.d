@@ -928,7 +928,6 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o: \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../entities/enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/Game.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/WaveManager.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../core/../utils/Timer.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/set \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/functional \

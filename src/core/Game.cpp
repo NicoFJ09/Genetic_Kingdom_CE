@@ -1,16 +1,15 @@
 #include "Game.h"
 
-Game::Game() : waveManager(30.0f) {
+Game::Game() : waveManager() {
     waveManager.StartWave();
 }
 
-Game::Game(float waveDuration) : waveManager(waveDuration) {
+Game::Game(float) : waveManager() {  // Ya no usamos waveDuration
     waveManager.StartWave();
 }
+
 
 void Game::Update(float deltaTime) {
-    waveManager.Update(deltaTime);
-
     // Spawnear enemigos si hay pendientes y la ola está activa
     if (waveManager.IsWaveActive() && !pendingEnemies.empty()) {
         spawnTimer += deltaTime;
@@ -29,7 +28,6 @@ void Game::Update(float deltaTime) {
     }
 
     // Crear una lista temporal de enemigos que deben eliminarse
-    // (es importante no modificar el vector mientras lo recorremos)
     std::vector<Enemy*> enemiesForDeletion;
 
     // Identificar enemigos que deben eliminarse (completaron su animación de muerte)
@@ -41,25 +39,26 @@ void Game::Update(float deltaTime) {
 
     // Eliminar los enemigos marcados del vector de activos
     for (Enemy* enemy : enemiesForDeletion) {
-        // Eliminar del vector
         activeEnemies.erase(
             std::remove(activeEnemies.begin(), activeEnemies.end(), enemy),
             activeEnemies.end()
         );
         
-        // Log de depuración
         TraceLog(LOG_INFO, "Removing enemy from activeEnemies after death animation");
     }
 
-    // Eliminar las instancias al final para evitar acceso inválido
+    // Eliminar las instancias al final
     for (Enemy* enemy : enemiesForDeletion) {
         delete enemy;
     }
 
-    // Si la ola terminó, limpiar enemigos y preparar para la siguiente
-    if (!waveManager.IsWaveActive()) {
-        ClearEnemies();
+    // Verificar si la ola ha terminado (no hay enemigos activos ni pendientes)
+    if (waveManager.IsWaveActive() && activeEnemies.empty() && pendingEnemies.empty()) {
+        waveManager.SetWaveCompleted();
     }
+
+    // Actualizar el WaveManager
+    waveManager.Update();
 }
 
 WaveManager& Game::GetWaveManager() {

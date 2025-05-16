@@ -1,11 +1,11 @@
 #include "WaveManager.h"
 
-WaveManager::WaveManager(float waveDuration) : currentWave(0), waveTimer(waveDuration), waveActive(false) {}
+WaveManager::WaveManager() : currentWave(0), waveActive(false), waveCompleted(false) {}
 
 void WaveManager::StartWave() {
     currentWave++;
-    waveTimer.Start();
     waveActive = true;
+    waveCompleted = false;
     
     // Limpiar registro de enemigos para la nueva ola
     enemiesInCurrentWave.clear();
@@ -20,13 +20,11 @@ void WaveManager::FinishWave() {
     }
 }
 
-void WaveManager::Update(float deltaTime) {
-    if (waveActive) {
-        waveTimer.Update(deltaTime);
-        if (waveTimer.IsFinished()) {
-            FinishWave();     // Terminar la ola actual y actualizar generaciones
-            StartWave();      // Iniciar la siguiente ola automáticamente
-        }
+void WaveManager::Update() {
+    // Si la ola está activa y se ha completado (todos los enemigos muertos)
+    if (waveActive && waveCompleted) {
+        FinishWave();     // Terminar la ola actual y actualizar generaciones
+        StartWave();      // Iniciar la siguiente ola automáticamente
     }
 }
 
@@ -38,8 +36,12 @@ int WaveManager::GetCurrentWave() const {
     return currentWave;
 }
 
-float WaveManager::GetRemainingTime() const {
-    return waveTimer.GetRemainingTime();
+bool WaveManager::IsWaveCompleted() const {
+    return waveCompleted;
+}
+
+void WaveManager::SetWaveCompleted() {
+    waveCompleted = true;
 }
 
 int WaveManager::GetEnemyGeneration(const std::string& enemyType) {
@@ -58,7 +60,7 @@ void WaveManager::RegisterEnemyInWave(const std::string& enemyType) {
 void WaveManager::Reset() {
     currentWave = 0;
     waveActive = false;
-    waveTimer.Reset();
+    waveCompleted = false;
     
     // Reiniciar el sistema de generaciones
     enemyGenerations.clear();

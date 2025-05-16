@@ -72,6 +72,14 @@ void GameplayScreen::Update() {
         game.SpawnEnemiesForWave(waveEnemies);
         sidePanel.SetActiveEnemies(waveEnemies); // Muestra SOLO los nuevos
     }
+    for (auto& row : gamePanel.GetMap().tiles) {
+        for (auto& tile : row) {
+            TowerTile* towerTile = dynamic_cast<TowerTile*>(tile.get());
+            if (towerTile && towerTile->GetTower()) {
+                towerTile->GetTower()->UpdateProjectiles(deltaTime);
+            }
+        }
+    }
 }
 
 void GameplayScreen::Draw() {
@@ -82,5 +90,13 @@ void GameplayScreen::Draw() {
     // Dibujar los enemigos activos
     for (Enemy* enemy : game.GetActiveEnemies()) {
         enemy->Draw();
+    }
+    for (auto& row : gamePanel.GetMap().tiles) {
+        for (auto& tile : row) {
+            TowerTile* towerTile = dynamic_cast<TowerTile*>(tile.get());
+            if (towerTile && towerTile->GetTower()) {
+                towerTile->GetTower()->DrawProjectiles();
+            }
+        }
     }
 }

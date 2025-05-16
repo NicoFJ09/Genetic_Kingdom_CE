@@ -262,7 +262,7 @@ TowerTile* Map::ReplaceTileWithTower(GrassTile* oldTile, const std::string& towe
             if (tile.get() == oldTile) {
                 // Obtener la posición del tile antiguo
                 Vector2 position = oldTile->GetPosition();
-
+                TraceLog(LOG_INFO, "Creating tower at tile position: (%.2f, %.2f)", position.x, position.y);
                 // Crear la torre específica según el tipo
                 Tower* newTower = nullptr;
                 if (towerType == "Archer Tower") {
@@ -271,6 +271,9 @@ TowerTile* Map::ReplaceTileWithTower(GrassTile* oldTile, const std::string& towe
                     newTower = new MageTower(position, level);
                 } else if (towerType == "Artillery Tower") {
                     newTower = new ArtilleryTower(position, level);
+                }
+                if (newTower){
+                    newTower->AttackEnemy();
                 }
 
                 // Crear un nuevo TowerTile con la torre

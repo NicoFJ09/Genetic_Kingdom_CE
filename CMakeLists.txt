@@ -42,6 +42,7 @@ set(SOURCES
     src/entities/towers/archerTower/ArcherTower.cpp
     src/entities/towers/mageTower/MageTower.cpp
     src/entities/towers/artilleryTower/ArtilleryTower.cpp
+    src/entities/towers/Projectile.cpp
     src/map/Map.cpp
     src/map/Tile.cpp
     src/map/PathTile.cpp

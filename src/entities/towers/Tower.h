@@ -4,6 +4,11 @@
 #include "raylib.h"
 #include <string>
 #include <vector>
+#include <cstddef>
+#include <memory>
+#include "Projectile.h"
+#include "raymath.h"
+#include "../enemies/Enemy.h" 
 
 class Tower {
 protected:
@@ -18,12 +23,14 @@ protected:
     std::string towerType;        // Tipo de torre (Archer, Artillery, Mage)
     static std::vector<Tower*> allInstances; // Contenedor estático para todas las instancias
     virtual void UpdateStats(); // Actualizar estadísticas y sprite según el nivel
+    std::vector<std::unique_ptr<Projectile>> projectiles;
+    Vector2 centerPos; // Posición central de la torre (para el rango de ataque)
 
 public:
     Tower(Vector2 position, int level, const std::string& texturePath, int damage, int speed, int range, int spAttackRegenerationTime);
     virtual ~Tower();
 
-    virtual void Update();
+    virtual void Update(float deltaTime);
     virtual void Draw();
 
     // Métodos Get para acceder a las características de la torre
@@ -42,6 +49,11 @@ public:
 
     // Método para subir de nivel
     void LevelUp();
+    void AttackEnemy(); //Enemy* targetEnemy
+
+    void FireAt(const Vector2& target);
+    void UpdateProjectiles(float deltaTime);
+    void DrawProjectiles() const;
 };
 
 #endif

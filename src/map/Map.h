@@ -10,7 +10,6 @@
 
 class Map {
 private:
-    std::vector<std::vector<std::unique_ptr<Tile>>> tiles;
     std::array<Texture2D, 6> horizontalTextures;
     std::array<Texture2D, 6> verticalTextures;
     Texture2D middleTexture;
@@ -21,6 +20,7 @@ private:
 public:
     Map();
     ~Map();
+    std::vector<std::vector<std::unique_ptr<Tile>>> tiles;
     Texture2D LoadAndResizeTexture(const std::string& path, int width, int height);
     void LoadFromArray(const std::array<std::array<int, 31>, 19>& mapData);
     void Draw() const;

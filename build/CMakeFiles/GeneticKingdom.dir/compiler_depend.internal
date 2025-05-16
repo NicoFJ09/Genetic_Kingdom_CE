@@ -936,9 +936,10 @@ CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
- /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/Game.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/WaveManager.h
  /usr/local/Cellar/raylib/5.5/include/raylib.h
@@ -1874,7 +1875,6 @@ CMakeFiles/GeneticKingdom.dir/src/core/WaveManager.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
- /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/WaveManager.h
 
 CMakeFiles/GeneticKingdom.dir/src/entities/enemies/Enemy.cpp.o
@@ -16680,8 +16680,9 @@ CMakeFiles/GeneticKingdom.dir/src/screens/GameplayScreen.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
- /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/Game.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/WaveManager.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
@@ -17651,8 +17652,9 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/config/Constants.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/enemies/Enemy.h
- /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.h
+ /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/Game.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/WaveManager.h
  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h

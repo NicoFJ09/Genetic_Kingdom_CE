@@ -9,7 +9,7 @@
 std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     std::vector<Enemy*> waveEnemies;
     WaveManager& waveManager = game.GetWaveManager();
-    
+
     // Ogre
     std::string ogreType = "Ogre";
     waveManager.RegisterEnemyInWave(ogreType);
@@ -48,6 +48,7 @@ GameplayScreen::GameplayScreen(int screenWidth, int screenHeight, ScreenManager*
       sidePanel(992, 0, screenWidth - 992, screenHeight),
       bottomPanel(0, 608, 992, screenHeight - 608, gamePanel.GetMap()) 
 {
+    game.SetEconomySystem(&bottomPanel.GetEconomySystem());
     // Crear y pasar la primera tanda de enemigos
     std::vector<Enemy*> waveEnemies = CreateWaveEnemies();
     game.SpawnEnemiesForWave(waveEnemies);

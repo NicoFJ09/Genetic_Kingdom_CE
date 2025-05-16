@@ -2,31 +2,31 @@
 #define GAME_H
 
 #include "WaveManager.h"
+#include "EconomySystem.h"
 #include "../entities/enemies/Enemy.h"
+#include "../config/Constants.h"
 #include <vector>
 
 class Game {
 private:
     WaveManager waveManager;
-    std::vector<Enemy*> activeEnemies;   // Enemigos actualmente en el mapa
-    std::vector<Enemy*> pendingEnemies;  // Enemigos por spawnear en la ola actual
-    float spawnInterval = 1.0f;          // Tiempo entre spawns (puedes ajustar)
-    float spawnTimer = 0.0f;             // Timer para el siguiente spawn
+    EconomySystem* externalEconomySystem = nullptr;
+    std::vector<Enemy*> activeEnemies;
+    std::vector<Enemy*> pendingEnemies;
+    float spawnInterval = 1.0f;
+    float spawnTimer = 0.0f;
 
 public:
-    Game(); // Constructor por defecto
-    Game(float waveDuration); // Constructor con duración de ola
-
-    void Update(float deltaTime); // Actualizar el estado del juego
-    WaveManager& GetWaveManager(); // Obtener el WaveManager
-
-    // Nuevo: preparar la ola con los enemigos a spawnear
+    Game();
+    Game(float);
+    void Update(float deltaTime);
+    WaveManager& GetWaveManager();
+    
+    // Establecer el sistema económico externo
+    void SetEconomySystem(EconomySystem* system);
+    
     void SpawnEnemiesForWave(const std::vector<Enemy*>& waveEnemies);
-
-    // Nuevo: acceso a los enemigos activos
     const std::vector<Enemy*>& GetActiveEnemies() const;
-
-    // Limpieza de enemigos al finalizar la ola
     void ClearEnemies();
 };
 

@@ -1,10 +1,12 @@
 #include "Game.h"
+#include "../config/Constants.h"
+#include <algorithm>
 
 Game::Game() : waveManager() {
     waveManager.StartWave();
 }
 
-Game::Game(float) : waveManager() {  // Ya no usamos waveDuration
+Game::Game(float) : waveManager() {
     waveManager.StartWave();
 }
 
@@ -37,14 +39,35 @@ void Game::Update(float deltaTime) {
         }
     }
 
-    // Eliminar los enemigos marcados del vector de activos
+    // Eliminar los enemigos marcados del vector de activos y otorgar recompensas
     for (Enemy* enemy : enemiesForDeletion) {
+        // Encontrar el valor de recompensa para este tipo de enemigo
+        std::string enemyType = enemy->GetEnemyType();
+        int reward = 0;
+        
+        // Buscar el valor de recompensa en las constantes
+        for (const auto& info : EnemiesValue) {
+            if (info.name == enemyType) {
+                reward = info.value;
+                break;
+            }
+        }
+        
+        // Añadir la recompensa a la economía del jugador
+        if (reward > 0 && externalEconomySystem){
+            externalEconomySystem->AddToBalance(reward);
+            TraceLog(LOG_INFO, "Received %d coins for killing a %s! New balance: %d", 
+                     reward, enemyType.c_str(), externalEconomySystem->GetBalance());
+        }
+        
+        // Eliminar del vector de activos
         activeEnemies.erase(
             std::remove(activeEnemies.begin(), activeEnemies.end(), enemy),
             activeEnemies.end()
         );
         
-        TraceLog(LOG_INFO, "Removing enemy from activeEnemies after death animation");
+        TraceLog(LOG_INFO, "Removing enemy %s from activeEnemies after death animation", 
+                enemyType.c_str());
     }
 
     // Eliminar las instancias al final
@@ -81,6 +104,11 @@ void Game::SpawnEnemiesForWave(const std::vector<Enemy*>& waveEnemies) {
 const std::vector<Enemy*>& Game::GetActiveEnemies() const {
     return activeEnemies;
 }
+
+void Game::SetEconomySystem(EconomySystem* system) {
+    externalEconomySystem = system;
+}
+
 
 void Game::ClearEnemies() {
     // Borrar enemigos activos

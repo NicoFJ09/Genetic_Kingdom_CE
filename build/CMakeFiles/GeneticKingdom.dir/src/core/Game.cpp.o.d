@@ -931,6 +931,8 @@ CMakeFiles/GeneticKingdom.dir/src/core/Game.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/pointer_to_binary_function.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/unary_negate.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/EconomySystem.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/../entities/enemies/Enemy.h \
   /usr/local/Cellar/raylib/5.5/include/raylib.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/../entities/enemies/../../utils/Timer.h
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/../entities/enemies/../../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/core/../config/Constants.h

@@ -65,10 +65,10 @@ struct EnemyInfo {
 };
 
 static const std::array<EnemyInfo, 4> EnemiesValue = {{
-    {"Ogre", 25},
-    {"Dark Elf", 30},
-    {"Harpy", 35},
-    {"Mercenary", 45}
+    {"Ogre", 15},
+    {"Dark Elf", 20},
+    {"Harpy", 30},
+    {"Mercenary", 40}
 }};
 
 // Sprites de las torres por nivel

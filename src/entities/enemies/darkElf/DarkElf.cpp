@@ -9,7 +9,7 @@ DarkElf::DarkElf(bool alive, Vector2 position, int frameSpeed, int generation = 
             80.0,         // Salud
             10.0,          // Velocidad
             0,          // Resistencia a flechas
-            30,         // Resistencia a magia
+            40,         // Resistencia a magia
             0,          // Resistencia a artillería
             false,       // No mutado
             generation,  // Generación

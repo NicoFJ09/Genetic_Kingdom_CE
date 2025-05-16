@@ -14,24 +14,28 @@ protected:
     std::string texturePath;      // Ruta de la textura
     int damage;                   // Daño de la torre
     int level;                    // Nivel de la torre
-    double speed;                    // Velocidad de ataque de la torre
+    double speed;                 // Velocidad de ataque de la torre
     int range;                    // Rango de ataque de la torre
     int spAttackRegenerationTime; // Tiempo de regeneración de ataque especial
     std::string towerType;        // Tipo de torre (Archer, Artillery, Mage)
     static std::vector<Tower*> allInstances; // Contenedor estático para todas las instancias
-    Enemy* target = nullptr; // Nuevo atributo para el objetivo actual
-    virtual void UpdateStats(); // Actualizar estadísticas y sprite según el nivel
+    Enemy* target = nullptr;      // Objetivo actual
+    virtual void UpdateStats();   // Actualizar estadísticas y sprite según el nivel
 
     Enemy* FindFirstEnemyInRange() const;
     Enemy* FindClosestEnemyInRange() const;
     bool IsEnemyInRange(const Enemy* enemy) const;
-    Timer attackTimer; 
+    Timer attackTimer;            // Temporizador para ataques normales
+    Timer spAttackTimer;          // Temporizador para ataques especiales
+    bool isSpAttackReady;         // Indica si el ataque especial está listo
+
 public:
     Tower(Vector2 position, int level, const std::string& texturePath, int damage, double speed, int range, int spAttackRegenerationTime);
     virtual ~Tower();
 
     virtual void Update(float deltaTime);
     virtual void Draw();
+    virtual void PerformSpecialAttack(); // Método que pueden sobrescribir las torres específicas
 
     // Métodos Get para acceder a las características de la torre
     Vector2 GetPosition() const { return position; }
@@ -43,6 +47,8 @@ public:
     std::string GetTowerType() const { return towerType; }
     Enemy* GetTarget() const { return target; }
     void SetTarget(Enemy* newTarget) { target = newTarget; }
+    bool IsSpecialAttackReady() const { return isSpAttackReady; }
+    float GetSpecialAttackCooldown() const; // Devuelve el tiempo restante en segundos
 
     void SetPosition(Vector2 pos) { position = pos; }
     Texture2D GetTexture() const { return texture; }

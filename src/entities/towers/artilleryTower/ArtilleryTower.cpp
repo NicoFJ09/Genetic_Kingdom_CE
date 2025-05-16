@@ -23,13 +23,13 @@ void ArtilleryTower::UpdateStats() {
         texturePath = "../assets/textures/towers/towersInMap/ArtilleryLvl1.png";
     } else if (level == 2) {
         damage = 80;
-        speed = 0.6;
+        speed = 0.7;
         range = 4;
         spAttackRegenerationTime = 13;
         texturePath = "../assets/textures/towers/towersInMap/ArtilleryLvl2.png";
     } else if (level == 3) {
         damage = 105;
-        speed = 0.7;
+        speed = 1.0;
         range = 5;
         spAttackRegenerationTime = 10;
         texturePath = "../assets/textures/towers/towersInMap/ArtilleryLvl3.png";

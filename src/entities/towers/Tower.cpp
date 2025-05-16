@@ -9,11 +9,13 @@ std::vector<Tower*> Tower::allInstances;
 
 Tower::Tower(Vector2 position, int level, const std::string& path, int damage, double speed, int range, int spAttackRegenerationTime)
     : position(position), level(level), texturePath(path), damage(damage), speed(speed), range(range),
-       spAttackRegenerationTime(spAttackRegenerationTime), attackTimer(1.0f / speed)
+       spAttackRegenerationTime(spAttackRegenerationTime), attackTimer(1.0f / speed), 
+       spAttackTimer(spAttackRegenerationTime), isSpAttackReady(false)
 {
     texture = LoadAndResizeTexture(texturePath.c_str(), 32, 32); // Example width and height
     allInstances.push_back(this);
     attackTimer.Start();
+    spAttackTimer.Start();
 }
 
 Texture2D Tower::LoadAndResizeTexture(const std::string& path, int width, int height) {
@@ -88,6 +90,48 @@ Enemy* Tower::FindClosestEnemyInRange() const {
     }
     return closest;
 }
+
+float Tower::GetSpecialAttackCooldown() const {
+    return spAttackTimer.GetRemainingTime();
+}
+
+void Tower::PerformSpecialAttack() {
+    // Método base que puede ser sobrescrito por clases derivadas
+    if (!target) return;
+    
+    try {
+        // Determinar resistencia según tipo de torre
+        int resistance = 0;
+        if (towerType == "Archer Tower") {
+            resistance = target->GetArrowResistance();
+        } else if (towerType == "Mage Tower") {
+            resistance = target->GetMagicResistance();
+        } else if (towerType == "Artillery Tower") {
+            resistance = target->GetArtilleryResistance();
+        }
+        
+        // Calcular daño real duplicado con resistencia
+        float damageMultiplier = 1.0f - (resistance / 100.0f);
+        float realDamage = (damage * 2) * damageMultiplier; // DOBLE DAÑO!
+        if (realDamage < 0) realDamage = 0;
+
+        // Aplicar daño al enemigo
+        target->SetHealth(target->GetHealth() - realDamage);
+
+        // Reiniciar temporizador de ataque especial
+        isSpAttackReady = false;
+        spAttackTimer = Timer(spAttackRegenerationTime);
+        spAttackTimer.Start();
+        
+        // Debug: mostrar info del ataque especial
+        TraceLog(LOG_INFO, "SPECIAL ATTACK! %s dealt %.1f damage to %s (%.1f health remaining)", 
+               towerType.c_str(), realDamage, target->GetEnemyType().c_str(), target->GetHealth());
+    } catch (...) {
+        // Si hay error al acceder al target, reiniciar
+        target = nullptr;
+    }
+}
+
 void Tower::Update(float deltaTime)
 {
     // Verificar si el target sigue siendo válido
@@ -112,37 +156,56 @@ void Tower::Update(float deltaTime)
 
     // Actualizar temporizador de ataque
     attackTimer.Update(deltaTime);
+    spAttackTimer.Update(deltaTime);
+    
+    // Verificar si el ataque especial está listo
+    if (!isSpAttackReady && spAttackTimer.IsFinished()) {
+        isSpAttackReady = true;
+        TraceLog(LOG_INFO, "%s special attack is now ready!", towerType.c_str());
+    }
 
-    if (target && attackTimer.IsFinished()) {
-        try {
-            // Determinar resistencia según tipo de torre
-            int resistance = 0;
-            if (towerType == "Archer Tower") {
-                resistance = target->GetArrowResistance();
-            } else if (towerType == "Mage Tower") {
-                resistance = target->GetMagicResistance();
-            } else if (towerType == "Artillery Tower") {
-                resistance = target->GetArtilleryResistance();
-            }
+    // Si hay un objetivo y algún tipo de ataque está listo
+    if (target) {
+        // Priorizar el ataque especial si está disponible
+        if (isSpAttackReady) {
+            PerformSpecialAttack();
             
-            // Calcular daño real considerando resistencia
-            float damageMultiplier = 1.0f - (resistance / 100.0f);
-            float realDamage = damage * damageMultiplier;
-            if (realDamage < 0) realDamage = 0;
-
-            // Aplicar daño al enemigo
-            target->SetHealth(target->GetHealth() - realDamage);
-
-            // Reiniciar el timer para el próximo ataque
+            // También reiniciar el timer de ataque normal
             attackTimer = Timer(1.0f / speed);
             attackTimer.Start();
-            
-            // Debug: mostrar info del ataque
-            TraceLog(LOG_INFO, "%s attacked target %s for %.1f damage (%.1f health remaining)", 
-                   towerType.c_str(), target->GetEnemyType().c_str(), realDamage, target->GetHealth());
-        } catch (...) {
-            // Si hay error al acceder al target, reiniciar
-            target = nullptr;
+        }
+        // Si no hay ataque especial disponible pero el ataque normal está listo
+        else if (attackTimer.IsFinished()) {
+            try {
+                // Determinar resistencia según tipo de torre
+                int resistance = 0;
+                if (towerType == "Archer Tower") {
+                    resistance = target->GetArrowResistance();
+                } else if (towerType == "Mage Tower") {
+                    resistance = target->GetMagicResistance();
+                } else if (towerType == "Artillery Tower") {
+                    resistance = target->GetArtilleryResistance();
+                }
+                
+                // Calcular daño real considerando resistencia
+                float damageMultiplier = 1.0f - (resistance / 100.0f);
+                float realDamage = damage * damageMultiplier;
+                if (realDamage < 0) realDamage = 0;
+
+                // Aplicar daño al enemigo
+                target->SetHealth(target->GetHealth() - realDamage);
+
+                // Reiniciar el timer para el próximo ataque
+                attackTimer = Timer(1.0f / speed);
+                attackTimer.Start();
+                
+                // Debug: mostrar info del ataque
+                TraceLog(LOG_INFO, "%s attacked target %s for %.1f damage (%.1f health remaining)", 
+                       towerType.c_str(), target->GetEnemyType().c_str(), realDamage, target->GetHealth());
+            } catch (...) {
+                // Si hay error al acceder al target, reiniciar
+                target = nullptr;
+            }
         }
     }
 }

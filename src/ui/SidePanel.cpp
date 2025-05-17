@@ -20,6 +20,18 @@ SidePanel::SidePanel(float x, float y, float width, float height)
     }
 }
 
+void SidePanel::SetEnemyVectors(
+    const std::vector<Enemy*>& ogres,
+    const std::vector<Enemy*>& harpies,
+    const std::vector<Enemy*>& mercenaries,
+    const std::vector<Enemy*>& darkElves) {
+    
+    this->ogres = ogres;
+    this->harpies = harpies;
+    this->mercenaries = mercenaries;
+    this->darkElves = darkElves;
+}
+
 SidePanel::~SidePanel() {
     // Descargar todas las texturas almacenadas en el mapa
     for (auto& pair : enemyTextures) {
@@ -31,11 +43,6 @@ SidePanel::~SidePanel() {
 void SidePanel::UpdateWaveInfo(int wave, int killedEnemies) {
     currentWave = wave;
     enemiesKilled = killedEnemies;
-}
-
-
-void SidePanel::SetActiveEnemies(const std::vector<Enemy*>& enemies) {
-    activeEnemies = enemies;
 }
 
 void SidePanel::Update() {
@@ -71,8 +78,41 @@ void SidePanel::Draw() {
     DrawText(TextFormat("Enemies killed: %d", enemiesKilled), textX, textY, fontSize, WHITE);
     textY += 30;
 
+    // Verificar que hay tipos de enemigos definidos
+    if (enemyTypes.empty() || currentPageIndex >= enemyTypes.size()) {
+        DrawText("No enemy types available", bounds.x + 10, textY, fontSize, DARKGRAY);
+        return;
+    }
+
     // Obtener el tipo de enemigo actual
     const std::string& currentType = enemyTypes[currentPageIndex];
+
+    // Seleccionar el vector adecuado según el tipo actual
+    std::vector<Enemy*>* currentEnemies = nullptr;
+    if (currentType == "Ogre") {
+        currentEnemies = &ogres;
+    } else if (currentType == "Harpy") {
+        currentEnemies = &harpies;
+    } else if (currentType == "Mercenary") {
+        currentEnemies = &mercenaries;
+    } else if (currentType == "Dark Elf") {
+        currentEnemies = &darkElves;
+    }
+
+    // Verificar si hay enemigos de este tipo
+    if (!currentEnemies || currentEnemies->empty()) {
+        // Dibujar el título del tipo de enemigo (centrado en X)
+        int typeTextWidth = MeasureText(currentType.c_str(), fontSize);
+        float typeTextX = bounds.x + (bounds.width - typeTextWidth) / 2;
+        DrawText(currentType.c_str(), typeTextX, textY, fontSize, BLACK);
+        textY += 30;
+        
+        DrawText("No enemies of this type", bounds.x + 10, textY, fontSize, DARKGRAY);
+        
+        // Dibujar los botones de paginación aunque no haya enemigos
+        DrawPaginationButtons();
+        return;
+    }
 
     // Dibujar el título del tipo de enemigo (centrado en X)
     int typeTextWidth = MeasureText(currentType.c_str(), fontSize);
@@ -80,20 +120,9 @@ void SidePanel::Draw() {
     DrawText(currentType.c_str(), typeTextX, textY, fontSize, BLACK);
     textY += 30;
 
-    // Buscar la generación de la primera instancia activa de este tipo
-    int generation = -1;
-    for (Enemy* enemy : activeEnemies) {
-        if (enemy->GetEnemyType() == currentType) {
-            generation = enemy->GetGeneration();
-            break;
-        }
-    }
-    std::string generationText;
-    if (generation != -1) {
-        generationText = TextFormat("Generation: %d", generation);
-    } else {
-        generationText = "Generation: N/A";
-    }
+    // Obtener la generación de este tipo (del primer enemigo)
+    int generation = (*currentEnemies)[0]->GetGeneration();
+    std::string generationText = TextFormat("Generation: %d", generation);
     int generationTextWidth = MeasureText(generationText.c_str(), fontSize);
     float generationTextX = bounds.x + (bounds.width - generationTextWidth) / 2;
     DrawText(generationText.c_str(), generationTextX, textY, fontSize, DARKGRAY);
@@ -101,8 +130,8 @@ void SidePanel::Draw() {
 
     // Contar mutaciones para el tipo actual
     int mutationCount = 0;
-    for (Enemy* enemy : activeEnemies) {
-        if (enemy->GetEnemyType() == currentType && enemy->IsMutated()) {
+    for (Enemy* enemy : *currentEnemies) {
+        if (enemy->IsMutated()) {
             mutationCount++;
         }
     }
@@ -113,6 +142,16 @@ void SidePanel::Draw() {
     float mutationTextX = bounds.x + (bounds.width - mutationTextWidth) / 2;
     DrawText(mutationText.c_str(), mutationTextX, textY, fontSize, DARKGRAY);
     textY += 40;
+
+    if (!currentEnemies->empty()) {
+        int mutationChance = (*currentEnemies)[0]->GetMutationChance();
+        std::string mutationChanceText = TextFormat("Mutation chance: %d%%", mutationChance);
+        int mutationChanceTextWidth = MeasureText(mutationChanceText.c_str(), fontSize - 2);
+        float mutationChanceTextX = bounds.x + (bounds.width - mutationChanceTextWidth) / 2;
+        DrawText(mutationChanceText.c_str(), mutationChanceTextX, textY, fontSize - 2, DARKGRAY);
+        textY += 20;
+    }
+
 
     // Dibujar el sprite del enemigo (centrado en X)
     auto it = enemyTextures.find(currentType);
@@ -126,6 +165,17 @@ void SidePanel::Draw() {
         TraceLog(LOG_WARNING, "Texture not found for enemy type: %s", currentType.c_str());
     }
 
+    std::string orderText1 = "(Enemies are ordered by fitness";
+    std::string orderText2 = "in descending order)";
+    int orderTextWidth1 = MeasureText(orderText1.c_str(), fontSize - 2);
+    int orderTextWidth2 = MeasureText(orderText2.c_str(), fontSize - 2);
+    float orderTextX1 = bounds.x + (bounds.width - orderTextWidth1) / 2;
+    float orderTextX2 = bounds.x + (bounds.width - orderTextWidth2) / 2;
+    DrawText(orderText1.c_str(), orderTextX1, textY, fontSize - 2, GRAY);
+    textY += 18; // Menor espaciado para líneas relacionadas
+    DrawText(orderText2.c_str(), orderTextX2, textY, fontSize - 2, GRAY);
+    textY += 20;
+
     // Dibujar encabezados de la tabla
     float colX[] = {textX, textX + 50, textX + 100, textX + 150, textX + 200, textX + 250}; // Posiciones de las columnas
     DrawText("L", colX[0], textY, fontSize, BLACK);
@@ -136,17 +186,18 @@ void SidePanel::Draw() {
     DrawText("MT", colX[5], textY, fontSize, BLACK);
     textY += 20;
 
-    // Dibujar las filas de la tabla para cada enemigo del tipo actual
-    for (Enemy* enemy : activeEnemies) {
-        if (enemy->GetEnemyType() == currentType) {
-            DrawText(TextFormat("%.0f", enemy->GetHealth()), colX[0], textY, fontSize, BLACK);
-            DrawText(TextFormat("%.0f", enemy->GetSpeed()), colX[1], textY, fontSize, BLACK);
-            DrawText(TextFormat("%d", enemy->GetArrowResistance()), colX[2], textY, fontSize, BLACK);
-            DrawText(TextFormat("%d", enemy->GetMagicResistance()), colX[3], textY, fontSize, BLACK);
-            DrawText(TextFormat("%d", enemy->GetArtilleryResistance()), colX[4], textY, fontSize, BLACK);
-            DrawText(enemy->IsMutated() ? "Y" : "N", colX[5], textY, fontSize, BLACK);
-            textY += 20; // Espaciado entre filas
-        }
+    // Dibujar las filas de la tabla para cada enemigo del vector actual
+    for (Enemy* enemy : *currentEnemies) {
+        // En el futuro, aquí podrías aplicar colores específicos basados en fitness
+        Color textColor = enemy->IsMutated() ? GOLD : BLACK; 
+        
+        DrawText(TextFormat("%.0f", enemy->GetHealth()), colX[0], textY, fontSize, textColor);
+        DrawText(TextFormat("%.0f", enemy->GetSpeed()), colX[1], textY, fontSize, textColor);
+        DrawText(TextFormat("%d", enemy->GetArrowResistance()), colX[2], textY, fontSize, textColor);
+        DrawText(TextFormat("%d", enemy->GetMagicResistance()), colX[3], textY, fontSize, textColor);
+        DrawText(TextFormat("%d", enemy->GetArtilleryResistance()), colX[4], textY, fontSize, textColor);
+        DrawText(enemy->IsMutated() ? "Y" : "N", colX[5], textY, fontSize, textColor);
+        textY += 20; // Espaciado entre filas
     }
 
     // Dibujar los botones de paginación

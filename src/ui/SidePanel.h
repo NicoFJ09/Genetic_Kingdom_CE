@@ -13,7 +13,12 @@ private:
     int currentWave;  // Ola actual
     int enemiesKilled; // Nuevo: Contador de enemigos eliminados
 
-    std::vector<Enemy*> activeEnemies; // Lista de enemigos activos
+    // Vectores específicos por tipo de enemigo (reemplaza el vector general)
+    std::vector<Enemy*> ogres;
+    std::vector<Enemy*> harpies;
+    std::vector<Enemy*> mercenaries;
+    std::vector<Enemy*> darkElves;
+    
     int currentPageIndex; // Índice de la página actual
     std::vector<std::string> enemyTypes; // Tipos de enemigos (Ogre, Harpy, etc.)
     std::unordered_map<std::string, Texture2D> enemyTextures; 
@@ -25,9 +30,18 @@ private:
 public:
     SidePanel(float x, float y, float width, float height);
     ~SidePanel();
+    
     // Actualizar con ambos datos: ola y enemigos eliminados
     void UpdateWaveInfo(int wave, int killedEnemies = 0);
-    void SetActiveEnemies(const std::vector<Enemy*>& enemies);
+    
+    // Reemplazar este método con uno que acepta los 4 vectores
+    void SetEnemyVectors(
+        const std::vector<Enemy*>& ogres,
+        const std::vector<Enemy*>& harpies,
+        const std::vector<Enemy*>& mercenaries,
+        const std::vector<Enemy*>& darkElves
+    );
+    
     void Update();
     void Draw();
 };

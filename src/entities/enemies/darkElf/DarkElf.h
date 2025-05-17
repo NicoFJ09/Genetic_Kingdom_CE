@@ -5,8 +5,11 @@
 
 class DarkElf : public Enemy {
 public:
-    DarkElf(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation);
+    DarkElf(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation = 1, int mutationChance = 5);
     ~DarkElf() = default; // Destructor predeterminado
+    double getRandomHealth();
+    double getRandomSpeed();
+    double getRandomResist();
 };
 
 #endif // DARKELF_H

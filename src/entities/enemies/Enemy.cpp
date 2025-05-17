@@ -50,6 +50,23 @@ Enemy::Enemy(bool alive, Vector2 pos, int frameSpeed, const std::string& texture
     allInstances.push_back(this);
 }
 
+void Enemy::SetTexture(const std::string& newTexturePath) {
+    if (texture.id != 0) {
+        UnloadTexture(texture);
+    }
+    
+    texturePath = newTexturePath;
+    texture = LoadTexture(texturePath.c_str());
+    
+    if (texture.id == 0) {
+        TraceLog(LOG_ERROR, "Failed to load texture: %s", texturePath.c_str());
+        frameRec = {0.0f, 0.0f, 0.0f, 0.0f};
+    } else {
+        frameRec = {0.0f, 0.0f, (float)texture.width / frameCount, (float)texture.height};
+    }
+}
+
+
 Enemy::~Enemy() {
     if (texture.id != 0) {
         UnloadTexture(texture);

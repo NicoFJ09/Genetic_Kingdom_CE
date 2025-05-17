@@ -1,6 +1,6 @@
 #include "EconomySystem.h"
 
-EconomySystem::EconomySystem() : balance(200) {} // Inicializa el balance con 200
+EconomySystem::EconomySystem() : balance(1000) {} // Inicializa el balance con 200
 
 int EconomySystem::GetBalance() const {
     return balance; // Retorna el balance actual

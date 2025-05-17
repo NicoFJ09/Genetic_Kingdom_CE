@@ -84,8 +84,14 @@ public:
 
     int GetMutationChance() const;
     void SetMutationChance(int chance);
-
+    
+    void SetTexture(const std::string& newTexturePath);
+    
     Vector2 GetPosition() const { return position; }
+
+    double getRandomHealth();
+    double getRandomSpeed();
+    double getRandomResist();
 
     // Métodos para path
     void SetPath(const std::vector<std::pair<int, int>>& newPath);

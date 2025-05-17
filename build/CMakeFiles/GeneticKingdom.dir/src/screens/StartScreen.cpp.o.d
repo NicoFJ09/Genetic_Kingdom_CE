@@ -918,6 +918,7 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o: \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/../entities/towers/../enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/../entities/towers/../enemies/../../utils/Timer.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/../entities/towers/../../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../map/../entities/towers/Projectile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/BottomPanel.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/../core/EconomySystem.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../ui/TowerBuy.h \

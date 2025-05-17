@@ -912,6 +912,7 @@ CMakeFiles/GeneticKingdom.dir/src/ui/BottomPanel.cpp.o: \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/../enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/../enemies/../../utils/Timer.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/../../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/Projectile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../core/EconomySystem.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerBuy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../entities/towers/Tower.h \

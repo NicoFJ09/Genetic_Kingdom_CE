@@ -907,4 +907,5 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/archerTower/ArcherTower.cpp.o:
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/archerTower/../../enemies/Enemy.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/archerTower/../../enemies/../../utils/Timer.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/archerTower/../../../utils/Timer.h
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/archerTower/../../../utils/Timer.h \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/archerTower/../Projectile.h

@@ -436,10 +436,24 @@ CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/artilleryTower/ArtilleryTower.cpp -o CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.cpp.s
 
+CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
+CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Projectile.cpp
+CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Projectile.cpp
+
+CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Projectile.cpp > CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.i
+
+CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Projectile.cpp -o CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.s
+
 CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.cpp
 CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Map.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.i: cmake_force
@@ -453,7 +467,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.s: cmake_force
 CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.cpp
 CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/Tile.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.i: cmake_force
@@ -467,7 +481,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.s: cmake_force
 CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp
 CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/PathTile.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.i: cmake_force
@@ -481,7 +495,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.s: cmake_force
 CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp
 CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/GrassTile.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.i: cmake_force
@@ -495,7 +509,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/GrassTile.cpp.s: cmake_force
 CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.cpp
 CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/TowerTile.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.i: cmake_force
@@ -509,7 +523,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/TowerTile.cpp.s: cmake_force
 CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.cpp
 CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/map/BridgeTile.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.i: cmake_force
@@ -523,7 +537,7 @@ CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.s: cmake_force
 CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o: CMakeFiles/GeneticKingdom.dir/flags.make
 CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o: /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.cpp
 CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o: CMakeFiles/GeneticKingdom.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o -MF CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o.d -o CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o -c /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/utils/Timer.cpp
 
 CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.i: cmake_force
@@ -562,6 +576,7 @@ GeneticKingdom_OBJECTS = \
 "CMakeFiles/GeneticKingdom.dir/src/entities/towers/archerTower/ArcherTower.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/entities/towers/mageTower/MageTower.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.cpp.o" \
+"CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o" \
 "CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o" \
@@ -599,6 +614,7 @@ GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/towers/Tower.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/towers/archerTower/ArcherTower.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/towers/mageTower/MageTower.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/towers/artilleryTower/ArtilleryTower.cpp.o
+GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/Map.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/Tile.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/PathTile.cpp.o
@@ -608,7 +624,7 @@ GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/map/BridgeTile.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/src/utils/Timer.cpp.o
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/build.make
 GeneticKingdom: CMakeFiles/GeneticKingdom.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX executable GeneticKingdom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable GeneticKingdom"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GeneticKingdom.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

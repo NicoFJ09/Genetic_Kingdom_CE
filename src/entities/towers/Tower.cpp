@@ -4,6 +4,7 @@
 #include <algorithm>
 #include "../enemies/Enemy.h"
 #include <cmath>
+#include <memory>
 
 std::vector<Tower*> Tower::allInstances;
 
@@ -16,6 +17,9 @@ Tower::Tower(Vector2 position, int level, const std::string& path, int damage, d
     allInstances.push_back(this);
     attackTimer.Start();
     spAttackTimer.Start();
+    
+    // Inicializar posición central
+    centerPos = {position.x + 16.0f, position.y + 16.0f};
 }
 
 Texture2D Tower::LoadAndResizeTexture(const std::string& path, int width, int height) {
@@ -95,6 +99,27 @@ float Tower::GetSpecialAttackCooldown() const {
     return spAttackTimer.GetRemainingTime();
 }
 
+Vector2 Tower::GetEnemyCenter(Enemy* enemy) {
+    if (!enemy) return {0, 0};
+    
+    // Obtener la posición base del enemigo (esquina superior izquierda)
+    Vector2 basePos = enemy->GetPosition();
+    
+    // Obtener el tamaño del sprite del enemigo a partir de frameRec
+    float enemyWidth = 32.0f;   // Ancho por defecto (ajustar según tu juego)
+    float enemyHeight = 32.0f;  // Alto por defecto (ajustar según tu juego)
+    
+    // Calcular las coordenadas centrales
+    Vector2 center = {
+        basePos.x + enemyWidth / 2.0f,
+        basePos.y + enemyHeight / 2.0f
+    };
+    
+
+    return center;
+}
+
+
 void Tower::PerformSpecialAttack() {
     // Método base que puede ser sobrescrito por clases derivadas
     if (!target) return;
@@ -115,6 +140,12 @@ void Tower::PerformSpecialAttack() {
         float realDamage = (damage * 2) * damageMultiplier; // DOBLE DAÑO!
         if (realDamage < 0) realDamage = 0;
 
+        // Calcular el centro del sprite del enemigo
+        Vector2 enemyCenter = GetEnemyCenter(target);
+        
+        // Crear un proyectil especial apuntando al centro
+        FireAt(enemyCenter, true);
+
         // Aplicar daño al enemigo
         target->SetHealth(target->GetHealth() - realDamage);
 
@@ -131,6 +162,7 @@ void Tower::PerformSpecialAttack() {
         target = nullptr;
     }
 }
+
 
 void Tower::Update(float deltaTime)
 {
@@ -192,6 +224,12 @@ void Tower::Update(float deltaTime)
                 float realDamage = damage * damageMultiplier;
                 if (realDamage < 0) realDamage = 0;
 
+                // Calcular el centro del sprite del enemigo
+                Vector2 enemyCenter = GetEnemyCenter(target);
+                
+                // Crear un proyectil normal apuntando al centro
+                FireAt(enemyCenter, false);
+
                 // Aplicar daño al enemigo
                 target->SetHealth(target->GetHealth() - realDamage);
 
@@ -208,12 +246,73 @@ void Tower::Update(float deltaTime)
             }
         }
     }
+    
+    // Actualizar los proyectiles existentes
+    UpdateProjectiles(deltaTime);
+}
+
+void Tower::FireAt(const Vector2& targetPos, bool isSpecialAttack) {
+    std::string projType = towerType + (isSpecialAttack ? "_special" : "_normal");
+    
+    // La velocidad del proyectil podría variar según el tipo de torre
+    float projSpeed = 300.0f;  // Velocidad base
+    
+    if (towerType == "Archer Tower") {
+        projSpeed = 400.0f;  // Los arqueros disparan más rápido
+    } else if (towerType == "Artillery Tower") {
+        projSpeed = 200.0f;  // La artillería es más lenta
+    }
+    
+    // Crear el proyectil
+    projectiles.push_back(std::make_unique<Projectile>(centerPos, targetPos, projType, projSpeed));
+    
+    TraceLog(LOG_INFO, "%s firing %s projectile from (%.2f, %.2f) to (%.2f, %.2f)",
+             towerType.c_str(),
+             isSpecialAttack ? "special" : "normal",
+             centerPos.x, centerPos.y,
+             targetPos.x, targetPos.y);
 }
 
 
-void Tower::Draw()
-{
+void Tower::UpdateProjectiles(float deltaTime) {
+    // Actualizar todos los proyectiles activos
+    for (auto& proj : projectiles) {
+        proj->Update(deltaTime);
+    }
+    
+    // Eliminar proyectiles inactivos usando un iterador para mayor claridad
+    size_t initialSize = projectiles.size();
+    projectiles.erase(
+        std::remove_if(projectiles.begin(), projectiles.end(),
+                      [](const std::unique_ptr<Projectile>& p) { return !p->active; }),
+        projectiles.end());
+    
+    // Registrar cuántos proyectiles se eliminaron
+    size_t removed = initialSize - projectiles.size();
+    if (removed > 0) {
+        TraceLog(LOG_INFO, "Removed %zu inactive projectiles, %zu remaining", 
+                 removed, projectiles.size());
+    }
+}
+
+void Tower::DrawProjectiles() const {
+    // Dibujar todos los proyectiles activos
+    for (const auto& proj : projectiles) {
+        // Verificación adicional para asegurarnos de que solo dibujamos proyectiles activos
+        if (proj && proj->active) {
+            proj->Draw();
+        }
+    }
+}
+
+// ...
+
+void Tower::Draw() {
+    // Dibujar la torre
     DrawTexture(texture, static_cast<int>(position.x), static_cast<int>(position.y), WHITE);
+    
+    // Dibujar los proyectiles
+    DrawProjectiles();
 }
 
 void Tower::SetTexture(const std::string& path)

@@ -1,41 +1,155 @@
 #include "GeneticAlgorithm.h"
 #include <iostream>
 #include <cstdlib>
+#include <random>  
+#include <algorithm>
 
 GeneticAlgorithm::GeneticAlgorithm(int populationSize, float mutationRate) 
     : populationSize(populationSize), 
-      mutationRate(mutationRate),
-      nextId(1) {
+      mutationRate(mutationRate) {
     TraceLog(LOG_INFO, "GeneticAlgorithm initialized with population size %d and mutation rate %.2f", 
              populationSize, mutationRate);
 }
 
-// Destructor - Agregar esta implementación
 GeneticAlgorithm::~GeneticAlgorithm() {
-    // Limpiar recursos si es necesario
     TraceLog(LOG_INFO, "GeneticAlgorithm destroyed");
 }
 
-
-// Agregar nuevo método para manejar los vectores por tipo
-void GeneticAlgorithm::setEnemyVectors(
-    const std::vector<Enemy*>& ogres,
-    const std::vector<Enemy*>& harpies,
-    const std::vector<Enemy*>& mercenaries, 
-    const std::vector<Enemy*>& darkElves) {
+// Método principal para procesar un tipo de enemigo
+void GeneticAlgorithm::processEnemyType(const std::vector<Enemy*>& enemies, const std::string& typeName) {
+    if (enemies.empty()) {
+        TraceLog(LOG_WARNING, "No hay enemigos del tipo %s para procesar", typeName.c_str());
+        return;
+    }
     
-    // Guardar referencias a los vectores
-    this->ogres = ogres;
-    this->harpies = harpies;
-    this->mercenaries = mercenaries;
-    this->darkElves = darkElves;
+    // Guardar referencia a estos enemigos
+    currentEnemies = enemies;
+    currentEnemyType = typeName;
     
-    // Log para debugging
-    TraceLog(LOG_INFO, "GA received vectors: %zu Ogres, %zu Harpies, %zu Mercenaries, %zu DarkElves", 
-         ogres.size(), harpies.size(), mercenaries.size(), darkElves.size());
+    // Calcular estadísticas
+    calculateAverageStats(enemies, avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes);
+    
+    TraceLog(LOG_INFO, "Procesando tipo %s: %zu enemigos, generación %d", 
+             typeName.c_str(), enemies.size(), enemies[0]->GetGeneration());
+             
+    // Actualizar la probabilidad de mutación para este tipo
+    // Solo si no es la primera generación
+    if (enemies[0]->GetGeneration() > 1) {
+        updateMutationChanceForType(typeName);
+    }
 }
 
-// Método auxiliar para calcular estadísticas promedio de una lista de enemigos
+// Método para evolucionar la población actual
+void GeneticAlgorithm::evolveCurrentType() {
+    if (currentEnemies.empty()) {
+        TraceLog(LOG_WARNING, "No hay enemigos para evolucionar");
+        return;
+    }
+    
+    // Limpiar solo los genes del tipo actual
+    nextGenGenes.clear();
+    
+    // 1. Selección: Identificar los mejores individuos
+    std::vector<Enemy*> parents = selectParents();
+    
+    if (parents.size() < 2) {
+        TraceLog(LOG_WARNING, "No hay suficientes padres para la evolución, usando selección aleatoria");
+        // Usar algunos enemigos aleatorios como respaldo
+        int needed = 2 - static_cast<int>(parents.size());
+        for (int i = 0; i < needed && i < static_cast<int>(currentEnemies.size()); i++) {
+            parents.push_back(currentEnemies[i]);
+        }
+    }
+    
+    // 2. Cruce y mutación: Crear la próxima generación
+    // Usar un número aleatorio entre 5 y 15 para determinar el tamaño de la población
+    int targetPopSize = GetRandomValue(5, 15); // Aleatorio entre 5 y 15 por tipo
+    
+    TraceLog(LOG_INFO, "Generando %d individuos para la próxima generación de %s", 
+             targetPopSize, currentEnemyType.c_str());
+    
+    for (int i = 0; i < targetPopSize; i++) {
+        // Seleccionar dos padres aleatorios
+        int parent1Idx = GetRandomValue(0, parents.size() - 1);
+        int parent2Idx = GetRandomValue(0, parents.size() - 1);
+        
+        // Asegurarse de que son diferentes (si es posible)
+        if (parents.size() > 1) {
+            while (parent2Idx == parent1Idx) {
+                parent2Idx = GetRandomValue(0, parents.size() - 1);
+            }
+        }
+        
+        // Cruzar los padres
+        EnemyGenes offspring = crossover(parents[parent1Idx], parents[parent2Idx]);
+        
+        // Aplicar mutación
+        bool wasMutated = mutate(offspring);
+        
+        if (wasMutated) {
+            TraceLog(LOG_INFO, "¡%s %d MUTADO! Prob=%d%%, Vida=%.1f, Vel=%.1f, ResF=%.1f, ResM=%.1f, ResA=%.1f",
+                     currentEnemyType.c_str(), i, offspring.mutationChance, offspring.health, 
+                     offspring.speed, offspring.arrowResistance, offspring.magicResistance,
+                     offspring.artilleryResistance);
+        }
+        
+        // Guardar para la próxima generación
+        nextGenGenes.push_back(offspring);
+    }
+    
+    // Almacenar genes en el mapa por tipo
+    nextGenGenesByType[currentEnemyType] = nextGenGenes;
+    
+    TraceLog(LOG_INFO, "Evolucionado tipo %s: %zu padres seleccionados, %zu genes para próxima generación", 
+             currentEnemyType.c_str(), parents.size(), nextGenGenes.size());
+}
+
+// Método para obtener los genes de la próxima generación por tipo
+std::vector<EnemyGenes> GeneticAlgorithm::getNextGenGenes() const {
+    // Comprobar si hay genes específicos para este tipo
+    auto it = nextGenGenesByType.find(currentEnemyType);
+    if (it != nextGenGenesByType.end()) {
+        return it->second;
+    }
+    
+    // Si no hay genes específicos, devolver los genes genéricos (por compatibilidad)
+    return nextGenGenes;
+}
+
+// Método para imprimir estadísticas
+void GeneticAlgorithm::printTypeSummary(int generation) const {
+    if (currentEnemies.empty()) {
+        std::cout << "\n== " << currentEnemyType << " (No hay datos disponibles) ==\n";
+        return;
+    }
+    
+    std::cout << "\n===== Generación " << generation << " =====\n";
+    std::cout << "\n== " << currentEnemyType << " (Gen " << currentEnemies[0]->GetGeneration() << ") ==\n";
+    std::cout << "Cantidad: " << currentEnemies.size() << "\n";
+    std::cout << "Promedios: Vida=" << avgLife << ", Vel=" << avgSpeed 
+              << ", ResF=" << avgArrowRes << ", ResM=" << avgMagicRes 
+              << ", ResA=" << avgArtilleryRes << "\n";
+              
+    // Calcular la probabilidad de mutación promedio
+    int totalMutationChance = 0;
+    int mutatedCount = 0;
+    
+    for (const auto& enemy : currentEnemies) {
+        totalMutationChance += enemy->GetMutationChance();
+        if (enemy->IsMutated()) mutatedCount++;
+    }
+    
+    float avgMutationChance = currentEnemies.empty() ? 0 : (float)totalMutationChance / currentEnemies.size();
+    
+    std::cout << "Prob. mutación promedio: " << avgMutationChance << "%\n";
+    std::cout << "Mutaciones: " << mutatedCount << " (" 
+              << (currentEnemies.empty() ? 0 : (mutatedCount * 100.0f / currentEnemies.size())) 
+              << "%)\n";
+              
+    std::cout << "\n===========================\n";
+}
+
+// Método para calcular estadísticas promedio
 void GeneticAlgorithm::calculateAverageStats(
     const std::vector<Enemy*>& enemies, 
     float& avgLife, float& avgSpeed, 
@@ -65,36 +179,174 @@ void GeneticAlgorithm::calculateAverageStats(
     avgArtilleryRes = sumArtilleryRes / count;
 }
 
-// Actualizar el método para mostrar estadísticas para cada tipo de enemigo
-void GeneticAlgorithm::printGenerationSummary(int generation) const {
-    std::cout << "\n===== Generación " << generation << " =====\n";
+// Método para contar atributos por encima del promedio
+int GeneticAlgorithm::countAttributesAbove(const Enemy& e, float avgLife, float avgSpeed, 
+                                          float avgArrowRes, float avgMagicRes, 
+                                          float avgArtilleryRes) const {
+    int count = 0;
+    if (e.GetHealth() > avgLife) count++;
+    if (e.GetSpeed() > avgSpeed) count++;
+    if (e.GetArrowResistance() > avgArrowRes) count++;
+    if (e.GetMagicResistance() > avgMagicRes) count++;
+    if (e.GetArtilleryResistance() > avgArtilleryRes) count++;
+    return count;
+}
+
+// Método para seleccionar padres
+std::vector<Enemy*> GeneticAlgorithm::selectParents() {
+    std::vector<Enemy*> selectedParents;
     
-    // Procesar cada tipo de enemigo por separado
-    auto processEnemyType = [this](const std::vector<Enemy*>& enemies, const char* typeName) {
-        if (!enemies.empty()) {
-            float avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes;
-            calculateAverageStats(enemies, avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes);
-            
-            std::cout << "\n== " << typeName << " (Gen " << enemies[0]->GetGeneration() << ") ==\n";
-            std::cout << "Cantidad: " << enemies.size() << "\n";
-            std::cout << "Promedios: Vida=" << avgLife << ", Vel=" << avgSpeed 
-                      << ", ResF=" << avgArrowRes << ", ResM=" << avgMagicRes 
-                      << ", ResA=" << avgArtilleryRes << "\n";
-                      
-            int mutatedCount = 0;
-            for (const auto& enemy : enemies) {
-                if (enemy->IsMutated()) mutatedCount++;
+    // Seleccionar enemigos con al menos 2 atributos por encima del promedio
+    for (auto enemy : currentEnemies) {
+        // Verificar si está vivo o al menos tiene un porcentaje de vida bueno
+        if (enemy->GetHealth() > 0) {
+            int attributes = countAttributesAbove(*enemy, avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes);
+            if (attributes >= 2) {
+                selectedParents.push_back(enemy);
             }
-            std::cout << "Mutaciones: " << mutatedCount << " (" 
-                      << (enemies.empty() ? 0 : (mutatedCount * 100.0 / enemies.size())) 
-                      << "%)\n";
         }
-    };
+    }
     
-    processEnemyType(ogres, "Ogre");
-    processEnemyType(harpies, "Harpy");
-    processEnemyType(mercenaries, "Mercenary");
-    processEnemyType(darkElves, "Dark Elf");
+    // Si no hay suficientes, incluir algunos al azar
+    if (selectedParents.size() < 2 && currentEnemies.size() >= 2) {
+        // Crear un vector con índices aleatorios
+        std::vector<int> indices;
+        for (int i = 0; i < static_cast<int>(currentEnemies.size()); i++) {
+            indices.push_back(i);
+        }
+        
+        // Mezclar los índices
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(indices.begin(), indices.end(), g);
+        
+        // Añadir hasta tener al menos 2 padres
+        for (int i = 0; i < static_cast<int>(indices.size()) && selectedParents.size() < 2; i++) {
+            Enemy* enemy = currentEnemies[indices[i]];
+            if (std::find(selectedParents.begin(), selectedParents.end(), enemy) == selectedParents.end()) {
+                selectedParents.push_back(enemy);
+            }
+        }
+    }
     
-    std::cout << "\n===========================\n";
+    TraceLog(LOG_INFO, "Seleccionados %zu padres de %zu candidatos", 
+             selectedParents.size(), currentEnemies.size());
+    
+    return selectedParents;
+}
+
+// Método para cruzar dos padres
+EnemyGenes GeneticAlgorithm::crossover(const Enemy* parent1, const Enemy* parent2) {
+    EnemyGenes offspring;
+    
+    // Cruzar atributos (50% de cada padre)
+    offspring.health = (GetRandomValue(0, 1) == 0) ? parent1->GetHealth() : parent2->GetHealth();
+    offspring.speed = (GetRandomValue(0, 1) == 0) ? parent1->GetSpeed() : parent2->GetSpeed();
+    offspring.arrowResistance = (GetRandomValue(0, 1) == 0) ? parent1->GetArrowResistance() : parent2->GetArrowResistance();
+    offspring.magicResistance = (GetRandomValue(0, 1) == 0) ? parent1->GetMagicResistance() : parent2->GetMagicResistance();
+    offspring.artilleryResistance = (GetRandomValue(0, 1) == 0) ? parent1->GetArtilleryResistance() : parent2->GetArtilleryResistance();
+    
+    // Usar la probabilidad de mutación para el tipo actual (ya está actualizada por processEnemyType)
+    int typeMutationChance = getMutationChanceForType(currentEnemyType);
+    offspring.mutationChance = typeMutationChance;
+    
+    TraceLog(LOG_INFO, "Cruce para %s: Probabilidad mutación=%d%%", 
+             currentEnemyType.c_str(), typeMutationChance);
+    
+    offspring.mutated = false;  // Inicialmente no está mutado
+    
+    return offspring;
+}
+
+// Nuevo método para obtener la probabilidad de mutación por tipo
+int GeneticAlgorithm::getMutationChanceForType(const std::string& typeName) {
+    // Si no existe el tipo, inicializarlo con 5%
+    if (mutationChanceByType.find(typeName) == mutationChanceByType.end()) {
+        mutationChanceByType[typeName] = 5;
+    }
+    
+    return mutationChanceByType[typeName];
+}
+
+// Nuevo método para actualizar la probabilidad de mutación por tipo
+void GeneticAlgorithm::updateMutationChanceForType(const std::string& typeName) {
+    int currentChance = getMutationChanceForType(typeName);
+    
+    // Incrementar entre 2% y 5%
+    int increase = GetRandomValue(2, 5);
+    int newChance = std::min(100, currentChance + increase);
+    
+    mutationChanceByType[typeName] = newChance;
+    
+    TraceLog(LOG_INFO, "Probabilidad de mutación para %s actualizada: %d%% -> %d%% (+%d%%)",
+             typeName.c_str(), currentChance, newChance, increase);
+}
+
+// Método para mutar genes
+bool GeneticAlgorithm::mutate(EnemyGenes& genes) {
+    bool wasMutated = false;
+    
+    // Usar la probabilidad de mutación almacenada en los genes
+    int mutationProbability = genes.mutationChance;
+    
+    // Aplicar mutación a cada atributo según la probabilidad de mutación
+    if (GetRandomValue(1, 100) <= mutationProbability) {
+        float mod = randFloat(-0.2f, 0.3f);
+        genes.health *= (1.0f + mod);  // -20% a +30%
+        TraceLog(LOG_INFO, "Mutación de salud: %.1f%% (%.1f -> %.1f)", 
+                 mod * 100.0f, genes.health / (1.0f + mod), genes.health);
+        wasMutated = true;
+    }
+    
+    if (GetRandomValue(1, 100) <= mutationProbability) {
+        float mod = randFloat(-0.2f, 0.3f);
+        genes.speed *= (1.0f + mod);
+        TraceLog(LOG_INFO, "Mutación de velocidad: %.1f%% (%.1f -> %.1f)", 
+                 mod * 100.0f, genes.speed / (1.0f + mod), genes.speed);
+        wasMutated = true;
+    }
+    
+    if (GetRandomValue(1, 100) <= mutationProbability) {
+        float mod = randFloat(-0.2f, 0.3f);
+        genes.arrowResistance *= (1.0f + mod);
+        TraceLog(LOG_INFO, "Mutación de res. flechas: %.1f%% (%.1f -> %.1f)", 
+                 mod * 100.0f, genes.arrowResistance / (1.0f + mod), genes.arrowResistance);
+        wasMutated = true;
+    }
+    
+    if (GetRandomValue(1, 100) <= mutationProbability) {
+        float mod = randFloat(-0.2f, 0.3f);
+        genes.magicResistance *= (1.0f + mod);
+        TraceLog(LOG_INFO, "Mutación de res. magia: %.1f%% (%.1f -> %.1f)", 
+                 mod * 100.0f, genes.magicResistance / (1.0f + mod), genes.magicResistance);
+        wasMutated = true;
+    }
+    
+    if (GetRandomValue(1, 100) <= mutationProbability) {
+        float mod = randFloat(-0.2f, 0.3f);
+        genes.artilleryResistance *= (1.0f + mod);
+        TraceLog(LOG_INFO, "Mutación de res. artillería: %.1f%% (%.1f -> %.1f)", 
+                 mod * 100.0f, genes.artilleryResistance / (1.0f + mod), genes.artilleryResistance);
+        wasMutated = true;
+    }
+    
+    // Actualizar flag de mutación
+    genes.mutated = wasMutated;
+    
+    if (wasMutated) {
+        TraceLog(LOG_INFO, "¡Mutación aplicada con probabilidad %d%%!", mutationProbability);
+    }
+    
+    return wasMutated;
+}
+
+// Método para generar un número aleatorio flotante
+float GeneticAlgorithm::randFloat(float min, float max) const {
+    return min + (static_cast<float>(GetRandomValue(0, 10000)) / 10000.0f) * (max - min);
+}
+
+// Método para obtener un índice aleatorio
+int GeneticAlgorithm::randomIndex(int max) const {
+    if (max <= 0) return 0;
+    return GetRandomValue(0, max - 1);
 }

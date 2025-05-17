@@ -2,56 +2,75 @@
 #include "../entities/enemies/Enemy.h"
 #include <vector>
 #include <string>
+#include <map>
+
+// Estructura para almacenar genes de enemigos para la próxima generación
+struct EnemyGenes {
+    float health;
+    float speed;
+    float arrowResistance;
+    float magicResistance;
+    float artilleryResistance;
+    bool mutated;
+    int mutationChance;
+};
 
 class GeneticAlgorithm {
 public:
     GeneticAlgorithm(int populationSize, float mutationRate);
     ~GeneticAlgorithm();
 
-    // Métodos originales (mantener para compatibilidad)
-    void setPopulation(const std::vector<Enemy>& enemies); 
-    void evolveGeneration();
-    const std::vector<Enemy>& getPopulation() const;
-
-    // Nuevos métodos para trabajar con vectores separados por tipo
-    void setEnemyVectors(
-        const std::vector<Enemy*>& ogres,
-        const std::vector<Enemy*>& harpies,
-        const std::vector<Enemy*>& mercenaries, 
-        const std::vector<Enemy*>& darkElves
-    );
+    // Método principal: procesar un tipo de enemigo
+    void processEnemyType(const std::vector<Enemy*>& enemies, const std::string& typeName);
     
-    // Método para obtener estadísticas y resumen
-    void printGenerationSummary(int generation) const;
+    // Evolucionar la población actual
+    void evolveCurrentType();
+    
+    // Obtener genes para la próxima generación
+    std::vector<EnemyGenes> getNextGenGenes() const;
+    
+    // Imprimir estadísticas para el tipo actual
+    void printTypeSummary(int generation) const;
 
 private:
     int populationSize;
     float mutationRate;
-    int nextId;
-
-    // Vector general (mantener para compatibilidad)
-    std::vector<Enemy> population;
     
-    // Vectores específicos por tipo (punteros a los enemigos actuales)
-    std::vector<Enemy*> ogres;
-    std::vector<Enemy*> harpies;
-    std::vector<Enemy*> mercenaries;
-    std::vector<Enemy*> darkElves;
-
-    // Métodos de utilidad existentes
-    float calculateAverageLife() const;
-    float calculateAverageSpeed() const;
-    float calculateAverageArrowRes() const;
-    float calculateAverageMagicRes() const;
-    float calculateAverageArtilleryRes() const;
-    int countAttributesAbove(const Enemy& e, float avgLife, float avgSpeed, float avgArrowRes, float avgMagicRes, float avgArtilleryRes) const;
-    std::vector<Enemy> selectParents(float avgLife, float avgSpeed, float avgArrowRes, float avgMagicRes, float avgArtilleryRes);
-    Enemy crossover(const Enemy& p1, const Enemy& p2);
-    void mutate(Enemy& e);
-    float randFloat(float min, float max);
-    int randomIndex(int max);
+    // El vector de enemigos actual que estamos procesando
+    std::vector<Enemy*> currentEnemies;
+    std::string currentEnemyType;
     
-    // Nuevos métodos auxiliares
-    void calculateAverageStats(const std::vector<Enemy*>& enemies, float& avgLife, float& avgSpeed, 
-                              float& avgArrowRes, float& avgMagicRes, float& avgArtilleryRes) const;
+    // Almacenamiento para genes de la próxima generación
+    std::vector<EnemyGenes> nextGenGenes;
+    
+    // Variables para estadísticas
+    float avgLife;
+    float avgSpeed;
+    float avgArrowRes;
+    float avgMagicRes;
+    float avgArtilleryRes;
+    
+    // Métodos auxiliares
+    void calculateAverageStats(
+        const std::vector<Enemy*>& enemies, 
+        float& avgLife, float& avgSpeed, 
+        float& avgArrowRes, float& avgMagicRes, 
+        float& avgArtilleryRes) const;
+    
+    int countAttributesAbove(const Enemy& e, float avgLife, float avgSpeed, 
+                            float avgArrowRes, float avgMagicRes, float avgArtilleryRes) const;
+    
+    // Métodos para el algoritmo genético
+    std::vector<Enemy*> selectParents();
+    EnemyGenes crossover(const Enemy* parent1, const Enemy* parent2);
+    bool mutate(EnemyGenes& genes);
+    std::map<std::string, std::vector<EnemyGenes>> nextGenGenesByType;
+    std::map<std::string, int> mutationChanceByType;
+    float randFloat(float min, float max) const;
+    int randomIndex(int max) const;
+
+    // Nuevos métodos para gestionar la probabilidad de mutación
+    int getMutationChanceForType(const std::string& typeName);
+    void updateMutationChanceForType(const std::string& typeName);
+
 };

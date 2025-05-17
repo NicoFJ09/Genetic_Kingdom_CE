@@ -17,16 +17,14 @@ Game::Game(float) : waveManager() {
 
 
 void Game::Update(float deltaTime) {
+    // Spawnear enemigos si hay pendientes y la ola está activa
     if (waveManager.IsWaveActive() && !pendingEnemies.empty()) {
         spawnTimer += deltaTime;
         if (spawnTimer >= spawnInterval) {
             Enemy* next = pendingEnemies.front();
             pendingEnemies.erase(pendingEnemies.begin());
-            if (next) {
-                next->Activate(); // Solo aquí el enemigo se vuelve visible y se mueve
-                activeEnemies.push_back(next);
-            }
-            // Si next es nullptr, simplemente espera el siguiente ciclo de spawnInterval
+            next->Activate();
+            activeEnemies.push_back(next);
             spawnTimer = 0.0f;
         }
     }
@@ -115,24 +113,18 @@ WaveManager& Game::GetWaveManager() {
 }
 
 void Game::SpawnEnemiesForWave(const std::vector<Enemy*>& waveEnemies) {
+    // Limpiar cualquier pendiente anterior
     for (Enemy* e : pendingEnemies) delete e;
     pendingEnemies.clear();
+
+    // Limpiar activos también (opcional, depende de tu lógica)
     ClearEnemies();
 
-    std::string lastType = "";
-    for (Enemy* e : waveEnemies) {
-        if (e) {
-            std::string type = e->GetEnemyType();
-            if (!lastType.empty() && type != lastType) {
-                // Buffer de 2 segundos (2 nullptr si spawnInterval = 1.0f)
-                pendingEnemies.push_back(nullptr);
-                pendingEnemies.push_back(nullptr);
-            }
-            pendingEnemies.push_back(e);
-            lastType = type;
-        }
-    }
+    // Copiar los punteros (en la práctica, deberías clonar o crear nuevos)
+    pendingEnemies = waveEnemies;
     spawnTimer = 0.0f;
+    
+    // Reiniciar las variables de control para el final de la ola
     lastEnemyKilled = false;
     waveEndDelay = 0.0f;
 }

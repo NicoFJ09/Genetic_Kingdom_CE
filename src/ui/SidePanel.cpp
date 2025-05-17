@@ -157,19 +157,6 @@ void SidePanel::Draw() {
 
     // Dibujar encabezados de la tabla
     float colX[] = {textX, textX + 50, textX + 100, textX + 150, textX + 200, textX + 250}; // Posiciones de las columnas
-
-    // Elegir color base según el tipo de enemigo
-    Color mutatecolor = BLACK;
-    if (currentType == "Ogre") {
-        mutatecolor = PINK;
-    } else if (currentType == "Harpy") {
-        mutatecolor = GOLD;
-    } else if (currentType == "Dark Elf") {
-        mutatecolor = GREEN;
-    } else if (currentType == "Mercenary") {
-        mutatecolor = SKYBLUE;
-    }
-
     DrawText("L", colX[0], textY, fontSize, BLACK);
     DrawText("S", colX[1], textY, fontSize, BLACK);
     DrawText("FR", colX[2], textY, fontSize, BLACK);
@@ -180,8 +167,8 @@ void SidePanel::Draw() {
 
     // Dibujar las filas de la tabla para cada enemigo del vector actual
     for (Enemy* enemy : *currentEnemies) {
-        // Color alterno según tipo de enemigo, OLIVE_DRAB si mutado
-        Color textColor = enemy->IsMutated() ? mutatecolor : BLACK; 
+        // En el futuro, aquí podrías aplicar colores específicos basados en fitness
+        Color textColor = enemy->IsMutated() ? GOLD : BLACK; 
         
         DrawText(TextFormat("%.0f", enemy->GetHealth()), colX[0], textY, fontSize, textColor);
         DrawText(TextFormat("%.0f", enemy->GetSpeed()), colX[1], textY, fontSize, textColor);

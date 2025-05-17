@@ -962,5 +962,4 @@ CMakeFiles/GeneticKingdom.dir/src/screens/StartScreen.cpp.o: \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../map/BridgeTile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../map/Tile.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../map/../entities/enemies/Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../utils/Timer.h \
   /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/screens/../config/Constants.h

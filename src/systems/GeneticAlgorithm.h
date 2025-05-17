@@ -20,9 +20,9 @@ public:
     GeneticAlgorithm(int populationSize, float mutationRate);
     ~GeneticAlgorithm();
 
-    // Método principal: procesar un tipo de enemigo
-    void processEnemyType(const std::vector<Enemy*>& enemies, const std::string& typeName);
-    
+    // Cambia la declaración del método processEnemyType:
+    void processEnemyType(const std::vector<Enemy*>& enemies, const std::string& typeName, bool updateMutationChance = true);
+    void updateMutationChanceForType(const std::string& typeName);
     // Evolucionar la población actual
     void evolveCurrentType();
     
@@ -31,6 +31,7 @@ public:
     
     // Imprimir estadísticas para el tipo actual
     void printTypeSummary(int generation) const;
+    int getMutationChanceForType(const std::string& typeName);
 
 private:
     int populationSize;
@@ -70,7 +71,6 @@ private:
     int randomIndex(int max) const;
 
     // Nuevos métodos para gestionar la probabilidad de mutación
-    int getMutationChanceForType(const std::string& typeName);
-    void updateMutationChanceForType(const std::string& typeName);
+    float calculateFitness(const EnemyGenes& genes) const;
 
 };

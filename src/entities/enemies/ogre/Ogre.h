@@ -5,7 +5,7 @@
 
 class Ogre : public Enemy {
 public:
-    Ogre(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation);
+    Ogre(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation = 1, int mutationChance = 5);
     ~Ogre() = default;
     double getRandomHealth();
     double getRandomSpeed();

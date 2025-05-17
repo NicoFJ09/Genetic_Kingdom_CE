@@ -2,7 +2,7 @@
 #include <ctime>     // For time()
 #include "Ogre.h"
 
-Ogre::Ogre(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation)
+Ogre::Ogre(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation, int mutationChance)
     : Enemy(
         alive,
         position,
@@ -18,7 +18,7 @@ Ogre::Ogre(bool alive, bool mutated, Vector2 position, int frameSpeed, int gener
         0,                   // Resistencia a artillería
         mutated,
         generation,
-        10                   // Probabilidad de mutación
+        mutationChance                   // Probabilidad de mutación
     ) {}
 
 // Static or helper functions for randomization

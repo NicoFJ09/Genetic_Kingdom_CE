@@ -16,25 +16,25 @@ GeneticAlgorithm::~GeneticAlgorithm() {
 }
 
 // Método principal para procesar un tipo de enemigo
-void GeneticAlgorithm::processEnemyType(const std::vector<Enemy*>& enemies, const std::string& typeName) {
+void GeneticAlgorithm::processEnemyType(const std::vector<Enemy*>& enemies, const std::string& typeName, bool updateMutationChance) {
     if (enemies.empty()) {
         TraceLog(LOG_WARNING, "No hay enemigos del tipo %s para procesar", typeName.c_str());
         return;
     }
-    
+
     // Guardar referencia a estos enemigos
     currentEnemies = enemies;
     currentEnemyType = typeName;
-    
+
     // Calcular estadísticas
     calculateAverageStats(enemies, avgLife, avgSpeed, avgArrowRes, avgMagicRes, avgArtilleryRes);
-    
+
     TraceLog(LOG_INFO, "Procesando tipo %s: %zu enemigos, generación %d", 
              typeName.c_str(), enemies.size(), enemies[0]->GetGeneration());
-             
-    // Actualizar la probabilidad de mutación para este tipo
-    // Solo si no es la primera generación
-    if (enemies[0]->GetGeneration() > 1) {
+
+    // Incrementar la probabilidad de mutación SOLO si se solicita explícitamente
+    // (ahora se incrementa centralizadamente en CreateWaveEnemies)
+    if (updateMutationChance) {
         updateMutationChanceForType(typeName);
     }
 }
@@ -106,14 +106,31 @@ void GeneticAlgorithm::evolveCurrentType() {
 
 // Método para obtener los genes de la próxima generación por tipo
 std::vector<EnemyGenes> GeneticAlgorithm::getNextGenGenes() const {
+    std::vector<EnemyGenes> result;
+    
     // Comprobar si hay genes específicos para este tipo
     auto it = nextGenGenesByType.find(currentEnemyType);
     if (it != nextGenGenesByType.end()) {
-        return it->second;
+        result = it->second;
+    } else {
+        // Si no hay genes específicos, devolver vector vacío
+        return result;
     }
     
-    // Si no hay genes específicos, devolver los genes genéricos (por compatibilidad)
-    return nextGenGenes;
+    // Ordenar los genes por fitness (de mayor a menor)
+    std::sort(result.begin(), result.end(), [this](const EnemyGenes& a, const EnemyGenes& b) {
+        return calculateFitness(a) > calculateFitness(b);
+    });
+    
+    // Mostrar información de fitness para depuración
+    TraceLog(LOG_INFO, "Genes ordenados por fitness para %s:", currentEnemyType.c_str());
+    for (size_t i = 0; i < result.size() && i < 3; i++) {  // Mostrar los 3 mejores
+        float fitness = calculateFitness(result[i]);
+        TraceLog(LOG_INFO, "[%zu] Fitness: %.2f - Vida=%.1f, Vel=%.1f", 
+                 i, fitness, result[i].health, result[i].speed);
+    }
+    
+    return result;
 }
 
 // Método para imprimir estadísticas
@@ -147,6 +164,25 @@ void GeneticAlgorithm::printTypeSummary(int generation) const {
               << "%)\n";
               
     std::cout << "\n===========================\n";
+}
+
+float GeneticAlgorithm::calculateFitness(const EnemyGenes& genes) const {
+    // Promedio ponderado simple: cada atributo tiene un peso
+    const float healthWeight = 1.0f;
+    const float speedWeight = 1.0f;
+    const float arrowResWeight = 0.5f;
+    const float magicResWeight = 0.5f;
+    const float artilleryResWeight = 0.5f;
+    
+    // Calcular suma ponderada
+    float fitnessValue = (genes.health * healthWeight + 
+                          genes.speed * speedWeight + 
+                          genes.arrowResistance * arrowResWeight +
+                          genes.magicResistance * magicResWeight +
+                          genes.artilleryResistance * artilleryResWeight) / 
+                         (healthWeight + speedWeight + arrowResWeight + magicResWeight + artilleryResWeight);
+    
+    return fitnessValue;
 }
 
 // Método para calcular estadísticas promedio
@@ -260,11 +296,10 @@ EnemyGenes GeneticAlgorithm::crossover(const Enemy* parent1, const Enemy* parent
 
 // Nuevo método para obtener la probabilidad de mutación por tipo
 int GeneticAlgorithm::getMutationChanceForType(const std::string& typeName) {
-    // Si no existe el tipo, inicializarlo con 5%
+    // Solo inicializar si no existe
     if (mutationChanceByType.find(typeName) == mutationChanceByType.end()) {
         mutationChanceByType[typeName] = 5;
     }
-    
     return mutationChanceByType[typeName];
 }
 

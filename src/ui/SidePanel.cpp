@@ -143,6 +143,16 @@ void SidePanel::Draw() {
     DrawText(mutationText.c_str(), mutationTextX, textY, fontSize, DARKGRAY);
     textY += 40;
 
+    if (!currentEnemies->empty()) {
+        int mutationChance = (*currentEnemies)[0]->GetMutationChance();
+        std::string mutationChanceText = TextFormat("Mutation chance: %d%%", mutationChance);
+        int mutationChanceTextWidth = MeasureText(mutationChanceText.c_str(), fontSize - 2);
+        float mutationChanceTextX = bounds.x + (bounds.width - mutationChanceTextWidth) / 2;
+        DrawText(mutationChanceText.c_str(), mutationChanceTextX, textY, fontSize - 2, DARKGRAY);
+        textY += 20;
+    }
+
+
     // Dibujar el sprite del enemigo (centrado en X)
     auto it = enemyTextures.find(currentType);
     if (it != enemyTextures.end()) {
@@ -154,6 +164,17 @@ void SidePanel::Draw() {
     } else {
         TraceLog(LOG_WARNING, "Texture not found for enemy type: %s", currentType.c_str());
     }
+
+    std::string orderText1 = "(Enemies are ordered by fitness";
+    std::string orderText2 = "in descending order)";
+    int orderTextWidth1 = MeasureText(orderText1.c_str(), fontSize - 2);
+    int orderTextWidth2 = MeasureText(orderText2.c_str(), fontSize - 2);
+    float orderTextX1 = bounds.x + (bounds.width - orderTextWidth1) / 2;
+    float orderTextX2 = bounds.x + (bounds.width - orderTextWidth2) / 2;
+    DrawText(orderText1.c_str(), orderTextX1, textY, fontSize - 2, GRAY);
+    textY += 18; // Menor espaciado para líneas relacionadas
+    DrawText(orderText2.c_str(), orderTextX2, textY, fontSize - 2, GRAY);
+    textY += 20;
 
     // Dibujar encabezados de la tabla
     float colX[] = {textX, textX + 50, textX + 100, textX + 150, textX + 200, textX + 250}; // Posiciones de las columnas

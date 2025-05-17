@@ -1,6 +1,6 @@
 #include "DarkElf.h"
 
-DarkElf::DarkElf(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation = 1)
+DarkElf::DarkElf(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation, int mutationChance)
     : Enemy(alive, position, frameSpeed,
             mutated ? "../assets/textures/enemies/darkelf/DarkElfMoveSpriteSheet_mutated.png"
                   : "../assets/textures/enemies/darkelf/DarkElfMoveSpriteSheet.png",
@@ -13,7 +13,7 @@ DarkElf::DarkElf(bool alive, bool mutated, Vector2 position, int frameSpeed, int
             0,          // Resistencia a artillería
             mutated,       // Mutación
             generation,  // Generación
-            10           // Probabilidad de mutación
+            mutationChance           // Probabilidad de mutación
     ) {}
 
 // Static or helper functions for randomization

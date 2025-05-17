@@ -1,6 +1,6 @@
 #include "Harpy.h"
 
-Harpy::Harpy(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation = 1)
+Harpy::Harpy(bool alive, bool mutated, Vector2 position, int frameSpeed, int generation, int mutationChance )
     : Enemy(alive, position, frameSpeed,
             mutated ? "../assets/textures/enemies/harpy/HarpyMoveSpriteSheet_mutated.png"
                   : "../assets/textures/enemies/harpy/HarpyMoveSpriteSheet.png",
@@ -13,7 +13,7 @@ Harpy::Harpy(bool alive, bool mutated, Vector2 position, int frameSpeed, int gen
             100,          // Resistencia a artillería
             mutated,       // Mutación
             generation,  // Generación
-            10           // Probabilidad de mutación
+            mutationChance           // Probabilidad de mutación
     ) {}
 
 // Static or helper functions for randomization

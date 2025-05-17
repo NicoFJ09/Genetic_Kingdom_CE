@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/mercenary/Mercenary.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.o.d"
+  "CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o"
+  "CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/entities/towers/Tower.cpp.o"
   "CMakeFiles/GeneticKingdom.dir/src/entities/towers/Tower.cpp.o.d"
   "CMakeFiles/GeneticKingdom.dir/src/entities/towers/archerTower/ArcherTower.cpp.o"

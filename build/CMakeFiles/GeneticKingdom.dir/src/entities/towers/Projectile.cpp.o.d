@@ -1,9 +1,6 @@
-CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o: \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerUpgrade.cpp \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/TowerUpgrade.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../core/EconomySystem.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/TowerTile.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/Tile.h \
+CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o: \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Projectile.cpp \
+  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/entities/towers/Projectile.h \
   /usr/local/Cellar/raylib/5.5/include/raylib.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_header_macro.h \
@@ -12,7 +9,6 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_arg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg___va_copy.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/__stdarg_va_copy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/Tower.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/comp.h \
@@ -907,14 +903,4 @@ CMakeFiles/GeneticKingdom.dir/src/ui/TowerUpgrade.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/locale_base_api/bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/../enemies/Enemy.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/../enemies/../../utils/Timer.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/../../utils/Timer.h \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../map/../entities/towers/Projectile.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_map \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/is_transparent.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__hash_table \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ranges_iterator_traits.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__node_handle \
-  /Users/nicolasflorez/Documents/GitHub/Genetic_Kingdom_CE/src/ui/../config/Constants.h
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer

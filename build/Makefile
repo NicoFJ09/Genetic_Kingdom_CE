@@ -321,6 +321,30 @@ src/entities/enemies/ogre/Ogre.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/enemies/ogre/Ogre.cpp.s
 .PHONY : src/entities/enemies/ogre/Ogre.cpp.s
 
+src/entities/towers/Projectile.o: src/entities/towers/Projectile.cpp.o
+.PHONY : src/entities/towers/Projectile.o
+
+# target to build an object file
+src/entities/towers/Projectile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.o
+.PHONY : src/entities/towers/Projectile.cpp.o
+
+src/entities/towers/Projectile.i: src/entities/towers/Projectile.cpp.i
+.PHONY : src/entities/towers/Projectile.i
+
+# target to preprocess a source file
+src/entities/towers/Projectile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.i
+.PHONY : src/entities/towers/Projectile.cpp.i
+
+src/entities/towers/Projectile.s: src/entities/towers/Projectile.cpp.s
+.PHONY : src/entities/towers/Projectile.s
+
+# target to generate assembly for a file
+src/entities/towers/Projectile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeneticKingdom.dir/build.make CMakeFiles/GeneticKingdom.dir/src/entities/towers/Projectile.cpp.s
+.PHONY : src/entities/towers/Projectile.cpp.s
+
 src/entities/towers/Tower.o: src/entities/towers/Tower.cpp.o
 .PHONY : src/entities/towers/Tower.o
 
@@ -954,6 +978,9 @@ help:
 	@echo "... src/entities/enemies/ogre/Ogre.o"
 	@echo "... src/entities/enemies/ogre/Ogre.i"
 	@echo "... src/entities/enemies/ogre/Ogre.s"
+	@echo "... src/entities/towers/Projectile.o"
+	@echo "... src/entities/towers/Projectile.i"
+	@echo "... src/entities/towers/Projectile.s"
 	@echo "... src/entities/towers/Tower.o"
 	@echo "... src/entities/towers/Tower.i"
 	@echo "... src/entities/towers/Tower.s"

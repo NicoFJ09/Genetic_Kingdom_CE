@@ -10,6 +10,7 @@ public:
     double getRandomHealth();
     double getRandomSpeed();
     double getRandomResist();
+    Mercenary* Clone() const override { return new Mercenary(*this); }
 };
 
 #endif // MERCENARY_H

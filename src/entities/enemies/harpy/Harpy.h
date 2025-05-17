@@ -9,6 +9,7 @@ public:
     ~Harpy() = default;
     double getRandomHealth();
     double getRandomSpeed();
+    Harpy* Clone() const override { return new Harpy(*this); }
 };
 
 #endif // HARPY_H

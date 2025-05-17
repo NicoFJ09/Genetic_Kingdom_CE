@@ -87,6 +87,7 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
                 darkElves.push_back(darkElf);
                 waveEnemies.push_back(darkElf);
             }
+
         }
     }
 
@@ -158,8 +159,23 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
             }
         }
     }
+    // --- Copia profunda de los vectores para snapshots previos ---
+    // Limpia y libera memoria de la generación anterior
+    for (Enemy* e : prevogres) delete e;
+    for (Enemy* e : prevharpies) delete e;
+    for (Enemy* e : prevmercenaries) delete e;
+    for (Enemy* e : prevdarkElves) delete e;
+    prevogres.clear();
+    prevharpies.clear();
+    prevmercenaries.clear();
+    prevdarkElves.clear();
 
-    // DEBUG: Mostrar información sobre los enemigos generados
+    // Deep copy usando Clone()
+    for (Enemy* e : ogres)        prevogres.push_back(e->Clone());
+    for (Enemy* e : harpies)      prevharpies.push_back(e->Clone());
+    for (Enemy* e : mercenaries)  prevmercenaries.push_back(e->Clone());
+    for (Enemy* e : darkElves)    prevdarkElves.push_back(e->Clone());
+
     TraceLog(LOG_INFO, "Wave %d created: %zu Ogres, %zu Harpies, %zu Mercenaries, %zu DarkElves", 
              waveManager.GetCurrentWave(), ogres.size(), harpies.size(), mercenaries.size(), darkElves.size());
     
@@ -171,7 +187,6 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
     
     return waveEnemies;
 }
-
 GameplayScreen::GameplayScreen(int screenWidth, int screenHeight, ScreenManager* screenManager)
     : screenWidth(screenWidth), screenHeight(screenHeight),
       screenManager(screenManager),

@@ -10,6 +10,7 @@ public:
     double getRandomHealth();
     double getRandomSpeed();
     double getRandomResist();
+    Ogre* Clone() const override { return new Ogre(*this); }
 };
 
 #endif // OGRE_H

@@ -117,6 +117,8 @@ public:
 
     // Utilidad
     Vector2 TileToWorldPosition(const std::pair<int, int>& tilePos) const;
+    
+    virtual Enemy* Clone() const = 0;
 };
 
 #endif // ENEMY_H

@@ -30,6 +30,12 @@ private:
     // Nuevo: método para verificar derrota
     void CheckForDefeat();
 
+// Vectores separados por tipo de enemigo
+    std::vector<Enemy*> prevogres;
+    std::vector<Enemy*> prevharpies;
+    std::vector<Enemy*> prevmercenaries;
+    std::vector<Enemy*> prevdarkElves;
+
 public:
     GameplayScreen(int screenWidth, int screenHeight, ScreenManager* screenManager);
     ~GameplayScreen();

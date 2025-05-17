@@ -10,7 +10,6 @@ public:
     double getRandomHealth();
     double getRandomSpeed();
     double getRandomResist();
-    DarkElf* Clone() const override { return new DarkElf(*this); }
 };
 
 #endif // DARKELF_H

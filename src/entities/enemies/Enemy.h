@@ -84,7 +84,9 @@ public:
 
     int GetMutationChance() const;
     void SetMutationChance(int chance);
-
+    
+    void SetTexture(const std::string& newTexturePath);
+    
     Vector2 GetPosition() const { return position; }
 
     double getRandomHealth();

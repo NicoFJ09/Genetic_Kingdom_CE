@@ -307,16 +307,32 @@ int GeneticAlgorithm::getMutationChanceForType(const std::string& typeName) {
 void GeneticAlgorithm::updateMutationChanceForType(const std::string& typeName) {
     int currentChance = getMutationChanceForType(typeName);
     
-    // Incrementar entre 2% y 5%
-    int increase = GetRandomValue(2, 5);
-    int newChance = std::min(100, currentChance + increase);
+    // Definir incrementos basados en el tipo de enemigo
+    int baseIncrease;
+    if (typeName == "Ogre") {
+        // Incremento menor para Ogros porque aparecen desde la primera oleada
+        baseIncrease = GetRandomValue(3, 9);
+    } else if (typeName == "Dark Elf") {
+        // Incremento medio para Elfos Oscuros (aparecen en oleada 2)
+        baseIncrease = GetRandomValue(6, 12);
+    } else if (typeName == "Mercenary") {
+        // Incremento mayor para Mercenarios (aparecen en oleada 3)
+        baseIncrease = GetRandomValue(9, 15);
+    } else if (typeName == "Harpy") {
+        // Incremento mayor para Arpías (aparecen en oleada 4)
+        baseIncrease = GetRandomValue(9, 18);
+    } else {
+        // Para cualquier otro tipo, incremento default
+        baseIncrease = GetRandomValue(2, 5);
+    }
+    
+    int newChance = std::min(100, currentChance + baseIncrease);
     
     mutationChanceByType[typeName] = newChance;
     
     TraceLog(LOG_INFO, "Probabilidad de mutación para %s actualizada: %d%% -> %d%% (+%d%%)",
-             typeName.c_str(), currentChance, newChance, increase);
+             typeName.c_str(), currentChance, newChance, baseIncrease);
 }
-
 // Método para mutar genes
 bool GeneticAlgorithm::mutate(EnemyGenes& genes) {
     bool wasMutated = false;

@@ -72,6 +72,9 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
                     ogre->SetMagicResistance(genes[i].magicResistance);
                     ogre->SetArtilleryResistance(genes[i].artilleryResistance);
                     ogre->SetMutated(genes[i].mutated);
+                    if (ogre->IsMutated()) {
+                        ogre->SetTexture("../assets/textures/enemies/ogre/OgreMoveSpriteSheet_mutated.png");
+                    }
                     
                     TraceLog(LOG_INFO, "Ogro %d: Vida=%.1f, Vel=%.1f, ResF=%d, ResM=%d, ResA=%d, Mutado=%s",
                            i, genes[i].health, genes[i].speed, (int)genes[i].arrowResistance, 
@@ -127,6 +130,9 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
                     darkElf->SetMagicResistance(genes[i].magicResistance);
                     darkElf->SetArtilleryResistance(genes[i].artilleryResistance);
                     darkElf->SetMutated(genes[i].mutated);
+                    if (darkElf->IsMutated()) {
+                        darkElf->SetTexture("../assets/textures/enemies/darkelf/DarkElfMoveSpriteSheet_mutated.png");
+                    }
                 }
                 
                 darkElf->SetPath(PATH_SEGMENT);
@@ -177,6 +183,9 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
                     mercenary->SetMagicResistance(genes[i].magicResistance);
                     mercenary->SetArtilleryResistance(genes[i].artilleryResistance);
                     mercenary->SetMutated(genes[i].mutated);
+                    if (mercenary->IsMutated()) {
+                        mercenary->SetTexture("../assets/textures/enemies/mercenary/MercenaryMoveSpriteSheet_mutated.png");
+                    }
                 }
                 
                 mercenary->SetPath(PATH_SEGMENT);
@@ -227,6 +236,9 @@ std::vector<Enemy*> GameplayScreen::CreateWaveEnemies() {
                     harpy->SetMagicResistance(genes[i].magicResistance);
                     harpy->SetArtilleryResistance(genes[i].artilleryResistance);
                     harpy->SetMutated(genes[i].mutated);
+                    if (harpy->IsMutated()) {
+                        harpy->SetTexture("../assets/textures/enemies/harpy/HarpyMoveSpriteSheet_mutated.png");
+                    }
                 }
                 
                 harpy->SetPath(PATH_SEGMENT);

@@ -1,0 +1,35 @@
+# Ignorar archivos y carpetas de metadatos y compilación
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.log
+*.tmp
+*.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+*.rej
+*.out
+*.a
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.bin
+*.class
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+# Ignorar archivos de Raylib temporales
+raylib.log
+# Ignorar archivos de sistema
+Thumbs.db
+Desktop.ini
